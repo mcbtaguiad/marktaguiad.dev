@@ -1,5 +1,5 @@
-baseURL: "https://tagsdev.click/" # if your site is in 'https', then make sure your base url isn't written using 'http' otherwise your sitemap would contain http (as opposeed to https) URLs. This would affect Google indexing of your URLs.
-title: tagsdev
+baseURL: "https://tagsdev.click/"
+title: TagsDev
 paginate: 5
 theme: PaperMod
 
@@ -25,16 +25,17 @@ languages:
         profileMode:
             enabled: true
             title: Mark Taguiad
-            imageUrl: "https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/static/images/tags-color.jpg"
+            
+            imageUrl: "https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/static/images/tags-black.jpg"
             imageTitle: ProfileMode image
-            # imageWidth: 120
-            # imageHeight: 120
+            imageWidth: 300
+            imageHeight: 300
             subtitle: "devops | philomath"
-            #buttons:
-            #    - name: Blog
-            #      url: posts
-            #    - name: Profile Mode
-            #      url: https://github.com/adityatelange/hugo-PaperMod/wiki/Features#profile-mode
+            buttons:
+                - name: blog
+                  url: posts
+                - name: resume
+                  url: posts
         menu:
             main:
                 - name: Blog
@@ -44,7 +45,7 @@ languages:
                   url: search/
                   weight: 10
                 - name: Tags
-                  url: Tags/
+                  url: tags/
                   weight: 10
                 - name: Luna
                   url: "https://www.imcollectingmoonlight.com/"
@@ -61,7 +62,6 @@ params:
     env: production # to enable google analytics, opengraph, twitter-cards and schema.
     description: "Tagsdev | Devops"
     author: Mark Taguiad
-    # author: ["Me", "You"] # multiple authors
 
     defaultTheme: auto
     # disableThemeToggle: true
@@ -75,7 +75,7 @@ params:
     ShowRssButtonInSectionTermList: true
     ShowToc: true
     # comments: false
-    images: ["papermod-cover.png"]
+    #images: ["papermod-cover.png"]
 
     profileMode:
         enabled: false
@@ -90,20 +90,14 @@ params:
             - name: Tags
               url: tags
 
-    homeInfoParams:
-        Title: "Tagsdev"
-        Content: >
-            Welcome to demo of hugo's theme PaperMod.
-            - **PaperMod** is a simple but fast and responsive theme with useful feature-set that enhances UX.
-            - Do give a 🌟 on Github !
-            - PaperMod is based on theme [Paper](https://github.com/nanxiaobei/hugo-paper).
+    
     socialIcons:
         - name: github
           url: "https://github.com/mcbtaguiad/"
         - name: Spotify
           url: "https://open.spotify.com/playlist/0D1gr5jrtvcM0K6c40hAzO?si=079b83f114dd4360"
-        - name: Rss
-          url: "index.xml"
+        - name: Email
+          url: "mailto:marktaguiad@tagsdev.click"
         - name: Linkedin
           url: "https://www.linkedin.com/in/mark-christian-taguiad/"
 
