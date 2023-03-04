@@ -79,6 +79,7 @@ params:
     ShowCodeCopyButtons: true
     ShowRssButtonInSectionTermList: true
     ShowToc: true
+    
     # comments: false
     #images: ["papermod-cover.png"]
 
@@ -108,7 +109,7 @@ params:
 
 
     editPost:
-        URL: "https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content"
+        URL: "https://github.com/mcbtaguiad/web-tagsdev-hugo/tree/develop/content"
         Text: "Suggest Changes" # edit text
         appendFilePath: true # to append file path to Edit link
 
