@@ -13,7 +13,7 @@ weight: 2
 TocOpen: false
 ---
 
-![Alt text](https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/static/images/002-mark-tagsdev-click.jpg "mark.tagsdev.click")
+![Alt text](https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/app/static/images/002-mark-tagsdev-click.jpg "mark.tagsdev.click")
 
 
 Back in 2021, I've deployed my first website [mark.tagsdev.click](https://mark.tagsdev.click) running on Django as its web framework. But a little content or progress was publish in it. This decision was to enable me to focus more on content creation and DevOps related projects/learnings.
@@ -34,5 +34,5 @@ I needed to migrate the site to something that is lower in maintenance and can e
 
 Hugo is a Fast & Modern Static Website Engine. It's built on top of Go, this would enable me to learn Go or maybe PHP :grin:. 
 
-If you are interested in trying Hugo, please visit thi [site](https://gohugo.io/) to get started. It has a good documentation it even covered migration from different provider or from other static site generator. 
+If you are interested in trying Hugo, please visit this [site](https://gohugo.io/) to get started. It has a good documentation it even covered migration from different provider or from other static site generator. 
 

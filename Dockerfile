@@ -1,6 +1,7 @@
-FROM peaceiris/hugo:v0.110.0-full  
+FROM nginx:alpine
 
-COPY ./app /src
+WORKDIR /app
 
-#WORKDIR /src
-#ENTRYPOINT [ "/usr/bin/hugo" ]
+COPY ./app/public/ .
+
+COPY ./nginx.conf /etc/nginx/nginx.conf

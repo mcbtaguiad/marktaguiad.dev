@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>TagsDev</title>
+    <link>https://tagsdev.click/</link>
+    <description>Recent content on TagsDev</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 04 Mar 2023 18:18:31 +0800</lastBuildDate><atom:link href="https://tagsdev.click/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mark&#39;s CV</title>
+      <link>https://tagsdev.click/cv/</link>
+      <pubDate>Fri, 03 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://tagsdev.click/cv/</guid>
+      <description>Mark Christian Taguiad marktaguiad@tagsdev.click tagsdev.click Manila, Philippines Ambitious IT professional skilled in both Linux/Unix Administration and DevOps. Experienced with different technologies that involves various systems and development. Maintains a professional attitude while concentrating on developing technical capabilities.
+Skills linux systems administration network administration programming databases devops kubernetes containers webservers git cicd ansible
+Programming: Python, Perl, Bash Databases: MySQL, Postgres, sqlite Linux: Alpine, Oracle, Ubuntu, Debian, Arch, OpenSuse DevOps: Ansible, Kubernetes, Podman/Docker, CI/CD</description>
+    </item>
+    
+    <item>
+      <title>Bulan</title>
+      <link>https://tagsdev.click/post/bulan/</link>
+      <pubDate>Wed, 01 Mar 2023 09:33:01 +0800</pubDate>
+      
+      <guid>https://tagsdev.click/post/bulan/</guid>
+      <description>Manila, Philippines
+Sunday, 25 September 2022
+Para kin jay maymaysa nga tao nga parmi nga bilbilibak ken ayayatek. Dim ammu kasano kapateg ti naited mo kanyak tapno sapulek manen ti kalkalikagumak.
+Ayan man makadanunan ta, ana man ti pagbalinan ta. Ibatbatiyan ka ti parte ditoy pusok. Adadtoy nak lang mangbuybuya jay langit, baring ton maminsan kadwa ka ditoy nga mangkitkitan ken jay bulan.</description>
+    </item>
+    
+    <item>
+      <title>Site Migration; Django to Hugo</title>
+      <link>https://tagsdev.click/post/sige-migrate-django-hugo/</link>
+      <pubDate>Sat, 04 Mar 2023 18:18:31 +0800</pubDate>
+      
+      <guid>https://tagsdev.click/post/sige-migrate-django-hugo/</guid>
+      <description>Back in 2021, I&amp;rsquo;ve deployed my first website mark.tagsdev.click running on Django as its web framework. But a little content or progress was publish in it. This decision was to enable me to focus more on content creation and DevOps related projects/learnings.
+Why Django? It has been a journey, everything was built from scratch, from html/js/cs to integrating it to the web framework and building it into container. Django wasn&amp;rsquo;t my first web framework that I used, I created my first API using Flask.</description>
+    </item>
+    
+    
+  </channel>
+</rss>

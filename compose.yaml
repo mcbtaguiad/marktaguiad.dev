@@ -1,22 +1,12 @@
-version: '3.3'
+version: "3.9"
 
 services:
-  web:
-    container_name: web-tagsdev-hugo
-    
-    build: 
-      image: mcbtaguiad/web-tagsdev-hugo:v1.0.0
-      context: .
-      dockerfile: Dockerfile
-    
-    ports:
-      - 1313:1313
-
-    command:
-      - serve
-      - -e production
-      - --bind=0.0.0.0
-    #volumes:
-    #  - static_volume:/home/app/web/staticfiles
-    #env_file:
-    #  - ./.env
+    app:
+        container_name: web-tagsdev-hugo
+        image: docker.io/mcbtaguiad/web-tagsdev-hugo:v1.0.0
+        build:
+            context: .
+            dockerfile: Dockerfile
+        restart: always
+        ports:
+            - "8080:8080"

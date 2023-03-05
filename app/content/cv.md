@@ -33,7 +33,6 @@ subject: 'CV'
 - [tagsdev.click](https://tagsdev.click/)
 - Manila, Philippines
 
-,
 Ambitious IT professional skilled in both Linux/Unix Administration and DevOps. Experienced with different
 technologies that involves various systems and development. Maintains a professional attitude while
 concentrating on developing technical capabilities.

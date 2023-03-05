@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://tagsdev.click/sitemap.xml

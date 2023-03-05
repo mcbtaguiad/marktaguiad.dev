@@ -26,7 +26,8 @@ languages:
             enabled: true
             title: Mark Taguiad
             
-            imageUrl: "https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/static/images/tags-black.jpg"
+
+            imageUrl: "https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/app/static/images/tags-black.jpg"
             imageTitle: Mark Taguiad
             imageWidth: 300
             imageHeight: 300
@@ -109,7 +110,7 @@ params:
 
 
     editPost:
-        URL: "https://github.com/mcbtaguiad/web-tagsdev-hugo/tree/main/content"
+        URL: "https://github.com/mcbtaguiad/web-tagsdev-hugo/tree/main/app/content"
         Text: "Suggest Changes" # edit text
         appendFilePath: true # to append file path to Edit link
 
@@ -126,7 +127,7 @@ params:
         disableHLJS: true
     #     favicon: "<link / abs url>"
     #     favicon16x16: "<link / abs url>"
-        favicon32x32: "https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/static/images/favicon.ico"
+        favicon32x32: "https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/app/static/images/favicon.ico"
     #     apple_touch_icon: "<link / abs url>"
     #     safari_pinned_tab: "<link / abs url>"
 

@@ -18,7 +18,7 @@ Manila, Philippines\
 Sunday, 25 September 2022
 
 
-![Alt text](https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/static/images/bulan/starmap.png "starmap")
+![Alt text](https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/app/static/images/bulan/starmap.png "starmap")
 
 
 Para kin jay maymaysa nga tao nga parmi nga bilbilibak ken ayayatek. Dim ammu kasano kapateg ti naited mo kanyak tapno sapulek manen ti kalkalikagumak. 
