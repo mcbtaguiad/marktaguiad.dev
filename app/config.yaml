@@ -27,7 +27,7 @@ languages:
             title: Mark Taguiad
             
             imageUrl: "https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/static/images/tags-black.jpg"
-            imageTitle: ProfileMode image
+            imageTitle: Mark Taguiad
             imageWidth: 300
             imageHeight: 300
             subtitle: "devops | philomath"
@@ -41,9 +41,9 @@ languages:
                 - name: Blog
                   url: post/
                   weight: 1
-                - name: Archive
-                  url: archives
-                  weight: 2
+                #- name: Archive
+                #  url: archives
+                #  weight: 2
                 - name: Search
                   url: search/
                   weight: 3

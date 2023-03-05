@@ -1,7 +1,6 @@
 ---
 title: "002 Migrate Django Hugo"
 date: 2023-03-04T18:18:31+08:00
-draft: true
 title: "Site Migration; Django to Hugo"
 date: 2023-03-04T18:18:31+08:00
 author: "Mark Taguiad"
@@ -14,11 +13,12 @@ weight: 2
 TocOpen: false
 ---
 
+![Alt text](https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/static/images/002-mark-tagsdev-click.jpg "mark.tagsdev.click")
 
 
 Back in 2021, I've deployed my first website [mark.tagsdev.click](https://mark.tagsdev.click) running on Django as its web framework. But a little content or progress was publish in it. This decision was to enable me to focus more on content creation and DevOps related projects/learnings.
 
-![Alt text](https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/static/images/bulan/starmap.png "starmap")
+
 
 ### Why Django?
 
