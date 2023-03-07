@@ -21,10 +21,10 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
             - matchExpressions:
-              - key: kubernetes.io/os
+              - key: kubernetes.io/arch
                 operator: In
                 values:
-                - linux
+                - 'amd64'
           preferredDuringSchedulingIgnoredDuringExecution:
           - weight: 20
             preference:
