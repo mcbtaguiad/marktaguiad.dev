@@ -41,7 +41,7 @@ spec:
                 values:
                 - 'true'
       containers:
-        - image: mcbtaguiad/web-tagsdev-hugo:v1.0.0
+        - image: mcbtaguiad/web-tagsdev-hugo:v1.0.1
           imagePullPolicy: Always
           name: web
           ports:
