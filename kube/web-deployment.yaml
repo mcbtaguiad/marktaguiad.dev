@@ -2,19 +2,19 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: web
-  name: web
+    app: web-tagsdev
+  name: web-tagsdev
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: web
+      app: web-tagsdev
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: web
+        app: web-tagsdev
     spec:
       affinity:
         nodeAffinity:
@@ -26,7 +26,7 @@ spec:
                 values:
                 - 'amd64'
           preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 20
+          - weight: 10
             preference:
               matchExpressions:
               - key: kubernetes.io/role
@@ -40,10 +40,24 @@ spec:
                 operator: In
                 values:
                 - 'true'
+          - weight: 5
+            preference:
+              matchExpressions:
+              - key: corecount
+                operator: In
+                values:
+                - '2'
+          - weight: 5
+            preference:
+              matchExpressions:
+              - key: disk
+                operator: In
+                values:
+                - 'hdd'
       containers:
         - image: mcbtaguiad/web-tagsdev-hugo:v1.0.1
           imagePullPolicy: Always
-          name: web
+          name: web-tagsdev
           ports:
             - containerPort: 8080
       restartPolicy: Always
