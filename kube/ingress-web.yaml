@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   name: tagsdev-hugo-ingress
   annotations:
-    gethomepage.dev/description: "Mark Taguaid | TagsDev"
+    gethomepage.dev/description: "TagsDev | Mark Taguaid"
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Links
     gethomepage.dev/icon: https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/app/static/images/fa-tags-nobg.png
@@ -27,8 +27,3 @@ spec:
             name: web-tagsdev
             port:
               number: 8080
-
-
-
----
-
