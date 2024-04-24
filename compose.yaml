@@ -3,7 +3,7 @@ version: "3.9"
 services:
     app:
         container_name: web-tagsdev-hugo
-        image: docker.io/mcbtaguiad/web-tagsdev-hugo:latest
+        image: ghcr.io/mcbtaguiad/web-tagsdev-hugo:1.2.0
         build:
             context: .
             dockerfile: Dockerfile
