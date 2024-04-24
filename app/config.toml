@@ -1,0 +1,95 @@
+baseURL = "https://tagsdev.xyz"
+languageCode = "en-us"
+title = "Tagsdev"
+theme = "cactus"
+copyright = "Tagsdev.xyz"
+disqusShortname = "tagsdev-xyz"
+googleAnalytics = "G-XCHH9NNNBX"
+
+
+# summaryLength = 2
+
+# Main menu which appears below site header.
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "Blog"
+url = "/post"
+weight = 2
+
+# [[menu.main]]
+# name = "Tags"
+# url = "/tags"
+# weight = 3
+
+[[menu.main]]
+name = "About"
+url = "/cv"
+weight = 4
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 4
+    ordered = true
+    startLevel = 2
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = false
+    noClasses = true
+    style = "dracula"
+    tabWidth = 4
+
+[params]
+
+  colortheme = "white" # dark, light, white, or classic
+  rss = true # generate rss feed. default value is false
+  googleAnalyticsAsync = true # use asynchronous tracking. Synchronous tracking by default
+  showAllPostsArchive = false # default
+
+  # Home page settings
+  description = "Hey there! I'm Tags, a DevOps enthusiast dedicated to bridging the gap between development and operations. Explore my world of streamlined workflows, automated processes, and collaborative solutions that drive digital innovation. Let's dive in!"
+
+
+  mainSection = "posts" # your main section
+  showAllPostsOnHomePage = false # default
+  postsOnHomePage = 5 # this option will be ignored if showAllPostsOnHomePage is set to true
+  tagsOverview = true # show tags overview by default.
+  showProjectsList = false # show projects list by default (if projects data file exists).
+  projectsUrl = "https://github.com/mcbtaguiad" # title link for projects list
+  
+  # https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference
+  dateFormat = "2006-01-02" # default
+
+  
+  # Post page settings
+  show_updated = true # default
+  showReadTime = true # default
+  mainSectionTitle = "Blog"
+  [params.comments]
+    enabled = true # default
+    engine = "disqus" # only disqus, utterances, and cactus_comments is supported
+    # [params.comments.utterances]
+    #   repo = "<github_username>/<github_reponame>"
+    #   label = "hugo-site-name" # you can use however you want to label your name in your repo's issues
+    #   theme = "github-light"
+    # [params.comments.cactuscomments]
+    #   siteName = "your_cactus_comments_sitename" 
+
+  # the value of name should be an valid font awesome icon name (brands type)
+  # https://fontawesome.com/icons?d=gallery&s=brands
+  [[params.social]]
+    name = "github"
+    link = "https://github.com/mcbtaguiad"
+  [[params.social]]
+    name = "linkedin"
+    link = "https://www.linkedin.com/in/mark-christian-taguiad/"
+  [[params.social]]
+    name = "email"
+    link = "marktaguiad@tagsdev.xyz"

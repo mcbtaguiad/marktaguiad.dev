@@ -4,7 +4,7 @@ author: "Mark Taguiad"
 title: "Mark's CV"
 date: "2023-03-03"
 #description: "Mark Taguiad | Resume"
-# tags: ["mark", "job", "experience", "cv"]
+tags: ["job", "cv"]
 #categories: ["themes", "syntax"]
 #aliases: ["migrate-from-jekyl"]
 ShowToc: true
