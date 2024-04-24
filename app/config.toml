@@ -55,7 +55,7 @@ weight = 4
   showAllPostsArchive = false # default
 
   # Home page settings
-  description = "Hey there! I'm Tags, a DevOps enthusiast dedicated to bridging the gap between development and operations. Explore my world of streamlined workflows, automated processes, and collaborative solutions that drive digital innovation. Let's dive in!"
+  description = "Hey there! I'm Tags, a DevOps (by profession) dedicated to bridging the gap between development and operations. Explore my world of streamlined workflows, automated processes, and collaborative solutions that drive digital innovation. Let's dive in!"
 
 
   mainSection = "posts" # your main section

@@ -53,7 +53,7 @@ $ curl -s -L https://github.com/containernetworking/plugins/releases/download/v1
 ```
 
 ### Multus Manifest
-We're going to use macvlan. Use NIC used by K8S cluster, in my case I'm using `enp1s0`. A dhcp server is also setup in KVM, with IP pool from 192.168.122.201 to 192.168.122.254, this will be the IP that the pod can attach to.
+We're going to use macvlan. Use NIC used by K8S cluster, in my case I'm using `enp1s0`. A dhcp server is also setup in KVM, with IP pool from 192.168.122.201 to 192.168.122.254, these will be the IPs that the pod can attach to.
 
 ```sh
 mcbtaguiad@tags-kvm-ubuntu:/opt/cni$ ip r
