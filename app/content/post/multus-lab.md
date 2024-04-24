@@ -37,7 +37,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/k8snetworkplumbingwg/multus
 
 Check k8s status.
 ```sh
-mcbtaguiad@tags-kvm-ubuntu:~$ kubectl get pods -A
+$ mcbtaguiad@tags-kvm-ubuntu:~$ kubectl get pods -A
 NAMESPACE     NAME                                       READY   STATUS    RESTARTS      AGE
 kube-system   kube-multus-ds-s7kgz                       1/1     Running   1 (50m ago)   6h32m
 kube-system   calico-kube-controllers-787f445f84-kp274   1/1     Running   1 (50m ago)   6h35m
