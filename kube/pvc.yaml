@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: web-tagsdev-pvc
+spec:
+  storageClassName: nfs-csi-malaya
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi

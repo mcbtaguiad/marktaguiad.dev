@@ -1,22 +1,23 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: tagsdev-hugo-ingress
+  name: tagsdev-ingress
   annotations:
     gethomepage.dev/description: "TagsDev | Mark Taguaid"
     gethomepage.dev/enabled: "true"
     gethomepage.dev/group: Links
     gethomepage.dev/icon: https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/app/static/images/fa-tags-nobg.png
     gethomepage.dev/name: TagsDev
-    kubernetes.io/ingress.class: "nginx"
+    # kubernetes.io/ingress.class: "nginx"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
 spec:
+  ingressClassName: nginx
   tls:
   - hosts:
-      - tagsdev.click
-    secretName: tagsdev-hugo-tls
+      - tagsdev.xyz
+    secretName: tagsdev-tls
   rules:
-  - host: tagsdev.click
+  - host: tagsdev.xyz
     http:
       paths:
       - path: /
@@ -26,4 +27,4 @@ spec:
           service: 
             name: web-tagsdev
             port:
-              number: 8080
+              number: 80

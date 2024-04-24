@@ -5,7 +5,7 @@ metadata:
     app: web-tagsdev
   name: web-tagsdev
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: web-tagsdev
@@ -26,38 +26,56 @@ spec:
                 values:
                 - 'amd64'
           preferredDuringSchedulingIgnoredDuringExecution:
+          # - weight: 10
+          #   preference:
+          #     matchExpressions:
+          #     - key: kubernetes.io/role
+          #       operator: In
+          #       values:
+          #       - 'worker'
+          # - weight: 10
+          #   preference:
+          #     matchExpressions:
+          #     - key: node-role.kubernetes.io/master
+          #       operator: In
+          #       values:
+          #       - 'true'
           - weight: 10
             preference:
               matchExpressions:
-              - key: kubernetes.io/role
+              - key: core
                 operator: In
                 values:
-                - 'worker'
-          - weight: 10
-            preference:
-              matchExpressions:
-              - key: node-role.kubernetes.io/master
-                operator: In
-                values:
-                - 'true'
+                - '3'
           - weight: 5
             preference:
               matchExpressions:
-              - key: corecount
+              - key: core
                 operator: In
                 values:
-                - '2'
+                - '4'
           - weight: 5
             preference:
               matchExpressions:
               - key: disk
                 operator: In
                 values:
-                - 'hdd'
+                - 'ssd'
+      imagePullSecrets:
+      - name: ghcr.io
+      
       containers:
-        - image: mcbtaguiad/web-tagsdev-hugo:v1.0.1
-          imagePullPolicy: Always
+        - image: ghcr.io/mcbtaguiad/web-tagsdev-hugo:1.2.0
           name: web-tagsdev
+          imagePullPolicy: Always
           ports:
-            - containerPort: 8080
+            - containerPort: 80
+      #     volumeMounts:
+      #     - name: static
+      #       subPath: static
+      #       mountPath: /usr/local/apache2/htdocs/static
+      # volumes:
+      #   - name: static
+      #     persistentVolumeClaim:
+      #       claimName: ``eb-tagsdev-pvc
       restartPolicy: Always
