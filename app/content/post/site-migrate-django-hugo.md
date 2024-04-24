@@ -1,10 +1,8 @@
 ---
-title: "002 Migrate Django Hugo"
-date: 2023-03-04T18:18:31+08:00
 title: "Site Migration; Django to Hugo"
 date: 2023-03-04T18:18:31+08:00
 author: "Mark Taguiad"
-tags: ["hugo", "django", "python", "website", "html", "flask"]
+tags: ["hugo", "django", "python", "website",]
 ShowToc: true
 TocOpen: false
 UseHugoToc: true
@@ -15,8 +13,7 @@ TocOpen: false
 
 # Site Migration; Django to Hugo
 
-![Alt text](https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/app/static/images/002-mark-tagsdev-click.jpg "mark.tagsdev.click")
-
+[![imagen](/images/002-mark-tagsdev-click.jpg)](/images/002-mark-tagsdev-click.jpg)
 
 Back in 2021, I've deployed my first website [mark.tagsdev.click](https://mark.tagsdev.click) running on Django as its web framework. But a little content or progress was publish in it. This decision was to enable me to focus more on content creation and DevOps related projects/learnings.
 

@@ -1,8 +1,8 @@
 ---
 title: "Homepage - A highly customizable dashboard for docker and kubernetes cluster"
-date: 2023-05-28
+date: 2024-04-24
 author: "Mark Taguiad"
-tags: ["self-hosted", "docker", "k8s"]
+tags: ["self-hosted", "docker", "k8s", "dashboard"]
 ShowToc: true
 TocOpen: false
 UseHugoToc: true
@@ -11,7 +11,8 @@ weight: 2
 TocOpen: false
 ---
 
-![Alt text](https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/app/static/images/homepage/homepage.png)
+<!-- ![Alt text](/images/homepage/homepage.png) -->
+[![imagen](/images/homepage/homepage.png)](/images/homepage/homepage.png)
 
 Looking for flashy and dynamic dashboard to organized your websites and self-hosted application running on your cluster/server? Checkout [homepage](https://github.com/benphelps/homepage/tree/main)!
 
@@ -25,7 +26,7 @@ Looking for flashy and dynamic dashboard to organized your websites and self-hos
 
 It's easy to install and configure, with docker you may need to mount the config but with kubernetes it can be configured by using config maps. This has been my [dashboard](https://dashboard.tagsdev.xyz) for quite sometime now and every websites and application deployed is added. 
 
-It has a quick integration using annonation in ingress, here is a sample. With this example, this application/website is added automatically to "Links" groups.
+It has a quick integration using annonation in ingress, here is a sample. With this example, this application/website is added automatically to group `Links`.
 
 ```yaml
 apiVersion: networking.k8s.io/v1

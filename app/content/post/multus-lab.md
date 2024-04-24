@@ -21,8 +21,8 @@ TocOpen: false
 
 
 ### Installation
-> **Note**
-> Check this website for more details or theory behind multus. (https://www.redhat.com/en/blog/using-the-multus-cni-in-openshift).
+> **Note:**
+> Check this website for more details on multus. (https://www.redhat.com/en/blog/using-the-multus-cni-in-openshift).
 
 In this lab, we'll be using K3S as it is easy to setup and is production ready. First we would need to disabled flannel-backend, disable-network-policy to install CNI; calico or CNI of your choice. Optional to disble servicelb, unless you're implementing metallb. 
 ```bash 
