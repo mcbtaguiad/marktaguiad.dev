@@ -10,7 +10,7 @@ RUN hugo
 
 FROM docker.io/nginx:alpine
 
-WORKDIR /app
+WORKDIR /etc/nginx/templates
 
 COPY --from=builder /site/public/ .
 
