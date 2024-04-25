@@ -8,17 +8,13 @@ COPY ./app/ .
 
 RUN hugo
 
-# FROM docker.io/nginx:alpine
+FROM docker.io/nginx:alpine
 
-# WORKDIR /app
+WORKDIR /app
 
-# COPY --from=builder /site/public/ .
+COPY --from=builder /site/public/ .
 
 
-# COPY ./nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx.conf /etc/nginx/nginx.conf
 
-# EXPOSE 80
-
-FROM docker.io/httpd:latest
-
-COPY --from=builder /site/ /usr/local/apache2/htdocs/
+EXPOSE 80
