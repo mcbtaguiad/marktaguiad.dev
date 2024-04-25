@@ -21,4 +21,4 @@ RUN hugo
 
 FROM docker.io/httpd:latest
 
-COPY --from=builder /site/public/ /usr/local/apache2/htdocs/
+COPY --from=builder /site/ /usr/local/apache2/htdocs/
