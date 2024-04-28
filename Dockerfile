@@ -8,20 +8,20 @@ COPY ./app/ .
 
 RUN hugo
 
-# FROM docker.io/nginx:alpine
+FROM docker.io/nginx:1.25.5-bookworm
 
-# WORKDIR /app
+WORKDIR /app
 
-# COPY --from=builder /site/public/ .
-
-
-# COPY ./nginx.conf /etc/nginx/nginx.conf
-
-# EXPOSE 80
+COPY --from=builder /site/public/ .
 
 
-FROM docker.io/httpd:latest
+COPY ./nginx.conf /etc/nginx/nginx.conf
+
+EXPOSE 80
+
+
+# FROM docker.io/httpd:latest
 
 # COPY --from=builder /srv/jekyll/_site/ /usr/local/apache2/htdocs/
-COPY --from=builder /site/public/*  /usr/local/apache2/htdocs/
+# COPY --from=builder /site/public/*  /usr/local/apache2/htdocs/
 
