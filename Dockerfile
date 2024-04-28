@@ -1,6 +1,8 @@
-FROM docker.io/alpine:latest as builder
+FROM docker.io/ubuntu:latest as builder
 
-RUN apk add --update hugo
+RUN apt-get update -y && apt-get upgrade -y
+
+RUN apt-get install -y hugo
 
 WORKDIR /site
 
