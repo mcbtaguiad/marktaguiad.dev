@@ -19,9 +19,10 @@ Manila, Philippines\
 Sunday, 25 September 2022
 
 
-![Alt text](https://raw.githubusercontent.com/mcbtaguiad/web-tagsdev-hugo/main/app/static/images/bulan/starmap.png "starmap")
+<!-- ![Alt text](/images/bulan/starmap.png "starmap") -->
+[![imagen](/images/bulan/starmap.png)](/images/bulan/starmap.png)
 
-Lubong nga haan nak maranyagan ti silaw mun.
+[Lubong](https://moonlanding.tagsdev.xyz) nga haan nak maranyagan ti silaw mun.
 
 <!-- Para kin jay maymaysa nga tao nga parmi nga bilbilibak ken ayayatek. Dim ammu kasano kapateg ti naited mo kanyak tapno sapulek manen ti kalkalikagumak. 
 
