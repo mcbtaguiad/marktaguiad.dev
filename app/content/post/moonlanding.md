@@ -1,5 +1,5 @@
 ---
-title: "Moon Landing"
+title: "Moon Landing - A Space Exploration"
 date: 2024-04-28
 author: "Mark Taguiad"
 tags: ["moon landing"]
@@ -11,7 +11,7 @@ weight: 2
 TocOpen: false
 ---
 
-# Moon Landing
+# Moon Landing - A Space Exploration
 
 Found this on my git archived; this was supposed to be (metaphorically) our space exploration to the mysteries of the Moon to the endless expanse of the galaxy. Our journey to uncover lunar secrets and seeks answer to the universe's greatest questions (ours). 
 
