@@ -1,9 +1,9 @@
 baseURL = "https://tagsdev.xyz"
 languageCode = "en-us"
-title = "Tagsdev"
+title = "tagsdev"
 theme = "cactus"
-copyright = "Tagsdev.xyz"
-disqusShortname = "tagsdev-xyz"
+copyright = "tagsdev"
+# disqusShortname = "tagsdev-xyz"
 googleAnalytics = "G-XCHH9NNNBX"
 
 
@@ -12,22 +12,22 @@ googleAnalytics = "G-XCHH9NNNBX"
 
 # Main menu which appears below site header.
 [[menu.main]]
-name = "Home"
+name = "home"
 url = "/"
 weight = 1
 
 [[menu.main]]
-name = "Blog"
+name = "blog"
 url = "/post"
 weight = 2
 
 # [[menu.main]]
-# name = "Tags"
+# name = "tags"
 # url = "/tags"
 # weight = 3
 
 [[menu.main]]
-name = "About"
+name = "whoami"
 url = "/cv"
 weight = 4
 
@@ -55,7 +55,7 @@ weight = 4
   showAllPostsArchive = false # default
 
   # Home page settings
-  description = "Hey there! I'm Tags, a DevOps (by profession) dedicated to bridging the gap between development and operations. Explore my world of streamlined workflows, automated processes, and collaborative solutions that drive digital innovation. Let's dive in!"
+  description = "Hey there! This blog is a sort of a "learning by doing knowledge stash". A log or notes of my journey in the industry (as a DevOps)." 
 
 
   mainSection = "posts" # your main section
