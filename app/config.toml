@@ -1,8 +1,8 @@
 baseURL = "https://tagsdev.xyz"
 languageCode = "en-us"
-title = "tagsdev"
+title = "Tagsdev"
 theme = "cactus"
-copyright = "tagsdev"
+copyright = "Tagsdev"
 # disqusShortname = "tagsdev-xyz"
 googleAnalytics = "G-XCHH9NNNBX"
 
@@ -12,22 +12,22 @@ googleAnalytics = "G-XCHH9NNNBX"
 
 # Main menu which appears below site header.
 [[menu.main]]
-name = "home"
+name = "Home"
 url = "/"
 weight = 1
 
 [[menu.main]]
-name = "blog"
+name = "Blog"
 url = "/post"
 weight = 2
 
 # [[menu.main]]
-# name = "tags"
+# name = "Tags"
 # url = "/tags"
 # weight = 3
 
 [[menu.main]]
-name = "whoami"
+name = "Whoami"
 url = "/cv"
 weight = 4
 
@@ -55,7 +55,7 @@ weight = 4
   showAllPostsArchive = false # default
 
   # Home page settings
-  description = "Hey there! This blog is a sort of a "learning by doing knowledge stash". A log or notes of my journey in the industry (as a DevOps)." 
+  description = 'Hey there! This blog is a sort of a "learning by doing knowledge stash". A log or notes of my journey in the industry (as a DevOps).'
 
 
   mainSection = "posts" # your main section

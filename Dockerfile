@@ -1,4 +1,4 @@
-FROM docker.io/debian:latest as builder
+FROM docker.io/ubuntu:22.04 as builder
 
 RUN apt-get update -y && apt-get upgrade -y
 
