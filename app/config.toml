@@ -3,7 +3,7 @@ languageCode = "en-us"
 title = "Tagsdev"
 theme = "cactus"
 copyright = "Tagsdev"
-# disqusShortname = "tagsdev-xyz"
+disqusShortname = "tagsdev-xyz"
 googleAnalytics = "G-XCHH9NNNBX"
 
 
