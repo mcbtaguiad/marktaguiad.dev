@@ -94,3 +94,6 @@ weight = 4
   [[params.social]]
     name = "email"
     link = "marktaguiad@tagsdev.xyz"
+  [[params.social]]
+    name = "strava"
+    link = "https://www.strava.com/athletes/123512498/"
