@@ -2,7 +2,7 @@
 title: "Site Migration; Django to Hugo"
 date: 2023-03-04T18:18:31+08:00
 author: "Mark Taguiad"
-tags: ["hugo", "django", "python", "website",]
+tags: ["hugo", "django", "python"]
 ShowToc: true
 TocOpen: false
 UseHugoToc: true

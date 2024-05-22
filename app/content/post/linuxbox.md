@@ -2,7 +2,7 @@
 title: "Free Linux Box/Container for Development"
 date: 2024-05-16
 author: "Mark Taguiad"
-tags: ["linuxbox", "linux"]
+tags: ["linux", "centos"]
 ShowToc: true
 TocOpen: false
 UseHugoToc: true

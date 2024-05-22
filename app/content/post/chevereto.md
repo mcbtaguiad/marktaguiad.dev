@@ -2,7 +2,7 @@
 title: "Chevereto - Chevereto - Install Notes"
 date: 2024-05-22
 author: "Mark Taguiad"
-tags: ["image-hosting", "k8s", "self-hosted"]
+tags: ["image-hosting", "k8s", "self-hosted", "docker"]
 ShowToc: true
 TocOpen: false
 UseHugoToc: true
