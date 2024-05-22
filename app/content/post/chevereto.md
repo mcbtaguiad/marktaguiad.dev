@@ -1,5 +1,5 @@
 ---
-title: "Chevereto - Chevereto - Install Notes"
+title: "Chevereto - Install Notes"
 date: 2024-05-22
 author: "Mark Taguiad"
 tags: ["image-hosting", "k8s", "self-hosted", "docker"]
