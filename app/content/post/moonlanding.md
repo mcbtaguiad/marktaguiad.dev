@@ -2,7 +2,7 @@
 title: "Moon Landing - A Space Exploration"
 date: 2024-04-28
 author: "Mark Taguiad"
-tags: ["moon landing"]
+tags: ["bulan"]
 ShowToc: true
 TocOpen: false
 UseHugoToc: true
