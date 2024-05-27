@@ -29,7 +29,7 @@ storage: 15GB
 Credentials:
 ```
 user: root
-password: doremie
+password: root123
 host: tagsdev.xyz
 port: 2222
 
