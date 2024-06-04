@@ -65,9 +65,11 @@ weight = 4
 
 
   mainSection = "posts" # your main section
+  mainSectionGallery = "gallery" # your main section
   showAllPostsOnHomePage = false # default
   postsOnHomePage = 5 # this option will be ignored if showAllPostsOnHomePage is set to true
   tagsOverview = true # show tags overview by default.
+  tagsOverviewGallery = false
   showProjectsList = false # show projects list by default (if projects data file exists).
   projectsUrl = "https://github.com/mcbtaguiad" # title link for projects list
   
@@ -79,6 +81,7 @@ weight = 4
   show_updated = true # default
   showReadTime = true # default
   mainSectionTitle = "Blog"
+  mainSectionTitleGallery = "Gallery"
   [params.comments]
     enabled = true # default
     engine = "disqus" # only disqus, utterances, and cactus_comments is supported
