@@ -28,7 +28,8 @@ weight = 2
 
 [[menu.main]]
 name = "Gallery"
-url = "https://chevereto.tagsdev.xyz/"
+# url = "https://chevereto.tagsdev.xyz/"
+url = "/gallery"
 weight = 4
 
 [[menu.main]]
