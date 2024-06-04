@@ -108,10 +108,10 @@
       {{ $showAllPostsOnHomePage = .Site.Params.ShowAllPostsOnHomePage }}
     {{ end }}
     {{ $dataFormat := .Site.Params.dateFormat | default "2006-01-02" }}
-    {{ $mainPosts := (sort ( where site.RegularPages "Type" "in" site.Params.mainSections ) "Date" "desc") }}
+    {{ $mainPostsGallery := (sort ( where site.RegularPages "Type" "in" site.Params.mainSectionsGallery ) "Date" "desc") }}
     {{ if $showAllPostsOnHomePage }}
     <ul class="post-list">
-      {{ range (.Paginate $mainPosts).Pages }}
+      {{ range (.Paginate $mainPostsGallery).Pages }}
         <li class="post-item">
           <div class="meta"><time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format $dataFormat }}</time></div>
           <span><a href="{{ .Permalink }}">{{ if .Title }} {{- .Title -}} {{ else }} {{- print "Untitled" -}}{{ end }}</a></span>
