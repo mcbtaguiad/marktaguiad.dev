@@ -52,7 +52,6 @@ concentrating on developing technical capabilities.
 ```cicd```
 ```ansible```
 ```proactive monitoring```
-```infrastructure as a code```
 
 **Programming**: Python, Perl, Bash
 **Databases**: MySQL, Postgres, sqlite
@@ -61,14 +60,21 @@ concentrating on developing technical capabilities.
 
 ### Experience
 
-<!-- You have to wrap the "left" and "right" half of these headings in spans by
-hand -->
-
-
-
 ### <span>DevOps Engineer, Samsung R&D Institute Philippines (SRPH)</span> 
 
 <span><span>October 2023 - Present </span>
+
+  - Develop, coordinate and administrate Kubernetes infrastructure.
+  - Created CI pipeline for package build, vulnerability scan and code quality scan.
+  - Manage and create Virtual Machine in Openstack.
+  - Building/creating RPM and QCOW2 images. 
+  - Jira ticket resolution for customer production issues. 
+  - Migration of in-house application to Docker/Container and Kubernetes.
+  - Troubleshooting production environment issues/bugs.
+  - Creating PoC on new technology related to container orchestration.
+  - Scripting for automated task and server data gathering.
+  - Creating alarm and jobs; monitoring in Prometheus and Alertmanager
+  - Linux system administration.
 
 
 ### <span>DevOps Engineer, Quick Suite Trading / Computer Voice Systems</span> 
@@ -91,18 +97,13 @@ hand -->
 
 <span>Nov 2021 -- Mar 2023</span>
 
-  - Managed Kubernetes cluster on both production and development environment; on-prem and AWS.
-  - Owned and managed configuration (IAS, YAML) for all deployment.
+  - Develop, coordinate and administrate Kubernetes infrastructure.
   - Spearheaded the development of CI/CD pipeline of all in-house/opensource projects.
   - Developed, build docker image of ProcessMaker, and deployed in production environment.
   - Setup development and production environment (Docker) for the developer team.
-  - Automated developer team deployment using tools such as Gitlab CI/CD and Jenkins.
-  - Automated docker-volume backup to AWS S3 bucket.
   - Setup, configured, and maintained Zabbix infrastructure monitoring tool (containerized) on multiple sites.
   - Automate most of Zabbix (agent deployment, housekeeping) task using ansible automation.
-  - Created external scripts (Perl – Zabbix Compatible) for monitoring Software AG webMethods.
-  - Build a docker image which automatically backup Zabbix Database (MySQL)/Configuration/External
-  scripts to AWS S3 bucket.
+  - Created scripts (Perl – Zabbix Compatible) for monitoring Software AG webMethods.
   - Migrated GoAnywhere MFT running on Windows Server to run on a Linux Server (Oracle Linux 8).
   - Deployed, configured, and maintained GoAnywhere MFT (SFTP/FTP) and GoAnywhere Gateway (DMZ)
   on multiple sites.
