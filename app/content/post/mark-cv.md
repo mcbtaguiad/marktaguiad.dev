@@ -153,3 +153,6 @@ concentrating on developing technical capabilities.
 <span>Issued June 2021 - Expires June 2024</span>
 
   - CSCO14020527
+
+
+<a href="/documents/mark-christian-taguiad-resume.pdf" download>Click here to download</a>

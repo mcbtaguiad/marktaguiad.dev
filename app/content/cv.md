@@ -72,9 +72,9 @@ concentrating on developing technical capabilities.
   - Migration of in-house application to Docker/Container and Kubernetes.
   - Troubleshooting production environment issues/bugs.
   - Creating PoC on new technology related to container orchestration.
-  - Scripting for automated task and server data gathering.
   - Creating alarm and jobs; monitoring in Prometheus and Alertmanager
   - Linux system administration.
+  - Bash/Python scripting. 
 
 
 ### <span>DevOps Engineer, Quick Suite Trading / Computer Voice Systems</span> 
@@ -153,3 +153,6 @@ concentrating on developing technical capabilities.
 <span>Issued June 2021 - Expires June 2024</span>
 
   - CSCO14020527
+
+
+<a href="/documents/mark-christian-taguiad-resume.pdf" download>Click here to download</a>
