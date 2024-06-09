@@ -154,5 +154,4 @@ concentrating on developing technical capabilities.
 
   - CSCO14020527
 
-
-<a href="/documents/mark-christian-taguiad-resume.pdf" download>Click here to download</a>
+[Click here to download](/documents/mark-christian-taguiad-resume.pdf)
