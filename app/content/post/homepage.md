@@ -13,7 +13,7 @@ TocOpen: false
 
 <!-- ![Alt text](/images/homepage/homepage.png) -->
 <!-- [![imagen](/images/homepage/homepage.png)](/images/homepage/homepage.png) -->
-![homepage](http://chevereto.tagsdev.xyz/images/2024/05/20/homepage.png)
+![homepage](http://chevereto.tagsdev.xyz/images/2024/08/08/homepage.png)
 
 Looking for flashy and dynamic dashboard to organized your websites and self-hosted application running on your cluster/server? Checkout [homepage](https://github.com/benphelps/homepage/tree/main)!
 

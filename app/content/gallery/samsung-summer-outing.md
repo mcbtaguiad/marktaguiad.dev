@@ -22,32 +22,16 @@ margin-bottom: 2cm
 
 Location: Laiya, Batangas
 
-![ 1140284](http://chevereto.tagsdev.xyz/images/2024/06/01/_1140284.jpg)
+![1000007947](http://chevereto.tagsdev.xyz/images/2024/08/08/1000007947.jpg)
 
-![ 1140301](http://chevereto.tagsdev.xyz/images/2024/06/01/_1140301.jpg)
+![1140321]( http://chevereto.tagsdev.xyz/images/2024/08/08/_1140321.jpg)
 
-![ 1140307](http://chevereto.tagsdev.xyz/images/2024/06/01/_1140307.jpg)
+![1000007534](http://chevereto.tagsdev.xyz/images/2024/08/08/1000007534.jpg)
 
-![ 1140312](http://chevereto.tagsdev.xyz/images/2024/06/01/_1140312.jpg)
+![1000007512](http://chevereto.tagsdev.xyz/images/2024/08/08/1000007512.jpg)
 
-![ 1140321](http://chevereto.tagsdev.xyz/images/2024/06/01/_1140321.jpg)
+![11403012](http://chevereto.tagsdev.xyz/images/2024/08/08/_11403012.jpg)
 
-![ 1140358](http://chevereto.tagsdev.xyz/images/2024/06/01/_1140358.jpg)
+![1000007537]( http://chevereto.tagsdev.xyz/images/2024/08/08/1000007537.jpg)
 
-![ 1140360](http://chevereto.tagsdev.xyz/images/2024/06/01/_1140360.jpg)
-
-![ 1140381](http://chevereto.tagsdev.xyz/images/2024/06/01/_1140381.jpg) 
-
-![ 1140387](http://chevereto.tagsdev.xyz/images/2024/06/01/_1140387.jpg)
-
-![ 1140402](http://chevereto.tagsdev.xyz/images/2024/06/01/_1140402.jpg) 
-
-![ 1140482](http://chevereto.tagsdev.xyz/images/2024/06/01/_1140482.jpg) 
-
-![ 1140515](http://chevereto.tagsdev.xyz/images/2024/06/01/_1140515.jpg)
-
-![ 1140604](http://chevereto.tagsdev.xyz/images/2024/06/01/_1140604.jpg) 
-
-![ 1140613](http://chevereto.tagsdev.xyz/images/2024/06/01/_1140613.jpg) 
-
-![ 1140603](http://chevereto.tagsdev.xyz/images/2024/06/01/_1140603.jpg)
+![1000007536]( http://chevereto.tagsdev.xyz/images/2024/08/08/1000007536.jpg)
