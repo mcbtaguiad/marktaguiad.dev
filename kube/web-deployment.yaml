@@ -5,7 +5,7 @@ metadata:
     app: web-tagsdev
   name: web-tagsdev
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: web-tagsdev
@@ -20,50 +20,50 @@ spec:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
-            - matchExpressions:
-              - key: kubernetes.io/arch
-                operator: In
-                values:
-                - 'amd64'
+              - matchExpressions:
+                  - key: kubernetes.io/arch
+                    operator: In
+                    values:
+                      - "amd64"
           preferredDuringSchedulingIgnoredDuringExecution:
-          # - weight: 10
-          #   preference:
-          #     matchExpressions:
-          #     - key: kubernetes.io/role
-          #       operator: In
-          #       values:
-          #       - 'worker'
-          # - weight: 10
-          #   preference:
-          #     matchExpressions:
-          #     - key: node-role.kubernetes.io/master
-          #       operator: In
-          #       values:
-          #       - 'true'
-          - weight: 10
-            preference:
-              matchExpressions:
-              - key: core
-                operator: In
-                values:
-                - '3'
-          - weight: 5
-            preference:
-              matchExpressions:
-              - key: core
-                operator: In
-                values:
-                - '4'
-          - weight: 5
-            preference:
-              matchExpressions:
-              - key: disk
-                operator: In
-                values:
-                - 'ssd'
+            # - weight: 10
+            #   preference:
+            #     matchExpressions:
+            #     - key: kubernetes.io/role
+            #       operator: In
+            #       values:
+            #       - 'worker'
+            # - weight: 10
+            #   preference:
+            #     matchExpressions:
+            #     - key: node-role.kubernetes.io/master
+            #       operator: In
+            #       values:
+            #       - 'true'
+            - weight: 10
+              preference:
+                matchExpressions:
+                  - key: core
+                    operator: In
+                    values:
+                      - "4"
+            - weight: 5
+              preference:
+                matchExpressions:
+                  - key: core
+                    operator: In
+                    values:
+                      - "3"
+            - weight: 5
+              preference:
+                matchExpressions:
+                  - key: disk
+                    operator: In
+                    values:
+                      - "ssd"
       imagePullSecrets:
-      - name: ghcr.io
-      
+        - name: ghcr.io
+
       containers:
         - image: ghcr.io/mcbtaguiad/web-tagsdev-hugo:main
           name: web-tagsdev
