@@ -1,4 +1,4 @@
-name: Build-Push-Deploy-Dev
+name: Build-Push-Deploy-Prod
 
 # on:
 #   push:
@@ -11,11 +11,11 @@ name: Build-Push-Deploy-Dev
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "dev" ]
     # Publish semver tags as releases.
     tags: [ 'v*' ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "dev" ]
     types: [closed]
 
 
