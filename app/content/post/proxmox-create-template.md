@@ -17,13 +17,13 @@ Finally have some time to document and publish this blog due to recent Philippin
 
 What set apart a cloud-init image vs. a fully pledge image, basically it is a clone of a miminal image. A clean installed system, that can be installed on the fly, unlike the traditional image where you have to install it using GUI or manually. With cloud-init, hostname, user/password, network and ssh-keys can be set with the config file.  
 
-## Table of Contents
-1. [Download the base image](#download-the-baseimage)
+# Table of Contents
+1. [Download the base image](#download-the-base-image)
 2. [Install qemu-guest-agent](#install-qemu-guest-agent)
-3. [Create Proxmox virtual machine](#create-a-proxmox-virtual-machine)
+3. [Create Proxmox virtual machine](#create-proxmox-virtual-machine)
 4. [Covert VM to Template](#covert-vm-to-template)
-5. [Optional: Starting the VM](#optional:-starting-the-vm)
-6. [Using Terraform/Opentofu to automate VM creation](#using-terraform/opentofu-to-automate-vm-creation)
+5. [Optional Starting the VM](#optional-starting-the-vm)
+6. [Using Terraform or Opentofu to automate VM creation](#using-terraform-or-opentofu-to-automate-vm-creation)
 
 ### Download the base image
 On this part you can change the image to your desired distro, but for this lab we'll be using Debian latest base image - [https://cloud.debian.org/images/cloud/](https://cloud.debian.org/images/cloud/). 
@@ -112,7 +112,7 @@ vga: serial0
 vmgenid: 53e2d08a-c57f-4539-abf9-6863e2635ded
 ```
 
-### Optional: Starting the VM
+### Optional Starting the VM
 Let first add ssh public key, most cloud-init image has disabled user/password login. 
 ```
 qm set 1002 --sshkey ~/.ssh/id_rsa.pub
@@ -134,6 +134,6 @@ To destroy the VM.
 qm destroy 1002
 ```
 
-### Using Terraform/Opentofu to automate VM creation
+### Using Terraform or Opentofu to automate VM creation
 
-Part 2 - [Automate VM Provisitin with Terraform/Ansible](/post/tf-tofu-proxmox)
+Part 2 - [Automate VM Provisitin with Terraform or Opentofu](/post/tf-tofu-proxmox)
