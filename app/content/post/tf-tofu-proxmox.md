@@ -539,7 +539,7 @@ Plan: 1 to add, 0 to change, 0 to destroy.
 Note: You didn't use the -out option to save this plan, so OpenTofu can't guarantee to take exactly these actions if you run "tofu apply" now.
 ```
 
-Notice that a *.tfstate* file is generated, make sure to save or backup this file since it will be necesary when reinitializing/reconfigure or rebuilding your VM/infrastructure.
+Notice that a *.tfstate* file is generated, make sure to save or backup this file since it will be necessary when reinitializing/reconfigure or rebuilding your VM/infrastructure.
 
 If all goes well, you'll see at Proxmox GUI the created VM.
 ![tofu](http://chevereto.tagsdev.xyz/images/2024/08/26/tofu4.png)
@@ -752,7 +752,7 @@ k8s_config_path = "~/.config/kube/config.yaml"
 k8s_namespace_state = "opentofu-state"
 ```
 
-After `apply` phase, `tofu state` is always triggered and tf state file is automatically created to kubernetes secrets.
+After `apply` phase, `tofu state` is always triggered and tf state file is automatically created in kubernetes secrets.
 ```
 [mcbtaguiad@tags-t470 tofu]$ kubectl get secret -n opentofu-state
 NAME                             TYPE     DATA   AGE
