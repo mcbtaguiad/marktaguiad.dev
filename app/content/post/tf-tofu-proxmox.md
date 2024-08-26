@@ -752,7 +752,7 @@ k8s_config_path = "~/.config/kube/config.yaml"
 k8s_namespace_state = "opentofu-state"
 ```
 
-After apply place, tofu state is always triggered and tf state file is automatically created to kubernetes secrets.
+After `apply` phase, `tofu state` is always triggered and tf state file is automatically created to kubernetes secrets.
 ```
 [mcbtaguiad@tags-t470 tofu]$ kubectl get secret -n opentofu-state
 NAME                             TYPE     DATA   AGE
