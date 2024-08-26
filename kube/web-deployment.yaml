@@ -65,7 +65,7 @@ spec:
         - name: ghcr.io
 
       containers:
-        - image: ghcr.io/mcbtaguiad/web-tagsdev-hugo:main
+        - image: ghcr.io/mcbtaguiad/web-tagsdev-hugo:dev
           name: web-tagsdev
           imagePullPolicy: Always
           ports:
