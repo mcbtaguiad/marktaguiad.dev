@@ -11,12 +11,12 @@ weight: 2
 TocOpen: false
 ---
 
-# Automate VM Provisitin with Terraform or Opentofu
+# Automate VM Provisition with Terraform or Opentofu
 ### Background
 Been using Terraform/Opentofu when I moved my homelab to dedicated server (old laptop and PC), previously from a bunch of Raspberry Pi. 
 Using this technology has made my learning in DevOps more optimal or faster. 
 
-With recent announcement of Hashicorp to change Terraform's opensource licence to a propriety licencem, we'll be using Opentofu (just my preference, command will still be relatively similar). 
+With recent announcement of Hashicorp to change Terraform's opensource licence to a propriety licence, we'll be using Opentofu (just my preference, command will still be relatively similar). 
 
 For this lab you can subtitute opentofu `tofu` command with terraform `tf`. 
 
@@ -28,9 +28,10 @@ For this lab you can subtitute opentofu `tofu` command with terraform `tf`.
 5. [Opentofu plan](#opentofu-plan)
 6. [Opentofu apply](#opentofu-apply)
 7. [Opentofu destroy](#opentofu-destroy)
+8. [Optional Remote tfstate backup](#pptional-remote-tfstate-backup)
 
 ### Install Opentofu
-You can check this (link)[https://opentofu.org/docs/intro/install/] to install base on your distro. 
+You can check this [link](https://opentofu.org/docs/intro/install/) to install base on your distro. 
 But for this lab, we'll be using Ubuntu. 
 ```
 # Download the installer script:
@@ -50,18 +51,18 @@ rm -f install-opentofu.sh
 ```
 
 ### Add Permission to user
-Navigate to Datacenter > API Tokens > Permission > Add role ‘PVEVMAdmin’.
-![tofu](http://chevereto.tagsdev.xyz/images/2024/08/26/tofu3.md.png)
+Navigate to Datacenter > API Tokens > Permission > Add role 'PVEVMAdmin'1.
+![tofu](http://chevereto.tagsdev.xyz/images/2024/08/26/tofu3.png)
 
 ### Generate Proxmox API key
 > **Note:**
 > For unsecure method you can also use user/password.
 
-Navigate to Datacenter > API Tokens > Add. Input Token ID of your choice, make sure to untick 'Priviledge Separation'
-![tofu](http://chevereto.tagsdev.xyz/images/2024/08/26/tofu-1.md.png)
+Navigate to Datacenter > API Tokens > Add. Input Token ID of your choice, make sure to untick 'Privilege Separation'
+![tofu](http://chevereto.tagsdev.xyz/images/2024/08/26/tofu-1.png)
 
 Make sure to note the generated key since it will only be displayed once. 
-![tofu](http://chevereto.tagsdev.xyz/images/2024/08/26/tofu2.md.png)
+![tofu](http://chevereto.tagsdev.xyz/images/2024/08/26/tofu2.png)
 
 
 ### Opentofu init
@@ -72,6 +73,7 @@ mkdir tofu && cd tofu
 touch main.tf providers.tf terraform.tfvars variables.tf
 ```
 Define the provider, in our case it will be from Telmate/proxmox. 
+
 *main.tf*
 ```
 terraform {
@@ -84,6 +86,7 @@ terraform {
 }
 ```
 Now we can define the api credentials.
+
 *providers.tf*
 ```
 provider "proxmox" {
@@ -94,9 +97,10 @@ provider "proxmox" {
 }
 ```
 
-To make it more secure variable at set in a different file (terraform.tfvars, variables.tf).
+To make it more secure variable are set in a different file (terraform.tfvars, variables.tf).
 
-Define the variable. 
+Define the variables. 
+
 *variables.tf*
 ```
 variable "ssh_key" {
@@ -121,7 +125,8 @@ variable "k8s_namespace_state" {
     default = "default"
 }
 ```
-Variables are sensitive so make sure to add it in *.gitignore*. 
+Variables are sensitive so make sure to add this file it in *.gitignore*. 
+
 *terraform.tfvars*
 ```
 ssh_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAsABgQDtf3e9lQR1uAypz4nrq2nDj0DvZZGONku5wO+M87wUVTistrY8REsWO2W1N/v4p2eX30Bnwk7D486jmHGpXFrpHM0EMf7wtbNj5Gt1bDHo76WSci/IEHpMrbdD5vN8wCW2ZMwJG4J8dfFpUbdmUDWLL21Quq4q9XDx7/ugs1tCZoNybgww4eCcAi7/PAmXcS/u9huUkyiX4tbaKXQx1co7rTHd7f2u5APTVMzX0CdV9Ezc6l8I+LmjZ9rvQav5N1NgFh9B60qk9QJAb8AK9+aYy7bnBCQJ/BwIkWKYmLoVBi8j8v8UVhVdQMvQxLaxz1YcD8pbgU5s1O2nxM1+TqeGxrGHG6f7jqxhGWe21I7i8HPvOHNJcW4oycxFC5PNKnXNybEawE23oIDQfIG3+EudQKfAkJ3YhmrB2l+InIo0Wi9BHBIUNPzTldMS53q2teNdZR9UDqASdBdMgp4Uzfs1+LGdE5ExecSQzt4kZ8+o9oo9hmee4AYNOTWefXdip1= test@host"
@@ -133,7 +138,7 @@ pm_api_token_secret = "apikeygenerated"
 ```
 
 Save the files and initialize Opentofu. If all goes well, the provider will be installed and Opentofu has been initialized. 
-```
+```sh
 [mcbtaguiad@tags-t470 tofu]$ tofu init
 
 Initializing the backend...
@@ -161,7 +166,7 @@ commands will detect it and remind you to do so if necessary.
 ```
 
 ### Opentofu plan
-Let's now create our VM. We will be using the template created in (part 1)[/post/proxmox-create-template].
+Let's now create our VM. We will be using the template created in [part 1](/post/proxmox-create-template).
 *main.tf*
 ```
 terraform {
@@ -241,7 +246,7 @@ resource "proxmox_vm_qemu" "test-vm" {
 ```
 
 Save the file and we can run Opentofu plan command. 
-```
+```sh
 [mcbtaguiad@tags-t470 tofu]$ tofu plan
 
 OpenTofu used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
@@ -389,7 +394,7 @@ Note: You didn't use the -out option to save this plan, so OpenTofu can't guaran
 ### Opentofu apply
 After plan command (review the output summary of tofu plan), we can now create the VM. Since we declared the count as 1 it will create 1 VM. 
 Depending on the hardwarde on your cluster, it would take usually around 1 to 2 minutes to provision 1 VM. 
-```
+```sh
 [mcbtaguiad@tags-t470 tofu]$ tofu plan
 
 OpenTofu used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
@@ -534,13 +539,15 @@ Plan: 1 to add, 0 to change, 0 to destroy.
 Note: You didn't use the -out option to save this plan, so OpenTofu can't guarantee to take exactly these actions if you run "tofu apply" now.
 ```
 
+Notice that a *.tfstate* file is generated, make sure to save or backup this file since it will be necesary when reinitializing/reconfigure or rebuilding your VM/infrastructure.
+
 If all goes well, you'll see at Proxmox GUI the created VM.
-![tofu](http://chevereto.tagsdev.xyz/images/2024/08/26/tofu4.md.png)
+![tofu](http://chevereto.tagsdev.xyz/images/2024/08/26/tofu4.png)
  
 
 ### Opentofu destroy
 To delete the VM, run the destroy command.
-```
+```sh
 [mcbtaguiad@tags-t470 tofu]$ tofu destroy
 proxmox_vm_qemu.test-vm[0]: Refreshing state... [id=tags-p51/qemu/101]
 
@@ -708,4 +715,46 @@ proxmox_vm_qemu.test-vm[0]: Destroying... [id=tags-p51/qemu/101]
 proxmox_vm_qemu.test-vm[0]: Destruction complete after 6s
 
 Destroy complete! Resources: 1 destroyed.
+```
+
+### Optional Remote tfstate backup
+To remote backup state files, you can look futher for available providers [here](https://opentofu.org/docs/language/settings/). 
+For this example, we'll be using a kubernetes cluster. The state file will be saved as a secret in the kubernetes cluster.
+
+Configure *main.tf* and add 'terraform_remote_state'.
+```
+data "terraform_remote_state" "k8s-remote-backup" {
+    backend = "kubernetes"
+    config = {
+        secret_suffix    = "k8s-local"
+        load_config_file = true
+        namespace = var.k8s_namespace_state
+        config_path = var.k8s_config_path
+    }
+}
+```
+
+Add additional variables.
+
+*variables.tf*
+```
+variable "k8s_config_path" {
+    default = "/etc/kubernetes/admin.yaml"
+}
+variable "k8s_namespace_state" {
+    default = "default"
+}
+```
+
+*terraform.tfvars*
+```
+k8s_config_path = "~/.config/kube/config.yaml"
+k8s_namespace_state = "opentofu-state"
+```
+
+After apply place, tofu state is always triggered and tf state file is automatically created to kubernetes secrets.
+```
+[mcbtaguiad@tags-t470 tofu]$ kubectl get secret -n opentofu-state
+NAME                             TYPE     DATA   AGE
+tfstate-default-state            Opaque   1      3d
 ```
