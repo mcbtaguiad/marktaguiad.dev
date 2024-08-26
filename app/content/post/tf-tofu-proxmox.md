@@ -1,6 +1,6 @@
 ---
-title: "Automate VM Provisitin with Terraform or Opentofu"
-date: 2024-07-21
+title: "Automate VM Provisition with Terraform or Opentofu"
+date: 2024-07-22
 author: "Mark Taguiad"
 tags: ["proxmox", "qemu", "vm", "opentofu", "terraform"]
 ShowToc: true
@@ -28,7 +28,7 @@ For this lab you can subtitute opentofu `tofu` command with terraform `tf`.
 5. [Opentofu plan](#opentofu-plan)
 6. [Opentofu apply](#opentofu-apply)
 7. [Opentofu destroy](#opentofu-destroy)
-8. [Optional Remote tfstate backup](#pptional-remote-tfstate-backup)
+8. [Optional Remote tfstate backup](#optional-remote-tfstate-backup)
 
 ### Install Opentofu
 You can check this [link](https://opentofu.org/docs/intro/install/) to install base on your distro. 
