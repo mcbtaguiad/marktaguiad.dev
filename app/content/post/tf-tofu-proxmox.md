@@ -97,7 +97,7 @@ provider "proxmox" {
 }
 ```
 
-To make it more secure variable are set in a different file (terraform.tfvars, variables.tf).
+To make it more secure, variable are set in a different file (terraform.tfvars, variables.tf).
 
 Define the variables. 
 

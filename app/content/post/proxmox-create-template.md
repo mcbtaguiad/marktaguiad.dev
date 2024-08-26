@@ -136,4 +136,4 @@ qm destroy 1002
 
 ### Using Terraform or Opentofu to automate VM creation
 
-Part 2 - [Automate VM Provisitin with Terraform or Opentofu](/post/tf-tofu-proxmox)
+Part 2 - [Automate VM Provisition with Terraform or Opentofu](/post/tf-tofu-proxmox)
