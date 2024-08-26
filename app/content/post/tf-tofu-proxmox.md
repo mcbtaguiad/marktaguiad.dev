@@ -138,7 +138,7 @@ pm_api_token_secret = "apikeygenerated"
 ```
 
 Save the files and initialize Opentofu. If all goes well, the provider will be installed and Opentofu has been initialized. 
-```sh
+```
 [mcbtaguiad@tags-t470 tofu]$ tofu init
 
 Initializing the backend...
@@ -246,7 +246,7 @@ resource "proxmox_vm_qemu" "test-vm" {
 ```
 
 Save the file and we can run Opentofu plan command. 
-```sh
+```
 [mcbtaguiad@tags-t470 tofu]$ tofu plan
 
 OpenTofu used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
@@ -394,7 +394,7 @@ Note: You didn't use the -out option to save this plan, so OpenTofu can't guaran
 ### Opentofu apply
 After plan command (review the output summary of tofu plan), we can now create the VM. Since we declared the count as 1 it will create 1 VM. 
 Depending on the hardwarde on your cluster, it would take usually around 1 to 2 minutes to provision 1 VM. 
-```sh
+```
 [mcbtaguiad@tags-t470 tofu]$ tofu plan
 
 OpenTofu used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
@@ -547,7 +547,7 @@ If all goes well, you'll see at Proxmox GUI the created VM.
 
 ### Opentofu destroy
 To delete the VM, run the destroy command.
-```sh
+```
 [mcbtaguiad@tags-t470 tofu]$ tofu destroy
 proxmox_vm_qemu.test-vm[0]: Refreshing state... [id=tags-p51/qemu/101]
 
