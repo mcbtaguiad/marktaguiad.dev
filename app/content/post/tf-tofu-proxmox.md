@@ -167,6 +167,7 @@ commands will detect it and remind you to do so if necessary.
 
 ### Opentofu plan
 Let's now create our VM. We will be using the template created in [part 1](/post/proxmox-create-template).
+
 *main.tf*
 ```
 terraform {
