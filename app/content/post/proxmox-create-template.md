@@ -1,6 +1,6 @@
 ---
 title: "Creating a Proxmox Debian cloud-init Template"
-date: 2024-07-21
+date: 2024-08-21
 author: "Mark Taguiad"
 tags: ["proxmox", "qemu", "vm", "cloud-init", "debian"]
 ShowToc: true
