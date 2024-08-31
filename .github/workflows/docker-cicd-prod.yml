@@ -10,10 +10,10 @@ name: Build-Push-Deploy-Dev
 #   workflow_dispatch:
 
 on:
-  push:
-    branches: [ "main" ]
-    # Publish semver tags as releases.
-    tags: [ 'v*' ]
+  # push:
+  #   branches: [ "main" ]
+  #   # Publish semver tags as releases.
+  #   tags: [ 'v*' ]
   pull_request:
     branches: [ "main" ]
     types: [closed]
