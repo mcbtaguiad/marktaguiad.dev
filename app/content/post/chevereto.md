@@ -22,10 +22,11 @@ Issues or error encountered using chevereto official docker image. Using nfs-csi
 # kube exec to the pod
 $ chown -R www-data:www-data /var/www/html
 ```
-2. Cannot create folder /var/www/html/_assets
+2. Cannot create folder /var/www/html/images/_assets/ 
 ```bash
 # kube exec to the pod
-$ mkdir -p /var/www/html/_assets
+$ mkdir -p /var/www/html/images/_assets/
+$ chown -R www-data:www-data /var/www/html/images/
 ```
 
 
@@ -78,64 +79,66 @@ spec:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
-            - matchExpressions:
-              - key: kubernetes.io/os
-                operator: In
-                values:
-                - linux
+              - matchExpressions:
+                  - key: kubernetes.io/os
+                    operator: In
+                    values:
+                      - linux
           preferredDuringSchedulingIgnoredDuringExecution:
-          - weight: 15
-            preference:
-              matchExpressions:
-              - key: core
-                operator: In
-                values:
-                - '4'
-          - weight: 10
-            preference:
-              matchExpressions:
-              - key: core
-                operator: In
-                values:
-                - '3'
-          # - weight: 10
-          #   preference:
-          #     matchExpressions:
-          #     - key: kubernetes.io/role
-          #       operator: In
-          #       values:
-          #       - 'worker'
-          - weight: 5
-            preference:
-              matchExpressions:
-              - key: disk
-                operator: In
-                values:
-                - 'ssd'
+            - weight: 15
+              preference:
+                matchExpressions:
+                  - key: core
+                    operator: In
+                    values:
+                      - "4"
+            - weight: 10
+              preference:
+                matchExpressions:
+                  - key: core
+                    operator: In
+                    values:
+                      - "3"
+            # - weight: 10
+            #   preference:
+            #     matchExpressions:
+            #     - key: kubernetes.io/role
+            #       operator: In
+            #       values:
+            #       - 'worker'
+            - weight: 5
+              preference:
+                matchExpressions:
+                  - key: disk
+                    operator: In
+                    values:
+                      - "ssd"
       containers:
-        - image: ghcr.io/chevereto/chevereto:4.1.3
+        - image: chevereto/chevereto:4.1.4
           name: chevereto
           ports:
             - containerPort: 80
           resources: {}
           volumeMounts:
             - mountPath: /var/www/html/images/
+              subPath: data
               name: chevereto-data
           envFrom:
             - configMapRef:
                 name: chevereto-config
       initContainers:
-      - name: volume-permission
-        image: ghcr.io/chevereto/chevereto:4.1.3
-        command:
-          - sh
-          - -c
-          - 'chown -R www-data:www-data /var/www/html/images/'
-        volumeMounts:
-          - name: chevereto-data
-            mountPath: /var/www/html/images/
-        securityContext:
-          runAsUser: 0
+        - name: volume-permission
+          image: ghcr.io/chevereto/chevereto:4.1.4
+          command:
+            - sh
+            - -c
+            - "mkdir -p /var/www/html/images/_assets/ && chown -R www-data:www-data /var/www/html/images/"
+          volumeMounts:
+            - name: chevereto-data
+              subPath: data
+              mountPath: /var/www/html/images/
+          securityContext:
+            runAsUser: 0
 
       restartPolicy: Always
       volumes:

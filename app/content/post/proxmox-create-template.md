@@ -49,6 +49,7 @@ virt-customize -a debian-12-generic-amd64-20240717-1811.qcow2 --install qemu-gue
 
 > **Note:**
 > Value here can be changed, take note on the VM name as it will be used in part 2.
+
 Create a VM with VMID=1002, VM name with "debian-20240717-cloudinit-template", with basic resources (2 core, 2048Mi ram), with a virtio adapter network.
 ```
 qm create 1002 --name "debian-20240717-cloudinit-template" --memory 2048 --cores 2 --net0 virtio,bridge=vmbr0

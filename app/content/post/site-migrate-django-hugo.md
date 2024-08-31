@@ -14,7 +14,7 @@ TocOpen: false
 # Site Migration; Django to Hugo
 
 <!-- [![imagen](/images/002-mark-tagsdev-click.jpg)](/images/002-mark-tagsdev-click.jpg) -->
-![002 mark tagsdev click](http://chevereto.tagsdev.xyz/images/2024/08/08/002-mark-tagsdev-click.md.jpg)
+![002 mark tagsdev click](http://chevereto.tagsdev.xyz/images/2024/08/31/002-mark-tagsdev-click.jpg)
 
 Back in 2021, I've deployed my first website [mark.tagsdev.click](https://mark.tagsdev.click) running on Django as its web framework. But a little content or progress was publish in it. This decision was to enable me to focus more on content creation and DevOps related projects/learnings.
 
