@@ -34,7 +34,7 @@ weight = 4
 
 [[menu.main]]
 name = "Whoami"
-url = "/cv"
+url = "/post/mark-cv"
 weight = 4
 
 [markup]

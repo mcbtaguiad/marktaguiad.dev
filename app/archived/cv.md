@@ -50,13 +50,13 @@ concentrating on developing technical capabilities.
 ```webservers```
 ```git```
 ```cicd```
-```ansible```
+```iac```
 ```proactive monitoring```
 
 **Programming**: Python, Perl, Bash
 **Databases**: MySQL, Postgres, sqlite
 **Linux**: Alpine, Oracle, Ubuntu, Debian, Arch, OpenSuse
-**DevOps**: Ansible, Kubernetes, Podman/Docker, CI/CD, IaC
+**DevOps**: Ansible, Kubernetes, Podman/Docker, CI/CD, Terraform, IaC
 
 ### Experience
 
@@ -85,16 +85,20 @@ concentrating on developing technical capabilities.
 <span>March 2023 - October 2023 </span>
 
   - Active monitoring using Prometheus-Grafana Stack.
-  - Develop custom prometheus exporter to monitor database (MariaDB) instances.
   - Develop, coordinate and administrate Kubernetes infrastructure.
-  - Administrate and maintian Longhorn block storage for Kubernetes.
-  - Automate deployments (ansible, Gitlab CI), infrastructure as code (helm).
-  - Assist developers in building and deploying their software to infrastructure (K8S, Docker, Podman).
-  - Deploy updates and fixes, and provide Level 2 technical support.
-  - Build tools to reduce occurrence of errors and improve customer experience.
-  - Administer and maintain private docker registry.
-  - Installing, configuring, securing, troubleshooting and maintaining UNIX-like operating systems.
-  - Administer and maintain end user accounts, permissions, and access rights.
+  - Created CI pipeline for package build, vulnerability scan and code quality scan. 
+  - Manage and create Virtual Machine in Openstack. 
+  - Building/creating RPM and QCOW2 images. 
+  - VM provision in Proxmox using Terraform/Opentofu.
+  - Automating server configuration/setup using Ansible. 
+  - Jira ticket resolution for customer production issues.
+  - Migration of in-house application to Docker/Container and Kubernetes. 
+  - Troubleshooting production environment issues/bugs. 
+  - Creating PoC on new technology related to container orchestration.
+  - Creating alarm and jobs; monitoring in Prometheus and Alertmanager.
+  - Linux system administration. 
+  - Bash/Python scripting.
+
 
 ### <span>System Engineer, Amkor Technology</span>
 

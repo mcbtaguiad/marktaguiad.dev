@@ -50,13 +50,13 @@ concentrating on developing technical capabilities.
 ```webservers```
 ```git```
 ```cicd```
-```ansible```
+```iac```
 ```proactive monitoring```
 
 **Programming**: Python, Perl, Bash
 **Databases**: MySQL, Postgres, sqlite
 **Linux**: Alpine, Oracle, Ubuntu, Debian, Arch, OpenSuse
-**DevOps**: Ansible, Kubernetes, Podman/Docker, CI/CD, IaC
+**DevOps**: Ansible, Kubernetes, Podman/Docker, CI/CD, Terraform, IaC
 
 ### Experience
 
@@ -66,17 +66,17 @@ concentrating on developing technical capabilities.
 
   - Active monitoring using Prometheus-Grafana Stack.
   - Develop, coordinate and administrate Kubernetes infrastructure.
-  - Creating CI pipeline for integration, build, vulnerability scan, code quality scan and unit test.
-  - Create and monitor Kubernetes manifest in CD pipeline (ArgoCD).
-  - Migration of in-house application (Java-Maven/Gradle) to Docker/Container and Kubernetes.
-  - Develop API server (python-flask) for testing API endpoint.
-  - Troubleshooting production environment issues/bugs.
-  - Creating PoC on new technology related to container and container orchestration.
-  - Creating alarm and jobs; monitoring in Prometheus and Alertmanager.
-  - Manage and create Virtual Machine in Openstack.
-  - Building/creating RPM and QCOW2 images.
+  - Created CI pipeline for package build, vulnerability scan and code quality scan. 
+  - Manage and create Virtual Machine in Openstack. 
+  - Building/creating RPM and QCOW2 images. 
+  - VM provision in Proxmox using Terraform/Opentofu.
+  - Automating server configuration/setup using Ansible. 
   - Jira ticket resolution for customer production issues.
-  - Linux system administration.
+  - Migration of in-house application to Docker/Container and Kubernetes. 
+  - Troubleshooting production environment issues/bugs. 
+  - Creating PoC on new technology related to container orchestration.
+  - Creating alarm and jobs; monitoring in Prometheus and Alertmanager.
+  - Linux system administration. 
   - Bash/Python scripting.
 
 
