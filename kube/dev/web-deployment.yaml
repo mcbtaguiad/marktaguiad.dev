@@ -2,30 +2,30 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: web-tagsdev
-  name: web-tagsdev
+    app: marktaguiad-dev-dev
+  name: marktaguiad-dev-dev
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: web-tagsdev
+      app: marktaguiad-dev-dev
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: web-tagsdev
+        app: marktaguiad-dev-dev
     spec:
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/arch
-                    operator: In
-                    values:
-                      - "amd64"
-          preferredDuringSchedulingIgnoredDuringExecution:
+      # affinity:
+      #   nodeAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #       nodeSelectorTerms:
+      #         - matchExpressions:
+      #             - key: kubernetes.io/arch
+      #               operator: In
+      #               values:
+      #                 - "amd64"
+      #     preferredDuringSchedulingIgnoredDuringExecution:
             # - weight: 10
             #   preference:
             #     matchExpressions:
@@ -40,33 +40,32 @@ spec:
             #       operator: In
             #       values:
             #       - 'true'
-            - weight: 10
-              preference:
-                matchExpressions:
-                  - key: core
-                    operator: In
-                    values:
-                      - "4"
-            - weight: 5
-              preference:
-                matchExpressions:
-                  - key: core
-                    operator: In
-                    values:
-                      - "3"
-            - weight: 5
-              preference:
-                matchExpressions:
-                  - key: disk
-                    operator: In
-                    values:
-                      - "ssd"
+            # - weight: 10
+            #   preference:
+            #     matchExpressions:
+            #       - key: core
+            #         operator: In
+            #         values:
+            #           - "4"
+            # - weight: 5
+            #   preference:
+            #     matchExpressions:
+            #       - key: core
+            #         operator: In
+            #         values:
+            #           - "3"
+            # - weight: 5
+            #   preference:
+            #     matchExpressions:
+            #       - key: disk
+            #         operator: In
+            #         values:
+            #           - "ssd"
       imagePullSecrets:
         - name: ghcr.io
-
       containers:
-        - image: ghcr.io/mcbtaguiad/web-tagsdev-hugo:dev
-          name: web-tagsdev
+        - image: ghcr.io/mcbtaguiad/marktaguiad.dev:dev
+          name: marktaguiad-dev-dev
           imagePullPolicy: Always
           ports:
             - containerPort: 80

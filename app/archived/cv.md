@@ -30,8 +30,8 @@ subject: 'CV'
 ---
 # Mark Christian Taguiad
 
-- <marktaguiad@tagsdev.xyz>
-- [tagsdev.xyz](https://tagsdev.xyz/)
+- <marktaguiad@marktaguiad.dev>
+- [marktaguiad.dev](https://marktaguiad.dev/)
 - Manila, Philippines
 
 Ambitious IT professional skilled in both Linux/Unix Administration and DevOps. Experienced with different

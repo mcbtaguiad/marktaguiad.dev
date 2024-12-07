@@ -1,6 +1,6 @@
 baseURL = "https://marktaguiad.dev"
 languageCode = "en-us"
-title = "[marktaguiad.dev@tags ~]$"
+title = "[tags@marktaguiad.dev ~]$"
 theme = "cactus"
 copyright = "marktaguiad.dev"
 disqusShortname = "marktaguiad.dev"
@@ -28,7 +28,6 @@ weight = 2
 
 [[menu.main]]
 name = "Gallery"
-# url = "https://chevereto.marktaguiad.dev/"
 url = "/gallery"
 weight = 4
 

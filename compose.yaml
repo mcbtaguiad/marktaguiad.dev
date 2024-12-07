@@ -3,7 +3,7 @@ version: "3.9"
 services:
     app:
         container_name: marktaguiad.dev
-        image: ghcr.io/mcbtaguiad/marktaguiad.dev:dev
+        image: ghcr.io/mcbtaguiad/marktaguiad.dev:main
         build:
             context: .
             dockerfile: Dockerfile

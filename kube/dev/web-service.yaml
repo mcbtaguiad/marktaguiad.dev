@@ -2,14 +2,14 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: web-tagsdev
-  name: web-tagsdev
+    app: marktaguiad-dev-dev
+  name: marktaguiad-dev-dev
 spec:
   ports:
     - name: "80"
       port: 80
       targetPort: 80
   selector:
-    app: web-tagsdev
+    app: marktaguiad-dev-dev
 status:
   loadBalancer: {}

@@ -21,9 +21,9 @@ Sunday, 25 September 2022
 
 <!-- ![Alt text](/images/bulan/starmap.png "starmap") -->
 <!-- [![imagen](/images/bulan/starmap.png)](/images/bulan/starmap.png) -->
-![starmap](http://chevereto.tagsdev.xyz/images/2024/05/20/starmap.png)
+![starmap](http://chevereto.marktaguiad.dev/images/2024/05/20/starmap.png)
 
-[Lubong](https://moonlanding.tagsdev.xyz) nga haan nak maranyagan ti silaw mun.
+[Lubong](https://moonlanding.marktaguiad.dev) nga haan nak maranyagan ti silaw mun.
 
 <!-- Para kin jay maymaysa nga tao nga parmi nga bilbilibak ken ayayatek. Dim ammu kasano kapateg ti naited mo kanyak tapno sapulek manen ti kalkalikagumak. 
 

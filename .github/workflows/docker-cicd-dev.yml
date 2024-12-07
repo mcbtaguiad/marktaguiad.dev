@@ -41,7 +41,7 @@ jobs:
       - name: Change base url
         shell: bash
         run: |
-          sed -i 's/https:\/\/tagsdev.xyz/https:\/\/dev.tagsdev.xyz/g' app/config.toml
+          sed -i 's/https:\/\/marktaguiad.dev/https:\/\/dev.marktaguiad.dev/g' app/config.toml
 
       - name: Log in to Docker Hub
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
