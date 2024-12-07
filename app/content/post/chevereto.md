@@ -13,7 +13,7 @@ TocOpen: false
 
 # Chevereto - Install Notes
 
-Moved and hosted all media used by my website [here](https://chevereto.tagsdev.xyz/). 
+Moved and hosted all media used by my website [here](https://chevereto.marktaguiad.dev/). 
 
 Issues or error encountered using chevereto official docker image. Using nfs-csi, might not encounter this issue in using different CSI.
 
@@ -39,11 +39,11 @@ data:
   CHEVERETO_DB_PASS: verystrongpassword
   CHEVERETO_DB_PORT: '3306'
   CHEVERETO_DB_NAME: chevereto
-  CHEVERETO_HOSTNAME: chevereto.tagsdev.xyz
+  CHEVERETO_HOSTNAME: chevereto.marktaguiad.dev
   CHEVERETO_HOSTNAME_PATH: /
   CHEVERETO_HTTPS: '0'
   CHEVERETO_ASSET_STORAGE_TYPE: local
-  CHEVERETO_ASSET_STORAGE_URL: http://chevereto.tagsdev.xyz/images/_assets/
+  CHEVERETO_ASSET_STORAGE_URL: http://chevereto.marktaguiad.dev/images/_assets/
   CHEVERETO_ASSET_STORAGE_BUCKET: /var/www/html/images/_assets/
   CHEVERETO_MAX_POST_SIZE: 2G
   CHEVERETO_MAX_UPLOAD_SIZE: 2G
@@ -184,10 +184,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - chevereto.tagsdev.xyz
+    - chevereto.marktaguiad.dev
     secretName: chevereto-tls
   rules:
-  - host: chevereto.tagsdev.xyz
+  - host: chevereto.marktaguiad.dev
     http:
       paths:
       - pathType: Prefix

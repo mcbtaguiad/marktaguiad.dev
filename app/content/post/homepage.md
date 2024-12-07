@@ -13,7 +13,7 @@ TocOpen: false
 
 <!-- ![Alt text](/images/homepage/homepage.png) -->
 <!-- [![imagen](/images/homepage/homepage.png)](/images/homepage/homepage.png) -->
-![homepage](http://chevereto.tagsdev.xyz/images/2024/08/31/homepage.png)
+![homepage](http://chevereto.marktaguiad.dev/images/2024/08/31/homepage.png)
 
 Looking for flashy and dynamic dashboard to organized your websites and self-hosted application running on your cluster/server? Checkout [homepage](https://github.com/benphelps/homepage/tree/main)!
 
@@ -25,7 +25,7 @@ Looking for flashy and dynamic dashboard to organized your websites and self-hos
 
 ### Experience with Homepage
 
-It's easy to install and configure, with docker you may need to mount the config but with kubernetes it can be configured by using config maps. This has been my [dashboard](https://dashboard.tagsdev.xyz) for quite sometime now and every websites and application deployed is added. 
+It's easy to install and configure, with docker you may need to mount the config but with kubernetes it can be configured by using config maps. This has been my [dashboard](https://dashboard.marktaguiad.dev) for quite sometime now and every websites and application deployed is added. 
 
 It has a quick integration using annonation in ingress, here is a sample. With this example, this application/website is added automatically to group `Links`.
 
@@ -45,10 +45,10 @@ metadata:
 spec:
   tls:
   - hosts:
-      - tagsdev.xyz
+      - marktaguiad.dev
     secretName: tagsdev-hugo-tls
   rules:
-  - host: tagsdev.xyz
+  - host: marktaguiad.dev
     http:
       paths:
       - path: /

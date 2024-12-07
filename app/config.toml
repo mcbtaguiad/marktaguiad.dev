@@ -1,9 +1,9 @@
-baseURL = "https://tagsdev.xyz"
+baseURL = "https://marktaguiad.dev"
 languageCode = "en-us"
-title = "Tagsdev"
+title = "[marktaguiad.dev@tags ~]$"
 theme = "cactus"
-copyright = "Tagsdev"
-disqusShortname = "tagsdev-xyz"
+copyright = "marktaguiad.dev"
+disqusShortname = "marktaguiad.dev"
 googleAnalytics = "G-XCHH9NNNBX"
 
 
@@ -28,7 +28,7 @@ weight = 2
 
 [[menu.main]]
 name = "Gallery"
-# url = "https://chevereto.tagsdev.xyz/"
+# url = "https://chevereto.marktaguiad.dev/"
 url = "/gallery"
 weight = 4
 
@@ -102,7 +102,7 @@ weight = 4
     link = "https://www.linkedin.com/in/mark-christian-taguiad/"
   [[params.social]]
     name = "email"
-    link = "marktaguiad@tagsdev.xyz"
+    link = "marktaguiad@marktaguiad.dev"
   [[params.social]]
     name = "strava"
     link = "https://www.strava.com/athletes/123512498/"
