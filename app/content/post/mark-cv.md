@@ -62,7 +62,7 @@ concentrating on developing technical capabilities.
 
 ### <span>DevOps Engineer, Samsung R&D Institute Philippines (SRPH)</span>
 
-<span><span>October 2023 - Present </span>
+<span><span>October 2023 - October 2024 </span>
 
   - Active monitoring using Prometheus-Grafana Stack.
   - Develop, coordinate and administrate Kubernetes infrastructure.
@@ -105,7 +105,7 @@ concentrating on developing technical capabilities.
   - Developed, build docker image of ProcessMaker, and deployed in production environment.
   - Setup development and production environment (Docker) for the developer team.
   - Setup, configured, and maintained Zabbix infrastructure monitoring tool (containerized) on multiple sites.
-  - Automate most of Zabbix (agent deployment, housekeeping) task using ansible automation.
+  - Automate Zabbix (agent deployment, housekeeping) task using ansible automation.
   - Created scripts (Perl – Zabbix Compatible) for monitoring Software AG webMethods.
   - Migrated GoAnywhere MFT running on Windows Server to run on a Linux Server (Oracle Linux 8).
   - Deployed, configured, and maintained GoAnywhere MFT (SFTP/FTP) and GoAnywhere Gateway (DMZ)
@@ -114,7 +114,7 @@ concentrating on developing technical capabilities.
   - Setup, configured, and maintained Redhat JBOSS in development and production environment.
   - Performed standard administration task such as OS installation, troubleshooting, problem resolution,
   package installation, software upgrade and system hardening.
-  - Automate most of the basic task such as system hardening, backup, housekeeping.
+  - Automate basic task such as system hardening, backup, housekeeping.
   - Storage management: cleanup, mount, backup and extend.
   - Worked with Developer, DBA, Network Team to resolve their daily issues.
   - Wrote shell/python/perl scripts for various system task such as agent deployment, backup systems,
@@ -156,5 +156,10 @@ concentrating on developing technical capabilities.
 <span>Issued June 2021 - Expires June 2024</span>
 
   - CSCO14020527
+
+### <span>Electronics Communication Engineer</span>
+
+<span>April 2025</span>
+
 
 [Click here to download](/documents/mark-christian-taguiad-resume.pdf)
