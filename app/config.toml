@@ -28,7 +28,7 @@ weight = 2
 
 [[menu.main]]
 name = "Gallery"
-url = "/gallery"
+url = "https://chevereto.marktaguiad.dev"
 weight = 4
 
 [[menu.main]]
