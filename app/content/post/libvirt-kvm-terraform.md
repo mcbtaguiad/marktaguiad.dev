@@ -35,9 +35,11 @@ sudo systemctl enable --now libvirtd
 ```
 
 Verify if the host is can now run guest machine.
+
 `virt-host-validate`
 
 Download cloud-init image. For this example we'll be using Ubuntu.
+
 `wget https://cloud-images.ubuntu.com/noble/20250523/noble-server-cloudimg-amd64.img`
 
 
@@ -45,9 +47,11 @@ Download cloud-init image. For this example we'll be using Ubuntu.
 ### Add Permission to user
 
 Add user to libvirt group to manage VM without using sudo. 
+
 `sudo adduser $USER libvirt`
 
 If you'll be accessing the host remotely, make sure to add your ssh key to the host.
+
 `ssh-copy-id user@server-ip`
 
 
@@ -55,6 +59,7 @@ If you'll be accessing the host remotely, make sure to add your ssh key to the h
 Define the provider, we'll be using proivder by  [dmacvicar/libvirt](https://registry.terraform.io/providers/dmacvicar/libvirt/latest/docs). 
 
 Create the directory and files.
+
 `touch main.tf providers.tf terraform.tfvars variables.tf`
 
 Define the provider.
@@ -73,10 +78,12 @@ terraform {
 ```
 
 If you're running `terraform` on the host use;
+
 `uri = "qemu:///system"` 
 
 If you're running `terraform` remotely. Change username and IP.
 `uri = "qemu+ssh://root@192.168.254.48/system"`
+
 
 *providers.tf*
 ```
@@ -125,11 +132,9 @@ For vm_names, it is defined in array-meaning it will create VM depending on how 
 
 *variables.tf*
 ```
-
 variable "img_url_path" {
   default = "/home/User/Downloads/noble-server-cloudimg-amd64.img"
 }
-
 
 variable "vm_names" {
   description = "vm names"

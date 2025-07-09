@@ -103,6 +103,7 @@ worker:
 ```
 
 Init cluster
+
 `ansible-playbook playbook/kubeadm_init.yaml -i inventory/hosts.yaml`
 
 
@@ -150,6 +151,7 @@ master:
 ```
 
 Run playbook.
+
 `$ ansible-playbook playbook/add_node.yaml -i inventory/host.yaml`
 
 ### Why I Built This
