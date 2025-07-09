@@ -51,7 +51,7 @@ rm -f install-opentofu.sh
 ```
 
 ### Add Permission to user
-Navigate to Datacenter > API Tokens > Permission > Add role 'PVEVMAdmin'1.
+Navigate to Datacenter > API Tokens > Permission > Add role 'PVEVMAdmin'.
 [![imagen](/images/prox-tofu/tofu3.png)](/images/prox-tofu/tofu3.png)
 <!-- ![tofu](http://chevereto.marktaguiad.dev/images/2024/08/31/tofu3.png) -->
 
@@ -399,7 +399,7 @@ Note: You didn't use the -out option to save this plan, so OpenTofu can't guaran
 After plan command (review the output summary of tofu plan), we can now create the VM. Since we declared the count as 1 it will create 1 VM. 
 Depending on the hardwarde on your cluster, it would take usually around 1 to 2 minutes to provision 1 VM. 
 ```
-[mcbtaguiad@tags-t470 tofu]$ tofu plan
+[mcbtaguiad@tags-t470 tofu]$ tofu apply
 
 OpenTofu used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
   + create
