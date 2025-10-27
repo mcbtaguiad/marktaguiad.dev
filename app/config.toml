@@ -1,10 +1,12 @@
-baseURL = "https://marktaguiad.dev"
+baseURL = "https://marktaguiad.dev/"
 languageCode = "en-us"
 title = "marktaguiad.dev"
 theme = "cactus"
 copyright = "marktaguiad.dev"
 disqusShortname = "marktaguiad.dev"
 googleAnalytics = "G-XCHH9NNNBX"
+relativeURLs = true
+canonifyURLs = true
 
 
 
