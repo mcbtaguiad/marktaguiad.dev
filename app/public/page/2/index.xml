@@ -1,0 +1,27 @@
+<?xml-stylesheet href="/rss.xsl" type="text/xsl"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mark Taguiad</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Mark Taguiad</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>marktaguiad.dev</copyright>
+    <lastBuildDate>Wed, 09 Jul 2025 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>Hello, World</title>
+        <link>http://localhost:1313/post/hello_world/</link>
+        <pubDate>Fri, 29 Mar 1996 00:00:00 +0000</pubDate>
+        
+        <guid>http://localhost:1313/post/hello_world/</guid>
+        <description>Mark Taguiad http://localhost:1313/post/hello_world/ -- http://localhost:1313/post/hello_world/ - marktaguiad.dev</description>
+        </item>
+    
+    
+  </channel>
+</rss> 

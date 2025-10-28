@@ -1,24 +1,14 @@
 ---
 layout: post
 author: "Mark Taguiad"
+featured_image: "/images/featured/mark.png"
 title: "Mark's CV"
+description: "Please hire me!"
 date: "2023-03-03"
 #description: "Mark Taguiad | Resume"
 tags: ["job", "cv"]
 #categories: ["themes", "syntax"]
 #aliases: ["migrate-from-jekyl"]
-ShowToc: true
-TocOpen: false
-UseHugoToc: true
-weight: 1
-draft: false
-
-
-
-margin-left: 2cm
-margin-right: 2cm
-margin-top: 1cm
-margin-bottom: 2cm
 
 keywords:
   - 'k8s'

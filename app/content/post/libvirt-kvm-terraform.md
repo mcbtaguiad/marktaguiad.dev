@@ -1,14 +1,10 @@
 ---
 title: "Provision libvirt Multiple VM with Terraform/Opentofu"
+description: "A detailed walk-through on using Terraform with Libvirt and QEMU/KVM to automate virtual machine creation — covering provider setup, VM resource definitions, network configuration, and how to integrate it all for reproducible infra."
+featured_image: "/images/featured/libvirt-kvm-terraform.png"
 date: 2025-07-05
 author: "Mark Taguiad"
 tags: ["libvirt", "qemu", "vm", "cloud-init", "kvm", "terafform", "opentofu"]
-ShowToc: true
-TocOpen: false
-UseHugoToc: true
-weight: 2
-
-TocOpen: false`
 ---
 
 # Provision libvirt Multiple VM with Terraform/Opentofu

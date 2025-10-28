@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kvm on Mark Taguiad</title>
+    <link>http://localhost:1313/tags/kvm/</link>
+    <description>Recent content in Kvm on Mark Taguiad</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>marktaguiad.dev</copyright>
+    <lastBuildDate>Sat, 05 Jul 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/kvm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Provision libvirt Multiple VM with Terraform/Opentofu</title>
+      <link>http://localhost:1313/post/libvirt-kvm-terraform/</link>
+      <pubDate>Sat, 05 Jul 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/libvirt-kvm-terraform/</guid>
+      <description>&lt;h1 id=&#34;provision-libvirt-multiple-vm-with-terraformopentofu&#34;&gt;Provision libvirt Multiple VM with Terraform/Opentofu&lt;/h1&gt;&#xA;&lt;h3 id=&#34;background&#34;&gt;Background&lt;/h3&gt;&#xA;&lt;p&gt;In this post we&amp;rsquo;ll be using libvirt provisioner with Terraform/Opentofu to deploy mulitple KVM Virtual Machine.&lt;/p&gt;&#xA;&lt;h1 id=&#34;table-of-contents&#34;&gt;Table of Contents&lt;/h1&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#install-dependencies&#34;&gt;Dependencies&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#add-permission-to-user&#34;&gt;Add Permission to user&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#terraform-init&#34;&gt;Terraform init&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#variable-and-config&#34;&gt;Variable and Config&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#terraform-plan&#34;&gt;Terraform plan&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#terraform-apply&#34;&gt;Terraform apply&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;#verify-vm&#34;&gt;Verify VM&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3 id=&#34;install-dependencies&#34;&gt;Install Dependencies&lt;/h3&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo dnf install libvirt virt-install virsh -y&#xA;&#xA;# enable and start libvirtd service&#xA;sudo systemctl enable --now libvirtd&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Verify if the host is can now run guest machine.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

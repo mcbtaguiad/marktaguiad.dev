@@ -1,14 +1,11 @@
 ---
-title: "Chevereto - Install Notes"
 date: 2024-05-22
-author: "Mark Taguiad"
+description: "Install Notes"
+featured_image: "/images/featured/chevereto.png"
+images: ["/images/Pope-Edouard-de-Beaumont-1844.jpg"]
 tags: ["image-hosting", "k8s", "self-hosted", "docker"]
-ShowToc: true
-TocOpen: false
-UseHugoToc: true
-weight: 2
-
-TocOpen: false
+categories: "Blog"
+title: "Chevereto"
 ---
 
 # Chevereto - Install Notes

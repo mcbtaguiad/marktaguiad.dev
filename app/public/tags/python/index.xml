@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on Mark Taguiad</title>
+    <link>http://localhost:1313/tags/python/</link>
+    <description>Recent content in Python on Mark Taguiad</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>marktaguiad.dev</copyright>
+    <lastBuildDate>Sat, 04 Mar 2023 18:18:31 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Site Migration; Django to Hugo</title>
+      <link>http://localhost:1313/post/site-migrate-django-hugo/</link>
+      <pubDate>Sat, 04 Mar 2023 18:18:31 +0800</pubDate>
+      <guid>http://localhost:1313/post/site-migrate-django-hugo/</guid>
+      <description>&lt;h1 id=&#34;site-migration-django-to-hugo&#34;&gt;Site Migration; Django to Hugo&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://localhost:1313/images/002-mark-tagsdev-click.jpg&#34;&gt;&lt;img src=&#34;http://localhost:1313/images/002-mark-tagsdev-click.jpg&#34; alt=&#34;imagen&#34;&gt;&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Back in 2021, I&amp;rsquo;ve deployed my first website &lt;a href=&#34;https://mark.tagsdev.click&#34;&gt;mark.tagsdev.click&lt;/a&gt; running on Django as its web framework. But a little content or progress was publish in it. This decision was to enable me to focus more on content creation and DevOps related projects/learnings.&lt;/p&gt;&#xA;&lt;h3 id=&#34;why-django&#34;&gt;Why Django?&lt;/h3&gt;&#xA;&lt;p&gt;It has been a journey, everything was built from scratch, from html/js/cs to integrating it to the web framework and building it into container. Django wasn&amp;rsquo;t my first web framework that I used, I created my first API using Flask. But I have always been a sucker for more complicated things/technology; hence Django.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

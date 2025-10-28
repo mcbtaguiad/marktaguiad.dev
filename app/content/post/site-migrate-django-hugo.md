@@ -2,13 +2,9 @@
 title: "Site Migration; Django to Hugo"
 date: 2023-03-04T18:18:31+08:00
 author: "Mark Taguiad"
+description: "A hands-on lab walkthrough showing how to use the Multus CNI plugin with K3s to attach multiple networks to a pod. From installation and manifest setup to testing a pod with two interfaces, this post covers it end-to-end."
+featured_image: "/images/featured/migration.png"
 tags: ["hugo", "django", "python"]
-ShowToc: true
-TocOpen: false
-UseHugoToc: true
-weight: 2
-
-TocOpen: false
 ---
 
 # Site Migration; Django to Hugo

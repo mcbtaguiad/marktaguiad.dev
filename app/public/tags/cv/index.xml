@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cv on Mark Taguiad</title>
+    <link>http://localhost:1313/tags/cv/</link>
+    <description>Recent content in Cv on Mark Taguiad</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>marktaguiad.dev</copyright>
+    <lastBuildDate>Fri, 03 Mar 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/cv/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mark&#39;s CV</title>
+      <link>http://localhost:1313/post/mark-cv/</link>
+      <pubDate>Fri, 03 Mar 2023 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/mark-cv/</guid>
+      <description>&lt;h1 id=&#34;mark-christian-taguiad&#34;&gt;Mark Christian Taguiad&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;mailto:marktaguiad@marktaguiad.dev&#34;&gt;marktaguiad@marktaguiad.dev&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://marktaguiad.dev/&#34;&gt;marktaguiad.dev&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;Manila, Philippines&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Ambitious IT professional skilled in both Linux/Unix Administration and DevOps. Experienced with different&#xA;technologies that involves various systems and development. Maintains a professional attitude while&#xA;concentrating on developing technical capabilities.&lt;/p&gt;&#xA;&lt;h3 id=&#34;skills&#34;&gt;Skills&lt;/h3&gt;&#xA;&lt;p&gt;&lt;code&gt;linux systems administration&lt;/code&gt;&#xA;&lt;code&gt;network administration&lt;/code&gt;&#xA;&lt;code&gt;programming&lt;/code&gt;&#xA;&lt;code&gt;databases&lt;/code&gt;&#xA;&lt;code&gt;devops&lt;/code&gt;&#xA;&lt;code&gt;kubernetes&lt;/code&gt;&#xA;&lt;code&gt;containers&lt;/code&gt;&#xA;&lt;code&gt;webservers&lt;/code&gt;&#xA;&lt;code&gt;git&lt;/code&gt;&#xA;&lt;code&gt;cicd&lt;/code&gt;&#xA;&lt;code&gt;iac&lt;/code&gt;&#xA;&lt;code&gt;proactive monitoring&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Programming&lt;/strong&gt;: Python, Perl, Bash&#xA;&lt;strong&gt;Databases&lt;/strong&gt;: MySQL, Postgres, sqlite&#xA;&lt;strong&gt;Linux&lt;/strong&gt;: Alpine, Oracle, Ubuntu, Debian, Arch, OpenSuse&#xA;&lt;strong&gt;DevOps&lt;/strong&gt;: Ansible, Kubernetes, Podman/Docker, CI/CD, Terraform, IaC&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

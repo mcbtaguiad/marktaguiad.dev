@@ -2,13 +2,9 @@
 title: "Board Exam: Conquered"
 date: 2025-04-12
 author: "Mark Taguiad"
+description: "Narigat ngem ikarkarigatan nga impasa"
+featured_image: "/images/featured/boardexam.png"
 tags: ["ece", "board-exam"]
-ShowToc: true
-TocOpen: false
-UseHugoToc: true
-weight: 2
-
-TocOpen: false
 ---
 
 # Board Exam: Conquered

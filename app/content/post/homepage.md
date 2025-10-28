@@ -1,14 +1,11 @@
 ---
-title: "Homepage - A highly customizable dashboard for docker and kubernetes cluster"
+title: "Homepage"
+description: "A highly customizable dashboard for docker and kubernetes cluster"
+featured_image: "/images/featured/home.png"
 date: 2024-04-24
 author: "Mark Taguiad"
 tags: ["self-hosted", "docker", "k8s", "dashboard"]
-ShowToc: true
-TocOpen: false
-UseHugoToc: true
-weight: 2
 
-TocOpen: false
 ---
 
 <!-- ![Alt text](/images/homepage/homepage.png) -->

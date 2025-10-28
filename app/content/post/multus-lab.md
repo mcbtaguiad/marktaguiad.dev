@@ -1,16 +1,11 @@
 ---
 layout: post
 title: "Multi Network Pod with Multus in Kubernetes"
+description: "Install Notes"
+featured_image : "/images/featured/multus.png"
 date: 2024-04-19
 author: "Mark Taguiad"
 tags: ["k3s", "multus", "k8s", "network", "docker", "linux"]
-ShowToc: true
-TocOpen: false
-UseHugoToc: true
-weight: 1
-toc: false
-
-TocOpen: false
 ---
 
 # Multi Network Pod with Multus in Kubernetes
