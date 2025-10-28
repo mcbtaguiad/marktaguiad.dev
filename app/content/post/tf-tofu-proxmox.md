@@ -3,7 +3,7 @@ title: "Automate VM Provisition with Terraform or Opentofu"
 date: 2024-08-22
 featured_image: "/images/featured/tf-tofu.png"
 author: "Mark Taguiad"
-description: "A practical tutorial on using Terraform with TOFU for infrastructure-as-code deployments in Proxmox VE — covering provider setup, template definitions, and automated provisioning."
+description: "A practical tutorial on using Terraform with TOFU for infrastructure-as-code deployments in Proxmox VE."
 tags: ["proxmox", "qemu", "vm", "opentofu", "terraform"]
 ---
 

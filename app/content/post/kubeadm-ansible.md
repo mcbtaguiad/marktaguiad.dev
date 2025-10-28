@@ -1,6 +1,6 @@
 ---
 title: "Automating Kubernetes Cluster Setup with Ansible"
-description: "Guide on automating Kubernetes cluster setup using Ansible and kubeadm — from installing dependencies to initializing control planes, joining nodes, and deploying Calico in one seamless workflow."
+description: "Guide on automating Kubernetes cluster setup using Ansible and kubeadm."
 featured_image: "/images/featured/kubeadm-ansible.png"
 date: 2025-07-09
 author: "Mark Taguiad"

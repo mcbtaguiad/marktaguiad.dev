@@ -3,7 +3,7 @@ title: "Creating a Proxmox Debian cloud-init Template"
 date: 2024-08-21
 author: "Mark Taguiad"
 featured_image: "/images/featured/prox-temp.png"
-description: "A step-by-step guide to setting up VM templates in Proxmox VE — learn how to create a base image, install your OS, configure it, then convert it into a reusable template for rapid VM deployment."
+description: "A step-by-step guide to setting up VM templates in Proxmox VE."
 tags: ["proxmox", "qemu", "vm", "cloud-init", "debian"]
 ---
 
