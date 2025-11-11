@@ -86,7 +86,7 @@ concentrating on developing technical capabilities.
   - Installing, configuring, securing, troubleshooting and maintaining UNIX-like operating systems.
   - Administer and maintain end user accounts, permissions, and access rights.
 
-### <span>System Engineer, Amkor Technology</span>
+### <span>System Engineer, KMC Solutions, Inc.</span>
 
 <span>Nov 2021 -- Mar 2023</span>
 
@@ -112,7 +112,7 @@ concentrating on developing technical capabilities.
   - Performed troubleshooting, incident management and resolve day to day problem raised by users and
   customer.
 
-### <span>Network Operations Center Engineer, Amkor Technology</span>
+### <span>Network Operations Center Engineer, KMC Solutions, Inc.</span>
 
 <span>Jul 2021 -- Nov 2021</span>
 
