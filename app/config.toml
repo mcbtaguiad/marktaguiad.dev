@@ -1,4 +1,4 @@
-baseURL = "https://test.marktaguiad.dev/"
+baseURL = "https://marktaguiad.dev/"
 languageCode = "en-us"
 title = "marktaguiad.dev"
 theme = "cactus"
