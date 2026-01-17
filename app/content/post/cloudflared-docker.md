@@ -1,6 +1,6 @@
 ---
 title: "Reverse Tunneled Proxy with Cloudflared"
-date: 2026-1-03
+date: 2026-01-03
 author: "Mark Taguiad"
 tags: ["cloudflare", "docker", "network"]
 TocOpen: false
