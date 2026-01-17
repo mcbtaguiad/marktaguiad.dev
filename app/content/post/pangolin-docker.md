@@ -16,14 +16,14 @@ Pangolin is a self-hosted tunneled reverse proxy management server with identity
 
 
 # Table of Contents
-1. [Requirement](#requirement)
+1. [Requirements](#requirements)
 2. [DNS Setup](#dns_setup)
 3. [Local Server Setup](#local_server_setup)
 4. [Adding Resources](#adding_resources)
 
 
 
-### Requirement
+### Requirements
 
 Setup will be using Docker, please look for alternative method in the official documentation.
 (This is just a log for my setup, and I'm pretty sure no one is reading this except me haha)
