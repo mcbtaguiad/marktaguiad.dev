@@ -97,7 +97,16 @@ Now you can ssh to your server using Cloudflare tunnel.
 `ssh root@yourserver-ssh.yourdomain.com`
 
 
+*Optional: If you haven't created or generated your ssh keys and config*
 
+```
+ssh-keygen -t rsa -b 4096
+touch ~/.ssh/config
+```
+
+To copy your public key to your server.
+
+`ssh-copy-id UserName@yourserverIPorDNS`
 
 
 
