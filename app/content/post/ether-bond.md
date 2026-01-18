@@ -48,7 +48,7 @@ $ ip show link
 
 If you are using Ubuntu then you are probably using networkd. For some reason you changed your networking with NetworkManager then I can help you (hahaha kidding, madness! I'm talking to my future self who forgot to do this shits). 
 
-First check current config of your system, you probably configure your server to be in DHCP mode. For networkd check in /etc/network, for NetworkManager you can use `nmtui or nmcli` to easily check existing config. Some server also configured its config in /etc/netplan. 
+First check current config of your system, you probably configured your server to be in DHCP mode. For networkd check in /etc/network, for NetworkManager you can use `nmtui or nmcli` to easily check existing config. Some server also configured its config in /etc/netplan. 
 
 Once you deleted (make backup) the current config, dont restart the network service yet (I know you are using SSH), create a config /etc/netplan/01-bonding.yaml. 
 

@@ -16,9 +16,9 @@ If you bought your domain in Cloudflare and broke just like me, then you can enj
 
 # Table of Contents
 1. [Requirements](#requirements)
-2. [Server Setup](#server_setup)
-3. [HTTPS Proxy Route](#https_proxy_route)
-4. [SSH Proxy Route](#ssh_proxy_route)
+2. [Server Setup](#server-setup)
+3. [HTTPS Proxy Route](#https-proxy-route)
+4. [SSH Proxy Route](#ssh-proxy-route)
 
 
 
