@@ -1,7 +1,7 @@
 .image-viewer {
   position: relative;
   max-width: 100%;
-  margin: 1.5rem auto;
+  margin: 2rem auto;
 }
 
 .image-viewer img {
@@ -9,7 +9,6 @@
   max-height: 75vh;
   object-fit: contain;
   border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
 }
 
 /* Navigation buttons */
@@ -21,24 +20,19 @@
   height: 44px;
   border-radius: 50%;
   border: none;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.6);
   color: white;
-  font-size: 22px;
+  font-size: 26px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transition: opacity 0.25s ease, transform 0.2s ease;
+  z-index: 10;
 }
 
 .image-viewer:hover .nav {
   opacity: 1;
-}
-
-.image-viewer .nav:hover {
-  transform: translateY(-50%) scale(1.1);
-  background: rgba(0, 0, 0, 0.75);
 }
 
 .image-viewer .nav.prev {
@@ -55,4 +49,3 @@
     opacity: 1;
   }
 }
-
