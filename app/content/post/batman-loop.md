@@ -14,7 +14,7 @@ TocOpen: false
 
 # Infanta (Batman) Loop
 
-**Route:** [batman_loop.gpx](/route/batman_loop.gpx)
+**Route:** <a href="/route/batman_loop.gpx" download="batman_loop.gpx"> batman_loop.gpx </a>
 
 **Distance:** 254Km
 
