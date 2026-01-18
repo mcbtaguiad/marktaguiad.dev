@@ -17,9 +17,9 @@ Pangolin is a self-hosted tunneled reverse proxy management server with identity
 
 # Table of Contents
 1. [Requirements](#requirements)
-2. [DNS Setup](#dns_setup)
-3. [Local Server Setup](#local_server_setup)
-4. [Adding Resources](#adding_resources)
+2. [DNS Setup](#dns-setup)
+3. [Local Server Setup](#local-server-setup)
+4. [Adding Resources](#adding-resources)
 
 
 
@@ -199,6 +199,6 @@ d815bd083d62   jellyfin/jellyfin                                                
 
 ### Adding Resources
 
-Now for the exciting part (kidding). Navigate to resources and click on public then add resources. Set the subdomain you preffer and set the target to the Site added earlier. Like we discussed earlier, in our example it can be set to IP or just the DNS (jellyfin) and port is 8096. Create resources, additional config would be if you want your application to have extra layer of security, Pangolin has a feature to use SSO (login first) to secure the web application. This can be configured in the resources sectin. 
+Now for the exciting part (kidding). Navigate to resources and click on public then add resources. Set the subdomain you preffer and set the target to the Site added earlier. Like we discussed earlier, in our example it can be set to IP or just the DNS (jellyfin) and port is 8096. Create resources, additional config would be if you want your application to have extra layer of security, Pangolin has a feature to use SSO (login first) to secure the web application. This can be configured in the resources section. 
 
 [![imagen](/images/pangolin-docker/pangolin-002.png)](/images/pangolin-docker/pangolin-002.png)
