@@ -61,7 +61,7 @@ weight = 5
   showAllPostsArchive = false # default
 
   # Home page settings
-  description = 'Hey there! This blog is a sort of a "learning by doing knowledge stash". A log or notes of my journey in the industry (as a DevOps).'
+  description = 'This blog is my learning-by-doing stash, where I dump notes from my sysadmin life and homelab setup.'
 
 
   mainSections = "posts" # your main section
