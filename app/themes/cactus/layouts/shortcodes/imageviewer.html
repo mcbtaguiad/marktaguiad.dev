@@ -1,0 +1,8 @@
+<div class="image-viewer" data-images='{{ .Get "images" }}'>
+  <img class="viewer-img"
+       src="{{ index (split (.Get "images") ",") 0 }}"
+       alt="Image" />
+
+  <button class="nav prev" aria-label="Previous image">Prev</button>
+  <button class="nav next" aria-label="Next image">Next</button>
+</div>
