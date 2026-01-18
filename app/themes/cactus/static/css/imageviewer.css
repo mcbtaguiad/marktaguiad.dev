@@ -49,3 +49,12 @@
     opacity: 1;
   }
 }
+
+
+.image-viewer .viewer-stage img,
+.image-viewer .viewer-stage video {
+  width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
