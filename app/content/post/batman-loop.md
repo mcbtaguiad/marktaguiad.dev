@@ -26,8 +26,6 @@ TocOpen: false
 
 **To ride it again?:** If reverse, why not!
 
-**Gallery:**
-
 
 {{< imageviewer images="/images/cycling/batman-001.jpg,/images/cycling/batman-002.jpg,/images/cycling/batman-003.jpg,/images/cycling/batman-004.jpg,/images/cycling/batman-005.jpg,/images/cycling/batman-006.jpg,/images/cycling/batman-007.jpg,/images/cycling/batman-008.jpg" >}}
 
