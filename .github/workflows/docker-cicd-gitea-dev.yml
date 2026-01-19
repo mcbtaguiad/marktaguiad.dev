@@ -20,19 +20,16 @@ on:
 
 
 jobs:
-
-  build:
-    # if: github.event.pull_request.merged == true
-
+  mirror:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      packages: write
-    
     steps:
-      - uses: repo-sync/github-to-gitea-mirror@v2
+      - name: Checkout repository
+        uses: actions/checkout@v3
         with:
-          github_repo: mcbtaguiad/marktaguiad.dev
-          gitea_repo: https://gitea.marktaguiad.dev/mcbtaguiad/marktaguiad.dev.git
-          gitea_token: ${{ secrets.GITEA_TOKEN }}
+          fetch-depth: 0
+
+      - name: Push to Gitea
+        run: |
+          git remote add gitea https://${{ secrets.GITEA_TOKEN }}@gitea.marktaguiad.dev/mcbtaguiad/marktaguiad.dev.git
+          git push gitea --all
+          git push gitea --tags
