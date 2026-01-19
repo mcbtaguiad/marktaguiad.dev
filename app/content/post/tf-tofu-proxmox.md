@@ -11,7 +11,6 @@ weight: 2
 TocOpen: false
 ---
 
-# Automate VM Provisition with Terraform or Opentofu
 ### Background
 Been using Terraform/Opentofu when I moved my homelab to dedicated server (old laptop and PC), previously from a bunch of Raspberry Pi. 
 Using this technology has made my learning in DevOps more optimal or faster. 

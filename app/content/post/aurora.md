@@ -12,7 +12,6 @@ TocOpen: false
 
 [![imagen](/images/cycling/aurora-001.jpg)](/images/cycling/aurora-001.jpg)
 
-# Dingalan, Aurora Suka Ride
 
 **Route:** <a href="/route/Aurora.gpx" download="Aurora.gpx">
   Aurora.gpx

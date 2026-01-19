@@ -11,7 +11,6 @@ weight: 2
 TocOpen: false
 ---
 
-# Automating Kubernetes Cluster Setup with Ansible
 
 Over the years, I’ve found myself repeatedly setting up Kubernetes clusters using kubeadm—and while it works well, the manual process can get repetitive and error-prone. That’s why I built [kubeadm-ansible](https://github.com/mcbtaguiad/kubeadm-ansible): an Ansible playbook that automates the entire process of standing up a Kubernetes cluster.
 

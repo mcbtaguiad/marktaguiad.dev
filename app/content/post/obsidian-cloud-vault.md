@@ -10,7 +10,6 @@ weight: 2
 TocOpen: false
 ---
 
-# Obsidian Cloud Vault
 
 Obsidian setup using self-hosted CouchDB or Cloudflared R2 DB. 
 

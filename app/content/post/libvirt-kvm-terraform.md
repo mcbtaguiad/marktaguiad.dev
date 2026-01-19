@@ -11,7 +11,6 @@ weight: 2
 TocOpen: false`
 ---
 
-# Provision libvirt Multiple VM with Terraform/Opentofu
 ### Background
 In this post we'll be using libvirt provisioner with Terraform/Opentofu to deploy mulitple KVM Virtual Machine. 
 

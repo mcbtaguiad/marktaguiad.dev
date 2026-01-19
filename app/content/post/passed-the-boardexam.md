@@ -11,7 +11,6 @@ weight: 2
 TocOpen: false
 ---
 
-# Board Exam: Conquered
 
 Agyaman nak ken iragsak ko nga ipakaamo nga naipasak ti Electronics Engineering Board Exam.
 

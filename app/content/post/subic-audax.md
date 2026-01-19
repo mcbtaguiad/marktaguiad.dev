@@ -12,7 +12,6 @@ TocOpen: false
 
 [![imagen](/images/cycling/subic-audax-001.jpg)](/images/cycling/subic-audax-001.jpg)
 
-# Subic Audax 200
 
 **Route:** <a href="/route/Audax_200_Subic.gpx" download="Audax_200_Subic.gpx"> Audax_200_Subic.gpx </a>
 

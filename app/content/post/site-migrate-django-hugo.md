@@ -11,7 +11,6 @@ weight: 2
 TocOpen: false
 ---
 
-# Site Migration; Django to Hugo
 
 [![imagen](/images/002-mark-tagsdev-click.jpg)](/images/002-mark-tagsdev-click.jpg)
 <!-- ![002 mark tagsdev click](http://chevereto.marktaguiad.dev/images/2024/08/31/002-mark-tagsdev-click.jpg) -->
