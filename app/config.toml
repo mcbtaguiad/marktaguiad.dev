@@ -56,56 +56,61 @@ weight = 5
     [markup.goldmark.renderer]
       unsafe = true
 
+
+
 [params]
+enableGiscus = true
+#colortheme = "white" # dark, light, white, or classic
+rss = true # generate rss feed. default value is false
+googleAnalyticsAsync = false # use asynchronous tracking. Synchronous tracking by default
+showAllPostsArchive = false # default
 
-  #colortheme = "white" # dark, light, white, or classic
-  rss = true # generate rss feed. default value is false
-  googleAnalyticsAsync = false # use asynchronous tracking. Synchronous tracking by default
-  showAllPostsArchive = false # default
-
-  # Home page settings
-  description = 'This blog is my learning-by-doing stash, where I dump notes from my sysadmin life and homelab setup.'
+# Home page settings
+description = 'This blog is my learning-by-doing stash, where I dump notes from my sysadmin life and homelab setup.'
 
 
-  mainSections = "posts" # your main section
-  mainSectionsGallery = "gallery" # your main section
-  showAllPostsOnHomePage = false # default
-  postsOnHomePage = 5 # this option will be ignored if showAllPostsOnHomePage is set to true
-  tagsOverview = true # show tags overview by default.
-  tagsOverviewGallery = false
-  showProjectsList = false # show projects list by default (if projects data file exists).
-  projectsUrl = "https://github.com/mcbtaguiad" # title link for projects list
-  
-  # https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference
-  dateFormat = "2006-01-02" # default
+mainSections = "posts" # your main section
+mainSectionsGallery = "gallery" # your main section
+showAllPostsOnHomePage = false # default
+postsOnHomePage = 5 # this option will be ignored if showAllPostsOnHomePage is set to true
+tagsOverview = true # show tags overview by default.
+tagsOverviewGallery = false
+showProjectsList = false # show projects list by default (if projects data file exists).
+projectsUrl = "https://github.com/mcbtaguiad" # title link for projects list
 
-  
-  # Post page settings
-  show_updated = true # default
-  showReadTime = true # default
-  mainSectionTitle = "Blog"
-  mainSectionTitleGallery = "Gallery"
-  [params.comments]
-    enabled = true # default
-    engine = "disqus" # only disqus, utterances, and cactus_comments is supported
-    # [params.comments.utterances]
-    #   repo = "<github_username>/<github_reponame>"
-    #   label = "hugo-site-name" # you can use however you want to label your name in your repo's issues
-    #   theme = "github-light"
-    # [params.comments.cactuscomments]
-    #   siteName = "your_cactus_comments_sitename" 
+# https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference
+dateFormat = "2006-01-02" # default
 
-  # the value of name should be an valid font awesome icon name (brands type)
-  # https://fontawesome.com/icons?d=gallery&s=brands
-  [[params.social]]
-    name = "github"
-    link = "https://github.com/mcbtaguiad"
-  [[params.social]]
-    name = "linkedin"
-    link = "https://www.linkedin.com/in/mark-christian-taguiad/"
-  [[params.social]]
-    name = "email"
-    link = "marktaguiad@marktaguiad.dev"
-  [[params.social]]
-    name = "strava"
-    link = "https://www.strava.com/athletes/123512498/"
+
+# Post page settings
+show_updated = true # default
+showReadTime = true # default
+mainSectionTitle = "Blog"
+mainSectionTitleGallery = "Gallery"
+
+[[params.social]]
+  name = "github"
+  link = "https://github.com/mcbtaguiad"
+[[params.social]]
+  name = "linkedin"
+  link = "https://www.linkedin.com/in/mark-christian-taguiad/"
+[[params.social]]
+  name = "email"
+  link = "marktaguiad@marktaguiad.dev"
+[[params.social]]
+  name = "strava"
+  link = "https://www.strava.com/athletes/123512498/"
+
+[params.giscus]
+    data_repo="mcbtaguiad/marktaguiad.dev"
+    data_repo_id="R_kgDONaJdcw"    
+    data_category="General"
+    data_category_id="DIC_kwDONaJdc84CxJdw"
+    data_mapping="pathname"
+    data_strict="0"
+    data_reactions_enabled="1"
+    data_emit_metadata="0"
+    data_input_position="bottom"
+    data_theme="preferred_color_scheme"
+    data_lang="en"
+    crossorigin="anonymous"

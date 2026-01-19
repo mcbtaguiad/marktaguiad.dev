@@ -1,6 +1,6 @@
 ---
 title: "Reverse Tunneled Proxy with Pangolin"
-date: 2025-12-27
+date: 2025-12-16
 author: "Mark Taguiad"
 tags: ["pangolin", "docker", "network"]
 TocOpen: false

@@ -1,6 +1,6 @@
 ---
 title: "Obsidian Cloud Vault"
-date: 2025-12-27
+date: 2025-12-29
 author: "Mark Taguiad"
 tags: ["obsidian", "docker", "self-hosted"]
 TocOpen: false

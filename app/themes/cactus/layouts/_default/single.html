@@ -1,12 +1,19 @@
 {{ define "main" }}
+
 <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-<!-- TODO: gallery -->
+  <header>
+    <h1 class="posttitle" itemprop="name headline">
+      {{ .Title }}
+    </h1>
+  </header>
+
   <div class="content" itemprop="articleBody">
-  {{ if (eq .Type "search") }}
-    <!-- TODO: search https://gohugo.io/tools/search/ -->
-  {{ else }}
     {{ .Content }}
-  {{ end }}
   </div>
 </article>
+
+{{ if .Site.Params.enableGiscus }}
+  {{ partial "comment.html" . }}
+{{ end }}
+
 {{ end }}
