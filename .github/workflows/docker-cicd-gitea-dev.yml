@@ -47,8 +47,8 @@ jobs:
           gitea_gist_surfix: ""
           gistsSource: true
           gistsStared: true
-          repositoryStared: true
-          repositorySource: false
+          repositoryStared: false
+          repositorySource: true
           repositoryForked: false
       
       - name: Check out the repo
