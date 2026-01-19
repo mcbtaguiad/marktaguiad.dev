@@ -48,8 +48,8 @@ jobs:
           gistsSource: true
           gistsStared: true
           repositoryStared: true
-          repositorySource: true
-          repositoryForked: true
+          repositorySource: false
+          repositoryForked: false
       
       - name: Check out the repo
         uses: actions/checkout@v4
