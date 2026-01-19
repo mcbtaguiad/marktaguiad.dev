@@ -1,0 +1,36 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Extract branch name
+        id: branch
+        run: |
+          echo "branch=${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
+
+      - name: Log in to Gitea Container Registry
+        run: |
+          echo "${{ secrets.GITEA_TOKEN }}" | docker login \
+            ${{ secrets.GITEA_SERVER }} \
+            -u ${{ secrets.GITEA_USERNAME }} \
+            --password-stdin
+
+      - name: Build Docker image
+        run: |
+          IMAGE="${{ secrets.GITEA_SERVER }}/${{ github.repository }}:${{ steps.branch.outputs.branch }}"
+          docker build -t $IMAGE .
+
+      - name: Push Docker image
+        run: |
+          IMAGE="${{ secrets.GITEA_SERVER }}/${{ github.repository }}:${{ steps.branch.outputs.branch }}"
+          docker push $IMAGE
