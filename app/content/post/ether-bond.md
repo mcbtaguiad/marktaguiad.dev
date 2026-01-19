@@ -10,8 +10,6 @@ weight: 2
 TocOpen: false
 ---
 
-# Bonding Ethernet
-
 Install note bonding two ethernet, working as backup active load-balancing. Also a reminder how careless sometimes when configuring network. Make sure to buy a serial cable in case you messed up your config. Messing up my homelab has become a very dangerous hobby of mine, but weirdly enough I take pride and joy in it (evil laugh). 
 
 ### Setup

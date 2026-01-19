@@ -13,7 +13,6 @@ toc: false
 TocOpen: false
 ---
 
-# Multi Network Pod with Multus in Kubernetes
 # Table of Contents
 1. [Installation](#installation)
 2. [Multus Manifest](#multus-manifest)

@@ -10,7 +10,6 @@ weight: 2
 TocOpen: false
 ---
 
-# Reverse Tunneled Proxy with Cloudflared
 
 If you bought your domain in Cloudflare and broke just like me, then you can enjoy some of the free privileges like cloudflared which can tunnel your application to the cloud. This also handles TLS certificate and renewal. 
 

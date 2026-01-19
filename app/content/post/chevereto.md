@@ -11,7 +11,6 @@ weight: 2
 TocOpen: false
 ---
 
-# Chevereto - Install Notes
 
 Moved and hosted all media used by my website [here](https://chevereto.marktaguiad.dev/). 
 

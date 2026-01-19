@@ -11,7 +11,6 @@ weight: 2
 TocOpen: false
 ---
 
-# Creating a Proxmox Debian cloud-init Template
 ### Background
 Finally have some time to document and publish this blog due to recent Philippines long weekend. This is the first part of the blog, as it is necessary to learn how to create template that will be used in provisioning VM and will be automatically created and deploy with Opentofu/Terraform [(part 2)](/post/tf-tofu-proxmox). 
 

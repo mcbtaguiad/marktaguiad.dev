@@ -28,7 +28,6 @@ keywords:
 
 subject: 'CV'
 ---
-# Mark Christian Taguiad
 
 - <marktaguiad@marktaguiad.dev>
 - [marktaguiad.dev](https://marktaguiad.dev/)

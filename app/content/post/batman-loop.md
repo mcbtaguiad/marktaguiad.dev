@@ -12,7 +12,6 @@ TocOpen: false
 
 [![imagen](/images/cycling/batman-00.png)](/images/cycling/batman-00.png)
 
-# Infanta (Batman) Loop
 
 **Route:** <a href="/route/batman_loop.gpx" download="batman_loop.gpx"> batman_loop.gpx </a>
 
