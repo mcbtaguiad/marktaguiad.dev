@@ -1,11 +1,13 @@
 <head>
-  <link rel="preload" href="{{ "lib/font-awesome/webfonts/fa-brands-400.woff2" | relURL }}" as="font" type="font/woff2" crossorigin="anonymous">
+  <!-- <link rel="preload" href="{{ "lib/font-awesome/webfonts/fa-brands-400.woff2" | relURL }}" as="font" type="font/woff2" crossorigin="anonymous">
   <link rel="preload" href="{{ "lib/font-awesome/webfonts/fa-regular-400.woff2" | relURL }}" as="font" type="font/woff2" crossorigin="anonymous">
-  <link rel="preload" href="{{ "lib/font-awesome/webfonts/fa-solid-900.woff2" | relURL }}" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="{{ "lib/font-awesome/webfonts/fa-solid-900.woff2" | relURL }}" as="font" type="font/woff2" crossorigin="anonymous"> -->
   <link rel="preload" href="{{ "lib/JetBrainsMono/web/woff2/JetBrainsMono-Regular.woff2" | relURL }}" as="font" type="font/woff2" crossorigin="anonymous">
+  
   {{ if eq .Site.Params.Comments.enabled true }}
-  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
-  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
+  <!-- <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
+  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css"> -->
+  <link rel="stylesheet" href="{{ "lib/fontawesome6/css/all.min.css" | relURL }}">
   {{ end }}
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,13 +17,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="all,follow">
   <meta name="googlebot" content="index,follow,snippet,archive">
+  
   {{ template "_internal/opengraph.html" . }}
   {{ template "_internal/twitter_cards.html" . }}
-  {{ .Scratch.Set "colortheme" "white"}}
+  <!-- {{ .Scratch.Set "colortheme" "white"}}
   {{ if .Site.Params.Colortheme }}
     {{ .Scratch.Set "colortheme" .Site.Params.Colortheme }}
   {{ end }}
-  {{ $colortheme := .Scratch.Get "colortheme" }}
+  {{ $colortheme := .Scratch.Get "colortheme" }} -->
+  {{ $colortheme := "dynamic" }}
 
   {{- $options := (dict "targetPath" "css/styles.css" "outputStyle" "compressed" "enableSourceMap" "true") -}}
   {{- $styles := resources.Get "scss/style.scss" | resources.ExecuteAsTemplate "scss/style.scss" . | resources.ToCSS $options | resources.Fingerprint "sha512" }}
@@ -42,6 +46,7 @@
     {{ printf `<link href="%s" rel="%s" type="%s" title="%s" />` .Permalink .Rel .MediaType.Type $.Site.Title | safeHTML }}
   {{ end }}
   {{ end }}
+
   {{ if .Site.GoogleAnalytics }}
   {{ if .Site.Params.googleAnalyticsAsync }}
     {{ template "_internal/google_analytics_async.html" . }}
@@ -50,3 +55,8 @@
   {{ end }}
   {{ end }}
 </head>
+
+<script>
+  const t = localStorage.getItem("theme");
+  if (t) document.documentElement.classList.add(t);
+</script>
