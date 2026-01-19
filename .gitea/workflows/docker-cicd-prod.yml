@@ -11,26 +11,33 @@ on:
   #     - '**'
 
 jobs:
-  build:
+  test-docker:
     runs-on: ubuntu-latest
 
+
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Log in to Gitea Container Registry
-        run: |
-          echo "${{ secrets.TOKEN }}" | docker login \
-            ${{ secrets.SERVER }} \
-            -u ${{ secrets.USERNAME }} \
-            --password-stdin
+      - name: Wait
+        run: sleep 10
 
-      - name: Build Docker image
+      - name: Verify Docker daemon is running
         run: |
-          IMAGE="${{ secrets.SERVER }}/${{ github.repository }}:${{ steps.branch.outputs.branch }}"
-          docker build -t $IMAGE .
+          echo "Testing Docker daemon connection..."
+          docker info
 
-      - name: Push Docker image
+      - name: List running containers
         run: |
-          IMAGE="${{ secrets.SERVER }}/${{ github.repository }}:${{ steps.branch.outputs.branch }}"
-          docker push $IMAGE
+          echo "Listing all containers..."
+          docker ps -a
+
+      - name: Test Docker functionality
+        run: |
+          echo "Testing basic Docker operations..."
+          docker run --rm hello-world
+
+      - name: Verify DIND isolation
+        run: |
+          echo "Testing container isolation..."
+          docker run --rm alpine:latest echo "DIND is working perfectly!"
