@@ -58,3 +58,35 @@
   object-fit: contain;
   border-radius: 12px;
 }
+
+
+#theme-toggle i {
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+/* 
+html.theme-dark #theme-toggle i {
+  transform: rotate(-20deg) scale(1.1);
+} */
+
+#theme-toggle i {
+  border: none;       /* remove any border */
+  background: none;   /* remove background if any */
+  box-shadow: none;   /* remove any shadow */
+  padding: 0;         /* remove extra space */
+  font-size: 1.2rem;  /* optional size */
+  color: var(--accent); /* keep your theme color */
+  cursor: pointer;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+#theme-toggle {
+  border: none;
+  background: transparent;
+  padding: 0.2rem;
+}
+
+#theme-toggle {
+  border: none;
+  background: transparent;
+  padding: 0.2rem;
+}

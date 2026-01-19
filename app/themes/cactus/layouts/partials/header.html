@@ -1,13 +1,22 @@
 <header id="header">
-  <a href="{{ .Site.BaseURL }}">
   <div id="title">
-    <h1>{{ .Site.Title }}</h1>
+    <h1>
+      <a href="{{ .Site.BaseURL }}" class="site-title">
+        {{ .Site.Title }}
+      </a>
+
+      <button id="theme-toggle" type="button" aria-label="Toggle theme">
+        <i id="theme-icon" class="fa-regular fa-moon"></i>
+      </button>
+    </h1>
   </div>
-  </a>
+
   <div id="nav">
     <ul>
       <li class="icon">
-        <a href="#" aria-label="Menu"><i class="fas fa-bars fa-2x" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Menu">
+          <i class="fas fa-bars fa-2x"></i>
+        </a>
       </li>
       {{ range .Site.Menus.main }}
         <li><a href="{{ .URL }}">{{ .Name }}</a></li>
@@ -15,4 +24,3 @@
     </ul>
   </div>
 </header>
-
