@@ -1,37 +1,72 @@
-(function () {
-    const root = document.documentElement;
-    const btn = document.getElementById("theme-toggle");
-    const icon = document.getElementById("theme-icon");
+(() => {
+    const STORAGE_KEY = 'theme';
+    const DARK = 'dark';
+    const LIGHT = 'light';
   
-    if (!btn || !icon) return;
-  
-    const THEMES = ["theme-dark", "theme-white"];
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
   
     function applyTheme(theme) {
-      // remove all themes
-      THEMES.forEach(t => root.classList.remove(t));
+      const isDark = theme === DARK;
   
-      // apply selected
-      root.classList.add(theme);
+      html.classList.toggle('theme-dark', isDark);
+      html.classList.toggle('theme-light', !isDark);
   
-      // update icon
-      icon.className =
-        theme === "theme-dark"
-          ? "fa-solid fa-moon"
-          : "fa-regular fa-moon";
-  
-      localStorage.setItem("theme", theme);
+      localStorage.setItem(STORAGE_KEY, theme);
+      updateIcon(isDark);
+      setGiscusTheme(isDark ? 'dark' : 'light');
     }
   
-    // initial load
-    const saved = localStorage.getItem("theme") || "theme-white";
-    applyTheme(saved);
+    function updateIcon(isDark) {
+      if (!icon) return;
   
-    // toggle
-    btn.addEventListener("click", function (e) {
-      e.preventDefault(); // VERY IMPORTANT (prevents header link navigation)
+      icon.classList.remove(
+        'fa-solid',
+        'fa-regular',
+        'fa-moon'
+      );
   
-      const isDark = root.classList.contains("theme-dark");
-      applyTheme(isDark ? "theme-white" : "theme-dark");
+      if (isDark) {
+        icon.classList.add('fa-solid', 'fa-moon');
+      } else {
+        icon.classList.add('fa-regular', 'fa-moon');
+      }
+    }
+  
+    function setGiscusTheme(theme) {
+      const iframe = document.querySelector('iframe.giscus-frame');
+      if (!iframe) return;
+  
+      iframe.contentWindow.postMessage(
+        {
+          giscus: {
+            setConfig: {
+              theme: theme
+            }
+          }
+        },
+        'https://giscus.app'
+      );
+    }
+  
+    function toggleTheme() {
+      const current = localStorage.getItem(STORAGE_KEY) || LIGHT;
+      applyTheme(current === DARK ? LIGHT : DARK);
+    }
+  
+    // Initial load
+    document.addEventListener('DOMContentLoaded', () => {
+      const saved = localStorage.getItem(STORAGE_KEY) || LIGHT;
+      applyTheme(saved);
     });
+  
+    // Toggle click
+    if (toggleBtn) {
+      toggleBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation(); // important since it's near title/home link
+        toggleTheme();
+      });
+    }
   })();

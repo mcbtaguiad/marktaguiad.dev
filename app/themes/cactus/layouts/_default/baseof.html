@@ -9,6 +9,10 @@
     {{ block "main" . }}
     {{ end }}
 
+    <!-- {{ if .Site.Params.enableGiscus }}
+      {{ partial "comment.html" . }}
+    {{ end }} -->
+
     {{ partial "footer.html" . }}
 
   </div>
