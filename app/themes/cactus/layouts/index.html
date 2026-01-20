@@ -45,7 +45,7 @@
       {{ $AllRegularPagesCount := len .Site.RegularPages }}
       {{ range $elem := .Site.Taxonomies.tags.Alphabetical }}
       <a style="font-size: {{ (add 0.5 (mul 5 (div (float $elem.Count) $AllRegularPagesCount))) }}rem;" href="{{ $elem.Page.Permalink }}">
-        {{- .Page.Title -}}
+        {{- .Page.Title | lower -}}
       </a>
       {{ end }}
     </span>
