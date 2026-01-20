@@ -2,28 +2,36 @@
 <div id="archive">
   <ul class="post-list">
 
-  {{ $pages := .Paginator.Pages }}
-  {{ if .Site.Params.showAllPostsArchive }}
-    {{ $pages = .Pages }}
+  {{ $pages := .Pages.ByDate.Reverse }}
+
+  {{ if not .Site.Params.showAllPostsArchive }}
+    {{ $pages = (.Paginate $pages).Pages }}
   {{ end }}
 
-  {{ range (sort $pages "Date" "desc") }}
+  {{ range $pages }}
     {{ $pageYear := (.Date.Format "2006") }}
-    {{ if (ne $pageYear ($.Scratch.Get "year")) }}
-    {{ $.Scratch.Set "year" $pageYear }}
-    <h2>{{ $pageYear }}</h2>
+    {{ if ne $pageYear ($.Scratch.Get "year") }}
+      {{ $.Scratch.Set "year" $pageYear }}
+      <h2>{{ $pageYear }}</h2>
     {{ end }}
+
     <li class="post-item">
       <div class="meta">
-        <time datetime="{{ time .Date }}" itemprop="datePublished">{{ .Date.Format (.Site.Params.dateFormat | default "2006-01-02") }}</time>
+        <time datetime="{{ time .Date }}" itemprop="datePublished">
+          {{ .Date.Format (.Site.Params.dateFormat | default "2006-01-02") }}
+        </time>
       </div>
-      <span>    
-        <a class="" href="{{ .Permalink }}">{{ if .Title }} {{ .Title }} {{ else }} Untitled {{ end }}</a>
+      <span>
+        <a href="{{ .Permalink }}">
+          {{ if .Title }}{{ .Title }}{{ else }}Untitled{{ end }}
+        </a>
       </span>
     </li>
-    {{ end }}
+  {{ end }}
+
   </ul>
-  {{ if eq .Site.Params.showAllPostsArchive false }}
+
+  {{ if not .Site.Params.showAllPostsArchive }}
     {{ partial "pagination.html" . }}
   {{ end }}
 </div>
