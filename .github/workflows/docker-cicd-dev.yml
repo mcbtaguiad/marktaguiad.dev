@@ -74,3 +74,13 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Deploy via Komodo API
+        run: |
+          curl -X POST https://komodo.marktaguiad.dev/api/services/696ed3755c7d07150d217ab4/deploy \
+            -H "Authorization: Bearer ${{ secrets.KOMODO_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "pull": true,
+              "recreate": true
+            }'
