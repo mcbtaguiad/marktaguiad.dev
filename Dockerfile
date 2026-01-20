@@ -1,4 +1,4 @@
-FROM docker.io/ubuntu:22.04 as builder
+FROM docker.io/ubuntu:26.04 as builder
 
 RUN apt-get update -y && apt-get upgrade -y
 
@@ -15,7 +15,7 @@ RUN if [ "$ENVIRONMENT" = "prod" ]; then \
         hugo --config config.dev.toml; \
     fi
 
-FROM docker.io/nginx:1.25.5-bookworm
+FROM docker.io/nginx:1.29.4-alpine
 
 WORKDIR /app
 
