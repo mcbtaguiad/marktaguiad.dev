@@ -11,11 +11,11 @@ name: Build-Push-Deploy-Dev
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "**" ]
     # Publish semver tags as releases.
-    tags: [ 'v*' ]
+    # tags: [ 'v*' ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "**" ]
     types: [closed]
 
 
@@ -69,3 +69,5 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: |
+            ENVIRONMENT=${{ github.ref_name == 'main' && 'prod' || 'dev' }}
