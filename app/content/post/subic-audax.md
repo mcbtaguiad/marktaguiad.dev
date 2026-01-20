@@ -7,7 +7,6 @@ TocOpen: false
 UseHugoToc: true
 weight: 2
 
-TocOpen: false
 ---
 
 [![imagen](/images/cycling/subic-audax-001.jpg)](/images/cycling/subic-audax-001.jpg)
