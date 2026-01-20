@@ -8,7 +8,12 @@ WORKDIR /site
 
 COPY ./app/ .
 
-RUN hugo
+# RUN hugo
+RUN if [ "$ENVIRONMENT" = "prod" ]; then \
+        hugo --config config.prod.toml; \
+    else \
+        hugo --config config.dev.toml; \
+    fi
 
 FROM docker.io/nginx:1.25.5-bookworm
 

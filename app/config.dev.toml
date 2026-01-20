@@ -1,0 +1,116 @@
+baseURL = "https://dev.marktaguiad.dev/"
+languageCode = "en-us"
+title = "marktaguiad.dev"
+theme = "cactus"
+copyright = "marktaguiad.dev"
+disqusShortname = "marktaguiad.dev"
+googleAnalytics = "G-XCHH9NNNBX"
+
+
+
+
+# summaryLength = 2
+
+# Main menu which appears below site header.
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "Blog"
+url = "/post"
+weight = 2
+
+# [[menu.main]]
+# name = "Tags"
+# url = "/tags"
+# weight = 3
+
+[[menu.main]]
+name = "Gallery"
+url = "https://gallery.marktaguiad.dev"
+weight = 4
+
+[[menu.main]]
+name = "Whoami"
+url = "/post/mark-cv"
+weight = 5
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 4
+    ordered = true
+    startLevel = 2
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = false
+    noClasses = true
+    style = "dracula"
+    tabWidth = 4
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+
+
+
+[params]
+enableGiscus = true
+#colortheme = "white" # dark, light, white, or classic
+rss = true # generate rss feed. default value is false
+googleAnalyticsAsync = false # use asynchronous tracking. Synchronous tracking by default
+showAllPostsArchive = false # default
+
+# Home page settings
+description = 'This blog is my learning-by-doing stash, where I dump notes from my sysadmin life and homelab setup.'
+
+
+mainSections = "posts" # your main section
+mainSectionsGallery = "gallery" # your main section
+showAllPostsOnHomePage = false # default
+postsOnHomePage = 5 # this option will be ignored if showAllPostsOnHomePage is set to true
+tagsOverview = true # show tags overview by default.
+tagsOverviewGallery = false
+showProjectsList = false # show projects list by default (if projects data file exists).
+projectsUrl = "https://github.com/mcbtaguiad" # title link for projects list
+
+# https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference
+dateFormat = "2006-01-02" # default
+
+
+# Post page settings
+show_updated = true # default
+showReadTime = true # default
+mainSectionTitle = "Blog"
+mainSectionTitleGallery = "Gallery"
+
+[[params.social]]
+  name = "github"
+  link = "https://github.com/mcbtaguiad"
+[[params.social]]
+  name = "linkedin"
+  link = "https://www.linkedin.com/in/mark-christian-taguiad/"
+[[params.social]]
+  name = "email"
+  link = "marktaguiad@marktaguiad.dev"
+[[params.social]]
+  name = "strava"
+  link = "https://www.strava.com/athletes/123512498/"
+
+[params.giscus]
+    data_repo="mcbtaguiad/marktaguiad.dev"
+    data_repo_id="R_kgDONaJdcw"    
+    data_category="General"
+    data_category_id="DIC_kwDONaJdc84CxJdw"
+    data_mapping="pathname"
+    data_strict="0"
+    data_reactions_enabled="1"
+    data_emit_metadata="0"
+    data_input_position="bottom"
+    data_theme="preferred_color_scheme"
+    data_lang="en"
+    crossorigin="anonymous"
