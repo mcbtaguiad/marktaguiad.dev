@@ -1,6 +1,6 @@
 ---
 title: "My Gitea Workflow Madness"
-date: 2026-01-03
+date: 2026-01-06
 author: "Mark Taguiad"
 tags: ["gitea", "repository", "runner"]
 TocOpen: false
