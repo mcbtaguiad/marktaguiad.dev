@@ -7,7 +7,6 @@ TocOpen: false
 UseHugoToc: true
 weight: 2
 
-TocOpen: false
 ---
 
 [![imagen](/images/cycling/batman-00.png)](/images/cycling/batman-00.png)

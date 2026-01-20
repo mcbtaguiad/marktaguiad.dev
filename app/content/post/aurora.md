@@ -3,11 +3,8 @@ title: "Dingalan, Aurora Suka Ride"
 date: 2025-06-15
 author: "Mark Taguiad"
 tags: ["ride", "cycling"]
-TocOpen: false
 UseHugoToc: true
 weight: 2
-
-TocOpen: false
 ---
 
 [![imagen](/images/cycling/aurora-001.jpg)](/images/cycling/aurora-001.jpg)

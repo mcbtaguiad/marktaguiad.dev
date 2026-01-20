@@ -7,7 +7,6 @@ TocOpen: false
 UseHugoToc: true
 weight: 2
 
-TocOpen: false
 ---
 
 

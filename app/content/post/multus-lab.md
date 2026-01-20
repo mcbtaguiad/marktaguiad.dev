@@ -10,7 +10,6 @@ UseHugoToc: true
 weight: 1
 toc: false
 
-TocOpen: false
 ---
 
 # Table of Contents
