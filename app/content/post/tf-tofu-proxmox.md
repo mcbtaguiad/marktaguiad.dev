@@ -19,14 +19,7 @@ With recent announcement of Hashicorp to change Terraform's opensource licence t
 For this lab you can subtitute opentofu `tofu` command with terraform `tf`. 
 
 # Table of Contents
-1. [Install Opentofu](#install-opentofu)
-2. [Add Permission to user](#add-permission-to-user)
-3. [Generate Proxmox API key](#generate-proxmox-api-key)
-4. [Opentofu init](#opentofu-init)
-5. [Opentofu plan](#opentofu-plan)
-6. [Opentofu apply](#opentofu-apply)
-7. [Opentofu destroy](#opentofu-destroy)
-8. [Optional Remote tfstate backup](#optional-remote-tfstate-backup)
+{{< toc >}}
 
 ### Install Opentofu
 You can check this [link](https://opentofu.org/docs/intro/install/) to install base on your distro. 

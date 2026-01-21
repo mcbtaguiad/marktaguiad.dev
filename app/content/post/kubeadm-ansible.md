@@ -16,10 +16,7 @@ Over the years, I’ve found myself repeatedly setting up Kubernetes clusters us
 This project was born out of my desire for a simple, reusable way to deploy multi-node clusters quickly—especially in test environments, homelabs, and lightweight production setups.
 
 # Table of Contents
-1. [What It Does](#what-it-does)
-2. [How to Use It](#how-to-use-it)
-3. [Why I Built This](#why-i-built-this)
-4. [Final Thoughts](#final-thoughts)
+{{< toc >}}
 
 
 

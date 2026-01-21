@@ -15,13 +15,7 @@ In this post we'll be using libvirt provisioner with Terraform/Opentofu to deplo
 
 
 # Table of Contents
-1. [Dependencies](#install-dependencies)
-2. [Add Permission to user](#add-permission-to-user)
-3. [Terraform init](#terraform-init)
-4. [Variable and Config](#variable-and-config)
-4. [Terraform plan](#terraform-plan)
-5. [Terraform apply](#terraform-apply)
-6. [Verify VM](#verify-vm)
+{{< toc >}}
 
 ### Install Dependencies
 

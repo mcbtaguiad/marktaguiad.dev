@@ -12,7 +12,7 @@ weight: 2
 [![imagen](/images/cycling/subic-audax-001.jpg)](/images/cycling/subic-audax-001.jpg)
 
 
-**Route:** <a href="/route/Audax_200_Subic.gpx" download="Audax_200_Subic.gpx"> Audax_200_Subic.gpx </a>
+**Route:** {{< gpxdownload "route/Audax_200_Subic.gpx" "Audax_200_Subic.gpx" >}}
 
 **Distance:** 200Km
 

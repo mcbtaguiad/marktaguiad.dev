@@ -12,7 +12,7 @@ weight: 2
 [![imagen](/images/cycling/batman-00.png)](/images/cycling/batman-00.png)
 
 
-**Route:** <a href="/route/batman_loop.gpx" download="batman_loop.gpx"> batman_loop.gpx </a>
+**Route:** {{< gpxdownload "route/batman_loop.gpx" "batman_loop.gpx" >}}
 
 **Distance:** 254Km
 

@@ -10,9 +10,7 @@ weight: 2
 [![imagen](/images/cycling/aurora-001.jpg)](/images/cycling/aurora-001.jpg)
 
 
-**Route:** <a href="/route/Aurora.gpx" download="Aurora.gpx">
-  Aurora.gpx
-</a>
+**Route:** {{< gpxdownload "route/Aurora.gpx" "Aurora.gpx" >}}
 
 <!-- [Aurora.gpx](/route/Aurora.gpx){ download } -->
 

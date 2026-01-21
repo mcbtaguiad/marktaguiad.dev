@@ -13,10 +13,7 @@ toc: false
 ---
 
 # Table of Contents
-1. [Installation](#installation)
-2. [Multus Manifest](#multus-manifest)
-3. [Testing](#testing)
-
+{{< toc >}}
 
 ### Installation
 > **Note:**

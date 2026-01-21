@@ -13,11 +13,7 @@ weight: 2
 If you bought your domain in Cloudflare and broke just like me, then you can enjoy some of the free privileges like cloudflared which can tunnel your application to the cloud. This also handles TLS certificate and renewal. 
 
 # Table of Contents
-1. [Requirements](#requirements)
-2. [Server Setup](#server-setup)
-3. [HTTPS Proxy Route](#https-proxy-route)
-4. [SSH Proxy Route](#ssh-proxy-route)
-
+{{< toc >}}
 
 
 ### Requirements

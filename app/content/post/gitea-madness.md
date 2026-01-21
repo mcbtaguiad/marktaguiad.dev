@@ -3,20 +3,21 @@ title: "Gitea Install Notes"
 date: 2026-01-06
 author: "Mark Taguiad"
 tags: ["gitea", "repository", "runner"]
+# toc: true
+weight: 2
 TocOpen: false
 UseHugoToc: true
-weight: 2
 
 ---
 
+
+
 This was my previous setup when I decided to host my own git repository, registry and pipelines. Trust me (talking to my future self) stick to github, maybe when you can afford a much powerful server. 
 
+
 # Table of Contents
-1. [Gitea](#gitea)
-2. [Runner](#runner)
-3. [Proxy](#proxy)
-4. [SSH](#ssh)
-5. [Mirror](#mirror)
+{{< toc >}}
+
 
 ### Gitea
 
