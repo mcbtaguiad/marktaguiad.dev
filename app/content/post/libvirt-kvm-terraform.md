@@ -2,7 +2,7 @@
 title: "Provision libvirt Multiple VM with Terraform/Opentofu"
 date: 2025-07-05
 author: "Mark Taguiad"
-tags: ["libvirt", "qemu", "vm", "cloud-init", "kvm", "terafform", "opentofu"]
+tags: ["libvirt", "qemu", "vm", "cloud-init", "kvm", "terraform", "opentofu"]
 ShowToc: true
 TocOpen: false
 UseHugoToc: true
