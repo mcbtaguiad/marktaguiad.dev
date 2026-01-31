@@ -11,7 +11,7 @@ weight: 2
 ---
 
 ### Background
-In this post we'll be using libvirt provisioner with Terraform/Opentofu to deploy mulitple KVM Virtual Machine. 
+If you are like me that tried to run proxmox on debian or ubuntu while also installing a desktop environment. Cause you are broke and don't have a seperate hardware to run proxmox, then you've come to the right place. Here we will setup libvirt/kvm and opentofu/terraform to automate the provisioning. 
 
 
 # Table of Contents
@@ -20,7 +20,7 @@ In this post we'll be using libvirt provisioner with Terraform/Opentofu to deplo
 ### Install Dependencies
 
 ```
-sudo dnf install libvirt virt-install virsh -y
+apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils -y
 
 # enable and start libvirtd service
 sudo systemctl enable --now libvirtd
@@ -30,25 +30,142 @@ Verify if the host is can now run guest machine.
 
 `virt-host-validate`
 
-Download cloud-init image. For this example we'll be using Ubuntu.
-
-`wget https://cloud-images.ubuntu.com/noble/20250523/noble-server-cloudimg-amd64.img`
 
 
-
-### Add Permission to user
+#### Add Permission to user
 
 Add user to libvirt group to manage VM without using sudo. 
 
 `sudo adduser $USER libvirt`
 
-If you'll be accessing the host remotely, make sure to add your ssh key to the host.
 
-`ssh-copy-id user@server-ip`
+### Network
+If you don't need network access to your vm then you can skip this. To connect you VM to you physical network, we need to create a bridge that act likes a nic on you vm (bridge network). 
+
+#### Using nmcli
+nmcli connection down "Wired connection 1"
+nmcli connection add type bridge ifname br0 con-name bridge-br0
+nmcli connection add type ethernet ifname enp0s31f6 master br0 con-name bridge-slave-enp0s31f6
+nmcli connection modify bridge-br0 ipv4.method manual ipv4.addresses 192.168.254.169/24 ipv4.gateway 192.168.254.254 ipv4.dns "8.8.8.8 1.1.1.1" ipv4.ignore-auto-dns yes
+nmcli connection up bridge-br0
+
+#### Using netplan
+*/etc/netplan/01-netcfg.yaml*
+```
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp4s0:
+      dhcp4: no
+  bridges:
+    br0:
+      interfaces: [enp4s0]
+      dhcp4: no
+      addresses: [192.168.254.169/24]
+      routes:
+        - to: default
+          via: 192.168.254.254
+      nameservers:
+        addresses: [8.8.8.8, 1.1.1.1]
+```
+
+`netplan apply`
 
 
-### Terraform init
-Define the provider, we'll be using proivder by  [dmacvicar/libvirt](https://registry.terraform.io/providers/dmacvicar/libvirt/latest/docs). 
+Create libvirt network.
+*br0.xml*
+```
+<network>
+  <name>br0</name>
+  <forward mode='bridge'/>
+  <bridge name='br0'/>
+</network>
+
+```
+
+```
+sudo virsh net-define br0.xml
+sudo virsh net-start br0
+sudo virsh net-autostart br0
+```
+
+Verify.
+```
+$ virsh net-list --all
+ Name      State    Autostart   Persistent
+--------------------------------------------
+ br0       active   yes         yes
+ default   active   yes         yes
+```
+
+### Cockpit
+Enable cockpit, this provide web UI to manage your server and VM.
+```
+apt install cockpit cockpit-machines -y
+systemctl enable --now cockpit.socket
+```
+
+Open browser and navigate to https://localhost:9090.
+
+
+### Create VM
+Login to cockpit and turn on administrative access. Then click *Virttual Machines*. For this example i downloaded a cloud-init image to /mnt/ssd/develop/iso.
+[![imagen](/images/libvirt/libvirt-kvm-terraform-001.png)](/images/libvirt/libvirt-kvm-terraform-001.png)
+
+Click on Automation and edit login config. 
+[![imagen](/images/libvirt/libvirt-kvm-terraform-002.png)](/images/libvirt/libvirt-kvm-terraform-002.png)
+
+Then Create and Edit. Here you can configure ram, cpu and edit. For now just click install and run the vm.
+[![imagen](/images/libvirt/libvirt-kvm-terraform-003.png)](/images/libvirt/libvirt-kvm-terraform-003.png)
+
+
+### Permission Error
+Look at this [thread](https://github.com/dmacvicar/terraform-provider-libvirt/issues/978) to find possible solution. 
+
+For my case I used this solution. Edit */etc/libvirt/qemu.conf*, look for *security_driver*.
+
+`security_driver = "none"`
+
+Restart service.
+
+`systemctl restart libvirtd`
+
+SSH to VM.
+```
+$ ssh 192.168.254.26
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+The list of available updates is more than a week old.
+To check for new updates run: sudo apt update
+
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+
+$ 
+```
+
+### Optional: Using Virt-Manager
+You can also explore virt-manager. This has a more classic GUI, unlike cockpit which is designed for multi-server and container management, this focus mainly on VM administration. 
+```
+apt install virt-manager
+```
+
+### Terraform/Opentofu 
+
+#### init
+Define the provider, we'll be using provider by  [dmacvicar/libvirt](https://registry.terraform.io/providers/dmacvicar/libvirt/latest/docs). 
 
 Create the directory and files.
 
@@ -116,7 +233,7 @@ rerun this command to reinitialize your working directory. If you forget, other
 commands will detect it and remind you to do so if necessary.
 ```
 
-### Variable and Config
+#### Variable and Config
 Before we execute terraform plan, let us first define some variables and config. 
 Under img_url_path; it is where the cloud-init image downloaded earlier. 
 
@@ -165,7 +282,7 @@ ethernets:
 ```
 
 
-### Terraform plan
+#### plan
 Let's now create the VM. 
 
 `main.tf`
@@ -440,7 +557,7 @@ Plan: 5 to add, 0 to change, 0 to destroy.
 Note: You didn't use the -out option to save this plan, so OpenTofu can't guarantee to take exactly these actions if you run "tofu apply" now.
 ```
 
-### Terraform apply
+#### apply
 After plan-review the output summary of terraform plan, we can now create the VM.
 
 ```
@@ -675,7 +792,7 @@ libvirt_domain.domain-k8s[1]: Creation complete after 3s [id=9d27f366-6165-4e32-
 Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
 ```
 
-### Verify VM
+#### Verify VM
 ```
 $ virsh list --all
  Id   Name          State
