@@ -13,9 +13,7 @@ weight: 2
 Obsidian setup using self-hosted CouchDB or Cloudflared R2 DB. 
 
 # Table of Contents
-1. [CouchDB](#couchdb)
-2. [Cloudflare R2 Database](#cloudflare_r2_database)
-3. [Obsidian Setup](#obsidian_setup)
+{{< toc >}}
 
 
 

@@ -10,6 +10,9 @@ weight: 2
 
 ---
 
+# Table of Contents
+{{< toc >}}
+
 <!-- ![Alt text](/images/homepage/homepage.png) -->
 [![imagen](/images/homepage/homepage.png)](/images/homepage/homepage.png)
 <!-- ![homepage](http://chevereto.marktaguiad.dev/images/2024/08/31/homepage.png) -->

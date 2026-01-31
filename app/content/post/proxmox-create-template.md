@@ -16,12 +16,7 @@ Finally have some time to document and publish this blog due to recent Philippin
 What set apart a cloud-init image vs. a fully pledge image, basically it is a clone of a miminal image. A clean installed system, that can be installed on the fly, unlike the traditional image where you have to install it using GUI or manually. With cloud-init, hostname, user/password, network and ssh-keys can be set with the config file.  
 
 # Table of Contents
-1. [Download the base image](#download-the-base-image)
-2. [Install qemu-guest-agent](#install-qemu-guest-agent)
-3. [Create Proxmox virtual machine](#create-proxmox-virtual-machine)
-4. [Covert VM to Template](#covert-vm-to-template)
-5. [Optional Starting the VM](#optional-starting-the-vm)
-6. [Using Terraform or Opentofu to automate VM creation](#using-terraform-or-opentofu-to-automate-vm-creation)
+{{< toc >}}
 
 ### Download the base image
 On this part you can change the image to your desired distro, but for this lab we'll be using Debian latest base image - [https://cloud.debian.org/images/cloud/](https://cloud.debian.org/images/cloud/). 
