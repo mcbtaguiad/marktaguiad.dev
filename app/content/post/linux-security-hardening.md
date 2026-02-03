@@ -231,7 +231,7 @@ To have give more context on this subject, MCS enforement is commonly used for:
 - Sandboxed services
 - Multi-tenant systems
 
-### MLS Enforcement
+#### MLS Enforcement
 MLS (Multi-Level Security) enforces who can access higher or lower classified data. MLS has hierchy and rules follow clerance leves. So even if the system is compromised, how far up or down are you allowed to see. 
 
 Core MLS rules (Bell–LaPadula):
