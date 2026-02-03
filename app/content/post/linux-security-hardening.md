@@ -378,7 +378,7 @@ $ vim /etc/httpd/conf/httpd.conf
 If we use restorecon in the new directory notice that no change would apply. 
 ```
 $ restorecon -R /srv/web/
-$[root@srvmnlfedvm001 web]#$ ls -lZ
+$ ls -lZ
 total 8
 -rw-r--r--. 1 root root unconfined_u:object_r:var_t:s0 73 Feb  3 13:04 index.html
 -rw-r--r--. 1 root root unconfined_u:object_r:var_t:s0 73 Feb  3 13:04 test.html
