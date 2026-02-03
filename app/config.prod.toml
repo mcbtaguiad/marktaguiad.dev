@@ -39,9 +39,9 @@ weight = 5
 
 [markup]
   [markup.tableOfContents]
-    endLevel = 4
+    startLevel = 3
+    endLevel = 6
     ordered = true
-    startLevel = 2
   [markup.highlight]
     codeFences = true
     guessSyntax = false
