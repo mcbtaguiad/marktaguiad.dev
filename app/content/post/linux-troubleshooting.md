@@ -776,3 +776,39 @@ services:
         max-file: "3"
 ```
  
+### Docker
+#### Container overloading the system
+For some reason you deployed an application more than your server can handle. First try to kill the container.
+```
+docker stop <container_name>
+docker rm <container_name>
+```
+If stop command is not doing anything, try to force remove the container. 
+```
+docker rm -f <container_name>
+``` 
+If all else fail, stop docker and containerd service. 
+```
+systemctl restart containerd
+systemctl restart docker
+
+# or
+systemctl kill docker
+systemctl kill containerd
+
+# do this if you know what you are doing
+pkill -9 docker
+pkill -9 containerd
+pkill -9 containerd-shim
+pkill -9 runc
+```
+If the container is still not being killed. Find the unkillable PID state.
+```
+ps -eo pid,stat,cmd | grep D
+kill -9 <PID>
+```
+Monitor system load and restart service.
+```
+systemctl restart containerd
+systemctl restart docker
+```
