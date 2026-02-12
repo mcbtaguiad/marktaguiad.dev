@@ -18,7 +18,7 @@ weight: 2
 
 **Elevation Gain:** 611m
 
-**Ride ID:** [link](https://www.strava.com/activities/17349850240) 
+**Ride ID:** [link](https://www.strava.com/activities/17324295285) 
 
 **After Ride Thoughts:** Masarap yung food (bagnet) at yung free coffee. Di rin napagod masyado, chill lang ang route. 
 
