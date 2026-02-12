@@ -10,7 +10,7 @@ weight: 2
 [![imagen](/images/cycling/cafe-agapita-cover.jpg)](/images/cycling/cafe-agapita-cover.jpg)
 
 
-**Route:** {{< gpxdownload "route/cafe-agapita.gpx" "cafe-agapit.gpx" >}}
+**Route:** {{< gpxdownload "route/cafe-agapita.gpx" "cafe-agapita.gpx" >}}
 
 <!-- [Aurora.gpx](/route/Aurora.gpx){ download } -->
 
