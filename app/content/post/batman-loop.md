@@ -2,14 +2,14 @@
 title: "Infanta (Batman) Loop"
 date: 2025-03-29
 author: "Mark Taguiad"
-tags: ["ride", "cycling"]
+tags: ["ride", "cycling", "batman", "infanta"]
 TocOpen: false
 UseHugoToc: true
 weight: 2
 
 ---
 
-[![imagen](/images/cycling/batman-00.png)](/images/cycling/batman-00.png)
+[![imagen](/images/cycling/batman-cover.png)](/images/cycling/batman-cover.png)
 
 
 **Route:** {{< gpxdownload "route/batman_loop.gpx" "batman_loop.gpx" >}}
@@ -24,15 +24,7 @@ weight: 2
 
 **To ride it again?:** If reverse, why not!
 
+{{< imageviewer folder="/images/cycling/batman" >}}
 
-{{< imageviewer images="/images/cycling/batman-001.jpg,/images/cycling/batman-002.jpg,/images/cycling/batman-003.jpg,/images/cycling/batman-004.jpg,/images/cycling/batman-005.jpg,/images/cycling/batman-006.jpg,/images/cycling/batman-007.jpg,/images/cycling/batman-008.jpg" >}}
+<!-- {{< imageviewer images="/images/cycling/batman-001.jpg,/images/cycling/batman-002.jpg,/images/cycling/batman-003.jpg,/images/cycling/batman-004.jpg,/images/cycling/batman-005.jpg,/images/cycling/batman-006.jpg,/images/cycling/batman-007.jpg,/images/cycling/batman-008.jpg" >}} -->
 
-<!-- [![imagen](/images/cycling/batman-001.jpg)](/images/cycling/batman-001.jpg)
-[![imagen](/images/cycling/batman-002.jpg)](/images/cycling/batman-002.jpg)
-[![imagen](/images/cycling/batman-003.jpg)](/images/cycling/batman-003.jpg)
-[![imagen](/images/cycling/batman-004.jpg)](/images/cycling/batman-004.jpg)
-[![imagen](/images/cycling/batman-005.jpg)](/images/cycling/batman-005.jpg)
-[![imagen](/images/cycling/batman-006.jpg)](/images/cycling/batman-006.jpg)
-[![imagen](/images/cycling/batman-007.jpg)](/images/cycling/batman-007.jpg)
-[![imagen](/images/cycling/batman-008.jpg)](/images/cycling/batman-008.jpg)
-[![imagen](/images/cycling/batman-009.jpg)](/images/cycling/batman-009.jpg) -->

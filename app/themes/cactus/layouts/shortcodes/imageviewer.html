@@ -1,6 +1,26 @@
-<div class="image-viewer" data-media='{{ .Get "images" }}'>
+<!-- <div class="image-viewer" data-media='{{ .Get "images" }}'>
   <div class="viewer-stage"></div>
 
+  <button class="nav prev" aria-label="Previous">‹</button>
+  <button class="nav next" aria-label="Next">›</button>
+</div> -->
+
+{{ $folder := .Get "folder" }}
+{{ $dir := printf "static%s" $folder }}
+{{ $files := sort (readDir $dir) "Name" }}
+
+{{ $media := slice }}
+{{ range $files }}
+  {{ if not .IsDir }}
+    {{ $ext := lower (path.Ext .Name) }}
+    {{ if in (slice ".jpg" ".jpeg" ".png" ".webp" ".mp4" ".webm" ".ogg") $ext }}
+      {{ $media = $media | append (printf "%s/%s" $folder .Name) }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+<div class="image-viewer" data-media="{{ delimit $media "," }}">
+  <div class="viewer-stage"></div>
   <button class="nav prev" aria-label="Previous">‹</button>
   <button class="nav next" aria-label="Next">›</button>
 </div>
