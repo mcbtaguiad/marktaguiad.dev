@@ -2,14 +2,14 @@
 title: "Subic Audax 200"
 date: 2025-12-27
 author: "Mark Taguiad"
-tags: ["ride", "cycling", "audax"]
+tags: ["ride", "cycling", "audax", "subic"]
 TocOpen: false
 UseHugoToc: true
 weight: 2
 
 ---
 
-[![imagen](/images/cycling/subic-audax-001.jpg)](/images/cycling/subic-audax-001.jpg)
+[![imagen](/images/cycling/subic-audax-cover.jpg)](/images/cycling/subic-audax-cover.jpg)
 
 
 **Route:** {{< gpxdownload "route/Audax_200_Subic.gpx" "Audax_200_Subic.gpx" >}}
@@ -24,5 +24,6 @@ weight: 2
 
 **To ride it again?:** Yes, if for higher category. 
 
+{{< imageviewer folder="/images/cycling/subic" >}}
 
-{{< imageviewer images="/images/cycling/subic-audax-002.jpg,/images/cycling/subic-audax-003.jpg,/images/cycling/subic-audax-004.jpg,/images/cycling/subic-audax-005.jpg,/images/cycling/subic-audax-006.jpg,/images/cycling/subic-audax-007.jpg,/videos/cycling/subic-audax-001.mp4,/videos/cycling/subic-audax-002.mp4,/videos/cycling/subic-audax-003.mp4,/videos/cycling/subic-audax-004.mp4" >}}
+<!-- {{< imageviewer images="/images/cycling/subic-audax-002.jpg,/images/cycling/subic-audax-003.jpg,/images/cycling/subic-audax-004.jpg,/images/cycling/subic-audax-005.jpg,/images/cycling/subic-audax-006.jpg,/images/cycling/subic-audax-007.jpg,/videos/cycling/subic-audax-001.mp4,/videos/cycling/subic-audax-002.mp4,/videos/cycling/subic-audax-003.mp4,/videos/cycling/subic-audax-004.mp4" >}} -->
