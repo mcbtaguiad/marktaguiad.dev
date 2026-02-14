@@ -14,6 +14,8 @@ weight: 2
 
 In deploying capture portal solution to client, I usually use OpenNDS and OpenWrt, or simply TP-Link Omada Controller. Due to hardware limitation, we will be using nodogsplash on OpenWrt connected to a external server that will handle the authentication. Instead of common voucher generation, it will be generated using OTP. Thanks to [user2684](https://github.com/user2684) solution. 
 
+Repo for this blog - link.
+
 # Table of Contents
 {{< toc >}}
 
