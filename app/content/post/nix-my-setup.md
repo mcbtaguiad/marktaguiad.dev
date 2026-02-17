@@ -8,8 +8,9 @@ UseHugoToc: true
 weight: 2
 ---
 
-> [!INFO]
-> It's my brother birthday, his name is Nico or Nickx (jejemon kapatid! hahaha). 
+{{< info >}}
+It's my brother birthday, his name is Nico or Nickx (jejemon kapatid! hahaha).
+{{< /info >}}
 
 [![imagen](/images/nix-my-setup/nix-my-setup-001.png)](/images/nix-my-setup/nix-my-setup-001.png)
 
