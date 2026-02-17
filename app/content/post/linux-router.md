@@ -9,13 +9,12 @@ TocOpen: false
 UseHugoToc: true
 
 ---
+{{< warning >}}
+To save yourself from headache just install OpenWRT or pfSense.
+{{< /warning >}}
 
 # Table of Contents
 {{< toc >}}
-
-
-> [!WARNING]
-> To save yourself from headache just install OpenWRT or pfSense.
 
 To goal of this is to configure our Linux server as a router, LAN1 acting as a WAN and other interface like LAN2 to assign IP or WLAN as a hotspot.
 

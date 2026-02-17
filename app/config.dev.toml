@@ -1,7 +1,7 @@
 baseURL = "https://dev.marktaguiad.dev/"
 languageCode = "en-us"
 title = "marktaguiad.dev"
-theme = "cactus"
+theme = "heavycactus"
 copyright = "marktaguiad.dev"
 disqusShortname = "marktaguiad.dev"
 googleAnalytics = "G-XCHH9NNNBX"

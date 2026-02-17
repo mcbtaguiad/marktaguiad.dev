@@ -427,8 +427,9 @@ $ curl http://localhost:8080
 <h3>My website</h3> <!--  -->
 <p>Look at me Mom I'm a DevOps.</p>
 ```
-> [!Note]
-> I'll update this section when I get the time to read all about SELinux. Makaulaw basbasaen aytoy. 
+{{< note >}}
+I'll update this section when I get the time to read all about SELinux. Makaulaw basbasaen aytoy. 
+{{< /note >}}
 
 ### Firewall
 [Look at this post.](/post/linux-network/#firewall)

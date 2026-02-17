@@ -6,15 +6,19 @@ tags: ["openwrt", "nodogsplash", "capture-portal", "otp"]
 UseHugoToc: true
 weight: 2
 ---
-> [!INFO]
-> This project is a fork from [user2684/otpspot](https://github.com/user2684/otpspot) repo. 
+<!-- > [!INFO]
+> This project is a fork from [user2684/otpspot](https://github.com/user2684/otpspot) repo.  -->
+
+{{< note >}}
+This project is a fork from [user2684/otpspot](https://github.com/user2684/otpspot) repo.
+{{< /note >}}
 
 [![imagen](/images/otp-capture-portal/otp-capture-portal-001.png)](/images/otp-capture-portal/otp-capture-portal-001.png)
 
 
 In deploying capture portal solution to client, I usually use OpenNDS and OpenWrt, or simply TP-Link Omada Controller. Due to hardware limitation, we will be using nodogsplash on OpenWrt connected to a external server that will handle the authentication. Instead of common voucher generation, it will be generated using OTP. Thanks to [user2684](https://github.com/user2684) solution. 
 
-Repo for this blog - link.
+Repo for this blog - [link](https://github.com/mcbtaguiad/otp-capture-portal).
 
 # Table of Contents
 {{< toc >}}
