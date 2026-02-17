@@ -260,3 +260,95 @@ code {
   background: transparent;
   cursor: pointer;
 }
+
+/* Base alert box - compact */
+.alert {
+  border-left: 4px solid;
+  padding: 0.65rem 0.8rem;
+  margin: 1rem 0;
+  border-radius: 6px;
+  background: var(--alert-bg, #f9fafb);
+  box-shadow: none;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.alert-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+.alert-inline {
+  padding: 0.45rem 0.6rem;
+  font-size: 0.9rem;
+}
+
+.alert-content p {
+  margin: 0.25rem 0;
+}
+
+.alert-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Note */
+.alert-note {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+.alert-note .alert-title {
+  color: #1d4ed8;
+}
+
+/* Warning */
+.alert-warning {
+  border-color: #f59e0b;
+  background: #fffbeb;
+}
+.alert-warning .alert-title {
+  color: #b45309;
+}
+
+/* Danger */
+.alert-danger {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+.alert-danger .alert-title {
+  color: #b91c1c;
+}
+/* Info (light green) */
+.alert-info {
+  border-color: #22c55e;
+  background: #f0fdf4;
+}
+.alert-info .alert-title {
+  color: #15803d;
+}
+
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .alert {
+    background: #1f2937;
+  }
+
+  .alert-note {
+    background: rgba(59,130,246,0.12);
+  }
+
+  .alert-warning {
+    background: rgba(245,158,11,0.12);
+  }
+
+  .alert-danger {
+    background: rgba(239,68,68,0.12);
+  }
+  
+  .alert-info {
+    background: rgba(34,197,94,0.12);
+  }
+}
