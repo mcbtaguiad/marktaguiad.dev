@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" class="h-100">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>{{ .Title }}</title>
+  <meta name="description" content="{{ .Title }}" />
+
+  <link rel="shortcut icon" href="{{ "img/fa.png" | relURL }}" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Titillium Web" rel="stylesheet">
+
+  <!-- SCSS (scoped only to this page) -->
+  {{ $style := resources.Get "scss/warp.scss" | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+
+  <script src="{{ "js/warp.js" | relURL }}" defer></script>
+</head>
+
+<body>
+
+<div id="sky"></div>
+
+<div class="flex-container custom-body">
+
+  <div class="flex-child centerdiv">
+    <p class="tagsbody">Nagpintas jay bulan aya!?</p>
+  </div>
+
+  <div class="flex-child centerdiv">
+    <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4XAjPEae3TARkeYusDLjKq?utm_source=generator&theme=0" width="100%" height="100%" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </div>
+
+</div>
+
+<footer class="footercenter">
+  <div class="tagstitle footer-margin tagsparagraph">
+    
+    <p>Copyright © {{ now.Year }} <a href="https://marktaguiad.dev">marktaguiad.dev</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
