@@ -92,8 +92,8 @@ article {
           color: $color-meta;
         }
         a:hover {
-          background-image: linear-gradient(transparent, transparent 4px, lighten($color-meta, 20%) 4px, lighten($color-meta, 20%));
-          color: lighten($color-meta, 20%);
+          background-image: linear-gradient(transparent, transparent 4px, var(--meta-dark) 4px, var(--meta-dark));
+          color: var(--meta-dark);
         }
         cite {
           &:before {

@@ -35,10 +35,12 @@ $logo-grayout: true;
   
     --footer-1: #202225;
     --footer-2: #2a2d30;
+
+    --meta-dark: #444;   /* dark theme */
   }
   
   /* ===== WHITE THEME ===== */
-  html.theme-white {
+  html.theme-light {
     --bg: #ffffff;
     --bg-code: #fafafa;
     --border: #666;
@@ -54,5 +56,8 @@ $logo-grayout: true;
   
     --footer-1: #f7f7f7;
     --footer-2: #e6e6e6;
+
+    --meta-dark: #aaa; /* light theme */
   }
-  
+
+

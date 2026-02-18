@@ -188,7 +188,7 @@
       }
     }
     nav > ul > li > ul > li > ul > li {
-      color: darken($color-meta, 20%);
+      color: var(--meta-dark);
       font-size: .4rem;
     }
     .toc-level-5 {
