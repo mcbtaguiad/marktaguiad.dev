@@ -196,7 +196,7 @@ PIP install is also declarative if you want it to persist in you system. For dev
 Mounts are configured in **/etc/nixos/hardware-configuration.nix**.
 
 If you dont know your disk type.
-```
+```bash
 lsblk -f
 NAME FSTYPE FSVER LABEL                        UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
 sda                                                                                                
