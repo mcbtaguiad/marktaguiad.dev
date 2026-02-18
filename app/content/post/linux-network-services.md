@@ -9,15 +9,8 @@ TocOpen: false
 UseHugoToc: true
 
 ---
-
-
 # Table of Contents
 {{< toc >}}
-
-
-To do
-- network services, like dns server, dhcp server, 
-
 ### Configuring SSH
 
 #### Install
