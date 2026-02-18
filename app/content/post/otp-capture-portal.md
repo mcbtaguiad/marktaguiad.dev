@@ -38,11 +38,11 @@ After successful OTP verification, the portal signals nodogsplash to authorize t
 I assume that you have already installed OpenWrt on your router.
 
 Refresh package list on OpenWrt. 
-```
+```bash
 opkg update
 ```
 Install nodogsplash
-```
+```bash
 opkg install nodogsplash
 ```
 Configure nodogsplash config. I'll be deploying this in a public cloud so the port is 443 and it's in https, if server is in your local network then change to http and 8000 (depending on you port-forwarding config). Look for line below and edit:
@@ -55,22 +55,22 @@ list preauthenticated_users 'allow tcp port 443 to <Server_IP>
 <meta http-equiv="refresh" content="0;URL='https://<Server_IP>:443/index.html?authaction=$authaction&amp;tok=$tok&amp;redir=$redir&amp;mac=$clientmac&amp;ip=$clientip&amp;gatewayname=$gatewayname'" />
 ```
 Enable and start nodogsplash service.
-```
+```bash
 /etc/init.d/nodogsplash enable
 /etc/init.d/nodogsplash start
 ```
 #### Google Authenticator
 Installed package if not yet installed. 
-```
+```bash
 apt install libpam-google-authenticator
 ```
 Generate your google authenticator config. Download authenticator app like [this](https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&hl=en&pli=1), scan the QR generated to link it to the app. 
-```
+```bash
 google-authenticator -t
 ```
 #### Docker
 Create a directory for the config and images. Google authenticor config is located in `/home/yourusername/.google_authenticator`. Mount it in docker compose.
-```
+```bash
 mkdir data
 tree -a data
 .
@@ -80,7 +80,7 @@ tree -a data
 └── logo.webp
 ```
 *compose.yaml*
-```
+```yaml
 services:
     otp-capture-portal:
         container_name: otp-capture-portal
@@ -98,7 +98,7 @@ services:
             - ./data:/otpspot/data
 ```
 Deploy
-```
+```bash
 docker compose up -d
 ```
 ### Demo

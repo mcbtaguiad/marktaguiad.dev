@@ -23,7 +23,7 @@ To do
 #### Install
 Some distro don't include ssh server out of the box, or you forgot to check the option in the installation process. 
 
-```
+```bash
 # debian base
 sudo apt install openssh-server -y
 
@@ -35,7 +35,7 @@ systemctl enable --now ssh # or sshd depending on the distro
 
 #### Copying key to Server
 Before we disable password login to the server we need to add our public key in the server. If you haven't generated your key. Keys are located at */home/yourusername/.ssh*.
-```
+```bash
 ssh-keygen -t ed25519 -C "your_email@example.com"
 
 # If you are using a legacy system that doesn't support the Ed25519 algorithm, use:
@@ -45,7 +45,7 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 Now you can manually add it to server by login in and pasteing it to `/home/user/serveruser/.ssh/authorized_keys`. For root it is /root/.ssh/authorized_keys.
 
 Copying key by command through remote access. On your pc or terminal run the command below, this will ask for the user password. 
-```
+```bash
 $ ssh-copy-id root@serverIPorDNS
 ```
 
@@ -71,7 +71,7 @@ Port 22 # change ssh port
 
 To take effect restart service. 
 
-```
+```bash
 systemctl restart 
 # or for openrc
 sudo rc-service ssh restart
@@ -81,7 +81,7 @@ sudo rc-service ssh restart
 
 Add the new port to the SELinux policy.
 
-```
+```bash
 semanage port -a -t ssh_port_t -p tcp PORTNUMBER
 
 # to verify
@@ -96,7 +96,7 @@ I'm a Nginx guy, but apache is good for legacy application. Specially if you hav
 
 #### Install apache.
 
-```
+```bash
 # debian basee
 apt install apache2
 
@@ -106,7 +106,7 @@ dnf install httpd
 ```
 
 Start the Apache service and enable it to run on .
-```
+```bash
 systemctl enable --now apache2
 
 # or
@@ -129,7 +129,7 @@ systemctl enable --now httpd
 Navigate to document root */var/www/html*. Create a simple html. 
 
 *index.html*
-```
+```html
 <html>
 <!-- <h2>  </h2> -->
 <h3>My First Website</h3>
@@ -172,24 +172,24 @@ Test the redirect on your browser.
 
 #### Hosting Multiple Website
 Now lets create two website running in one server. Create the document root.
-```
+```bash
 mkdir -p /var/www/website1 /var/www/website2
 ```
 
 Create index.html for both document root.
-```
+```html
 <html>
 <h3>Website 1</h3> <!-- Change this to 2 in website 2 -->
 <p>Look at me Mom I'm a DevOps.</p>
 ```
 
 Create virtual host configuration file. Note that in debian base distro, it is using different folder */etc/apache2/sites-available*. 
-```
+```bash
 touch /etc/httpd/conf.d/website1.conf /etc/httpd/conf.d/website2.conf
 ```
 
 */etc/httpd/conf.d/website1.conf*
-```
+```conf
 <VirtualHost *:80>
     ServerName website1.local
     ServerAlias www.website1.local
@@ -207,7 +207,7 @@ touch /etc/httpd/conf.d/website1.conf /etc/httpd/conf.d/website2.conf
 ```
 
 */etc/httpd/conf.d/website2.conf*
-```
+```conf
 <VirtualHost *:80>
     ServerName website2.local
     ServerAlias www.website2.local
@@ -225,7 +225,7 @@ touch /etc/httpd/conf.d/website1.conf /etc/httpd/conf.d/website2.conf
 ```
 
 Enable the sites.
-```
+```bash
 # debian base
 sudo a2ensite website1.conf
 sudo a2ensite website2.conf
@@ -235,7 +235,7 @@ sudo systemctl reload apache2
 ```
 
 Reload apache service.
-```
+```bash
 systemctl reload apache2
 # or
 systemctl relaod httpd
@@ -245,7 +245,7 @@ systemctl relaod httpd
 To save you from headache look up Let’s Encrypt to generate your certificate, assuming you have a purchase a domain and have access to public IP. Or better yet, migrate your domain to Cloudflare and use their tunnel service. 
 
 Let's assume you have a valid certificate, we can now terminate your website with TLS. First enable ssl module. 
-```
+```bash
 # debian 
 a2enmod ssl
 # centos
@@ -254,7 +254,7 @@ dnf install -y mod_ssl
 
 Let's Encrypt certifacate path usually at */etc/letsencrypt/live/website.domain/*. Edit website1 config.
 */etc/httpd/conf.d/website1.conf*
-```
+```conf
 <VirtualHost *:443>
     ServerName website1.example.com
     ServerAlias www.website1.example.com
@@ -276,7 +276,7 @@ Let's Encrypt certifacate path usually at */etc/letsencrypt/live/website.domain/
 ```
 
 Reload service.
-```
+```bash
 systemctl reload apache2
 # or
 systemctl reload httpd
@@ -290,7 +290,7 @@ Instead of users accessing an application server directly, they access the rever
 In our example, the backend service will be a container on port 8080, we will terminate it using apache2 reverse proxy. 
 
 First install module.
-```
+```bash
 # debian
 a2enmod ssl
 a2enmod proxy
@@ -303,7 +303,7 @@ dnf install -y httpd mod_ssl mod_proxy mod_proxy_http
 
 Create configuration file and edit.
 */etc/httpd/conf.d/app-ssl.conf*
-```
+```conf
 <VirtualHost *:443>
     ServerName app.example.com
 
@@ -331,12 +331,12 @@ Create configuration file and edit.
 ```
 
 For debian, create config in */etc/apache2/sites-available/app-ssl.conf*. And enable the sites.
-```
+```bash
 a2ensite app-ssl.conf
 ```
 
 Reload service.
-```
+```bash
 systemctl reload apache2
 # or
 systemctl reload httpd
@@ -346,13 +346,13 @@ systemctl reload httpd
 NTP and is used to correct the time difference between the local system and the clock source server. On older *ntpd* is used, but now both has migrated to chrony. 
 #### Run as a Service
 Install chrony (usually already installed).
-```
+```bash
 dnf install chrony
 apt install chrony
 ```
 Configure NTP servers, search the nearest ntp server available. For me this would be Philippines.
 */etc/chrony.conf*
-```
+```conf
 server 0.ph.pool.ntp.org
 server 1.ph.pool.ntp.org
 server 2.ph.pool.ntp.org
@@ -364,7 +364,7 @@ Save and start service.
 
 
 Verify sync.
-```
+```bash
 chronyc sources -v
 chronyc tracking
 ```
@@ -372,7 +372,7 @@ chronyc tracking
 #### Run as a Server
 To run as a server just add this line in the configuration. 
 */etc/chrony.conf*
-```
+```conf
 server 0.ph.pool.ntp.org
 server 1.ph.pool.ntp.org
 server 2.ph.pool.ntp.org
@@ -388,5 +388,7 @@ local stratum 10
 ```
 Save and start service.
  
-`systemctl restart chronyd`
+```bash
+systemctl restart chronyd
+```
 

@@ -66,13 +66,13 @@ Fail2Ban is a log-monitoring intrusion prevention tool that watches log files fo
 - Blocks bad actors automatically with customizable actions.
 
 #### Installation
-```
+```bash
 apt install fail2ban
 ```
 
 #### Configuration
 Fail2ban ships with default config, copy them so that we won't overwrite the default config.
-```
+```bash
 cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
 cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local
 ```
@@ -97,28 +97,32 @@ findtime   = 1d
 
 Restart service after making changes.
 
-`systemctl restart fail2ban`
+```bash
+systemctl restart fail2ban
+```
 
 #### Status
 To show active jails.
-```
+```bash
 fail2ban-client status
 ```
 
 Check details for *sshd*.
-```
+```bash
 fail2ban-client status sshd
 ```
 
 You can also ehecked from iptables, rules automatically created by fail2ban.
 
-`iptables -n -L`
+```bash
+iptables -n -L
+```
 
 
 #### Unbanning IP
 Let's say you got banned for stupid reason like I did. You can login with other IP or maybe use your phone, and then unban your IP. 
 
-```
+```bash
 fail2ban-client set <jailname> unbanip <IP_ADDRESS>
 
 # examples
@@ -156,7 +160,7 @@ Unlike traditional Linux permissions (owner/group + rwx), SELinux **does not dep
 > All access is **denied by default** until a rule specifically allows it.
 
 You can check this using command *ls -Z*.
-```
+```bash
 $ ls -lZ
 total 24
 dr-xr-xr-x.   1 root root system_u:object_r:mnt_t:s0            0 Jul 30  2025 afs
@@ -273,19 +277,19 @@ Scenario: VM Internal is compromised, attacker gains root access insite **VM Int
 #### Configuration
 
 To change SELinux mode. 
-```
+```bash
 # set to enforcing
 setenforce 1
 
 # set to permissive
 setenforce 0
-```
+```bash
 To fully disable SELinux edit */etc/selinux/config*, and set SELINUX to disabled. Permissive and Enforcing can also be set using this method. 
 ```
 # disabled, permissive, enforcing
 
 SELINUX=disabled
-```
+```bash
 To check for status
 
 `getenforce`
@@ -294,7 +298,7 @@ To check for status
 To understand (fully maybe? well this is my note for my dumb self) SELinux, let's enforce service like httpd. 
 
 Install and start service.
-```
+```bash
 $ dnf install httpd
 
 $ systemctl enable --now httpd
@@ -322,12 +326,12 @@ $ systemctl status httpd
 
 Default root documentn will be at `/var/www/html`. Let' create `index.html` and check the security context of the file.
 *index.html*
-```
+```html
 <html>
 <h3>My website</h3> <!--  -->
 <p>Look at me Mom I'm a DevOps.</p>
 ```
-```
+```bash
 $ ls -lZ /var/www/html/
 total 4
 -rw-r--r--. 1 root root unconfined_u:object_r:httpd_sys_content_t:s0 73 Feb  3 12:07 index.html
@@ -335,7 +339,7 @@ total 4
 The httpd_sys_content_t is the default allowed file type for the httpd process. If a file or directory has this file type in its SELinux security context, the httpd process can access it. 
 
 Now let's create a new html file, navigate to `/root` and create a `test.html`. Then move the file to document root `/var/www/html`. 
-```
+```bash
 $ cd /root
 $ cat /var/www/html/index.html > test.html
 $ cat test.html
@@ -349,7 +353,7 @@ total 8
 -rw-r--r--. 1 root root unconfined_u:object_r:admin_home_t:s0        73 Feb  3 12:28 test.html
 ```
 We can that the file keep its old label, type is still `admin_home_t`. If we curl the page we get:
-```
+```bash
 $ curl localhost/test.html
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html><head>
@@ -360,7 +364,7 @@ $ curl localhost/test.html
 </body></html>
 ```
 But if we copy the file, security context are updated to `httpd_sys_content_`. This can also easily fix with `restorecon` command. 
-```
+```bash
 $ restorecon -R /var/www/html
 $ ls -lZ
 total 8
@@ -369,14 +373,14 @@ total 8
 ```
 
 Now we change the custom root document of httpd, copy `/var/www/html` to `/srv/web`. Edit httpd config and change document root to `/srv/web`.
-```
+```bash
 $ mkdir -p /srv/web
 $ cp -r /var/www/html/ /srv/web
 $ vim /etc/httpd/conf/httpd.conf
 ```
 
 If we use restorecon in the new directory notice that no change would apply. 
-```
+```bash
 $ restorecon -R /srv/web/
 $ ls -lZ
 total 8
@@ -386,7 +390,7 @@ total 8
 
 To fix this issue, we need to update the SELinux database. The following command attaches the file type httpd_sys_content_t to the /srv/web directory. If command is missing, install `policycoreutils-python-utils` package.
 
-```
+```bash
 $ semanage fcontext -a -t httpd_sys_content_t "/srv/web(/.*)?"
 $ restorecon -Rv /srv/web
 $ ls -lZ
@@ -396,7 +400,7 @@ total 8
 ```
 
 Now to check we can curl the website. 
-```
+```bash
 $ curl localhost/test.html
 <html>
 <h3>My website</h3> <!--  -->
@@ -404,7 +408,7 @@ $ curl localhost/test.html
 ```
 
 We can also change the default port for httpd. Edit `/etc/httpd/conf/httpd.conf` and change listening port to `Listen 8080`. Check existing http port.
-```
+```bash
 $ semanage port -l | grep http
 http_cache_port_t              tcp      8080, 8118, 8123, 10001-10010
 http_cache_port_t              udp      3130
@@ -416,12 +420,12 @@ pegasus_https_port_t           tcp      5989
 
 Now we change the default port to 8080 and restart httpd service
 
-```
+```bash
 semanage port -m -t http_port_t -p tcp 8080
 systemctl restart httpd
 ```
 Verify.
-```
+```bash
 $ curl http://localhost:8080
 <html>
 <h3>My website</h3> <!--  -->

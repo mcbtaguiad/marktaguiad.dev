@@ -22,7 +22,7 @@ Obsidian setup using self-hosted CouchDB or Cloudflared R2 DB.
 This will be running on a local server and tunneled to pangolin proxy. If you are new to these, visit this [link](https://marktaguiad.dev/post/pangolin-docker/). I've setup its subdomain to *couchdb.yourdomain.com*, to access the admin page navigate to (*/_utils*) *https://ccouchdb.yourdomain.com/_utils/*.
 
 *compose.yaml*
-```
+```yaml
 version: '3.8'
 
 services:

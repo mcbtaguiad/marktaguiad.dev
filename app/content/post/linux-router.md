@@ -67,12 +67,14 @@ services:
 
 Run the container.
 
-`docker compose up -d`
+```bash
+docker compose up -d
+```
 
 Let assume your IP is 192.168.254.15. To check if the DNS server is running you can run this command. 
 
 Check from the server if port 53 is active
-```
+```bash
 $ netstat -tulp
 netstat -tulpn | grep 53
 (Not all processes could be identified, non-owned process info
@@ -82,7 +84,7 @@ tcp        0      0 192.168.254.15:53       0.0.0.0:*               LISTEN      
 ```
 
 Using dig or nslookup.
-```
+```bash
 $ dig @192.168.254.15 -p 53 google.com
 
 ; <<>> DiG 9.20.15-1~deb13u1-Debian <<>> @192.168.254.15 -p 53 google.com
@@ -122,7 +124,7 @@ Address: 2404:6800:4017:805::200e
 With dnsmasq configured as a forwarder DNS can be resolved to your local IP (let the IP set to 192.168.254.15), as a example let our upstream DNS server to be 8.8.8.8. 
 
 First we need to install dnsmasq and start service.
-```
+```bash
 apt install dnsmasq
 systemctl enable --now dnsmasq
 ```
@@ -152,7 +154,7 @@ dns=dnsmasq
 Also edit your config to point it to your local IP.
 
 Now let as configure dnsmasq.
-```
+```bash
 # /etc/dnsmasq.conf
 listen-address=127.0.0.1,192.168.254.15
 bind-interfaces
@@ -170,7 +172,7 @@ Look at the next section as dnsmasq can also be configured as  DHCP Server.
 Now let's assume we have two ethernet and we want our Linux server behave like a gateway, eth0 as WAN and eth1 as LAN. First make sure IP forwarding is enabled, most probably enabled if you are using docker.
 
 
-```
+```bash
 echo "net.ipv4.ip_forward=1" | sudo tee /etc/sysctl.d/99-router.conf
 sudo sysctl --system
 ```
@@ -178,7 +180,7 @@ sudo sysctl --system
 Set IP for ethernets using netplan, you can use other method. In here we let the server get WAN IP from the ISP, it can also be set to static. And the IP subnet propagated to the other ethernet is 192.168.10.0/24 as seen in the later section (IP range from 192.168.10.100 to .200).
 
 */etc/netplan/01-router.yaml*
-```
+```yaml
 network:
   version: 2
   renderer: networkd
@@ -194,12 +196,14 @@ network:
 ```
 Apply configuration. 
 
-`netplan apply`
+```bash
+netplan apply
+```
 
 Now we configure dnsmasq.
 
 */etc/dnsmasq.conf*
-```
+```conf
 # Serve ONLY the LAN
 interface=eth1
 bind-interfaces
@@ -223,7 +227,9 @@ bogus-priv
 
 Start dnsmasq service
 
-`systemctl enable --now dnsmasq`
+```bash
+systemctl enable --now dnsmasq
+```
 
 
 #### WAN/LAN and Hotspot
@@ -232,7 +238,7 @@ Unlike the previous example that has two ethernets, in here we assume we have on
 Like the previous config, we just change the interface to wlan0. 
 
 */etc/dnsmasq.conf*
-```
+```conf
 # Serve ONLY the LAN
 interface=wlan0
 bind-interfaces
@@ -256,17 +262,21 @@ bogus-priv
 
 Start dnsmasq.
 
-`systemctl enable --now dnsmasq`
+```bash
+systemctl enable --now dnsmasq
+```
 
 
 Install hotspod.
 
-`apt install hotspot`
+```bash
+apt install hotspot
+```
 
 Edit hotspotd configuration.
 
 */etc/hotspotd/hotspotd.conf*
-```
+```conf
 # Interface used for the hotspot
 interface=wlan0
 
@@ -298,4 +308,6 @@ wpa_passphrase=averysecurepassword
 
 Start hotspotd service.
 
-`systemctl enable --now hotspotd`
+```bash
+systemctl enable --now hotspotd
+```

@@ -51,7 +51,7 @@ nmcli connection up bridge-br0
 
 #### Using netplan
 */etc/netplan/01-netcfg.yaml*
-```
+```yaml
 network:
   version: 2
   renderer: networkd
@@ -75,7 +75,7 @@ network:
 
 Create libvirt network.
 *br0.xml*
-```
+```xml
 <network>
   <name>br0</name>
   <forward mode='bridge'/>
@@ -101,7 +101,7 @@ $ virsh net-list --all
 
 ### Cockpit
 Enable cockpit, this provide web UI to manage your server and VM.
-```
+```sh
 apt install cockpit cockpit-machines -y
 systemctl enable --now cockpit.socket
 ```
@@ -158,7 +158,7 @@ $
 
 ### Optional: Using Virt-Manager
 You can also explore virt-manager. This has a more classic GUI, unlike cockpit which is designed for multi-server and container management, this focus mainly on VM administration. 
-```
+```sh
 apt install virt-manager
 ```
 
@@ -174,7 +174,7 @@ Create the directory and files.
 Define the provider.
 
 *main.tf*
-```
+```tf
 terraform {
  required_version = ">= 0.13"
   required_providers {
@@ -195,7 +195,7 @@ If you're running `terraform` remotely. Change username and IP.
 
 
 *providers.tf*
-```
+```tf
 provider "libvirt" {
   #uri = "qemu:///system"
   uri = "qemu+ssh://root@192.168.254.48/system"
@@ -240,7 +240,7 @@ Under img_url_path; it is where the cloud-init image downloaded earlier.
 For vm_names, it is defined in array-meaning it will create VM depending on how many are defined in the array. In this example it will create **master** and **worker** VM.
 
 *variables.tf*
-```
+```tf
 variable "img_url_path" {
   default = "/home/User/Downloads/noble-server-cloudimg-amd64.img"
 }
@@ -261,7 +261,7 @@ variable "libvirt_disk_path" {
 For minimal setup, let set the user and password to `root` and `password123`.
 
 `cloud_init.cfg`
-```
+```cfg
 ssh_pwauth: True
 chpasswd:
   list: |
@@ -273,7 +273,7 @@ chpasswd:
 Also for network, it will just be using the default network and will get IP from dhcp. For other configuration check this [link1](https://registry.terraform.io/providers/dmacvicar/libvirt/latest/docs/resources/network), [link2](https://wiki.libvirt.org/VirtualNetworking.html#routed-mode-example). 
 
 `network_config.cfg`
-```
+```cfg
 version: 2
 ethernets:
   ens3:
@@ -287,7 +287,7 @@ Let's now create the VM.
 
 `main.tf`
 
-```
+```tf
 terraform {
  required_version = ">= 0.13"
   required_providers {
@@ -793,7 +793,7 @@ Apply complete! Resources: 5 added, 0 changed, 0 destroyed.
 ```
 
 #### Verify VM
-```
+```sh
 $ virsh list --all
  Id   Name          State
 ------------------------------

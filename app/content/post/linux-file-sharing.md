@@ -20,7 +20,7 @@ Network-based filesystem for Unix/Linux systems. This will allow you to share di
 
 #### NFS Server
 First we intall the package.
-```
+```sh
 # debian
 apt-get update sudo apt install nfs-kernel-server
 
@@ -29,12 +29,12 @@ dnf -y install nfs-utils apt-get install nfs-kernel-server
 ```
 
 Make a shared directory, some use the /mnt folder, but for this example we will be using /srv.
-```
+```sh
 mkdir /srv/nfs-server
 ```
 
 Set permission that any user on the client machine can access. 
-```
+```sh
 chown nobody:nogroup /srv/nfs-server
 chmod 777 chown nobody:nogroup /srv/nfs-server
 
@@ -55,19 +55,19 @@ Define access of NFS clients in the export file.
 ```
 
 Make it available to clients.
-```
+```sh
 exportfs -a
 ```
 
 Restart service.
-```
+```sh
 systemctl restart nfs-server
 ```
 
 
 #### NFS Clients
 In here we are to mount the NFS server created earlier. First we install the client package.
-```
+```sh
 # debian
 apt install nfs-common
 
@@ -76,12 +76,12 @@ dnf install nfs-utils
 ```
 
 Create a local directory to mount. Let's create it in /mnt/nfs, to temporary mount it. This will not persist after reboot.
-```
+```sh
 mount -t nfs 192.168.1.10:/srv/nfs-server /mnt/nfs
 ```
 
 To unmount.
-```
+```sh
 umount /mnt/nfs
 ```
 
@@ -133,7 +133,7 @@ Recommended production config.
 ```
 
 Restart client service.
-```
+```sh
 systemctl restart nfs-client.target
 ```
 
@@ -141,16 +141,16 @@ systemctl restart nfs-client.target
 Windows-compatible network file sharing.
 #### Samba Server
 Install package.
-```
+```sh
 apt install samba
 ```
 Create directory to share.
-```
+```sh
 mkdir /srv/smb
 ```
 To add directory to share edit samba config.
 */etc/samba/smb.conf*
-```
+```conf
 [sambashare]
     comment = Samba on Ubuntu
     path = /home/username/sambashare
@@ -159,11 +159,11 @@ To add directory to share edit samba config.
 ```
 
 Restart samba service.
-```
+```sh
 systemctl restart samba
 ```
 Set up a Samba password for our user account.
-```
+```sh
 $ smbpasswd -a  sambauser
 
 New SMB password:
@@ -173,7 +173,7 @@ Added user sambauser.
 
 #### Samba Client
 Install client package.
-```
+```sh
 apt install cifs-utils
 ```
 
@@ -185,7 +185,7 @@ Then add this to fstab.
 ```
 
 Reload and restart service.
-```
+```sh
 systemctl daemon-reload
 systemctl restart samba
 ```
@@ -202,24 +202,24 @@ Encrypted file transfer over SSH.
 
 #### SFTP Server
 Install package, this is already pre-installed with most of the distros.
-```
+```sh
 apt install openssh-server
 ```
 
 Create SFTP group and user. For this example, user and group will be sftp_user and sftp_group.
-```
+```sh
 groupadd sftp_group
 useradd -m -g sftp_group -s /sbin/nologin sftp_user
 passwd sftp_user
 ```
 
 Create shared directory, and set permissions.
-```
+```sh
 mkdir -p /srv/sftp/sftp_user/upload
 ```
 
 Fix permissions (no group/other write), and make upload writable by the user
-```
+```sh
 sudo chmod 755 /srv
 sudo chmod 755 /srv/sftp
 sudo chmod 755 /srv/sftp/sftp_user
@@ -258,12 +258,12 @@ sftp_user@192.168.254.11:/srv/sftp/sftp_user /mnt fuse.sshfs defaults,_netdev,us
 ```
 
 If you haven't copied your public key to the server, use this command.
-```
+```sh
 ssh-copy-id sftp_user@192.168.254.11
 ```
 
 Mount.
-```
+```sh
 mount -a
 ```
 
@@ -323,7 +323,7 @@ rsync -avzHP archive.tar.gz root@backup_host
 There are many ways to selfhost your own s3, some example are cephfs, minIO, seewedfs etc. But here we will just be mounting s3 bucket to our linux server or pc. You can start with creating a free account in AWS to create a free s3 bucket. Assuming you have already created a bucket, you now have a bucket name, uri, access_key and secret_access_key. Now to mount it in your system. 
 
 Install s3fs-fuse.
-```
+```sh
 apt install s3fs
 ```
 Create a directory to mount s3 bucket.
@@ -332,7 +332,7 @@ Create a directory to mount s3 bucket.
 
 To temporary mount it. Create credentials in /etc/s3-credential and set permission.
 
-```
+```sh
 echo ACCESS_KEY:SECRET_ACCESS_KEY > /etc/s3-credential
 
 chmod 600 /etc/s3-credential
@@ -372,4 +372,6 @@ Enable *allow_other*.
 user_allow_other
 ```
 
-`mount -a`
+```bash
+mount -a
+```

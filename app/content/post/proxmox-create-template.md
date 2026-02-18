@@ -21,7 +21,7 @@ What set apart a cloud-init image vs. a fully pledge image, basically it is a cl
 ### Download the base image
 On this part you can change the image to your desired distro, but for this lab we'll be using Debian latest base image - [https://cloud.debian.org/images/cloud/](https://cloud.debian.org/images/cloud/). 
 
-```
+```bash
 wget https://cloud.debian.org/images/cloud/bookworm/20240717-1811/debian-12-generic-amd64-20240717-1811.qcow2
 ```
 
@@ -29,12 +29,12 @@ wget https://cloud.debian.org/images/cloud/bookworm/20240717-1811/debian-12-gene
 Debian cloud-init images doesn't include qemu-guest-agent by default. To enable it we need virt-customize tool.
 
 Install package
-```
+```bash
 apt install libguestfs-tools -y
 ```
 
 Then install qemu-guest-agent to the image.
-```
+```bash
 virt-customize -a debian-12-generic-amd64-20240717-1811.qcow2 --install qemu-guest-agent
 ```
 
@@ -44,29 +44,29 @@ virt-customize -a debian-12-generic-amd64-20240717-1811.qcow2 --install qemu-gue
 > Value here can be changed, take note on the VM name as it will be used in part 2.
 
 Create a VM with VMID=1002, VM name with "debian-20240717-cloudinit-template", with basic resources (2 core, 2048Mi ram), with a virtio adapter network.
-```
+```bash
 qm create 1002 --name "debian-20240717-cloudinit-template" --memory 2048 --cores 2 --net0 virtio,bridge=vmbr0
 ```
 
 Import the image to storage (storage pool will depends on you setup) and setting disk 0 to use the image.
-```
+```bash
 qm importdisk 1002 debian-12-generic-amd64-20240717-1811.qcow2 tags-nvme-thin-pool1
 qm set 1002 --scsihw virtio-scsi-pci --scsi0 tags-nvme-thin-pool1:vm-1002-disk-0
 ```
 
 Set boot to disk and mounting cloudinit to ide1.
-```
+```bash
 qm set 1002 --boot c --bootdisk scsi0
 qm set 1002 --ide1 tags-nvme-thin-pool1:cloudinit
 ```
 
 Set tty to serial0.
-```
+```bash
 qm set 1002 --serial0 socket --vga serial0
 ```
 
 Enable qemu-guest-agent.
-```
+```bash
 qm set 1002 --agent enabled=1
 ```
 
@@ -75,7 +75,7 @@ qm set 1002 --agent enabled=1
 There are two ways to covert it to template. 
 
 Option 1: Using the terminal
-```
+```bash
 qm template 1002
 ```
 
@@ -85,7 +85,7 @@ Navigate to Proxmox gui, notice that VM 1002 is listed in the VM list. Click on 
 At this point you can proceed to Part 2. 
 
 To unconvert to template, navigate to dir `/etc/pve/qemu-server`. Set template equals to 0.
-```
+```bash
 vim /etc/pve/qemu-server/1001.conf
 
 agent: enabled=1
@@ -108,23 +108,23 @@ vmgenid: 53e2d08a-c57f-4539-abf9-6863e2635ded
 
 ### Optional Starting the VM
 Let first add ssh public key, most cloud-init image has disabled user/password login. 
-```
+```bash
 qm set 1002 --sshkey ~/.ssh/id_rsa.pub
 ```
 Set network for the VM. 
-```
+```bash
 qm set 1002 --ipconfig0 ip=192.168.254.102/24,gw=192.168.254.254
 ```
 To start the VM.
-```
+```bash
 qm start 1002
 ```
 To stop the VM.
-```
+```bash
 qm stop 1002
-```
+```bash
 To destroy the VM.
-```
+```bash
 qm destroy 1002
 ```
 

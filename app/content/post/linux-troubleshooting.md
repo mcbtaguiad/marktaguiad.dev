@@ -16,7 +16,7 @@ UseHugoToc: true
 ### CPU and Processes
 
 #### Understanding top command
-```
+```bash
 $ top
 
 top - 18:47:04 up 22:45,  2 users,  load average: 0.46, 0.74, 0.85
@@ -29,7 +29,7 @@ MiB Swap:  20479.5 total,  20479.4 free,      0.1 used.  36739.6 avail Mem
   22671 mcbtagu+  14  -6   12.2g 968172 437988 S  47.2   2.0 171:20.29 firefox-bin
 ```
 ##### Header line (system status)
-```
+```bash
 top - 18:47:04 up 22:45,  2 users,  load average: 0.46, 0.74, 0.85
 ```
 - **18:47:04** - current time
@@ -111,7 +111,7 @@ PID     USER     PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+  COMMAND
 |  `q`  | quit | 
 
 #### Process States
-```
+```bash
 ps -eo pid,stat,comm | head
 PID STAT COMMAND
 1 Ss   systemd
@@ -147,7 +147,7 @@ PID STAT COMMAND
 
 #### Top CPU User
 ##### Status
-```
+```bash
 ps aux --sort=-%cpu | head
 
 ps aux --sort=-%cpu | head
@@ -158,7 +158,7 @@ mcbtagu+    3742  8.6  0.5 1755524 286288 tty1   S<l+ Feb04 132:35 cosmic-comp
 If one process is always on top - investigate it. 
 
 Also on a multi-core system, always check if one CPU is at high utilization or 100%. App may be single-threaded. To check you can use other top command, or using `top` press 1. This will display per CPU load. 
-```
+```bash
 top - 21:45:59 up 11 days, 10:13,  2 users,  load average: 0.34, 0.35, 0.32
 Tasks: 173 total,   2 running, 171 sleeping,   0 stopped,   0 zombie
 %Cpu0  :  7.1 us,  5.1 sy,  0.0 ni, 86.9 id,  0.0 wa,  0.0 hi,  1.0 si,  0.0 st
@@ -168,7 +168,7 @@ MiB Swap:   3792.0 total,   3058.0 free,    734.0 used.   2101.7 avail Mem
 ```
 ##### Multi-threaded
 To check if an application is multi-threaded. 
-```
+```bash
 ps -eLf
 
 root     4047471 4047447 4047471  0   10 Feb04 ?        00:00:06 /beszel serve --http=0.0.0.0:8090
@@ -179,8 +179,7 @@ root     4047471 4047447 4047627  0   10 Feb04 ?        00:00:07 /beszel serve -
 ```
 #### PIDSTAT
 Another tool to check cpu and process, it is a monitoring tool for individual task. 
-
-```
+```bash
 pidstat
 
 Average:        USER       PID    %usr %system  %guest   %wait    %CPU   CPU  Command
@@ -196,7 +195,7 @@ Average:        root      1049    2.00    0.67    0.00    0.00    2.66     -  do
 - **%CPU** – The total CPU usage of the process. Calculated roughly as %usr + %system + %guest + %wait.
 
 To show the **I/O** statiscics.
-```
+```bash
 pidstat -d
 
 10:30:14 PM   UID       PID   kB_rd/s   kB_wr/s kB_ccwr/s iodelay  Command
@@ -213,7 +212,7 @@ pidstat -d
 - **Command (systemd)** – The process name.
 
 Other useful command.
-```
+```bash
 # show specific application
 pidstat -C <application_name>
 pidstat -p <PID>
@@ -222,7 +221,7 @@ pidstat -p <PID>
 #### CPU & I/O
 Other common killing the performance is I/O (input), this could stretch from disk to network. A common tool to check is using `vmstat.
 ##### vmstat
-```
+```bash
 vmstat
 
 procs -----------memory---------- ---swap-- -----io---- -system-- -------cpu-------
@@ -256,7 +255,7 @@ procs -----------memory---------- ---swap-- -----io---- -system-- -------cpu----
 
 #### Disk level I/O
 ##### iostat
-```
+```bash
 iostat -xz
 Linux 6.17.9-76061709-generic (tags-p51) 	02/06/2026 	_x86_64_	(8 CPU)
 
@@ -272,7 +271,7 @@ zram0            0.00      0.01     0.00   0.00    0.02    20.34    0.00      0.
 ```
 
 Critical iostat columns.
-```
+```bash
 Device  r/s  w/s  rkB/s  wkB/s  await  svctm  %util
 ```
 - %iowait - CPU time is spent waiting on disks.
@@ -284,7 +283,7 @@ Device  r/s  w/s  rkB/s  wkB/s  await  svctm  %util
 
 #### Identify Processes Stuck in I/O
 In top look for state in *D*, or run this command.
-```
+```bash
 ps aux | awk '$8 ~ /D/ {print}'
 ```
 
@@ -292,22 +291,22 @@ ps aux | awk '$8 ~ /D/ {print}'
 When a process is starving others, or background jobs steal CPU - its a good practiace to lower the priority of the application. 
 ##### Status
 To check priority.
-```
+```bash
 ps -o pid,ni,comm -p PID
 ```
 ##### Lower priority.
-```
+```bash
 renice 10 -p PID
 ```
 ##### Raise priority
-```
+```bash
 renice -5 -p PID
 ```
 #### Zombie Processes
 Zombie process is a child process that has completed its excution and terminated but still has entry in the system's process table. 
 
 Find zombies and parent process
-```
+```bash
 ps aux | grep Z
 ps -o ppid= -p ZOMBIE_PID
 ```
@@ -316,13 +315,13 @@ You fix the parent process and not the zombie process.
 #### Killing a running application
 
 ##### Kill by application name
-```
+```bash
 pkill firefox
 kill firefox
 killall firefox
 ```
 ##### Terminate the process using its PID
-```
+```bash
 pgrep firefox
 22671
 # or
@@ -334,7 +333,7 @@ kill 22671
 killall 22671
 ```
 ##### Forceful Termination
-```
+```bash
 pkill -9 22671
 kill -9 22671
 killall -9 22671
@@ -345,13 +344,13 @@ killall -9 firefox
 
 
 ##### Kill all application run by user
-```
+```bash
 ps -o pid,pgid,sess,cmd -U your_username
 kill -SIGTERM -- -<PGID>
 ```
 
 ##### Kill process tree. 
-```
+```bash
 # get pgid
 ps -ejf | grep <application_name>
 # or
@@ -364,7 +363,7 @@ kill -SIGTERM -- -<PGID>
 ### Memory
 #### Usage
 Checking memory usage with `free`, `vmstat`, and `/proc/meminfo`.
-```
+```bash
 free
                total        used        free      shared  buff/cache   available
 Mem:        49112048    16058028    25626304      285292    11305296    33054020
@@ -439,14 +438,14 @@ Finding memory hogs. First you can you use `top` or `htop`, with `top` press *M*
 
 ##### smem
 `smem` provide the real memory usage compare to `top`. 
-```
+```bash
 smem
 
   PID User     Command                         Swap      USS      PSS      RSS 
 37901 user     /usr/lib/speech-dispatcher-        0      220      241     2832 
  4142 user     dbus-broker --log 4 --contr        0      228      315     2844 
 ```
-```
+```bash
 # Sort by unique memory usage
 smem -s uss
 
@@ -465,7 +464,7 @@ smem -k
 - **RSS (Resident Set Size)** - Total physical memory used by the process, includes shared memory. This is what top and ps mostly show. 
 
 If the system is slow or **OOMing**, monitor **RSS**. Some useful command to monitor PID memory.
-```
+```bash
 ps -eo pid,comm,rss,vsz --sort=-rss | head
 # watch
 watch -n 1 'ps -o pid,comm,rss,vsz -p <PID>'
@@ -477,7 +476,7 @@ If an application is hogging the system, then you might need to run specific too
 First indication is memory hogs, as mentioned above you can check with `top`. You can also check using `journalctl`, look for "out of memory". Another option is using `dmesg` and grep for **oom**, if OOM killer is fired then an application is killed due to memory pressure. 
 
 Look for the process name, oom_score and cgroup(container). 
-```
+```bash
 dmesg -T | grep -i oom
 journalctl -k | grep -i "out of memory"
 ```
@@ -486,11 +485,11 @@ journalctl -k | grep -i "out of memory"
 This is the primary metric to determine which process has the highes priority to be killed when the system is under RAM pressure.  Range from negative to 1000 as highest, negative is most likely not to be killed. It is also a good indication that the application has merory leak if it gets OOM Kill frequently. Fix the leak and adjust the OOM Score. 
  
 View OOM Score.
-```
+```bash
 cat /proc/[PID]/oom_score
 ```
 To make sure your application is not killed (production environment), you can adjust the OOM score. To temporary adjust the score:
-```
+```bash
 echo 'New_Score' | sudo tee /proc/[PID]/oom_score_adj
 ```
 To make it persistent, create a **service** for your application and add **OOMScoreAdjust**. 
@@ -503,7 +502,7 @@ Like mentioned in CPU section, `vmstat` can be used to check pressure on swap.
 - **so (swap out)** - KB/s swapped from RAM to disk. Any sustained non-zero values → severe memory pressure. 
 
 Find PID hogging the swap. 
-```
+```bash
 grep VmSwap /proc/*/status | sort -k2 -n | tail
 
 /proc/722/status:VmSwap:	   14160 kB
@@ -521,21 +520,21 @@ grep VmSwap /proc/*/status | sort -k2 -n | tail
 
 #### Status
 Check what’s full.
-```
+```bash
 df -h
 ```
 Find space hogs.
-```
+```bash
 du -h --max-depth=1 / | sort -hr
 du -h --max-depth=1 /var | sort -hr
 ```
 Find the offender big file.
-```
+```bash
 du -sh * | sort -rh | head -n 10
 ```
 #### Disk I/O slowness / system freezing
 Check real-time disk usage.
-```
+```bash
 iotop
 ```
 Using `iostat`. Please check [iostat](#iostat). Loof for:
@@ -543,14 +542,14 @@ Using `iostat`. Please check [iostat](#iostat). Loof for:
 - Long await times
 
 To find the offending PID, monitor *iodelay*. 
-```
+```bash
 pidstat -d
 ```
 
 #### Disk health
 ##### smartctl
 SMART status.
-```
+```bash
 smartctl -x -a /dev/sdX
 ```
 Here are the factors to looked at when performing smartctl scan. Always look for error in the smartctl report. 
@@ -575,7 +574,7 @@ In some cases your disk might not be broken, just file system inconsistensies or
 If the device is unmounted but throws an error message like the example below. In most cases, I always use a recovery drive or boot to recovery mode to scan device that is mounted to boot/root/recovery, there are some method which you temporary mount it to a directory, but we will not cover that. 
 
 In my case the device is mounted in `/srv/ssd`. 
-```
+```bash
 # Check disk mounts or just use df -h
 lsblk -f
 NAME          FSTYPE FSVER LABEL     UUID                                 FSAVAIL FSUSE% MOUNTPOINTS
@@ -616,7 +615,7 @@ Device     Start       End   Sectors   Size Type
 ```
 
 Run fsck and try to fix errors. 
-```
+```bash
 fsck -fy /dev/sdb1
 fsck from util-linux 2.39.3
 e2fsck 1.47.0 (5-Feb-2023)
@@ -641,15 +640,15 @@ data: 6355/7331840 files (0.3% non-contiguous), 1509141/29304832 blocks
 TRIM is used to optmized and increate longetivity of SSD by discarding the data blocks that no longer in use in the drive. 
 
 This is automatically started in the system, just to make sure check if the service is runing. 
-```
+```bash
 systemctl status fstrim.timer
 ```
 In mounting disk in `/etc/fstab`, make sure to add *discard* in the option to automatically trimmed. 
-```
+```bash
 UUID="289429cd-429f-43b2-b6c6-f5455c6dda6c"   /srv/ssd   ext4  defaults,noatime,discard  0  2
 ```
 Manually run TRIM.
-```
+```bash
 fstrim -av
 ```
 #### Logs
@@ -657,7 +656,7 @@ fstrim -av
 ##### logrotate
 This is automatically enabled on your system, this basically archived and eventually delete your old logs.
 */etc/logrotate.conf*
-```
+```conf
 # see "man logrotate" for details
 # global options do not affect preceding include directives
 # rotate log files weekly
@@ -693,19 +692,19 @@ cat /etc/logrotate.d/maddy
 Usually `journald` hogs disk space if left to default configuration.  
 
 Reduce to a specific size (e.g., 500MB):
-```
+```bash
 journalctl --vacuum-size=100M
 ```
-```
+```bash
 sudo journalctl --vacuum-time=2weeks
 ```
 Check current disk usage:
-```
+```bash
 journalctl --disk-usage
 ```
 Configure permanent limit.
 *etc/systemd/journald.conf*
-```
+```conf
 [Journal]
 SystemMaxUse=200M
 ```
@@ -713,7 +712,7 @@ SystemMaxUse=200M
 
 ##### image/builder/volume
 Docker eating up your disk, to get an overview on you docker system. You can see below that the build cache is filling up the disk. 
-```
+```bash
 docker system df
 TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
 Images          7         6         7.491GB   7.242GB (96%)
@@ -722,18 +721,18 @@ Local Volumes   0         0         0B        0B
 Build Cache     47        0         4.213GB   1.332GB
 ```
 Some command to prune docker resources. Most of the time this would be enough to free up some space.
-```
+```bash
 docker builder prune
 docker image prune
 ```
 If you are brave enough (to do this in production).
-```
+```bash
 docker system prune -a
 docker system prune -a --volumes
 ```
 ##### logs
 Find space used by container logs.
-```
+```bash
 docker ps --format '{{.Names}}' | while read c; do
   echo "$c: $(docker logs --tail 1 $c 2>&1 | wc -c) bytes";
 done
@@ -755,7 +754,7 @@ dockge: 84 bytes
 Limting the logs file in container. Editing docker daemon/config.
 
 */etc/docker/daemon.json*
-```
+```json
 {
   "log-driver": "json-file",
   "log-opts": {
@@ -766,7 +765,7 @@ Limting the logs file in container. Editing docker daemon/config.
 ```
 
 Defining in compose file.
-```
+```yaml
 services:
   app:
     logging:
@@ -779,16 +778,16 @@ services:
 ### Docker
 #### Container overloading the system
 For some reason you deployed an application more than your server can handle. First try to kill the container.
-```
+```bash
 docker stop <container_name>
 docker rm <container_name>
-```
+```bash
 If stop command is not doing anything, try to force remove the container. 
-```
+```bash
 docker rm -f <container_name>
 ``` 
 If all else fail, stop docker and containerd service. 
-```
+```bash
 systemctl restart containerd
 systemctl restart docker
 
@@ -803,12 +802,12 @@ pkill -9 containerd-shim
 pkill -9 runc
 ```
 If the container is still not being killed. Find the unkillable PID state.
-```
+```bash
 ps -eo pid,stat,cmd | grep D
 kill -9 <PID>
 ```
 Monitor system load and restart service.
-```
+```bash
 systemctl restart containerd
 systemctl restart docker
 ```

@@ -28,7 +28,7 @@ Navigate to your [dashboard](https://dash.cloudflare.com/), click on Zero Trust 
 `docker network create cloudflared-proxy`
 
 *compose.yml*
-```
+```yaml
 services:
   cloudflared:
     image: cloudflare/cloudflared:latest
@@ -93,7 +93,7 @@ Now you can ssh to your server using Cloudflare tunnel.
 
 *Optional: If you haven't created or generated your ssh keys and config*
 
-```
+```sh
 ssh-keygen -t rsa -b 4096
 touch ~/.ssh/config
 ```
