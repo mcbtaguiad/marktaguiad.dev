@@ -7,19 +7,6 @@
   const toggleBtn = document.getElementById('theme-toggle');
   const icon = document.getElementById('theme-icon');
 
-  // --------------------------
-  // Apply theme to page + icon + Giscus
-  // --------------------------
-  function applyTheme(theme) {
-    const isDark = theme === DARK;
-
-    html.classList.toggle('theme-dark', isDark);
-    html.classList.toggle('theme-light', !isDark);
-
-    localStorage.setItem(STORAGE_KEY, theme);
-    updateIcon(isDark);
-    setGiscusTheme(isDark ? 'dark' : 'light');
-  }
 
   // --------------------------
   // Update FA moon icon
@@ -39,24 +26,41 @@
   // --------------------------
   // Update Giscus theme
   // --------------------------
-  function setGiscusTheme(theme, attempts = 0) {
+  function setGiscusTheme(theme) {
     const iframe = document.querySelector('iframe.giscus-frame');
-
-    if (!iframe && attempts < 20) {
-      // retry until iframe exists (max 2s)
-      setTimeout(() => setGiscusTheme(theme, attempts + 1), 100);
-      return;
+    if (iframe) {
+      iframe.contentWindow.postMessage(
+        { giscus: { setConfig: { theme } } },
+        'https://giscus.app'
+      );
+    } else {
+      // Wait until iframe is added to the DOM
+      const observer = new MutationObserver((mutations, obs) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (iframe) {
+          iframe.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            'https://giscus.app'
+          );
+          obs.disconnect(); // stop observing
+        }
+      });
+      observer.observe(document.body, { childList: true, subtree: true });
     }
-
-    if (!iframe) return; // give up if not found
-
-    iframe.contentWindow.postMessage(
-      {
-        giscus: { setConfig: { theme } }
-      },
-      'https://giscus.app'
-    );
   }
+
+  // --------------------------
+  // Apply theme to page + icon + Giscus
+  // --------------------------
+  function applyTheme(theme) {
+    const isDark = theme === DARK;
+    html.classList.toggle('theme-dark', isDark);
+    html.classList.toggle('theme-light', !isDark);
+    localStorage.setItem(STORAGE_KEY, theme);
+    updateIcon(isDark);
+    setGiscusTheme(isDark ? 'dark' : 'light'); // now safe
+  }
+
 
   // --------------------------
   // Toggle between light/dark
@@ -70,8 +74,10 @@
   // Initial load
   // --------------------------
   document.addEventListener('DOMContentLoaded', () => {
-    const saved = localStorage.getItem(STORAGE_KEY) || LIGHT;
-    applyTheme(saved);
+    // check saved theme or current HTML class
+    const saved = localStorage.getItem(STORAGE_KEY);
+    const theme = saved || (html.classList.contains('theme-dark') ? DARK : LIGHT);
+    applyTheme(theme);
   });
 
   // --------------------------
@@ -80,7 +86,7 @@
   if (toggleBtn) {
     toggleBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      e.stopPropagation(); // prevent parent link navigation
+      e.stopPropagation();
       toggleTheme();
     });
   }

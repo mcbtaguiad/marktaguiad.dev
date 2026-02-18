@@ -62,6 +62,17 @@
 </head>
   
 <script>
-  const t = localStorage.getItem("theme");
-  if (t) document.documentElement.classList.add(t);
+  (function() {
+    const DARK = 'dark';
+    const LIGHT = 'light';
+    const STORAGE_KEY = 'theme';
+    const html = document.documentElement;
+
+    // get saved theme from localStorage, else OS preference
+    const saved = localStorage.getItem(STORAGE_KEY);
+    const theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? DARK : LIGHT);
+
+    // set HTML class immediately to prevent flash
+    html.classList.add(theme === DARK ? 'theme-dark' : 'theme-light');
+  })();
 </script>
