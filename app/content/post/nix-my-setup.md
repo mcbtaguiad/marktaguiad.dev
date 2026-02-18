@@ -221,7 +221,7 @@ Add in hardware configuration.
     };
 ```
 To update **/etc/fstab** rebuild nixOS. 
-```
+```bash
 sudo nixos-rebuild switch
 ```
 

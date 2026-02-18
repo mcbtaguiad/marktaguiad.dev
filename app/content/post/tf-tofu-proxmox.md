@@ -24,7 +24,7 @@ For this lab you can subtitute opentofu `tofu` command with terraform `tf`.
 ### Install Opentofu
 You can check this [link](https://opentofu.org/docs/intro/install/) to install base on your distro. 
 But for this lab, we'll be using Ubuntu. 
-```
+```bash
 # Download the installer script:
 curl --proto '=https' --tlsv1.2 -fsSL https://get.opentofu.org/install-opentofu.sh -o install-opentofu.sh
 # Alternatively: wget --secure-protocol=TLSv1_2 --https-only https://get.opentofu.org/install-opentofu.sh -O install-opentofu.sh
@@ -47,8 +47,9 @@ Navigate to Datacenter > API Tokens > Permission > Add role 'PVEVMAdmin'.
 <!-- ![tofu](http://chevereto.marktaguiad.dev/images/2024/08/31/tofu3.png) -->
 
 ### Generate Proxmox API key
-> **Note:**
-> For unsecure method you can also use user/password.
+{{< warning >}}
+For unsecure method you can also use user/password.
+{{< /warning >}}
 
 Navigate to Datacenter > API Tokens > Add. Input Token ID of your choice, make sure to untick 'Privilege Separation'
 [![imagen](/images/prox-tofu/tofu1.png)](/images/prox-tofu/tofu1.png)
@@ -62,14 +63,14 @@ Make sure to note the generated key since it will only be displayed once.
 ### Opentofu init
 Opentofu has three stages; `init`, `plan`, `apply`. Let as first describe init phase. 
 Create the project/lab directory and files.
-```
+```bash
 mkdir tofu && cd tofu
 touch main.tf providers.tf terraform.tfvars variables.tf
 ```
 Define the provider, in our case it will be from Telmate/proxmox. 
 
 *main.tf*
-```
+```tf
 terraform {
     required_providers {
         proxmox = {
@@ -82,7 +83,7 @@ terraform {
 Now we can define the api credentials.
 
 *providers.tf*
-```
+```tf
 provider "proxmox" {
     pm_api_url = var.pm_api_url
     pm_api_token_id = var.pm_api_token_id
@@ -96,7 +97,7 @@ To make it more secure, variable are set in a different file (terraform.tfvars, 
 Define the variables. 
 
 *variables.tf*
-```
+```tf
 variable "ssh_key" {
   default = "ssh"
 }
@@ -132,7 +133,7 @@ pm_api_token_secret = "apikeygenerated"
 ```
 
 Save the files and initialize Opentofu. If all goes well, the provider will be installed and Opentofu has been initialized. 
-```
+```bash
 [mcbtaguiad@tags-t470 tofu]$ tofu init
 
 Initializing the backend...
@@ -163,7 +164,7 @@ commands will detect it and remind you to do so if necessary.
 Let's now create our VM. We will be using the template created in [part 1](/post/proxmox-create-template).
 
 *main.tf*
-```
+```tf
 terraform {
     required_providers {
         proxmox = {
@@ -241,7 +242,7 @@ resource "proxmox_vm_qemu" "test-vm" {
 ```
 
 Save the file and we can run Opentofu plan command. 
-```
+```bash
 [mcbtaguiad@tags-t470 tofu]$ tofu plan
 
 OpenTofu used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
@@ -389,7 +390,7 @@ Note: You didn't use the -out option to save this plan, so OpenTofu can't guaran
 ### Opentofu apply
 After plan command (review the output summary of tofu plan), we can now create the VM. Since we declared the count as 1 it will create 1 VM. 
 Depending on the hardwarde on your cluster, it would take usually around 1 to 2 minutes to provision 1 VM. 
-```
+```bash
 [mcbtaguiad@tags-t470 tofu]$ tofu apply
 
 OpenTofu used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
@@ -543,7 +544,7 @@ If all goes well, you'll see at Proxmox GUI the created VM.
 
 ### Opentofu destroy
 To delete the VM, run the destroy command.
-```
+```bash
 [mcbtaguiad@tags-t470 tofu]$ tofu destroy
 proxmox_vm_qemu.test-vm[0]: Refreshing state... [id=tags-p51/qemu/101]
 
@@ -718,7 +719,7 @@ To remote backup state files, you can look futher for available providers [here]
 For this example, we'll be using a kubernetes cluster. The state file will be saved as a secret in the kubernetes cluster.
 
 Configure *main.tf* and add 'terraform_remote_state'.
-```
+```tf
 data "terraform_remote_state" "k8s-remote-backup" {
     backend = "kubernetes"
     config = {
@@ -733,7 +734,7 @@ data "terraform_remote_state" "k8s-remote-backup" {
 Add additional variables.
 
 *variables.tf*
-```
+```tf
 variable "k8s_config_path" {
     default = "/etc/kubernetes/admin.yaml"
 }
@@ -749,7 +750,7 @@ k8s_namespace_state = "opentofu-state"
 ```
 
 After `apply` phase, `tofu state` is always triggered and tf state file is automatically created in kubernetes secrets.
-```
+```bash
 [mcbtaguiad@tags-t470 tofu]$ kubectl get secret -n opentofu-state
 NAME                             TYPE     DATA   AGE
 tfstate-default-state            Opaque   1      3d

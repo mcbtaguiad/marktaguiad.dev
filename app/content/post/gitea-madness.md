@@ -9,9 +9,6 @@ TocOpen: false
 UseHugoToc: true
 
 ---
-
-
-
 This was my previous setup when I decided to host my own git repository, registry and pipelines. Trust me (talking to my future self) stick to github, maybe when you can afford a much powerful server. 
 
 
@@ -24,7 +21,7 @@ This was my previous setup when I decided to host my own git repository, registr
 Basic docker compose setup, run, initialized and forget. I've set the network to pangolin as we need to proxy the SSH port to another unpriviledge port in the Pangolin node. 
 
 *compose.yaml*
-```
+```yaml
 services:
   server:
     image: docker.gitea.com/gitea:1.25.3
@@ -54,7 +51,7 @@ networks:
 We'll be using unofficial image as we need the runner to be working as a DIND (Docker-in-Docker). The token are generated in the runner setting, make sure to check that. And since Gitea is terminated with TLS in the proxy server, set the GITEA_INSTANCE_URL to the secure endpoint. If for some reason this will be local gitea server or for internal only, look elsewhere - that's a lot of time wasted generating certificates and renewal. 
 
 *compose.yaml*
-```
+```yaml
 services:
   runner:
     image: docker.io/gitea/act_runner:nightly
@@ -81,7 +78,7 @@ Navigate to Pangolin and create new resources. Select type as *Raw TCP/UDP Resou
 Edit pangolin compose.yaml and add port 2222. 
 
 *compose.yaml*
-```
+```yaml
 gerbil:
     image: docker.io/fosrl/gerbil:1.3.0
     container_name: gerbil
@@ -114,7 +111,7 @@ tcp-2222:
 ```
 
 *config/traefik/traefik_config.yml*
-```
+```yaml
 api:
   insecure: true
   dashboard: true
@@ -192,7 +189,7 @@ Host gitea.yourserver.com
 Mirror your github repo to your gitea instance.
 
 *compose.yaml*
-```
+```yaml
 services:
   gitea-mirror:
     image: ghcr.io/raylabshq/gitea-mirror:latest

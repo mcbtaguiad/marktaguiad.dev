@@ -41,7 +41,7 @@ yourdomain.com   A   Auto    YourPublicIP
 ### VPS Setup
 Before the installation, make sure no application is using port 80 and 443. You can check using `netstat -tulpn'.
 
-```
+```bash
 root@engago:~# netstat -tulpn | grep 443
 tcp        0      0 0.0.0.0:443             0.0.0.0:*               LISTEN      3314824/docker-prox
 tcp6       0      0 :::443                  :::*                    LISTEN      3314829/docker-prox
@@ -54,15 +54,17 @@ tcp6       0      0 :::80                   :::*                    LISTEN      
 
 Download the installer. 
 
-```
+```bash
 curl -fsSL https://static.pangolin.net/get-installer.sh | bash
 
 ```
 
 Execute the installer with root privileges:
-`sudo ./installer`
-
+```bash
+sudo ./installer
 ```
+
+```bash
 Welcome to the Pangolin installer!
 This installer will help you set up Pangolin on your server.
 
@@ -114,7 +116,7 @@ net.ipv4.ip_unprivileged_port_start = 80
 
 
 This will create three docker container. 
-```
+```bash
 docker ps
 
 CONTAINER ID   IMAGE                                          COMMAND                  CREATED        STATUS                PORTS 
@@ -137,12 +139,14 @@ Now we need to add this server to using pangoling client Newt. Navigate to your 
 
 Create a docker network.
 
-`docker network create pangolin-proxy`
+```bash
+docker network create pangolin-proxy
+```
 
 Now create the compose file for Newt container, add docker network. 
 
 *compose.yml*
-```
+```yaml
 services:
   newt:
     image: fosrl/newt
@@ -162,7 +166,7 @@ networks:
 
 Run the container. Now everytime you are running an application that you want to expose or tunnel to the pangolin proxy, make sure to add the network section. Check the example applicatin below. 
 
-```
+```yaml
 services:
   jellyfin:
     image: jellyfin/jellyfin

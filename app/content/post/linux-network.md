@@ -16,7 +16,7 @@ UseHugoToc: true
 
 ### Show network
 To view your current network interface.
-```
+```bash
 $ ip addr show
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -42,7 +42,7 @@ ip addr show eth0
 ```
 
 To see statistic of packet transmission and errors with each interface.
-```
+```bash
 $ ip -s addr show
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -88,7 +88,7 @@ If your setup is for desktop or PC stick with DHCP, it will automatically get co
 
 #### Native
 If no service installed to handle network.
-```
+```bash
 ip addr add 192.168.254.168/24 dev eth0
 ip route add default via 192.168.254.254
 
@@ -116,7 +116,7 @@ ip route del default via 192.168.254.254 dev eth0
 ```
 
 Extra tip regarding route, for some weird scenario that you missed configured one of your interface. And you want network to default to specific interface, change the metric on the routing table. 
-```
+```bash
 $ ip r
 default via 192.168.254.254 dev wlan0 metric 200
 default via 192.168.254.254 dev eth0 metric 4294965247 
@@ -138,7 +138,7 @@ For easier setup you can install *NetworkManager* and use *nmtui*, this will lun
 [![imagen](/images/linux/linux-network-001.png)](/images/linux/linux-network-001.png)
 
 With NetworkManager you can also use *nmcli*.
-```
+```bash
 # ethernet
 nmcli connection add type ethernet con-name "Ethernet connection 1" ifname eth0
 nmcli connection modify "Ethernet connection 1" ipv4.method manual ipv4.addresses 192.168.1.100/24 ipv4.gateway 192.168.1.1 ipv4.dns "8.8.8.8 8.8.4.4" ipv4.ignore-auto-dns yes
@@ -175,7 +175,7 @@ Connecting to wireless connection with systemd-netword as backend would need to 
 This usually comes default with ubuntu server, it uses YAML file and networkd or NetworkManager as backend. Configuration is in */etc/netplan/* with indexing support. 
 
 *10-eth0-.yaml*
-```
+```yaml
 network:
   version: 2
   renderer: networkd # Or NetworkManager
@@ -191,7 +191,7 @@ network:
 ```
 
 *20-wlan0-.yaml*
-```
+```yaml
 network:
   version: 2
   renderer: networkd # Or NetworkManager
@@ -211,7 +211,7 @@ network:
 #### Other Wireless Solutions
 
 **iwd**
-```
+```bash
 iwctl
 [iwd]# device list
 [iwd]# station wlan0 scan
@@ -222,7 +222,7 @@ iwctl
 **wpa_supplicant**
 
 */etc/wpa_supplicant/wpa_supplicant-wlan0.conf*
-```
+```conf
 ctrl_interface=/var/run/wpa_supplicant
 ap_scan=1
 
@@ -245,7 +245,7 @@ DHCP=yes
 # DNS=1.1.1.1
 ```
 
-```
+```bash
 sudo systemctl enable systemd-networkd
 sudo systemctl enable wpa_supplicant@wlan0 # Replace wlan0 if needed
 sudo systemctl start systemd-networkd
@@ -256,13 +256,13 @@ sudo systemctl start wpa_supplicant@wlan0 # Replace wlan0 if needed
 #### Connman
 
 My current setup is using open-rc to handle services and connman for network. This is not supported by netplan, it is recommended for desktop or laptop. 
-```
+```bash
 yay -S connman connman-openrc
 rc-update add connmand default
 rc-service connmand start
 ```
 
-```
+```bash
 wired
 connmanctl
 connmanctl> enable ethernet
@@ -273,7 +273,7 @@ connmanctl> services
 connmanctl config ethernet_54e1adb0bf5d_cable --ipv4 manual 192.168.254.69 255.255.255.0 192.168.254.254 --nameservers 8.8.8.8 1.1.1.1
 ```
 
-```
+```bash
 # wireless
 connmanctl enable wifi
 connmactl
@@ -295,7 +295,7 @@ connmanctl> quit
 ```
 
 Additional info; if you migrated from NetworkManager to connman, then there is a chance that bluetooth will be disabled.
-```
+```bash
 connmanctl technologies
 connmanctl enable bluetooth
 ```
@@ -322,7 +322,7 @@ To show your hostname or rename.
 
 #### /etc/hostname
 
-```
+```bash
 $ hostname
 tags-p51
 
@@ -333,7 +333,7 @@ vim /etc/hostname
 ```
 
 Testing with pinging *tags-deb-001*
-```
+```bash
 $ ping -c 5 tags-deb-001
 PING tags-deb-001 (192.168.254.192) 56(84) bytes of data.
 64 bytes from tags-deb-001 (192.168.254.192): icmp_seq=1 ttl=64 time=0.093 ms
@@ -347,13 +347,13 @@ To change the DNS of your server. For temporary overwrite the DNS you can edit /
 
 #### /etc/resolv.conf
 
-```
+```bash
 nameserver 8.8.8.8
 nameserver 8.8.4.4
 ```
 
 Using nmtui or nmcli
-```
+```bash
 # manual edit using nmtui interface
 nmtui
 
@@ -367,7 +367,7 @@ A network bridge connects multiple network interfaces at Layer 2 (Ethernet) so t
 
 #### Using ip command (temporary / runtime)
 This is not persistent and will be removed after reboot. 
-```
+```bash
 # create bridge
 ip link add br0 type bridge
 
@@ -414,13 +414,13 @@ Bridge=br0
 ```
 
 Restart service.
-```
+```bash
 systemctl enable systemd-networkd
 systemctl restart systemd-networkd
 ```
 
 #### Using Network Manager
-```
+```bash
 # create bridge
 nmcli con add type bridge ifname br0 con-name br0
 
@@ -438,7 +438,7 @@ nmcli con up br0
 ```
 #### Using Netplan
 */etc/netplan/01-bridge.yaml*
-```
+```yaml
 network:
   version: 2
   renderer: networkd
@@ -457,7 +457,9 @@ network:
 
 Apply.
 
-`netplan apply`
+```bash
+netplan apply
+```
 
 ### Bonding
 Bonding two ethernet, working as backup active load-balancing. Also a reminder how careless sometimes when configuring network. Make sure to buy a serial cable in case you messed up your config. Messing up my homelab has become a very dangerous hobby of mine, but weirdly enough I take pride and joy in it (evil laugh). 
@@ -468,7 +470,7 @@ If you are configuring this on a SSH client, then better be prepared when you lo
 
 Identify your network interface card. For my setup these are *enp5s0* and *eno1*. Note that wifi plus ethernet is also possible. 
 
-```
+```bash
 $ ip show link
 1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
@@ -501,7 +503,7 @@ First check current config of your system, you probably configured your server t
 Once you deleted (make backup) the current config, dont restart the network service yet (I know you are using SSH), create a config /etc/netplan/01-bonding.yaml. 
 
 *01-bonding.yaml*
-```
+```yaml
 network:
   version: 2
   renderer: networkd
@@ -582,7 +584,7 @@ Use case: Both transmit and receive load balancing
 
 
 Now you can apply the config. 
-```
+```bash
 # verify config, it temporary apply but can rollback if problem exist. 
 # Sometimes it fail, prepare for the worst :)
 $ netplan try
@@ -623,7 +625,7 @@ Slave queue ID: 0
 Some of this is already discussed earlier. 
 
 To view current route.
-```
+```bash
 ip route show # or just ip r
 default via 192.168.254.254 dev eth0 
 1.1.1.1 via 192.168.254.254 dev eth0 
@@ -636,21 +638,21 @@ default via 192.168.254.254 dev eth0
 
 #### Adding and Removing Routes
 To route static IP. 
-```
+```bash
 ip route add default via 192.168.254.254
 ip route del default via 192.168.254.254 dev eth0 
 
 ```
 
 To route whole subnet, used in VMs management. 
-```
+```bash
 ip route add 192.168.254.0/24 via 192.168.254.254
 ```
 
 #### Using Gateways and Metric 
 
 You can set up multiple gateways with different metrics, defining a priority order for failover:
-```
+```bash
 ip route add default via 192.168.10.1 dev eth0 metric 100
 ip route add default via 192.168.20.1 dev eth1 metric 200
 ```
@@ -659,16 +661,19 @@ ip route add default via 192.168.20.1 dev eth1 metric 200
 #### Traffic Flow and Packet Control
 With *iptables* it can handle firewall (there is a dedicated section for firewalls, ufw;firewalld), allowing control traffic at more enhanced security.
 
-> [!NOTE]
-> Before proceeding to destroy your setup - working over SSH. 
+
+{{< note >}}
+Before proceeding to destroy your setup - working over SSH. 
+{{< /note >}}
+
 
 This guarantees you don't cut off SSH access.
-```
+```bash
 iptables -I INPUT 1 -p tcp --dport 22 -j ACCEPT
 ```
 
 #### View current iptables config
-```
+```bash
 iptables -L -v -n 
 
 # list rules with numbers
@@ -677,24 +682,24 @@ iptables -L INPUT --line-numbers -n -v
 
 #### Setting basic firewall rules. 
 This will allow incomming traffic from 192.168.254.0/24 subnet and block all other incomming connection
-```
+```bash
 iptables -A INPUT -s 192.168.254.0/24 -j ACCEPT
 iptables -A INPUT -j DROP
 ```
 
 Allow outgoing only to a specific subnet
-```
+```bash
 iptables -A OUTPUT -d 192.168.254.0/24 -j ACCEPT
 iptables -A OUTPUT -j DROP
 ```
 
 Block all outgoing traffic
-```
+```bash
 iptables -A OUTPUT -j DROP
 ```
 
 Without this, replies to allowed traffic will be dropped.
-```
+```bash
 iptables -A INPUT  -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 ```
@@ -702,7 +707,7 @@ iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 
 
 Application routing; specific incomming/outgoing PORT. 
-```
+```bash
 # DNS
 iptables -A OUTPUT -p udp --dport 53 -j ACCEPT
 iptables -A OUTPUT -p tcp --dport 53 -j ACCEPT
@@ -722,7 +727,7 @@ iptables -A OUTPUT -p tcp --dport 443 -j ACCEPT
 #### Deleting iptable rules
 
 Delete by rule number
-```
+```bash
 $ iptables -L INPUT --line-numbers -n -v
 num  pkts bytes target  prot opt in  out source              destination
 1    ACCEPT all  --  lo  *   0.0.0.0/0           0.0.0.0/0
@@ -733,12 +738,12 @@ $ iptables -D INPUT 2
 ```
 
 Delete by exact rule match
-```
+```bash
 iptables -D OUTPUT -p udp --dport 53 -j ACCEPT
 ```
 
 Reset completely - please don't do this
-```
+```bash
 iptables -F
 iptables -X
 iptables -P INPUT ACCEPT
@@ -748,11 +753,13 @@ iptables -P FORWARD ACCEPT
 
 #### Saving changes
 
-`netfilter-persistent save`
+```bash
+netfilter-persistent save
+```
 
 
 #### Other commands
-```
+```bash
 # Flush old rules
 iptables -F
 iptables -X
@@ -781,14 +788,14 @@ IPV6=yes
 ```
 ##### Default Config
 This config will be enough for PC use. 
-```
+```bash
 ufw default deny incoming
 ufw default allow outgoing
 ```
 
 ##### Allow SSH Connection
 If you are configuring this in a ssh session make sure to set this first before applying config.
-```
+```bash
 ufw allow ssh
 
 # or allow openssh
@@ -804,55 +811,63 @@ $ufw allow 22
 
 Optional, rate limit to protect form brute-force attack.
 
-`ufw limit ssh`
+```bash
+ufw limit ssh
+```
 
 ##### Enable UFW
 UFW should now be configured to accept SSH connection. To verify rules that are added.
 
-`ufw show added`
+```bash
+ufw show added
+```
 
 After comforming you can enable the firewall with.
 
-`ufw enable`
+```bash
+ufw enable
+```
 
 ##### Allowing Other Connections
 Port range
-```    
+```bash
 ufw allow 8000:8080/tcp
 ufw allow 8000:8080/udp
 ```
 
 Specific IP Address
-```
+```bash
 ufw allow from 192.168.100.69
 ufw allow from 192.168.100.69 to any port 22
 ```
 
 Subnets
-```
+```bash
 ufw allow from 192.168.100.0/24
 ufw allow from 192.168.100.0/24 to any port 22
 ```
 
 To an interface
-```
+```bash
 ufw allow in on eth1 to any port 80
 ```
 
 ##### Denying Connections
 Deny by service
 
-`ufw deny ssh`
+```bash
+ufw deny ssh
+```
 
 Specific IP Address
-```
+```bash
 ufw deby from 192.168.100.69
 ufw deny from 192.168.100.69 to any port 22
 ```
 
 ##### Deleting Rules
 To delete rules, we need to get the rule number.
-```
+```bash
 $ufw status numbered
 Status: active
 
@@ -866,28 +881,34 @@ ufw delete 2
 ```
 
 ##### UFW Status and Rules
-```
+```bash
 ufw status verbose
 ```
 
 To disable
 
-`ufw disable`
+```bash
+ufw disable
+```
 
 To reset 
 
-`ufw reset`
+```bash
+ufw reset
+```
 
 Enable logging
 
-`ufw reset`
+```bash
+ufw reset
+```
 
 #### Firewalld
 Firewalld is preinstalled on many Linux distributions, such as RHEL and its derivatives (fedora, centos). 
 
 ##### Managing Firewalld
 Start, stop, enable and disable service.
-```
+```bash
 sudo systemctl start firewalld
 sudo systemctl enable firewalld
 sudo systemctl stop firewalld
@@ -896,16 +917,20 @@ sudo systemctl disable firewalld
 
 To check firewalld state.
 
-`firewall-cmd --state`
+```bash
+firewall-cmd --state
+```
 
 To reload firewalld configuration.
 
-`firewall-cmd --reload`
+```bash
+firewall-cmd --reload
+```
 
 ##### Configuring Firewalld
 Firewalld has two configuration set; Runtime and Permanent. Permanent configuration is retained even after reboot. 
 
-```
+```bash
 # permanent
 firewall-cmd --zone=public --add-service=http --permanent 
 
@@ -918,13 +943,13 @@ Different zones allow different network services and incoming traffic types whil
 
 To view default zone:
 
-```
+```bash
 $ firewall-cmd --get-default-zone
 public (default)
   interfaces: eth0
 ```
 
-```
+```bash
 $ firewall-cmd --zone=public --list-all
 public (default, active)
   target: default
@@ -967,7 +992,7 @@ Going line by line through the output:
 
 
 Now let's create a simple multi-zoned firewall rule. 
-```
+```bash
 firewall-cmd --permanent --zone=public --remove-service=ssh
 firewall-cmd --permanent --zone=public --add-service=http
 firewall-cmd --permanent --zone=internal --add-source=192.168.100.69
@@ -975,7 +1000,7 @@ firewall-cmd --reload
 ```
 We basically removed public SSH access to server and only from IP 192.168.100.69 can access, and http that is accessible outside. 
 
-```
+```bash
 $ firewall-cmd --zone=public --list-all
 public (default, active)
   target: default
@@ -1013,7 +1038,7 @@ internal (active)
 ```
 
 We can also add rule to fully drop an IP to access the server.
-```
+```bash
 firewall-cmd --permanent --zone=drop --add-source=192.168.254.169
 firewall-cmd --reload
 ```
@@ -1022,22 +1047,22 @@ firewall-cmd --reload
 Rich rule is used when; services/ports aren’t specific enough, you need conditions (source IP, interface, protocol, family, logging, rate-limit, etc.) and you want iptables-style control without dropping to raw rules.
 
 Deny IPv4 traffic over TCP from host 192.168.254.169 to port 22.
-```
+```bash
 firewall-cmd --zone=public --add-rich-rule 'rule family="ipv4" source address="192.168.254.169" port port=22 protocol=tcp reject'
 ```
 
 Allow IPv4 traffic over TCP from host 192.0.2.0 to port 80, and forward it locally to port 6532.
-```
+```bash
 firewall-cmd --zone=public --add-rich-rule 'rule family=ipv4 source address=192.0.2.0 forward-port port=80 protocol=tcp to-port=6532'
 ```
 
 Forward all IPv4 traffic on port 80 to port 8080 on host 198.168.254.169.
-```
+```bash
 firewall-cmd --zone=public --add-rich-rule 'rule family=ipv4 forward-port port=80 protocol=tcp to-port=8080 to-addr=198.168.254.169'
 ```
 
 To show current rich rule in the public zone.
-```
+```bash
 firewall-cmd --zone=public --list-rich-rules
 ```
 
@@ -1057,20 +1082,20 @@ Each VLAN acts like its own broadcast domain. Devices in VLAN 10 can’t see bro
 
 #### Enable VLAN
 Verify if it is present in the kerner.
-```
+```bash
 lsmod | grep 8021q
 ```
 If no output, enable using modprobe
-```
+```bash
 modprobe 8021q
 ```
 To make if permanent on boot.
-```
+```bash
 echo "8021q" | sudo tee -a /etc/module
 ```
 
 #### Install VLAN
-```
+```bash
 # debian base
 apt install vlan
 
@@ -1080,14 +1105,14 @@ dnf install vconfig
 
 #### Create VLAN Interface
 Using ip command.
-```
+```bash
 ip link add link eth0 name eth0.10 type vlan id 10
 ip link set dev eth0.10 up 
 ip addr add 192.168.169.169/24 dev eth0.10
 ```
 
 Using nmcli
-```
+```bash
 nmcli connection add type vlan \
   con-name vlan10 \
   ifname eth0.10 \
@@ -1107,7 +1132,7 @@ nmcli connection up vlan10
 
 Using Netplan.
 */etc/netplan/01-vlan.yaml*
-```
+```yaml
 network:
   version: 2
   renderer: networkd
@@ -1127,7 +1152,9 @@ network:
         addresses: [8.8.8.8, 1.1.1.1]
 ```
 
-`netplan apply`
+```bash
+netplan apply
+```
 
 
 Using networkd.
@@ -1153,4 +1180,6 @@ DNS=8.8.8.8
 
 Restart network service.
 
-`systemctl restart systemd-networkd`
+```bash
+systemctl restart systemd-networkd
+```
