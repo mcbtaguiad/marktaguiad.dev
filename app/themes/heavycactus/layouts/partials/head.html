@@ -37,6 +37,10 @@
     crossorigin="anonymous"
     referrerpolicy="no-referrer"
   />
+  {{ $style := resources.Get "scss/rocket.scss" | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}">
+  {{ $style := resources.Get "scss/banner.scss" | toCSS | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}">
   <!-- Custom CSS -->
   {{ range .Site.Params.css }} <link rel="stylesheet" href="{{ . | absURL }}"> {{ end }}
   {{ `
