@@ -23,7 +23,7 @@ document.querySelectorAll('.rocket-button').forEach(elem => {
 
     setTimeout(() => {
       elem.classList.remove('animated');
-      window.open('https://moonlanding.marktaguiad.dev/');
+      window.open('https://marktaguiad.dev/moonlanding');
     }, 3500);
   }, { once: true });
 
