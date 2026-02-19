@@ -6,6 +6,7 @@ tags: ["sed"]
 UseHugoToc: true
 weight: 2
 ---
+[![imagen](/images/ranger-vim-sed-awk-find/Lord-Zedd-Cosmic-Fury.png)](/images/ranger-vim-sed-awk-find/Lord-Zedd-Cosmic-Fury.png)
 
 {{< toc >}}
 
