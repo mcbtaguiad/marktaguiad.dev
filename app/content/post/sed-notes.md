@@ -27,6 +27,8 @@ sed 's/old/new/g' file.txt > new.txt
 If you are sure what you are doing.
 ```bash
 sed -i 's/old/new/g' file.txt 
+```
+
 ### Print file
 ```bash
 sed '' file.txt
@@ -38,7 +40,6 @@ Dunk it Jonathan!
 Nagrigat agbiyag ditoy lubong.
 I love you MOM!
 ```
-### Print
 #### Print specific line
 ```bash 
 sed -n '4p' file.txt
