@@ -54,14 +54,22 @@ body {
 
   /* tighter spacing after headings */
   h1, h2, h3, h4, h5, h6 {
-    margin-bottom: 0.5em;
+    margin-bottom: 0.1em;
   }
 
   h1 + p,
   h2 + p,
   h3 + p {
-    margin-top: 0.3em;
+    margin-top: 0.1em;
   }
+
+  h4 {
+  margin-bottom: 0;
+}
+
+h4 + pre {
+  margin-top: 0;
+}
 
   code {
     @include hyphens(manual);
@@ -259,4 +267,22 @@ code {
   border: none;
   background: transparent;
   cursor: pointer;
+}
+
+
+/* Base code block styling */
+.chroma {
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+}
+
+/* Light theme code background */
+.theme-light .chroma {
+  background-color: #f6f8fa; /* GitHub light */
+}
+
+/* Dark theme code background */
+.theme-dark .chroma {
+  background-color: #0d1117; /* GitHub dark */
 }
