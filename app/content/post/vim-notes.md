@@ -1,5 +1,5 @@
 ---
-title: "Vim Notes"
+title: "Esc to Morph"
 date: 2026-02-16
 author: "Mark Taguiad"
 tags: ["vim"]
