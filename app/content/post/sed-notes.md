@@ -1,5 +1,5 @@
 ---
-title: "Mighty Morphin Sed"
+title: "Lord Sed"
 date: 2026-02-17
 author: "Mark Taguiad"
 tags: ["sed"]
@@ -28,8 +28,8 @@ If you are sure what you are doing.
 ```bash
 sed -i 's/old/new/g' file.txt 
 ```
-
-### Print file
+### Print
+#### Print file
 ```bash
 sed '' file.txt
 
