@@ -44,7 +44,7 @@ weight = 5
     ordered = true
   [markup.highlight]
     codeFences = true
-    guessSyntax = false
+    guessSyntax = true
     hl_Lines = ""
     lineNoStart = 1
     lineNos = true
