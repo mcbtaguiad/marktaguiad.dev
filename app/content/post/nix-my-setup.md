@@ -12,7 +12,9 @@ weight: 2
 It's my brother birthday, his name is Nico or Nickx (jejemon kapatid! hahaha).
 {{< /info >}}
 
-[![imagen](/images/nix-my-setup/nix-my-setup-001.png)](/images/nix-my-setup/nix-my-setup-001.png)
+
+{{< imglink src="/images/linux/nix-my-setup/nix-my-setup-001.png" alt="imagen" >}}
+
 
 This maybe be the end of my distro hopping from ubuntu - mint - debian - fedora - popos - arch - void - artix, and finally nixOS. I just the love that almost everything is declarative to change in the system, so if you break anything you can just spin the last generation that is working. BTW this is not a tutorial, this is a note for my future stupid self if I ever have to build everything from scratch.
 

@@ -135,7 +135,7 @@ Wait for the container to fully initialized and then visit the subdomain of pang
 
 Now we need to add this server to using pangoling client Newt. Navigate to your pangolin dashboard and go to site, then click add site - add name for this site. For this example we will be using docker, on the Operating System option - click on Docker. Copy the content for the compose.yml, as we will be modifying it for it to work on docker network (using docker dns) and not needing to expose is using ip and port. With this method, we can set application to be not exposed outside and it will just be directly tunneled to the pangolin proxy. 
 
-[![imagen](/images/pangolin-docker/pangolin-001.png)](/images/pangolin-docker/pangolin-001.png)
+{{< imglink src="/images/self-hosted/pangolin-docker/pangolin-001.png" alt="imagen" >}}
 
 Create a docker network.
 
@@ -200,4 +200,4 @@ d815bd083d62   jellyfin/jellyfin                                                
 
 Now for the exciting part (kidding). Navigate to resources and click on public then add resources. Set the subdomain you preffer and set the target to the Site added earlier. Like we discussed earlier, in our example it can be set to IP or just the DNS (jellyfin) and port is 8096. Create resources, additional config would be if you want your application to have extra layer of security, Pangolin has a feature to use SSO (login first) to secure the web application. This can be configured in the resources section. 
 
-[![imagen](/images/pangolin-docker/pangolin-002.png)](/images/pangolin-docker/pangolin-002.png)
+{{< imglink src="/images/self-hosted/pangolin-docker/pangolin-002.png" alt="imagen" >}}

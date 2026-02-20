@@ -13,8 +13,8 @@ weight: 2
 This project is a fork from [user2684/otpspot](https://github.com/user2684/otpspot) repo.
 {{< /note >}}
 
-[![imagen](/images/otp-capture-portal/otp-capture-portal-001.png)](/images/otp-capture-portal/otp-capture-portal-001.png)
 
+{{< imglink src="/images/web/otp-capture-portal/otp-capture-portal-001.png" alt="imagen" >}}
 
 In deploying capture portal solution to client, I usually use OpenNDS and OpenWrt, or simply TP-Link Omada Controller. Due to hardware limitation, we will be using nodogsplash on OpenWrt connected to a external server that will handle the authentication. Instead of common voucher generation, it will be generated using OTP. Thanks to [user2684](https://github.com/user2684) solution. 
 
@@ -104,4 +104,4 @@ docker compose up -d
 ### Demo
 Visit this [link](https://swampcoffee.marktaguiad.dev/). Add */admin* to view admin page, use **admin** and **password123** to login. If successfully logged in it will automatically redirect to OTP generator page. This is already in the public domain, you can use this as your capture portal. I'll live it to you to find my public IP and if you are fine with **Shrek** looking at you everytime you login hahahaha. 
 
-[![imagen](/images/otp-capture-portal/otp-capture-portal-003.png)](/images/otp-capture-portal/otp-capture-portal-003.png)
+{{< imglink src="/images/web/otp-capture-portal/otp-capture-portal-003.png" alt="imagen" >}}

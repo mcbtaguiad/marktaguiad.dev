@@ -43,7 +43,8 @@ rm -f install-opentofu.sh
 
 ### Add Permission to user
 Navigate to Datacenter > API Tokens > Permission > Add role 'PVEVMAdmin'.
-[![imagen](/images/prox-tofu/tofu3.png)](/images/prox-tofu/tofu3.png)
+{{< imglink src="/images/devops/prox-tofu/tofu3.png" alt="imagen" >}}
+
 <!-- ![tofu](http://chevereto.marktaguiad.dev/images/2024/08/31/tofu3.png) -->
 
 ### Generate Proxmox API key
@@ -52,11 +53,13 @@ For unsecure method you can also use user/password.
 {{< /warning >}}
 
 Navigate to Datacenter > API Tokens > Add. Input Token ID of your choice, make sure to untick 'Privilege Separation'
-[![imagen](/images/prox-tofu/tofu1.png)](/images/prox-tofu/tofu1.png)
+{{< imglink src="/images/devops/prox-tofu/tofu1.png" alt="imagen" >}}
+
 <!-- ![tofu](http://chevereto.marktaguiad.dev/images/2024/08/31/tofu-1.png) -->
 
 Make sure to note the generated key since it will only be displayed once. 
-[![imagen](/images/prox-tofu/tofu2.png)](/images/prox-tofu/tofu2.png)
+{{< imglink src="/images/devops/prox-tofu/tofu2.png" alt="imagen" >}}
+
 <!-- ![tofu](http://chevereto.marktaguiad.dev/images/2024/08/31/tofu2.png) -->
 
 
@@ -538,7 +541,9 @@ Note: You didn't use the -out option to save this plan, so OpenTofu can't guaran
 Notice that a *.tfstate* file is generated, make sure to save or backup this file since it will be necessary when reinitializing/reconfigure or rebuilding your VM/infrastructure.
 
 If all goes well, you'll see at Proxmox GUI the created VM.
-[![imagen](/images/prox-tofu/tofu4.png)](/images/prox-tofu/tofu4.png)
+<!-- [![imagen](/images/prox-tofu/tofu4.png)](/images/prox-tofu/tofu4.png) -->
+{{< imglink src="/images/devops/prox-tofu/tofu4.png" alt="imagen" >}}
+
 <!-- ![tofu](http://chevereto.marktaguiad.dev/images/2024/08/31/tofu4.png) -->
  
 

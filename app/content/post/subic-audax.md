@@ -9,7 +9,7 @@ weight: 2
 
 ---
 
-[![imagen](/images/cycling/subic-audax-cover.jpg)](/images/cycling/subic-audax-cover.jpg)
+{{< imglink src="/images/cycling/subic-audax-cover.jpg" alt="imagen" >}}
 
 
 **Route:** {{< gpxdownload "route/Audax_200_Subic.gpx" "Audax_200_Subic.gpx" >}}

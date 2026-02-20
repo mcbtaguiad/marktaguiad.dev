@@ -9,8 +9,7 @@ weight: 2
 
 ---
 
-[![imagen](/images/cycling/batman-cover.png)](/images/cycling/batman-cover.png)
-
+{{< imglink src="/images/cycling/batman-cover.png" alt="imagen" >}}
 
 **Route:** {{< gpxdownload "route/batman_loop.gpx" "batman_loop.gpx" >}}
 
