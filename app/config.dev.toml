@@ -50,7 +50,6 @@ weight = 5
     lineNos = true
     lineNumbersInTable = false
     noClasses = false
-    style = "github-dark"
     tabWidth = 4
   [markup.goldmark]
     [markup.goldmark.renderer]
