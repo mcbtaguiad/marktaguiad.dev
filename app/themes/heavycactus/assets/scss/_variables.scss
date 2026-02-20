@@ -15,20 +15,20 @@ $logo-grayout: true;
 
 :root {
     /* shared / defaults */
-    --accent: #2bbc8a;
+    --accent: #4078c0;
   }
   
   /* ===== DARK THEME ===== */
   html.theme-dark {
     --bg: #000000;
-    --bg-code: #000000;
+    --bg-code: #9f8e8e;
     --border: #666;
     --meta: #666;
     --meta-code: #666;
     --text: #acaeb1;
-    --link: rgba(212, 128, 170, 1);
+    --link: #4078c0;
   
-    --accent-1: #2bbc8a;
+    --accent-1: #acaeb1;
     --accent-2: #eeeeee;
     --accent-3: #cccccc;
     --quote: #ccffb6;
@@ -47,9 +47,9 @@ $logo-grayout: true;
     --meta: #666;
     --meta-code: #7a7a7a;
     --text: #383838;
-    --link: rgba(212, 128, 170, 1);
+    --link: #4078c0;
   
-    --accent-1: #024950;
+    --accent-1: #383838;
     --accent-2: #383838;
     --accent-3: #8c8c8c;
     --quote: #024950;
