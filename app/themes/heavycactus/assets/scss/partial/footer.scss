@@ -3,7 +3,7 @@
   bottom: 0;
   margin-bottom: 10px;
   width: 100%;
-  color: $color-meta;
+  color: var(--accent-1);
   vertical-align: top;
   text-align: center;
   font-size: 11px;
@@ -33,12 +33,12 @@
     }
   }
   a {
-    color: $color-meta;
+    color: var(--accent-1);
     text-decoration: underline;
     background-image: none;
   }
   a:hover {
-    color: var(--meta-dark);
+    color: var(--link);
   }
   .footer-left {
     height: 20px;
