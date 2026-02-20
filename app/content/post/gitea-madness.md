@@ -72,8 +72,7 @@ services:
 
 Navigate to Pangolin and create new resources. Select type as *Raw TCP/UDP Resource*, for my setup I set the SSH proxy port to 2222. 
 
-[![imagen](/images/gitea-madness/gitea-001.png)](/images/gitea-madness/gitea-001.png)
-
+{{< imglink src="/images/self-hosted/gitea-madness/gitea-001.png" alt="imagen" >}}
 
 Edit pangolin compose.yaml and add port 2222. 
 

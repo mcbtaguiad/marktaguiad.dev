@@ -6,8 +6,8 @@ tags: ["find"]
 UseHugoToc: true
 weight: 2
 ---
-[![imagen](/images/ranger-vim-sed-awk-find/power-rangers.png)](/images/ranger-vim-sed-awk-find/power-rangers.png)
 
+{{< imglink src="/images/linux/ranger-vim-sed-awk-find/power-rangers.png" alt="imagen" >}}
 {{< toc >}}
 
 ### What is Find?

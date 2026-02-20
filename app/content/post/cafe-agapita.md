@@ -7,8 +7,7 @@ UseHugoToc: true
 weight: 2
 ---
 
-[![imagen](/images/cycling/cafe-agapita-cover.jpg)](/images/cycling/cafe-agapita-cover.jpg)
-
+{{< imglink src="/images/cycling/cafe-agapita-cover.jpg" alt="imagen" >}}
 
 **Route:** {{< gpxdownload "route/cafe-agapita.gpx" "cafe-agapita.gpx" >}}
 

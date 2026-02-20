@@ -19,4 +19,6 @@ Dakkel nga pasalamat ko ken Inang ken Tatang ko, agraman payen dagiti kakabagyak
 
 Agtultuloy ti biag — ken agtultuloy ti panag-adal. Agyamanak kadakayo amin nga namati kaniak.
 
-[![imagen](/images/board-exam/ece.png)](/images/board-exam/ece.png)
+{{< imglink src="/images/me/board-exam/ece.png" alt="imagen" >}}
+
+

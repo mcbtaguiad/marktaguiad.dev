@@ -111,13 +111,15 @@ Open browser and navigate to https://localhost:9090.
 
 ### Create VM
 Login to cockpit and turn on administrative access. Then click *Virttual Machines*. For this example i downloaded a cloud-init image to /mnt/ssd/develop/iso.
-[![imagen](/images/libvirt/libvirt-kvm-terraform-001.png)](/images/libvirt/libvirt-kvm-terraform-001.png)
+{{< imglink src="/images/devops/libvirt/libvirt-kvm-terraform-001.png" alt="imagen" >}}
+
 
 Click on Automation and edit login config. 
-[![imagen](/images/libvirt/libvirt-kvm-terraform-002.png)](/images/libvirt/libvirt-kvm-terraform-002.png)
+{{< imglink src="/images/devops/libvirt/libvirt-kvm-terraform-002.png" alt="imagen" >}}
 
 Then Create and Edit. Here you can configure ram, cpu and edit. For now just click install and run the vm.
-[![imagen](/images/libvirt/libvirt-kvm-terraform-003.png)](/images/libvirt/libvirt-kvm-terraform-003.png)
+{{< imglink src="/images/devops/libvirt/libvirt-kvm-terraform-003.png" alt="imagen" >}}
+
 
 
 ### Permission Error

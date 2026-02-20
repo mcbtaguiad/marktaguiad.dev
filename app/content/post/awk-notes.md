@@ -6,7 +6,7 @@ tags: ["awk"]
 UseHugoToc: true
 weight: 2
 ---
-[![imagen](/images/ranger-vim-sed-awk-find/awkranger.jpeg)](/images/ranger-vim-sed-awk-find/awkranger.jpeg)
+{{< imglink src="/images/linux/ranger-vim-sed-awk-find/awkranger.jpeg" alt="imagen" >}}
 
 {{< toc >}}
 

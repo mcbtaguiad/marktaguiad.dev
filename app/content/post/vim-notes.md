@@ -10,7 +10,9 @@ weight: 2
 This will be updated if I have the time - backlog since 2019, left in old repo to forget.
 {{< /info >}}
 
-[![imagen](/images/ranger-vim-sed-awk-find/morph.jpg)](/images/ranger-vim-sed-awk-find/morph.jpg)
+<!-- [![imagen](/images/linux/ranger-vim-sed-awk-find/morph.jpg)](/images/linux/ranger-vim-sed-awk-find/morph.jpg) -->
+
+{{< imglink src="/images/linux/ranger-vim-sed-awk-find/morph.jpg" alt="imagen" >}}
 
 # Table of Contents
 {{< toc >}}

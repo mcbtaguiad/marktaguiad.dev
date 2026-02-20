@@ -60,20 +60,25 @@ networks:
 ```
 
 Spin the container and make sure it is running in the background. Check the status on your dashboard if the tunnel is now healthy. 
-[![imagen](/images/cloudflared-docker/cloudflared-001.png)](/images/cloudflared-docker/cloudflared-001.png)
+<!-- [![imagen](/images/cloudflared-docker/cloudflared-001.png)](/images/cloudflared-docker/cloudflared-001.png) -->
+
+{{< imglink src="/images/self-hosted/cloudflared-docker/cloudflared-001.png" alt="imagen" >}}
+
+
 
 ### HTTPS Proxy Route
 
 Now configure on the tunnel, navigate on Published application routes. Using the jellyfin application from Pangolin setup, below is a sample configuration.
 
-[![imagen](/images/cloudflared-docker/cloudflared-002.png)](/images/cloudflared-docker/cloudflared-002.png)
+{{< imglink src="/images/self-hosted/cloudflared-docker/cloudflared-002.png" alt="imagen" >}}
+
 
 
 ### SSH Proxy Route
 
 Just like in the previous configuration, in here just put type to SSH. But first you need to install cloudflared on your PC or terminal. Check this [link](https://github.com/cloudflare/cloudflared) for available installation method. Onced installed, run the login command `cloudflared login`. This will automatically redirect you to your cloudflared dash to authenticate. 
 
-[![imagen](/images/cloudflared-docker/cloudflared-003.png)](/images/cloudflared-docker/cloudflared-003.png)
+{{< imglink src="/images/self-hosted/cloudflared-docker/cloudflared-003.png" alt="imagen" >}}
 
 Configure your ssh config.
 
