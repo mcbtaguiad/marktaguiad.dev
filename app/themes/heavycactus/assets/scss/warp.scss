@@ -205,4 +205,12 @@ display: flex;
 .tagsparagraph {
     color: #6c757d;
     font-family: 'Titillium Web';
-  }
+}
+
+.footer {
+  position: fixed;
+  bottom: 0; /* Aligns to the bottom of the viewport */
+  left: 0;
+  width: 100%; /* Ensures it spans the full width */
+  /* Add padding to the main content area to prevent overlap */
+}
