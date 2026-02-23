@@ -134,7 +134,7 @@ apt install tmux
 Clone repo.
 ```sh
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-```sh
+```
 Create tmux dotfile.
 ```sh
 touch ~/.config/tmux/tmux.conf
