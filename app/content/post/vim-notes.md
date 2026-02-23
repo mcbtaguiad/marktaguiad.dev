@@ -345,3 +345,10 @@ To enter Visual mode press `shift + v`.
 1. v
 2. Move cursor (w, e, j, k)
 3. y
+
+### Commands we learned along the way 
+#### Multiple line tab
+Enter visual mode, and highlight the lines needed to add tab.
+
+1. `ctrl + v` + arrow key to select the block
+2. [number of tab] `shift + .`
