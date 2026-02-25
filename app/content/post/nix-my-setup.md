@@ -232,6 +232,10 @@ When you think everything is in order run this command to rebuild your system. T
 ```
 sudo nixos-rebuild switch
 ```
+To upgrade packages.
+```
+sudo nixos-rebuild switch --upgrade
+```
 ### Delete old generation
 Make sure to delete old generation that no longer needed to free-up some space. 
 ```

@@ -10,7 +10,7 @@ weight: 2
 See old post [here](/post/vim-notes/) before you proceed with neovim.
 {{< /warning >}}
 
-{{< imglink src="/images/linux/matrix/the_matrix_path_of_neo.webp" alt="imagen" >}}
+{{< imglink src="/images/linux/matrix/neo_fly.gif" alt="imagen" >}}
 
 This will be configured with NixOS, I recommend [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) if you are running other system. 
 
@@ -145,6 +145,13 @@ bufferline-nvim
 | :bprevious or : bp | switch previous |
 | :ls | list buffer | 
 | :bd | close buffer |
+
+#### Comment
+Built-in commenting and uncommenting lines. If you are interested with more advance comment plugin, check this [linl](https://github.com/numToStr/Comment.nvim).
+| Key | Action| 
+| --- | --- |
+| gcc | toggle command or uncomment | 
+| [num] gcc | multiple line |
 
 ### Status
 #### Status line
