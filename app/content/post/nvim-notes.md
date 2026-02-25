@@ -322,14 +322,14 @@ xclip
 ```
 | Key | Action |
 | --- | --- | 
-| <Space> sf | find file |
-| <Space> sb | live grep |
-| <Space> sf | buffers |
-| <Space> sh | help tags |
-| <Space> sx | resume |
-| <Space> s. | oldfiles |
+| \<Space\> sf | find file |
+| \<Space\> sb | live grep |
+| \<Space\> sf | buffers |
+| \<Space\> sh | help tags |
+| \<Space\> sx | resume |
+| \<Space\> s. | oldfiles |
 | --- | --- |
-| <Space> fg | open file browser |
+| \<Space\> fg | open file browser |
 | --- | --- |
 | Ctrl + y | copy file path (while in `sf`) |
 
@@ -357,7 +357,7 @@ oil-nvim
 ```
 | Key | Action | 
 | --- | ------ | 
-| <Space> o | open oil |
+| \<Space\> o | open oil |
 
 ### Dashboard & Sessions
 #### Greeter
@@ -435,9 +435,9 @@ auto-session
 ```
 | Key | Action |
 | --- | --- |
-| <Space> qs | save |
-| <Space> ql | load |
-| <Space> qd | delete |
+| \<Space\> qs | save |
+| \<Space\> ql | load |
+| \<Space\> qd | delete |
 
 ### Autocomplete & Snippet
 #### Snippet
