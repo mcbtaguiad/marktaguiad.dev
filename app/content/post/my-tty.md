@@ -140,14 +140,14 @@ Create tmux dotfile.
 touch ~/.config/tmux/tmux.conf
 ```
 Then add this to your tmux config.
-*~/.tmux.conf*
+*~/.config/tmux/tmux.conf*
 ```
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 
-
 run '~/.tmux/plugins/tpm/tpm'
 ```
+Now run `tmux`. To intall and reload plugin use `ctrl + b I`.
 
 #### tmux hierarchy
 tmux has a three-level hierarchy:
@@ -198,6 +198,7 @@ These are just some of the commands I usually use, to know more about other (adv
 | ctrl + b w | list windows |
 | ctrl + b n or p | next or previous window |
 | ctrl + b 0 ... 9 | switch window number |
+| ctrl + b & | kill current window |
 
 ##### pane cheatsheet
 | Key | Action |
@@ -211,5 +212,47 @@ These are just some of the commands I usually use, to know more about other (adv
 | ctrl + b ! | convert pane into a window |
 
 
-#### Plugins 
-I'll update this section, too lazy to add all. Maybe I'll list the most important for productivity. 
+#### Configs and Plugins 
+I'll remove other config and plugin in the sections below to better understand the config. 
+##### Start Your Tmux Window and Pane Index Count at 1 Instead of 0
+*~/.config/tmux/tmux.conf*
+```
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# Start windows and panes index at 1, not 0.
+set -g base-index 1
+setw -g pane-base-index 1
+
+# Ensure window index numbers get reordered on delete.
+set-option -g renumber-windows on
+
+run '~/.tmux/plugins/tpm/tpm'
+```
+
+##### Use h j k l to Navigate Pane
+`set -g @plugin 'codxse/tmux-hjkl-pane-navigator.git'`
+
+*~/.config/tmux/tmux.conf*
+```
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+set -g @plugin 'codxse/tmux-hjkl-pane-navigator.git'
+
+run '~/.tmux/plugins/tpm/tpm'
+```
+
+##### Theme
+*~/.config/tmux/tmux.conf*
+```
+set -g @plugin 'tmux-plugins/tpm'
+
+# Theme - gruvbox
+set -g @plugin 'egel/tmux-gruvbox'
+# set desired theme options...
+set -g @tmux-gruvbox 'dark' # or 'dark256', 'light', 'light256'
+
+run '~/.tmux/plugins/tpm/tpm'
+```
+
