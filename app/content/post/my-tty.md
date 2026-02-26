@@ -118,12 +118,28 @@ y = 24
 ### zsh
 I preffer not to complicate things, so let's not reinvent the wheel. Use the script by 
 [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh). 
+#### nixos
+```bash
+programs.zsh = {
+    enable = true;
+    ohMyZsh = {
+      enable = true;
+      plugins = [
+        "git"
+        "z"
+      ];
+      theme = "robbyrussell";
+    };
+  }
+```
+#### other unix system
 ```sh
 apt install zsh
 
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 ```
 Edit *~/.zshrc* to enable plugin and change theme. 
+
 
 ### tmux
 #### installation
@@ -148,7 +164,6 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 run '~/.tmux/plugins/tpm/tpm'
 ```
 Now run `tmux`. To intall and reload plugin use `ctrl + b I`.
-
 #### tmux hierarchy
 tmux has a three-level hierarchy:
 1. Session – the top-level container. A session can have multiple windows.
@@ -231,14 +246,25 @@ run '~/.tmux/plugins/tpm/tpm'
 ```
 
 ##### Use h j k l to Navigate Pane
-`set -g @plugin 'codxse/tmux-hjkl-pane-navigator.git'`
+`set -g @plugin 'christoomey/vim-tmux-navigator'`
 
 *~/.config/tmux/tmux.conf*
 ```
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 
-set -g @plugin 'codxse/tmux-hjkl-pane-navigator.git'
+set -g @plugin 'christoomey/vim-tmux-navigator'
+
+# Jump directly to window 1-9
+bind-key -n M-1 select-window -t 1
+bind-key -n M-2 select-window -t 2
+bind-key -n M-3 select-window -t 3
+bind-key -n M-4 select-window -t 4
+bind-key -n M-5 select-window -t 5
+bind-key -n M-6 select-window -t 6
+bind-key -n M-7 select-window -t 7
+bind-key -n M-8 select-window -t 8
+bind-key -n M-9 select-window -t 9
 
 run '~/.tmux/plugins/tpm/tpm'
 ```
@@ -255,4 +281,55 @@ set -g @tmux-gruvbox 'dark' # or 'dark256', 'light', 'light256'
 
 run '~/.tmux/plugins/tpm/tpm'
 ```
+
+##### Update and Reload Tmux
+1. `source ~/.config/tmux/tmux.conf`
+2. open `tmux`
+3. `ctrl + b I` - to reload
+
+#### nixos
+```bash
+programs.tmux = {
+    enable = true;
+
+    # Set your base tmux options
+    extraConfig = ''
+      # Start windows and panes index at 1
+      set -g base-index 1
+      setw -g pane-base-index 1
+
+      # Renumber windows on delete
+      set-option -g renumber-windows on
+
+      # Vim-style pane navigation
+      set -g @plugin 'christoomey/vim-tmux-navigator'
+
+      # Jump directly to window 1-9
+      bind-key -n M-1 select-window -t 1
+      bind-key -n M-2 select-window -t 2
+      bind-key -n M-3 select-window -t 3
+      bind-key -n M-4 select-window -t 4
+      bind-key -n M-5 select-window -t 5
+      bind-key -n M-6 select-window -t 6
+      bind-key -n M-7 select-window -t 7
+      bind-key -n M-8 select-window -t 8
+      bind-key -n M-9 select-window -t 9
+
+      # Theme plugins
+      set -g @plugin 'egel/tmux-gruvbox'
+      # set -g @tmux-gruvbox 'dark'  # Optional: dark/light variant
+
+      set -g @plugin 'catppuccin/tmux#v2.1.3'
+      set -g @catppuccin_flavor 'mocha'
+
+      # TPM plugin manager
+      set -g @plugin 'tmux-plugins/tpm'
+      set -g @plugin 'tmux-plugins/tmux-sensible'
+
+      # Initialize TMUX plugin manager
+      run '~/.tmux/plugins/tpm/tpm'
+    '';
+  };
+```
+
 
