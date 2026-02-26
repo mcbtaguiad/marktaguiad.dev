@@ -8,7 +8,6 @@ weight: 2
 ---
 
 {{< toc >}}
-
 ### Hello, World
 ```go
 package main
@@ -19,3 +18,15 @@ func main() {
 	fmt.Println("Hello, World")
 }
 ```
+```go
+go run hello-work.go
+
+go build hello-world.go
+
+./hello-world
+```
+### Values
+String - can be added together with +.
+Interger and floats.
+Booleans, with boolean operators.
+
