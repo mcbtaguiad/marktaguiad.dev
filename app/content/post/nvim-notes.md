@@ -12,7 +12,7 @@ See old post [here](/post/vim-notes/) before you proceed with neovim.
 
 {{< imglink src="/images/linux/matrix/neo_fly.gif" alt="imagen" >}}
 
-This will be configured with NixOS, I recommend [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) if you are running other system. 
+This will be configured with NixOS, I recommend [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) if you are running other system. Or check my neovim setup with my ubuntu server - [repo](https://github.com/mcbtaguiad/dotfile-neovim).
 
 # Table of Contents
 {{< toc >}}
