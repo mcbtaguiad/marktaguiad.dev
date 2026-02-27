@@ -247,6 +247,13 @@ Rebuild and update boot menu
 sudo nixos-rebuild switch
 ```
 
+### Failed Build
+If you encounter error like fail rebuil even though you've revert back changes. You might need to delete cache and old failed build. 
+```bash
+sudo nix-collect-garbage -d
+sudo nix-store --verify --check-contents --repair
+```
+
 ### chroot
 In a scenario where you delete all the past generation, you can still use chroot method to fix your system. Boot to a installation media.
 ```
