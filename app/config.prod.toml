@@ -6,8 +6,8 @@ copyright = "marktaguiad.dev"
 disqusShortname = "marktaguiad.dev"
 googleAnalytics = "G-XCHH9NNNBX"
 
-
-
+[pagination]
+  pagerSize = 16
 
 # summaryLength = 2
 
