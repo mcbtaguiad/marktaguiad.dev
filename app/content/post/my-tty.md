@@ -131,8 +131,7 @@ programs.zsh = {
       theme = "robbyrussell";
     };
   }
-```
-#### other unix system
+``` #### other unix system
 ```sh
 apt install zsh
 
@@ -289,20 +288,31 @@ run '~/.tmux/plugins/tpm/tpm'
 
 #### nixos
 ```bash
-programs.tmux = {
+  programs.tmux = {
     enable = true;
+    baseIndex = 1;
+    newSession = true;
+    # Stop tmux+escape craziness.
+    escapeTime = 0;
+    # Force tmux to use /tmp for sockets (WSL2 compat)
+    secureSocket = false;
+    clock24 = true;
+    historyLimit = 50000;
+
+    plugins = with pkgs; [
+      tmuxPlugins.better-mouse-mode
+      tmuxPlugins.catppuccin
+      tmuxPlugins.vim-tmux-navigator
+
+    ];
 
     # Set your base tmux options
     extraConfig = ''
-      # Start windows and panes index at 1
-      set -g base-index 1
-      setw -g pane-base-index 1
-
-      # Renumber windows on delete
-      set-option -g renumber-windows on
-
-      # Vim-style pane navigation
-      set -g @plugin 'christoomey/vim-tmux-navigator'
+      # Vim-style pane navigation WITHOUT prefix
+      bind -n C-h select-pane -L
+      bind -n C-j select-pane -D
+      bind -n C-k select-pane -U
+      bind -n C-l select-pane -R
 
       # Jump directly to window 1-9
       bind-key -n M-1 select-window -t 1
@@ -316,18 +326,8 @@ programs.tmux = {
       bind-key -n M-9 select-window -t 9
 
       # Theme plugins
-      set -g @plugin 'egel/tmux-gruvbox'
-      # set -g @tmux-gruvbox 'dark'  # Optional: dark/light variant
-
       set -g @plugin 'catppuccin/tmux#v2.1.3'
       set -g @catppuccin_flavor 'mocha'
-
-      # TPM plugin manager
-      set -g @plugin 'tmux-plugins/tpm'
-      set -g @plugin 'tmux-plugins/tmux-sensible'
-
-      # Initialize TMUX plugin manager
-      run '~/.tmux/plugins/tpm/tpm'
     '';
   };
 ```

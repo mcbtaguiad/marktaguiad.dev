@@ -2,7 +2,7 @@
 title: "Esc the Matrix Neovim "
 date: 2026-02-23
 author: "Mark Taguiad"
-tags: ["nvim", "vim"]
+tags: ["nvim", "vim", "neovim"]
 UseHugoToc: true
 weight: 2
 ---
@@ -12,7 +12,7 @@ See old post [here](/post/vim-notes/) before you proceed with neovim.
 
 {{< imglink src="/images/linux/matrix/neo_fly.gif" alt="imagen" >}}
 
-This will be configured with NixOS, I recommend [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) if you are running other system. 
+This will be configured with NixOS, I recommend [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) if you are running other system. Or check my neovim setup with my ubuntu server - [repo](https://github.com/mcbtaguiad/dotfile-neovim).
 
 # Table of Contents
 {{< toc >}}
@@ -685,3 +685,14 @@ nvim-lint
 ```
 ### Complete Config
 Config is too long, check this [link](https://github.com/mcbtaguiad/dotfile-i3-nixos). 
+
+### Commands we learned along the way 
+#### Multiple line tab
+Enter visual mode, and highlight the lines needed to add tab.
+1. `ctrl + v` + arrow key to select the block
+2. [number of tab] `shift + .`
+3. to decrease the tab: [number of tab] `shift + ,`
+#### Copy all line
+`gg + V + G`
+
+
