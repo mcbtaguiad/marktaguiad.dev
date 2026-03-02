@@ -2,7 +2,7 @@
 title: "Esc the Matrix Neovim "
 date: 2026-02-23
 author: "Mark Taguiad"
-tags: ["nvim", "vim", "neovim"]
+tags: ["nvim", "vim", "neovim", "nixos"]
 UseHugoToc: true
 weight: 2
 ---
