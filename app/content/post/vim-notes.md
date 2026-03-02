@@ -24,6 +24,7 @@ This is the default mode. When you press `Escape` when in Insert mode you will e
 #### Insert Mode
 You can switch to this mode using pressing `i` or `Insert`. This is the default behavior in a editors. 
 
+
 #### Basics
 | Key        | Action           |
 | ---------- | ---------------- |
@@ -345,3 +346,12 @@ To enter Visual mode press `shift + v`.
 1. v
 2. Move cursor (w, e, j, k)
 3. y
+
+#### Other Commands
+| Key       | Action                             |
+| --------- | ---------------------------------- |
+| :! <command>    | run command inside vim |
+| :e <file>    | open file |
+| >>   | indent line |
+| <<   | un-indent line |
+

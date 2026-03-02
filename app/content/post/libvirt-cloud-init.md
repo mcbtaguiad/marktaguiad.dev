@@ -2,7 +2,7 @@
 title: "Boot Cloud Images with Qemu Libvirt"
 date: 2026-02-26
 author: "Mark Taguiad"
-tags: ["libvirt", "vm", "virsh"]
+tags: ["libvirt", "vm", "virsh", "kvm", "qemu"]
 UseHugoToc: true
 weight: 2
 ---

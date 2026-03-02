@@ -2,7 +2,7 @@
 title: "my tty"
 date: 2026-02-21
 author: "Mark Taguiad"
-tags: ["tmux", "zsh", "tty", "terminal-emulator"]
+tags: ["tmux", "zsh", "tty", "terminal-emulator", "nixos"]
 UseHugoToc: true
 weight: 2
 ---

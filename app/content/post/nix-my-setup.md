@@ -377,7 +377,6 @@ Boot Parameter.
 ```bash
   # Boot Kernel Parameters
   boot.kernelParams = [
-    "kvm-intel"
     "nvidia-drm.modeset=1"
     "mem_sleep_default=deep"
   ];
@@ -404,7 +403,7 @@ sudo nixos-rebuild switch
 ```
 
 ### Failed Build
-If you encounter error like fail rebuil even though you've revert back changes. You might need to delete cache and old failed build. 
+If you encounter error like fail rebuild even though you've revert back changes. You might need to delete cache and old failed build. 
 ```bash
 sudo nix-collect-garbage -d
 sudo nix-store --verify --check-contents --repair
