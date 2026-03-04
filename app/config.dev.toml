@@ -6,8 +6,11 @@ copyright = "marktaguiad.dev"
 disqusShortname = "marktaguiad.dev"
 googleAnalytics = "G-XCHH9NNNBX"
 
+[pagination]
+  pagerSize = 16
 
-
+[outputs]
+  home = ["HTML", "JSON"]
 
 # summaryLength = 2
 
@@ -27,10 +30,15 @@ weight = 2
 # url = "/tags"
 # weight = 3
 
+# [[menu.main]]
+# name = "Gallery"
+# url = "https://gallery.marktaguiad.dev"
+# weight = 4
+
 [[menu.main]]
-name = "Gallery"
-url = "https://gallery.marktaguiad.dev"
-weight = 4
+name = "Search"
+  url = "/search/"
+  weight = 4
 
 [[menu.main]]
 name = "Whoami"

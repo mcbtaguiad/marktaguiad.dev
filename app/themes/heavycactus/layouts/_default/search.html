@@ -1,0 +1,57 @@
+{{ define "main" }}
+<h1 style="color: var(--text);">Search</h1>
+
+<input 
+  type="text" 
+  id="search-input" 
+  placeholder="Search posts..." 
+  class="px-4 py-2 border rounded w-full mb-4"
+  style="
+    <!-- background-color: var(--bg-code); -->
+    color: #383838;
+    <!-- border-color: var(--border); -->
+    <!-- caret-color: var(--accent); -->
+  "
+>
+
+<ul 
+  id="search-results" 
+  class="space-y-4"
+  style="color: var(--text);"
+></ul>
+
+<script src="{{ "js/search.js" | absURL }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+<script>
+async function initSearch() {
+  const response = await fetch('{{ "/index.json" | relURL }}');
+  const posts = await response.json();
+
+  const fuse = new Fuse(posts, {
+    keys: ['title', 'summary', 'tags'],
+    threshold: 0.4
+  });
+
+  const input = document.getElementById('search-input');
+  const resultsContainer = document.getElementById('search-results');
+
+  input.addEventListener('input', () => {
+    const query = input.value;
+    resultsContainer.innerHTML = '';
+
+    if (!query) return;
+
+    const results = fuse.search(query);
+
+    results.forEach(({ item }) => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="${item.url}" class="text-blue-600 hover:underline">${item.title}</a>
+                      <p class="text-gray-600 text-sm">${item.summary}</p>`;
+      resultsContainer.appendChild(li);
+    });
+  });
+}
+
+initSearch();
+</script>
+{{ end }}

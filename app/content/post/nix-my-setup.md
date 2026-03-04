@@ -69,7 +69,57 @@ You can either install package as system-wide or userspace. Some cases you can d
   };
 
 ```
+#### Home Manager
+Here you configure package and service that is not system wide and only available to the user. I still preffer every config configured in `configuration.nix`, I'm the only user of the system. 
+##### Install
+```bash
+nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+nix-channel --update
+```
+Run `home-manager` to generate init config. Config is located at `~./.config/home-manager/home.nix'
 
+##### Sample Config
+*home.nix*
+```bash
+{ config, pkgs, ... }:
+
+{
+  home.username = "mcbtaguiad";
+
+  home.homeDirectory = "/home/mcbtaguiad";
+  home.stateVersion = "25.11"; # Please read the comment before changing.
+
+  home.packages = [
+
+  ];
+
+  home.file = {
+    # '';
+  };
+
+  home.sessionVariables = {
+    # EDITOR = "emacs";
+  };
+
+  programs.home-manager.enable = true;
+
+  programs.vim = {
+    enable = true;
+    plugins = with pkgs.vimPlugins; [
+      vim-nix
+    ];
+    settings = {
+      ignorecase = true;
+    };
+    extraConfig = ''
+      set mouse=a
+  };
+}
+```
+##### Build/Install
+```bash
+home-manager switch
+```
 ### Fonts
 Nothing special, same with package install. 
 ```
@@ -83,10 +133,34 @@ Nothing special, same with package install.
 ```
 
 ### Networking
+#### NetworkManager
 **NetworkManager** is enabled by default, comming from artix I am still contemplating to use connman. Will update this blog if I ever gone mad and messed up my config again. 
 ```
   # Enable networking
   networking.networkmanager.enable = true;
+```
+#### Bridge Network
+If you plan to use virtualization, then I recommend you to enable bridge network. This will allow your VM to get IP from you router DHCP server. 
+```bash
+ # Bridge network
+  networking.useDHCP = false;
+  networking.bridges = {
+    "br0" = {
+      interfaces = [ "enp0s31f6" ];
+    };
+  };
+  networking.interfaces.br0.ipv4.addresses = [
+    {
+      address = "192.168.254.69";
+      prefixLength = 24;
+    }
+  ];
+  networking.defaultGateway = "192.168.254.254";
+  networking.nameservers = [
+    "1.1.1.1"
+    "8.8.8.8"
+  ];
+  networking.firewall.checkReversePath = "loose";
 ```
 
 ### Sounds and Bluetooth
@@ -132,8 +206,7 @@ I'm switching from i3 and gnome (depending on the mood ahaha)
         #i3status
         i3lock
         i3blocks
-      ];
-    };
+      ]; };
   };
 
   # add this to make i3blocks work
@@ -227,6 +300,88 @@ To update **/etc/fstab** rebuild nixOS.
 sudo nixos-rebuild switch
 ```
 
+### Virtualization
+Add in enviroment package.
+```bash
+  environment.systemPackages  = with pkgs; [
+    virt-manager
+    libguestfs
+    dnsmasq
+```
+Add user in libvirtd group.
+```bash
+  users.users.mcbtaguiad = {
+    isNormalUser = true;
+    description = "Mark Taguiad";
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "libvirtd"
+      "qemu-libvirtd"
+    ];
+  };
+```
+Enable libvirtd service.
+```bash
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      vhostUserPackages = with pkgs; [ virtiofsd ];
+      runAsRoot = true;
+      swtpm.enable = true;
+    };
+    allowedBridges = [ "br0" ];
+  };
+```
+Add "kvm-intel" in the bootloader, "kvm-amd" is you are using amd.
+```bash
+  boot.kernelParams = [
+    "kvm-intel"
+  ];
+```
+
+### Nvidia
+Nvidia just sucks, my next purchase would be AMD. FUCK NVIDIA!. This section is well documented in NixOS [wiki](https://nixos.wiki/wiki/Nvidia), I'll just put it here as a reference when I reinstall NixOS.
+```bash
+  # Enable OpenGL
+  hardware.graphics = {
+    enable = true;
+  };
+
+  # Load nvidia driver for Xorg and Wayland
+  services.xserver.videoDrivers = [ "nvidia" ];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    powerManagement.finegrained = false;
+    open = false;
+    nvidiaSettings = true;
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+      # sync.enable = true;
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+
+    # Optionally, you may need to select the appropriate driver version for your specific GPU.
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
+  };
+
+```
+Boot Parameter.
+```bash
+  # Boot Kernel Parameters
+  boot.kernelParams = [
+    "nvidia-drm.modeset=1"
+    "mem_sleep_default=deep"
+  ];
+```
+
 ### Apply and rebuild NixOS
 When you think everything is in order run this command to rebuild your system. This will create new generation and store the old generation in case you need to rollback.
 ```
@@ -245,6 +400,13 @@ sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +5 # ke
 Rebuild and update boot menu
 ```
 sudo nixos-rebuild switch
+```
+
+### Failed Build
+If you encounter error like fail rebuild even though you've revert back changes. You might need to delete cache and old failed build. 
+```bash
+sudo nix-collect-garbage -d
+sudo nix-store --verify --check-contents --repair
 ```
 
 ### chroot

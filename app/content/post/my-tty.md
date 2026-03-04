@@ -2,7 +2,7 @@
 title: "my tty"
 date: 2026-02-21
 author: "Mark Taguiad"
-tags: ["tmux", "zsh", "tty", "terminal-emulator"]
+tags: ["tmux", "zsh", "tty", "terminal-emulator", "nixos"]
 UseHugoToc: true
 weight: 2
 ---
@@ -14,13 +14,122 @@ no pun intended hahahaha
 
 {{< toc >}}
 
-### alacritty
-I recommend alacritty or st for terminal emulator - but you do you. 
-#### install
+### terminal emulator
+I recommend alacritty or kitty for terminal emulator - but you do you. 
+#### kitty
 ```bash
-apt install alacaritty
+apt install kitty
 ```
-#### config
+*kitty.conf*
+```
+# Theme
+include mocha.conf
+
+# Transparency
+background_opacity 0.85
+
+# Font
+font_family IBM Plex Mono
+font_size 10.0
+
+# Cursor
+cursor_shape beam
+
+# Padding
+window_padding_width 8
+
+hide_window_decorations yes
+
+wayland_titlebar_color background
+
+confirm_quit no
+
+confirm_os_window_close 0
+
+cursor_trail 3
+```
+For theme I'm using catppuccin mocha as theme.
+*mocha.conf*
+```bash
+# The basic colors
+foreground              #cdd6f4
+background              #1e1e2e
+selection_foreground    #1e1e2e
+selection_background    #f5e0dc
+
+# Cursor colors
+cursor                  #f5e0dc
+cursor_text_color       #1e1e2e
+
+# Scrollbar colors
+scrollbar_handle_color  #9399b2
+scrollbar_track_color   #45475a
+
+# URL color when hovering with mouse
+url_color               #f5e0dc
+
+# Kitty window border colors
+active_border_color     #b4befe
+inactive_border_color   #6c7086
+bell_border_color       #f9e2af
+
+# OS Window titlebar colors
+wayland_titlebar_color system
+macos_titlebar_color system
+
+# Tab bar colors
+active_tab_foreground   #11111b
+active_tab_background   #cba6f7
+inactive_tab_foreground #cdd6f4
+inactive_tab_background #181825
+tab_bar_background      #11111b
+
+# Colors for marks (marked text in the terminal)
+mark1_foreground #1e1e2e
+mark1_background #b4befe
+mark2_foreground #1e1e2e
+mark2_background #cba6f7
+mark3_foreground #1e1e2e
+mark3_background #74c7ec
+
+# The 16 terminal colors
+
+# black
+color0 #45475a
+color8 #585b70
+
+# red
+color1 #f38ba8
+color9 #f38ba8
+
+# green
+color2  #a6e3a1
+color10 #a6e3a1
+
+# yellow
+color3  #f9e2af
+color11 #f9e2af
+
+# blue
+color4  #89b4fa
+color12 #89b4fa
+
+# magenta
+color5  #f5c2e7
+color13 #f5c2e7
+
+# cyan
+color6  #94e2d5
+color14 #94e2d5
+
+# white
+color7  #bac2de
+color15 #a6adc8
+```
+#### alacritty
+```bash
+apt install alacritty
+```
 *~/.config/alacritty/alacritty.toml*
 ```toml
 [colors.bright]
@@ -131,8 +240,7 @@ programs.zsh = {
       theme = "robbyrussell";
     };
   }
-```
-#### other unix system
+``` #### other unix system
 ```sh
 apt install zsh
 
@@ -289,20 +397,31 @@ run '~/.tmux/plugins/tpm/tpm'
 
 #### nixos
 ```bash
-programs.tmux = {
+  programs.tmux = {
     enable = true;
+    baseIndex = 1;
+    newSession = true;
+    # Stop tmux+escape craziness.
+    escapeTime = 0;
+    # Force tmux to use /tmp for sockets (WSL2 compat)
+    secureSocket = false;
+    clock24 = true;
+    historyLimit = 50000;
+
+    plugins = with pkgs; [
+      tmuxPlugins.better-mouse-mode
+      tmuxPlugins.catppuccin
+      tmuxPlugins.vim-tmux-navigator
+
+    ];
 
     # Set your base tmux options
     extraConfig = ''
-      # Start windows and panes index at 1
-      set -g base-index 1
-      setw -g pane-base-index 1
-
-      # Renumber windows on delete
-      set-option -g renumber-windows on
-
-      # Vim-style pane navigation
-      set -g @plugin 'christoomey/vim-tmux-navigator'
+      # Vim-style pane navigation WITHOUT prefix
+      bind -n C-h select-pane -L
+      bind -n C-j select-pane -D
+      bind -n C-k select-pane -U
+      bind -n C-l select-pane -R
 
       # Jump directly to window 1-9
       bind-key -n M-1 select-window -t 1
@@ -316,18 +435,8 @@ programs.tmux = {
       bind-key -n M-9 select-window -t 9
 
       # Theme plugins
-      set -g @plugin 'egel/tmux-gruvbox'
-      # set -g @tmux-gruvbox 'dark'  # Optional: dark/light variant
-
       set -g @plugin 'catppuccin/tmux#v2.1.3'
       set -g @catppuccin_flavor 'mocha'
-
-      # TPM plugin manager
-      set -g @plugin 'tmux-plugins/tpm'
-      set -g @plugin 'tmux-plugins/tmux-sensible'
-
-      # Initialize TMUX plugin manager
-      run '~/.tmux/plugins/tpm/tpm'
     '';
   };
 ```
