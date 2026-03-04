@@ -2,7 +2,7 @@
 title: "Boot Cloud Images with Qemu Libvirt"
 date: 2026-02-26
 author: "Mark Taguiad"
-tags: ["libvirt", "vm", "virsh", "kvm", "qemu"]
+tags: ["libvirt", "vm", "virsh", "kvm", "qemu", "cloud-init"]
 UseHugoToc: true
 weight: 2
 ---
@@ -11,8 +11,14 @@ Before I setup my proxmox sever, I am using this workflow. Slow and unproductive
 
 {{< toc >}}
 
+### Prerequisite
+- libvirtd is running and can run VM. 
+- cloud-utils is installed
+
+Verify if you can run qemu-img, virsh and cloud-locald. 
+
 ### Pool
-First create pool, skip if you have already created one, or fine with the default. 
+First create pool, skip if you have already created one, or using the default pool - `/var/lib/libvirt/images`. 
 ```bash
 virsh pool-define-as --name pool --typre dir --target /srv/nvme/libvirt
 ```
@@ -54,6 +60,7 @@ qemu-img create -f qcow2 -b debian-13-generic-amd64.qcow2 -F srvmnldebvm001.qcow
 - -F qcow2 → this will be the format of the backing image, and the storage of the vm.
 - 50G → virtual size
 
+
 #### Cloud-init
 In this section you can create a directory anywhere you want.
 ```bash
@@ -72,6 +79,16 @@ users:
     sudo: ["ALL=(ALL) NOPASSWD:ALL"]
     groups: sudo
     shell: /bin/bash
+
+ssh_pwauth: false
+disable_root: true
+
+packages:
+  - qemu-guest-agent
+
+runcmd:
+  - systemctl enable qemu-guest-agent
+  - systemctl start qemu-guest-agent
 ```
 *meta-data.yaml*
 ```yaml
@@ -92,6 +109,14 @@ network:
       - to: 0.0.0.0/0
         via: 192.168.254.254
 ```
+#### Seed ISO
+This will provide initial configuration data (user-data, meta-data) to the virtual machines.
+```bash
+cloud-localds \
+  --network-config=network-config.yaml \
+  srvmnldebvm001-seed.iso \
+  user-data.yaml meta-data.yaml
+```
 ### Create the VM
 ```bash
 virt-install \
@@ -104,7 +129,8 @@ virt-install \
     --network bridge=br0,model=virtio \
     --graphics vnc,listen=0.0.0.0 \
     --noautoconsole \
-    --cloud-init user-data=user-data.yaml,meta-data=meta-data.yaml,network-config=network-config.yaml
+    --cloud-init user-data=user-data.yaml,meta-data=meta-data.yaml,network-config=network-config.yaml \
+    --cdrom srvmnldebvm001-seed.iso
 ```
 
 Connect to the VM or use virt-manager. 
