@@ -48,7 +48,7 @@ Check this repo for model recommendation [llama.vim](https://github.com/ggml-org
 For my broke setup I used `ggml-org_Qwen2.5-Coder-1.5B-Q8_0-GGUF_qwen2.5-coder-1.5b-q8_0.gguf`.
 
 #### llama-server
-Add llama-server serviced. Tune based on your workstation/server specification.
+Add llama-server service. Tune based on your workstation/server specification.
 ```bash
   # llama-ccp server service
   services.llama-cpp = {
