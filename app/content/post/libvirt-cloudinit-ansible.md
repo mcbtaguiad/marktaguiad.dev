@@ -26,10 +26,10 @@ Build the package or just pull the image from gihub registry.
 ```bash
 cd libvirt-cloudinit-ansible    
 docker compose build 
-docker compose up
+docker compose up -d
 
 # or
-docker compose up
+docker compose up -d
 ```
 #### Image
 For this example we will use ubuntu noble cloud [image](https://cloud-images.ubuntu.com/noble/20260225/noble-server-cloudimg-amd64.img).
@@ -112,7 +112,7 @@ os_variant: ubuntu24.04
 #### Run Playbook
 Exec into the container. 
 ```bash
-docker exec -it ansible bash
+docker exec -it ansible-libvirt bash
 ```
 IP of the VM is printed at the end of the loop. I added this in case you set DHCP to `true`.
 ```bash

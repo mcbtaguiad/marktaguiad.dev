@@ -181,7 +181,7 @@ Add in `pkgs.vimPlugins`.
 lualine-nvim
 ```
 #### Git
-Git integration
+##### Lazygit
 ```bash
 vim.keymap.set("n", "<leader>gg", ":LazyGit<CR>", { silent = true, desc = "Open LazyGit" })
 ```
@@ -193,7 +193,33 @@ Add in `environment.systemPackages`.
 ```
 lazygit
 ```
-
+##### Git Signs 
+It displays visual indicators (signs) in the sign column to show the status of lines (added, modified, or deleted) compared to the latest Git revision.
+```bash
+ -- [[ GitSigns ]]
+local ok, gitsigns = pcall(require, "gitsigns")
+if ok then
+  gitsigns.setup {
+    signs = {
+      add          = {text = '+'},
+      change       = {text = '~'},
+      delete       = {text = '_'},
+      topdelete    = {text = '‾'},
+      changedelete = {text = '~'},
+    },
+    numhl = false,
+    linehl = false,
+    current_line_blame = true,
+    watch_gitdir = { interval = 1000, follow_files = true },
+    sign_priority = 6,
+    update_debounce = 100,
+  }
+end
+```
+Add in `pkgs.vimPlugins`.
+```
+gitsigns-nvim
+```
 ### Theme
 I'm using catppuccin(https://github.com/catppuccin/nvim). Some plugin have config for theme, look out for that. 
 ```bash
