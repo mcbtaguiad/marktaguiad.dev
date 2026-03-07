@@ -64,8 +64,8 @@ weight = 5
       unsafe = true
 
 [params]
-enableGiscus = false
-enableUtterances = true
+enableGiscus = true
+enableUtterances = false
 enableRemark42 = false
 enableIsso = false
 #colortheme = "white" # dark, light, white, or classic
