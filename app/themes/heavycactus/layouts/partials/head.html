@@ -59,22 +59,21 @@
 
   {{ partial "google_analytics.html" . }}
 
-  
+<script>
+(() => {
+  const DARK = 'dark';
+  const LIGHT = 'light';
+  const STORAGE_KEY = 'theme';
+  const html = document.documentElement;
 
+  // Get saved theme from localStorage, fallback to OS preference
+  const saved = localStorage.getItem(STORAGE_KEY);
+  const theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? DARK : LIGHT);
+
+  // Apply class immediately to prevent flash
+  html.classList.add(theme === DARK ? 'theme-dark' : 'theme-light');
+})(); 
+
+</script>
 </head>
   
-<script>
-  (function() {
-    const DARK = 'dark';
-    const LIGHT = 'light';
-    const STORAGE_KEY = 'theme';
-    const html = document.documentElement;
-
-    // get saved theme from localStorage, else OS preference
-    const saved = localStorage.getItem(STORAGE_KEY);
-    const theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? DARK : LIGHT);
-
-    // set HTML class immediately to prevent flash
-    html.classList.add(theme === DARK ? 'theme-dark' : 'theme-light');
-  })();
-</script>
