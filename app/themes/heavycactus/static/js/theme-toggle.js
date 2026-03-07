@@ -7,118 +7,81 @@
 	const toggleBtn = document.getElementById('theme-toggle');
 	const icon = document.getElementById('theme-icon');
 
+	// --------------------------
+	// Determine initial theme
+	// --------------------------
+	const saved = localStorage.getItem(STORAGE_KEY);
+	const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+	const initialTheme = saved || (prefersDark ? DARK : LIGHT);
+
+	// Apply initial theme immediately to prevent FOUC
+	html.classList.add(initialTheme === DARK ? 'theme-dark' : 'theme-light');
 
 	// --------------------------
-	// Update FA moon icon
+	// Pre-set widget themes before they load
+	// --------------------------
+	const setPreloadWidgetThemes = (theme) => {
+		// Giscus
+		const giscusScript = document.querySelector('script[src*="giscus.app/client.js"]');
+		if (giscusScript) giscusScript.dataset.theme = theme === DARK ? 'dark' : 'light';
+
+		// Utterances
+		const utterancesScript = document.querySelector('script[src*="utteranc.es/client.js"]');
+		if (utterancesScript) utterancesScript.setAttribute('theme', theme === DARK ? 'github-dark' : 'github-light');
+	};
+
+	setPreloadWidgetThemes(initialTheme);
+
+	// --------------------------
+	// Update FontAwesome icon
 	// --------------------------
 	function updateIcon(isDark) {
 		if (!icon) return;
-
-		icon.classList.remove('fa-solid', 'fa-regular', 'fa-moon');
-
-		if (isDark) {
-			icon.classList.add('fa-solid', 'fa-moon'); // dark mode = solid moon
-		} else {
-			icon.classList.add('fa-regular', 'fa-moon'); // light mode = outline moon
-		}
+		icon.className = '';
+		icon.classList.add(isDark ? 'fa-solid' : 'fa-regular', 'fa-moon');
 	}
 
 	// --------------------------
-	// Giscus theme
+	// Widget theme helpers
 	// --------------------------
-	function setGiscusTheme(theme) {
-		const iframe = document.querySelector('iframe.giscus-frame');
-		if (iframe) {
-			iframe.contentWindow.postMessage(
-				{ giscus: { setConfig: { theme } } },
-				'https://giscus.app'
-			);
-		} else {
-			// Wait until iframe is added to the DOM
-			const observer = new MutationObserver((mutations, obs) => {
-				const iframe = document.querySelector('iframe.giscus-frame');
-				if (iframe) {
-					iframe.contentWindow.postMessage(
-						{ giscus: { setConfig: { theme } } },
-						'https://giscus.app'
-					);
-					obs.disconnect(); // stop observing
-				}
-			});
-			observer.observe(document.body, { childList: true, subtree: true });
-		}
-	}
-	// --------------------------
-	// Utterances theme
-	// --------------------------
-	function setUtterancesTheme(theme) {
-		const sendTheme = (iframe) => {
-			iframe.contentWindow.postMessage(
-				{ type: 'set-theme', theme },
-				'https://utteranc.es'
-			);
-		};
+	const widgets = {
+		giscus: (theme) => {
+			const iframe = document.querySelector('iframe.giscus-frame');
+			if (iframe) iframe.contentWindow.postMessage({ giscus: { setConfig: { theme } } }, 'https://giscus.app');
+		},
 
-		const iframe = document.querySelector('.utterances-frame');
-
-		if (iframe) {
-			sendTheme(iframe);
-			return;
-		}
-
-		// Wait until utterances iframe loads
-		const observer = new MutationObserver((mutations, obs) => {
+		utterances: (theme) => {
 			const iframe = document.querySelector('.utterances-frame');
-			if (iframe) {
-				sendTheme(iframe);
-				obs.disconnect();
-			}
-		});
+			if (iframe) iframe.contentWindow.postMessage({ type: 'set-theme', theme }, 'https://utteranc.es');
+		},
 
-		observer.observe(document.body, { childList: true, subtree: true });
-	}
+		remark42: (theme) => {
+			const container = document.getElementById('remark42');
+			if (!container) return;
+			container.innerHTML = '';
+			if (window.remark_config) window.remark_config.theme = theme;
+			const script = document.createElement('script');
+			script.src = `${remark_config.host}/web/embed.js`;
+			script.defer = true;
+			document.body.appendChild(script);
+		},
+
+		isso: (theme) => {
+			const thread = document.getElementById('isso-thread');
+			if (!thread) return;
+			thread.innerHTML = '';
+			const s = document.createElement('script');
+			s.src = "https://isso.marktaguiad.dev/js/embed.min.js";
+			s.defer = true;
+			s.dataset.isso = "https://isso.marktaguiad.dev";
+			s.dataset.issoSite = "marktaguiad";
+			s.dataset.issoTheme = theme;
+			(document.head || document.body).appendChild(s);
+		},
+	};
+
 	// --------------------------
-	// Remark42 theme
-	// --------------------------
-	function setRemark42Theme(theme) {
-		const container = document.getElementById("remark42");
-		if (!container) return;
-
-		// clear existing widget
-		container.innerHTML = "";
-
-		// update config
-		if (window.remark_config) {
-			window.remark_config.theme = theme;
-		}
-
-		// reload embed
-		const script = document.createElement("script");
-		script.src = remark_config.host + "/web/embed.js";
-		script.defer = true;
-		document.body.appendChild(script);
-	}
-	// --------------------------
-	// Isso theme
-	// -------------------------
-	function setIssoTheme(theme) {
-		const thread = document.getElementById('isso-thread');
-		if (!thread) return;
-
-		// Clear existing thread
-		thread.innerHTML = '';
-
-		// Reload Isso with new theme
-		var d = document, s = d.createElement('script');
-		s.src = "https://isso.marktaguiad.dev/js/embed.min.js";
-		s.defer = true;
-		s.setAttribute('data-isso', "https://isso.marktaguiad.dev");
-		s.setAttribute('data-isso-site', "marktaguiad");
-		s.setAttribute('data-isso-theme', theme);
-		(d.head || d.body).appendChild(s);
-	}
-	// --------------------------
-	// Apply theme to page + icon + Giscus
+	// Apply theme dynamically
 	// --------------------------
 	function applyTheme(theme) {
 		const isDark = theme === DARK;
@@ -126,35 +89,32 @@
 		html.classList.toggle('theme-light', !isDark);
 		localStorage.setItem(STORAGE_KEY, theme);
 		updateIcon(isDark);
-		setGiscusTheme(isDark ? 'dark' : 'light'); // now safe
-		setUtterancesTheme(isDark ? 'github-dark' : 'github-light');
-		setRemark42Theme(isDark ? 'dark' : 'light');
-		setIssoTheme(isDark ? 'dark' : 'light');
+
+		// Widget themes
+		widgets.giscus(isDark ? 'dark' : 'light');
+		widgets.utterances(isDark ? 'github-dark' : 'github-light');
+		widgets.remark42(isDark ? 'dark' : 'light');
+		widgets.isso(isDark ? 'dark' : 'light');
 	}
-	// --------------------------
-	// Toggle between light/dark
-	// --------------------------
+
 	function toggleTheme() {
 		const current = localStorage.getItem(STORAGE_KEY) || LIGHT;
 		applyTheme(current === DARK ? LIGHT : DARK);
 	}
+
 	// --------------------------
 	// Initial load
 	// --------------------------
 	document.addEventListener('DOMContentLoaded', () => {
-		// check saved theme or current HTML class
-		const saved = localStorage.getItem(STORAGE_KEY);
-		const theme = saved || (html.classList.contains('theme-dark') ? DARK : LIGHT);
-		applyTheme(theme);
+		applyTheme(initialTheme);
 	});
+
 	// --------------------------
-	// Toggle button click
+	// Toggle button
 	// --------------------------
-	if (toggleBtn) {
-		toggleBtn.addEventListener('click', (e) => {
-			e.preventDefault();
-			e.stopPropagation();
-			toggleTheme();
-		});
-	}
+	toggleBtn?.addEventListener('click', (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		toggleTheme();
+	});
 })();
