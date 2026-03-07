@@ -63,10 +63,11 @@ weight = 5
     [markup.goldmark.renderer]
       unsafe = true
 
-
-
 [params]
-enableGiscus = true
+enableGiscus = false
+enableUtterances = false
+enableRemark42 = false
+enableIsso = true
 #colortheme = "white" # dark, light, white, or classic
 rss = true # generate rss feed. default value is false
 googleAnalyticsAsync = false # use asynchronous tracking. Synchronous tracking by default
@@ -74,7 +75,6 @@ showAllPostsArchive = false # default
 
 # Home page settings
 description = 'This blog is my learning-by-doing stash, where I dump notes from my sysadmin life and homelab setup.'
-
 
 mainSections = "posts" # your main section
 mainSectionsGallery = "gallery" # your main section
@@ -87,7 +87,6 @@ projectsUrl = "https://github.com/mcbtaguiad" # title link for projects list
 
 # https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference
 dateFormat = "2006-01-02" # default
-
 
 # Post page settings
 show_updated = true # default
@@ -109,15 +108,29 @@ mainSectionTitleGallery = "Gallery"
   link = "https://www.strava.com/athletes/123512498/"
 
 [params.giscus]
-    data_repo="mcbtaguiad/marktaguiad.dev"
-    data_repo_id="R_kgDONaJdcw"    
-    data_category="General"
-    data_category_id="DIC_kwDONaJdc84CxJdw"
-    data_mapping="pathname"
-    data_strict="0"
-    data_reactions_enabled="1"
-    data_emit_metadata="0"
-    data_input_position="bottom"
-    data_theme="light"
-    data_lang="en"
-    crossorigin="anonymous"
+data_repo="mcbtaguiad/marktaguiad.dev"
+data_repo_id="R_kgDONaJdcw"    
+data_category="General"
+data_category_id="DIC_kwDONaJdc84CxJdw"
+data_mapping="pathname"
+data_strict="0"
+data_reactions_enabled="1"
+data_emit_metadata="0"
+data_input_position="bottom"
+data_theme="light"
+data_lang="en"
+crossorigin="anonymous"
+
+[params.utterances]
+repo = "mcbtaguiad/marktaguiad.dev"
+issue_term = "pathname"
+theme = "github-light"
+crossorigin = "anonymous"
+
+[params.Remark42]
+host = "https://remark42.marktaguiad.dev"
+siteid = "marktaguiad"
+
+[params.isso]
+host = "https://isso.marktaguiad.dev"
+dataSiteId = "dev-marktaguiad-dev"
