@@ -1,5 +1,5 @@
 ---
-title: "Automate libvirt Vitual Machine Provisioning"
+title: "Automate libvirt Vitual Machine Provisioning with Ansible"
 date: 2026-03-03
 author: "Mark Taguiad"
 tags: ["libvirt", "vm", "virsh", "kvm", "qemu", "ansible", "cloud-init", "ansible"]
