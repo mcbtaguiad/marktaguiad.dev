@@ -12,7 +12,7 @@
   </div>
 </article>
 
-{{ if .Site.Params.enableGiscus }}
+{{ if or .Site.Params.enableGiscus .Site.Params.enableUtterances .Site.Params.enableRemark42 .Site.Params.enableIsso }}
   {{ partial "comment.html" . }}
 {{ end }}
 

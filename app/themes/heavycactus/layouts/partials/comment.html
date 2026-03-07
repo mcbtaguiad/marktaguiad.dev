@@ -1,17 +1,61 @@
 {{ if .Site.Params.enableGiscus }}
 <script src="https://giscus.app/client.js"
-        data-repo="{{ .Site.Params.giscus.data_repo}}"
-        data-repo-id="{{ .Site.Params.giscus.data_repo_id}}"
-        data-category="{{ .Site.Params.giscus.data_category}}"
-        data-category-id="{{ .Site.Params.giscus.data_category_id}}"
-        data-mapping="{{ .Site.Params.giscus.data_mapping}}"
-        data-strict="{{ .Site.Params.giscus.data_strict}}"
-        data-reactions-enabled="{{ .Site.Params.giscus.data_reactions_enabled}}"
-        data-emit-metadata="{{ .Site.Params.giscus.data_emit_metadata}}"
-        data-input-position="{{ .Site.Params.giscus.data_input_position}}"
-        data-theme="{{ .Site.Params.giscus.data_theme}}"
-        data-lang="{{ .Site.Params.giscus.data_lang}}"
-        crossorigin="{{ .Site.Params.giscus.crossorigin}}"
+	  data-repo="{{ .Site.Params.giscus.data_repo }}"
+	  data-repo-id="{{ .Site.Params.giscus.data_repo_id }}"
+	  data-category="{{ .Site.Params.giscus.data_category }}"
+	  data-category-id="{{ .Site.Params.giscus.data_category_id }}"
+	  data-mapping="{{ .Site.Params.giscus.data_mapping }}"
+	  data-strict="{{ .Site.Params.giscus.data_strict }}"
+	  data-reactions-enabled="{{ .Site.Params.giscus.data_reactions_enabled }}"
+	  data-emit-metadata="{{ .Site.Params.giscus.data_emit_metadata }}"
+	  data-input-position="{{ .Site.Params.giscus.data_input_position }}"
+	  data-theme="{{ .Site.Params.giscus.data_theme }}"
+	  data-lang="{{ .Site.Params.giscus.data_lang }}"
+	  crossorigin="{{ .Site.Params.giscus.crossorigin }}"
+	  async>
+</script>
+
+{{ else if .Site.Params.enableUtterances }}
+<script src="https://utteranc.es/client.js"
+        repo="{{ .Site.Params.utterances.repo }}"
+        issue-term="{{ .Site.Params.utterances.issue_term }}"
+        theme="{{ .Site.Params.utterances.theme }}"
+        crossorigin="{{ .Site.Params.utterances.crossorigin }}"
         async>
+</script>
+{{ else if .Site.Params.enableRemark42 }}
+<div id="remark42"></div>
+<script>
+  var remark_config = {
+    host: "{{ .Site.Params.Remark42.host }}",
+    site_id: "{{ .Site.Params.Remark42.siteid }}",
+    theme: localStorage.getItem('theme') === 'dark' ? 'dark' : 'light'
+  };
+
+  (function loadRemark42() {
+    const components = ["embed"];
+    components.forEach(function(c) {
+      const d = document;
+      const s = d.createElement("script");
+      s.src = remark_config.host + "/web/" + c + ".js";
+      s.defer = true;
+      (d.head || d.body).appendChild(s);
+    });
+  })();
+</script>
+{{ else if .Site.Params.enableIsso }}
+<div id="isso-thread"></div>
+<script type="text/javascript">
+  (function() {
+    var d = document, s = d.createElement('script');
+    s.src = "{{ .Site.Params.isso.host }}/js/embed.min.js";
+    s.defer = true;
+    s.setAttribute('data-isso', "{{ .Site.Params.isso.host }}");
+    s.setAttribute('data-isso-site', "{{ .Site.Params.isso.dataSiteId }}");
+    s.setAttribute('data-isso-reverse', "0");
+    s.setAttribute('data-isso-lang', "en");
+    s.setAttribute('data-isso-theme', localStorage.getItem('theme') === 'dark' ? 'dark' : 'light');
+    (d.head || d.body).appendChild(s);
+  })();
 </script>
 {{ end }}
