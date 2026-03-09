@@ -16,7 +16,7 @@ Let's just automate the process what is discussed in [part 1](/post/libvirt-clou
 
 ### Environment
 #### Docker/Podman
-I've dockerized ansible - taylored to the specific task. Check Dockerfile if you want to run it locally.
+I've dockerized ansible - tailored to the specific task. Check Dockerfile if you want to run it locally.
 
 First clone the [repo](https://github.com/mcbtaguiad/libvirt-cloudinit-ansible.git).
 ```bash

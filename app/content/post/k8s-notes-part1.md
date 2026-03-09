@@ -14,7 +14,7 @@ Kubernetes (K8s) is an open-source platform used to automate the deployment, sca
 Modern applications often consist of multiple services built with different technologies.
 
 Example architecture:
-- Fronted → Node.js
+- Frontend → Node.js
 - Databases → MySQL
 - Backend service - Java
 

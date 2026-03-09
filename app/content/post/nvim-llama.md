@@ -1,5 +1,5 @@
 ---
-title: "Code in the Matrix - Neovim llama.cpp plugin"
+title: "Code in the Matrix - Neovim llama.cpp Plugin"
 date: 2026-03-02
 author: "Mark Taguiad"
 tags: ["ai", "llama-cpp", "neovim", "nixos"]
