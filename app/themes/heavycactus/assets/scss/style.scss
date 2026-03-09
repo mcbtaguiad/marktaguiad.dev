@@ -286,3 +286,14 @@ code {
 .theme-dark .chroma {
   background-color: #040911; /* GitHub dark */
 }
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+}
+
+.post-nav a {
+  text-decoration: none;
+  font-weight: bold;
+}
