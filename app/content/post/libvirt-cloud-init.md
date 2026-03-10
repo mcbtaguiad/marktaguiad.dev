@@ -9,6 +9,7 @@ weight: 2
 
 Before I setup my proxmox sever, I am using this workflow. Slow and unproductive but it works. Every process here can be automated with proxmox and terraform, if you are interested check my previous post (kausap ko lang sarili ko dito).
 
+# Table of Contents
 {{< toc >}}
 
 ### Prerequisite

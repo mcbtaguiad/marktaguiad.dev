@@ -19,6 +19,7 @@ It performs three main tasks:
 
 This loop runs continuously inside the Kubernetes control plane.
 
+# Table of Contents
 {{< toc >}}
 ### Replicaset
 A replicaset ensures that a specific number of pod replicas are always running.

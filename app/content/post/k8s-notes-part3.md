@@ -8,6 +8,7 @@ weight: 2
 ---
 For applications running inside Kubernetes to function correctly, they must be able to communicate with each other and with external systems. Kubernetes provides a networking model that enables communication between Pods, Services, and external clients.
 
+# Table of Contents
 {{< toc >}}
 ### Pod Internal
 Each Pod receives its own internal IP address inside the Kubernetes cluster. This allows Pods to communicate directly with each other using that IP. 

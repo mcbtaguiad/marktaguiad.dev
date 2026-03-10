@@ -12,6 +12,7 @@ The cover image is AI generated.
 
 {{< imglink src="/images/linux/matrix/llama-matrix.png" alt="imagen" >}}
 
+# Table of Contents
 {{< toc >}}
 
 ### Setup

@@ -6,6 +6,11 @@ tags: ["k8s", "kubernetes", "pod", "kubectl"]
 UseHugoToc: true
 weight: 2
 ---
+{{< theme-image
+light="/images/devops/k8s-notes/k8s-notes-pod-001.png"
+dark="/images/devops/k8s-notes/k8s-notes-pod-dark-001.png"
+alt="Architecture Diagram"
+>}}
 In Kubernetes, you do not deploy containers directly. Instead, containers run inside a Pod, which acts as a wrapper around one or more containers. Pods are the smallest deployable unit in the Kubernetes. 
 
 A Pod provides:
@@ -13,6 +18,7 @@ A Pod provides:
 - Shared storage (volumes)
 - Shared network
 
+# Table of Contents
 {{< toc >}}
 ### Kubeconfig
 Before we deploy pods, let's first discuss `kubeconfig` for cluster access. Check this [link](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) for further explanation.

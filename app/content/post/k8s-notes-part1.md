@@ -8,6 +8,7 @@ weight: 2
 ---
 Kubernetes (K8s) is an open-source platform used to automate the deployment, scaling, and management of containerized applications. It is designed to simplify running large numbers of containers in production environments.
 
+# Table of Contents
 {{< toc >}}
 ### Container Management Problem
 

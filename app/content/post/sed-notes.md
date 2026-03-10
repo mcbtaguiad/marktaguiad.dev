@@ -8,6 +8,7 @@ weight: 2
 ---
 {{< imglink src="/images/linux/ranger-vim-sed-awk-find/Lord-Zedd-Cosmic-Fury.png" alt="imagen" >}}
 
+# Table of Contents
 {{< toc >}}
 
 ### What is SED?

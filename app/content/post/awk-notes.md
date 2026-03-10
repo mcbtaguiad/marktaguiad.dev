@@ -8,6 +8,7 @@ weight: 2
 ---
 {{< imglink src="/images/linux/ranger-vim-sed-awk-find/awkranger.jpeg" alt="imagen" >}}
 
+# Table of Contents
 {{< toc >}}
 
 ### What is Awk?
