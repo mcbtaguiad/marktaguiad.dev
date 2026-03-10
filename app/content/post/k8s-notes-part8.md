@@ -6,8 +6,15 @@ tags: ["k8s", "kubernetes", "daemonsets"]
 UseHugoToc: true
 weight: 2
 ---
+{{< theme-image
+light="/images/devops/k8s-notes/k8s-notes-daemonset-001.png"
+dark="/images/devops/k8s-notes/k8s-notes-daemonset-dark-001.png"
+alt="Architecture Diagram"
+>}}
 Kubernetes has multiple controllers to manage workloads. So far, we’ve learned about Deployments and StatefulSets, which help run Pods that scale and keep state.
 However, some workloads must run on every node in a cluster — this is where DaemonSets come in.
+
+# Table of Contents
 {{< toc >}}
 
 ### Why Daemonsets?

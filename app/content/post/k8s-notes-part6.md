@@ -6,9 +6,16 @@ tags: ["k8s", "kubernetes", "deployments"]
 UseHugoToc: true
 weight: 2
 ---
+{{< theme-image
+light="/images/devops/k8s-notes/k8s-notes-deployment-001.png"
+dark="/images/devops/k8s-notes/k8s-notes-deployment-dark-001.png"
+alt="Architecture Diagram"
+>}}
 In Kubernetes, ReplicaSets ensure that a specific number of Pods are always running. However, most real applications need to be updated frequently. This is where Deployments come in.
 
 A Deployment is a higher-level Kubernetes resource that manages ReplicaSets and allows applications to be updated, scaled, and rolled back safely.
+
+# Table of Contents
 {{< toc >}}
 
 ### Why Deployment?
@@ -22,6 +29,7 @@ Most applications require:
 
 Deployments provide these features while still using ReplicaSets underneath.
 #### Architecture
+
 ```bash
 Deployment
     ↓

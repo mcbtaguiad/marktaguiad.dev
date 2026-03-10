@@ -6,9 +6,16 @@ tags: ["k8s", "kubernetes", "statefulsets"]
 UseHugoToc: true
 weight: 2
 ---
+{{< theme-image
+light="/images/devops/k8s-notes/k8s-notes-statefulset-001.png"
+dark="/images/devops/k8s-notes/k8s-notes-statefulset-dark-001.png"
+alt="Architecture Diagram"
+>}}
 Kubernetes has several controllers to manage workloads. While Deployments are ideal for stateless applications, many real‑world use cases require stateful behavior — applications that store data, maintain identity, and rely on stable storage.
 
 This is where StatefulSets come in. They provide stable identity, stable storage, and ordered deployment for stateful applications.
+
+# Table of Contents
 {{< toc >}}
 
 ### Why StatefulSets?
