@@ -1,6 +1,6 @@
 ---
 title: "Kubernetes Notes - Architecture"
-date: 2026-03-05
+date:  2026-03-05T07:22:20+08:00
 author: "Mark Taguiad"
 tags: ["k8s", "kubernetes"]
 UseHugoToc: true
@@ -51,7 +51,7 @@ Machines where applications actually run.
 The smallest deployable unit in Kubernetes, containing one or more containers that share storage and networking.
 ### Kubernetes Workflow
 #### Client
-Assume we deploy a Pod and expose it externally using a Service of type LoadBalancer.
+Assume we deploy a Pod and expose it externally using a `Service` of type` LoadBalancer`.
 1. User Sends Request
 
 A developer interacts with the cluster using `kubectl`, which communicates with the Kubernetes API Server.
@@ -61,8 +61,8 @@ kubectl apply -f pod.yaml
 `kubectl` sends a REST API request to the API Server.
 #### Pod Creation
 2. API Server Validates Request
-The API Server:
 
+The API Server:
 - Authenticates and authorizes the request
 - Validates the object definition
 - Stores the desired state in etcd

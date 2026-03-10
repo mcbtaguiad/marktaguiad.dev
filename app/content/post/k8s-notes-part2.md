@@ -1,14 +1,11 @@
 ---
 title: "Kubernetes Notes - Pod"
-date: 2026-03-06
+date: 2026-03-05T17:22:20+08:00
 author: "Mark Taguiad"
 tags: ["k8s", "kubernetes", "pod", "kubectl"]
 UseHugoToc: true
 weight: 2
 ---
-
-{{< toc >}}
-### What is a Pod?
 In Kubernetes, you do not deploy containers directly. Instead, containers run inside a Pod, which acts as a wrapper around one or more containers. Pods are the smallest deployable unit in the Kubernetes. 
 
 A Pod provides:
@@ -16,8 +13,9 @@ A Pod provides:
 - Shared storage (volumes)
 - Shared network
 
+{{< toc >}}
 ### Kubeconfig
-Before we deploy pods, let's first discuss kubeconfig for cluster access. Check this [link](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) for further explanation.
+Before we deploy pods, let's first discuss `kubeconfig` for cluster access. Check this [link](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) for further explanation.
 
 First find your kubeconfig file of your cluster, if the cluster is created using `kubeadm` it is located at `/etc/kubernetes/admin.conf`, if your using `k3s` then it is at `/etc/rancher/k3s/k3s.yaml`. 
 
@@ -39,6 +37,7 @@ This method is useful for:
 - testing
 - experiments
 - temporary workloads
+
 However, for real deployments, YAML files are preferred.
 
 ### Using YAML for Kubernetes Resources
@@ -68,7 +67,7 @@ This declares the desired state of the system.
 ### Multiple Pods
 This demonstrates a Pod containing two containers that communicate via a shared volume. Let's use `ubuntu` and `nginx` images, the two pod will share the same `volume`.
 
-Workflow; *pod1* will create the `index.html` file in `/usr/share/nginx/html` that will be serve by *pod2*. 
+Workflow; **pod1** will create the `index.html` file in `/usr/share/nginx/html` that will be serve by **pod2**. 
 #### Manifest
 *deploy.yaml*
 ```yaml
@@ -109,7 +108,7 @@ kubectl create ns demo
 #### Deploy
 Deploy the pod. 
 ```bash
-kubectl create -f pod.yaml
+kubectl create -f pod.yaml -n demo
 ```
 #### Listing the Pod
 Check if the pod is now running.
@@ -168,7 +167,7 @@ At least one container terminated with an error.
 #### Completed / Terminated
 All containers have stopped execution.
 ### Pod Readiness and Liveliness Probe
-Pod lifecycle is quite a bit topic, you can check [here](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/) if you are interested. For now I'll discuss about *Readiness Probe* and *Liveliness Probe* of a Pod. If you are here then you are familiar with Docker/Podman health check, it is quite similar to that but this two probe serve different purposes. 
+Pod lifecycle is quite a bit topic, you can check [here](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/) if you are interested. For now I'll discuss about **Readiness Probe** and **Liveliness Probe** of a Pod. If you are here then you are familiar with Docker/Podman health check, it is quite similar to that but this two probe serve different purposes. 
 #### Liveness Probe
 Checks if the container is still running correctly. If the liveness probe fails, Kubernetes will restart the container.
 
@@ -310,13 +309,14 @@ They can disappear if:
 
 Because of this, in real systems Pods are usually managed by higher-level controllers such as:
 - Deployments
-- StatefulSets
+- Statefulsets
+- Daemonsets
 - Jobs
 
 These controllers recreate Pods automatically when they fail.
 
 ### Clean Up
-Since pod has no controller managing it, a pod deleted is gone permanently because nothing is responsible for recreating it. I'll discuss and demonstrate these in next part where we discuss Deployment,Statefulsets and Replicaset.
+Since pod has no controller managing it, a pod deleted is gone permanently because nothing is responsible for recreating it. I'll discuss and demonstrate these in next part where we discuss controllers.
 ```bash
 kubectl delete pod pod-demo -n demo
 kubectl delete pod nginx-probe-demo -n demo
@@ -329,3 +329,7 @@ kubectl delete -f probe.yaml -n demo
 # or 
 kubectl delete -f . -n demo
 ```
+
+
+### Bonus 
+If you are wondering what is the difference of `kubectl apply` and `kubectl create`. `kubectl create` is used to create resources for the first time. If the resources already exist, the command will fail. `kubectl apply` is used to create or update resources declaratively.
