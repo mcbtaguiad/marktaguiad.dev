@@ -9,6 +9,8 @@ weight: 2
 In Kubernetes, some workloads need to run continuously, such as web servers or APIs. These are typically managed by controllers like Deployments.
 
 However, other workloads only need to run once and finish, such as scripts, data processing tasks, or backups. Kubernetes provides Jobs and CronJobs to handle these types of workloads.
+
+# Table of Contents
 {{< toc >}}
 
 ### Job

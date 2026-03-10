@@ -12,6 +12,7 @@ To solve this problem, Kubernetes provides Volumes, which allow data to persist 
 
 Volumes are mounted into containers and provide persistent or shared storage depending on the type used.
 
+# Table of Contents
 {{< toc >}}
 
 ### How Volume Works 
