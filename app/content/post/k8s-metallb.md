@@ -127,14 +127,14 @@ kubectl create -f pod.yaml -n demo
 #### Dynamic IP 
 To use Metallb just add the metallb annotation. Also make sure your selector match with the pod label.
 
-*srv-dynamic.yaml*
+*svc-dynamic.yaml*
 ```yaml
 apiVersion: v1
 kind: Service
 metadata:
   name: pod-demo-svc-dynamic
   labels:
-    app: pod-demo-srv
+    app: pod-demo-svc
   annotations:
     metallb.universe.tf/address-pool: metallb-ip-pool
   
@@ -149,7 +149,7 @@ spec:
 ```
 
 ```bash
-kubectl create -f srv-dynamic.yaml -n demo
+kubectl create -f svc-dynamic.yaml -n demo
 ```
 Verify and curl the IP.
 ```bash
@@ -188,7 +188,7 @@ spec:
   type: LoadBalancer
 ```
 ```bash
-kubectl create -f srv-static.yaml -n demo
+kubectl create -f svc-static.yaml -n demo
 ```
 ```bash
 kubectl get svc -n demo                       
