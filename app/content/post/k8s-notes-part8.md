@@ -32,7 +32,7 @@ These workloads must run on each worker node so that:
 - Security tools
 
 ### Create Daemonsets
-For this example let's run promethues node exporter. This is ideal since we want an exporter on every node, even if we add a new node in the K8S Cluster a pod will automatically be created. 
+For this example let's run prometheus node exporter. This is ideal since we want an exporter on every node, even if we add a new node in the K8S Cluster a pod will automatically be created. 
 
 But you can still use daemonset to deploy normal application like nginx, but this will be costly in resources - cause like we mentioned earlier pod is guaranteed to be created in each node. 
 ```yaml

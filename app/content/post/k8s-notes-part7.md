@@ -132,7 +132,7 @@ Address:	10.43.0.10:53
 Name:	postgresql-0.postgresql.demo.svc.cluster.local
 Address: 172.16.235.46
 
-➜  k8s-demo kubectl exec pod/busybox -n universe -- nslookup postgresql-1.postgresql.demo.svc.cluster.local
+kubectl exec pod/busybox -n universe -- nslookup postgresql-1.postgresql.demo.svc.cluster.local
 Server:		10.43.0.10
 Address:	10.43.0.10:53
 
@@ -140,7 +140,7 @@ Address:	10.43.0.10:53
 Name:	postgresql-1.postgresql.demo.svc.cluster.local
 Address: 172.16.59.219
 
-➜  k8s-demo kubectl exec pod/busybox -n universe -- nslookup postgresql-2.postgresql.demo.svc.cluster.local
+kubectl exec pod/busybox -n universe -- nslookup postgresql-2.postgresql.demo.svc.cluster.local
 Server:		10.43.0.10
 Address:	10.43.0.10:53
 
