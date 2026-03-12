@@ -6,7 +6,7 @@ tags: ["k8s", "kubernetes", "pod", "replicaset", "controller"]
 UseHugoToc: true
 weight: 2
 ---
-Kubernetes is designed to keep applications running even when failures occur. One of the key mechanisms that enables this is the Controller system.
+Kubernetes is designed to keep applications running even when failures occur. One of the key mechanisms that enables this is the Controller.
 
 Controllers continuously monitor the cluster and ensure that the actual state matches the desired state. If something goes wrong, Kubernetes automatically corrects it.
 
