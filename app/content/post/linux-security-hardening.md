@@ -9,7 +9,9 @@ TocOpen: false
 UseHugoToc: true
 
 ---
-
+{{< warning >}}
+Content here are automated using ansible check [here](/post/linux-hardening-playbook) if you are interested.
+{{< /warning >}}
 # Table of Contents
 {{< toc >}}
 
@@ -48,6 +50,17 @@ ClientAliveInterval 300
 ClientAliveCountMax 0
 ```
 
+#### Enforce password complexity
+#### Debian base
+*/etc/pam.d/common-password*
+```
+password requisite pam_pwquality.so retry=3 minlen=8
+```
+#### Redhat base
+*/etc/security/pwquality.conf*
+```
+minlen = 8
+```
 #### Monitoring
 Regularly inspect SSH logs to detect suspicious behavior. Common log locations:
 - /var/log/auth.log
@@ -437,3 +450,82 @@ I'll update this section when I get the time to read all about SELinux. Makaulaw
 
 ### Firewall
 [Look at this post.](/post/linux-network/#firewall)
+
+### Automatic Security Upgrade
+#### Debian base
+Install auto update package
+```bash
+apt install unattended-upgrades
+```
+Configure unattended-upgrades to security only.
+*/etc/apt/apt.conf.d/50-unattended-upgrades*
+```
+Unattended-Upgrade::Allowed-Origins {
+      "${distro_id}:${distro_codename}-security";
+};
+Unattended-Upgrade::Automatic-Reboot "true";
+Unattended-Upgrade::Remove-Unused-Dependencies "true";
+```
+Enable periodic unattended-upgrades
+*/etc/apt/apt.conf.d/20auto-upgrades*
+```
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Download-Upgradeable-Packages "1";
+APT::Periodic::AutocleanInterval "7";
+APT::Periodic::Unattended-Upgrade "1";
+```
+#### Redhat base
+Configure dnf-automatic for security updates.
+*/etc/dnf/automatic.conf*
+```
+upgrade_type = security
+```
+Enable service.
+```
+systemctl enable --now dnf-automatic.timer
+```
+### Audit
+Install package.
+```bash
+apt install auditd
+# or redhat base
+dnf isntall auditd
+```
+Add autdit rules.
+*/etc/audit/rules.d/audit.rules*
+```
+-w /etc/passwd -p wa -k passwd_changes
+-w /etc/shadow -p wa -k shadow_changes
+-w /etc/group -p wa -k group_changes
+-w /etc/sudoers -p wa -k sudoers_changes
+
+# sudo
+-w /etc/sudoers -p wa -k sudo
+-w /etc/sudoers.d/ -p wa -k sudo
+
+# ssh
+-w /etc/ssh/sshd_config -p wa -k ssh
+
+# time changes
+-a always,exit -F arch=b64 -S adjtimex,settimeofday -k time_change
+-w /etc/localtime -p wa -k time_change
+
+# kernel modules
+-a always,exit -F arch=b64 -S init_module,finit_module,delete_module -k modules
+```
+Reload auditd rules
+```
+auditctl -R /etc/audit/audit.rules
+```
+### Advanced Intrusion Detection Environment
+It monitors file attributes—such as permissions, size, and cryptographic hashes—to detect unauthorized modifications, malware, or rootkits, acting as a host-based intrusion detection system. 
+
+Install package.
+```bash
+apt install aide
+```
+Initialize AIDE database
+```bash
+aide --init
+aide --init --config /etc/aide/aide.conf
+```
