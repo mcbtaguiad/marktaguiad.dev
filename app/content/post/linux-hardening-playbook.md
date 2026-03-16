@@ -71,6 +71,7 @@ docker compose up -d
 ### Configuration
 #### Inventory
 This will use sudo so set `ansible_user` to root or a user with root access.
+
 *inventory/hosts.ini*
 ```ini
 [all]
@@ -85,6 +86,7 @@ server02 ansible_host=192.168.254.102 ansible_user=mcbtaguiad
 ```
 #### Playbook
 Run individual role or just run the main playbook.
+
 *main.yaml*
 ```yaml
 ---
