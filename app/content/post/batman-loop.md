@@ -1,5 +1,5 @@
 ---
-title: "Infanta (Batman) Loop"
+title: "Ang Pangarap Kong Batman Loop"
 date: 2025-03-29
 author: "Mark Taguiad"
 tags: ["ride", "cycling", "batman", "infanta"]
