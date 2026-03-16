@@ -145,6 +145,42 @@ fail2ban-client set recidive unbanip 1.2.3.4
 
 Better yet, install VPN to your server and white list the subnet used.
 
+#### Custom Config/Regex
+You can alse create custom config to match regex on an application logs. This config is from my docker mail.
+
+Add filter config in `/etc/fail2ban/filter.d`.
+
+*mailmoto.conf*
+```
+[Definition]
+
+failregex = ^.*imap-login: Info: Disconnected: Connection closed \(auth failed.*\): user=<.*>, method=.*?, rip=<HOST>,.*
+            ^.*postfix/smtpd\[.*\]: warning: .*?\[<HOST>\]: SASL .* authentication failed:.*
+
+ignoreregex =
+```
+
+Enable this filter in `/etc/fail2ban/jail.d`
+
+*mailmoto.local*
+```
+[mailmoto]
+enabled  = true
+filter   = mailmoto
+logpath  = /srv/volume/mailmoto/log/mail.log
+
+port     = smtp,submission,imaps
+
+maxretry = 3
+findtime = 10m
+bantime  = 1h
+```
+
+Test filter if it will match.
+```bash
+fail2ban-regex /srv/volume/mailmoto/log/mail.log /etc/fail2ban/filter.d/mailmoto.conf
+```
+
 ### SELinux
 SELinux (Security-Enhanced Linux) is a **mandatory access control (MAC)** system built into the Linux kernel.  
 Every process, file, port, and other system object has a **security label** that includes a **type**. Policy rules determine what each process type is allowed to do with each object type.  
