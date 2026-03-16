@@ -24,6 +24,9 @@ Author: Mark Taguiad <marktaguiad@marktaguaid.dev>
 Site: https://marktaguiad.dev
 ```
 This is not a replacement to your production email server solution, this was created as a solution for my low spec edge server (VPS with 1 core and 1gb ram). This sit comforably consumming 30mb RAM and low CPU utilization - on low volume of mails. 
+
+Repo: [mcbtaguiad/mailmoto](https://github.com/mcbtaguiad/mailmoto)
+
 # Table of Contents
 {{< toc >}}
 
