@@ -9,9 +9,9 @@ TocOpen: false
 UseHugoToc: true
 
 ---
-{{< warning >}}
-Content here are automated using ansible check [here](/post/linux-hardening-playbook) if you are interested.
-{{< /warning >}}
+{{< info >}}
+Content here are automated using ansible, check [here](/post/linux-hardening-playbook) if you are interested.
+{{< /info >}}
 # Table of Contents
 {{< toc >}}
 
