@@ -16,7 +16,8 @@ UseHugoToc: true
 Lets autotmate what was discussed in previous posts. 
 
 ### Feature
-Any of this list can be enabled or disabled and is group as roles.
+Any on list can be enabled or disabled and is group as roles.
+
 **User Management**
 - User and Group Creation
 - Add user to group
