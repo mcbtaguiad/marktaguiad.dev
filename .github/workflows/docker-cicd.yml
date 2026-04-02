@@ -1,33 +1,19 @@
-name: Build-Push-Deploy-Dev
-
-# on:
-#   push:
-#     branches: [ "main" ]
-#   pull_request:
-#     branches: [ "main" ]
-
-# on:
-#   workflow_dispatch:
+name: marktaguiad-ci
 
 on:
-  push:
-    branches: [ "**" ]
-    # Publish semver tags as releases.
-    # tags: [ 'v*' ]
   pull_request:
-    branches: [ "**" ]
-    types: [closed]
-
+    branches: [ "main" ]
+    types: [ closed ]
 
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-
+  # this is not needed as i migrated the deployment to cloudflare pages
+  # just wasting gihub resources hahaha 
   build:
-    # if: github.event.pull_request.merged == true
-
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     permissions:
@@ -71,3 +57,15 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
             ENVIRONMENT=${{ github.ref_name == 'main' && 'prod' || 'dev' }}
+
+  deploy:
+    if: github.event.pull_request.merged == true
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Trigger Cloudflare Deploy
+        run: curl -X POST ${{ secrets.CF_DEPLOY_HOOK }}
