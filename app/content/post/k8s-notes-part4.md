@@ -1,5 +1,5 @@
 ---
-title: "Kubernetes Notes - Volume"
+title: "Kubernetes Volume"
 date:  2026-03-06T03:32:32+08:00
 author: "Mark Taguiad"
 tags: ["k8s", "kubernetes", "volume", "csi"]

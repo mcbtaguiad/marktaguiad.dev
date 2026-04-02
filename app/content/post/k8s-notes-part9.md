@@ -1,5 +1,5 @@
 ---
-title: "Kubernetes Notes - Jobs, CronJob and Init Container"
+title: "Kubernetes Jobs, CronJob and Init Container"
 date: 2026-03-09
 author: "Mark Taguiad"
 tags: ["k8s", "kubernetes", "daemonsets"]

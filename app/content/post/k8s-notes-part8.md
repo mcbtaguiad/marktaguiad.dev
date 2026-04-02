@@ -1,5 +1,5 @@
 ---
-title: "Kubernetes Notes - Daemonsets"
+title: "Kubernetes Daemonsets"
 date: 2026-03-08
 author: "Mark Taguiad"
 tags: ["k8s", "kubernetes", "daemonsets"]

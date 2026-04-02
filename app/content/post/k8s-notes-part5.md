@@ -1,5 +1,5 @@
 ---
-title: "Kubernetes Notes - Controller"
+title: "Kubernetes Controller"
 date:  2026-03-06T12:15:40+08:00
 author: "Mark Taguiad"
 tags: ["k8s", "kubernetes", "pod", "replicaset", "controller"]

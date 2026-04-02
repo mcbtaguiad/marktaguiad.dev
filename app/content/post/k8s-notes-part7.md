@@ -1,5 +1,5 @@
 ---
-title: "Kubernetes Notes - Statefulsets"
+title: "Kubernetes Statefulsets"
 date: 2026-03-07
 author: "Mark Taguiad"
 tags: ["k8s", "kubernetes", "statefulsets"]

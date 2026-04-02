@@ -1,5 +1,5 @@
 ---
-title: "Kubernetes Notes - Networking"
+title: "Kubernetes Networking"
 date:  2026-03-05T23:54:49+08:00
 author: "Mark Taguiad"
 tags: ["k8s", "kubernetes", "networking", "cni"]
