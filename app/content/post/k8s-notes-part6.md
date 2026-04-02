@@ -1,5 +1,5 @@
 ---
-title: "Kubernetes Notes - Deployments"
+title: "Kubernetes Deployments"
 date: 2026-03-06T23:07:51+08:00
 author: "Mark Taguiad"
 tags: ["k8s", "kubernetes", "deployments"]

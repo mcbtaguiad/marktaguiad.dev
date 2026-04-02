@@ -1,5 +1,5 @@
 ---
-title: "Kubernetes Notes - Architecture"
+title: "Kubernetes Architecture"
 date:  2026-03-05T07:22:20+08:00
 author: "Mark Taguiad"
 tags: ["k8s", "kubernetes"]

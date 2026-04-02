@@ -107,7 +107,89 @@ To copy your public key to your server.
 
 `ssh-copy-id UserName@yourserverIPorDNS`
 
+### Kubernetes
+Create token secret.
 
+*tunnel-token.yaml*
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: tunnel-token
+stringData:
+  token: <YOUR_TUNNEL_TOKEN>
+```
 
+Create Cloudflared deployment.
 
+*tunnel.yaml*
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloudflared-deployment
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      pod: cloudflared
+  template:
+    metadata:
+      labels:
+        pod: cloudflared
+    spec:
+      securityContext:
+        sysctls:
+          # Allows ICMP traffic (ping, traceroute) to resources behind cloudflared.
+          - name: net.ipv4.ping_group_range
+            value: "65532 65532"
+      containers:
+        - image: cloudflare/cloudflared:latest
+          name: cloudflared
+          env:
+            # Defines an environment variable for the tunnel token.
+            - name: TUNNEL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: tunnel-token
+                  key: token
+          command:
+            # Configures tunnel run parameters
+            - cloudflared
+            - tunnel
+            - --no-autoupdate
+            - --loglevel
+            - info
+            - --metrics
+            - 0.0.0.0:2000
+            - run
+          livenessProbe:
+            httpGet:
+              # Cloudflared has a /ready endpoint which returns 200 if and only if
+              # it has an active connection to Cloudflare's network.
+              path: /ready
+              port: 2000
+            failureThreshold: 1
+            initialDelaySeconds: 10
+            periodSeconds: 10
+```
+Deploy.
+```bash
+kubectl apply -f .
+```
 
+Verify and get contents.
+```bash
+kubectl get all
+Warning: kubevirt.io/v1 VirtualMachineInstancePresets is now deprecated and will be removed in v2.
+NAME                                          READY   STATUS    RESTARTS   AGE
+pod/cloudflared-deployment-8549dfd4c7-9fspj   1/1     Running   0          3m47s
+pod/cloudflared-deployment-8549dfd4c7-f2nrh   1/1     Running   0          3m47s
+
+NAME                                     READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/cloudflared-deployment   2/2     2            2           3m47s
+
+NAME                                                DESIRED   CURRENT   READY   AGE
+replicaset.apps/cloudflared-deployment-8549dfd4c7   2         2         2       3m47s
+```

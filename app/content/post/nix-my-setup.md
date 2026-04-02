@@ -417,3 +417,27 @@ mount /dev/sda1 /mnt/boot
 nixos-enter
 nixos-rebuild boot
 ```
+
+### Nix Build Command Dying
+The `nix-build` command dying with Signals.SIGSEGV: 11 indicates a segmentation fault, which is an illegal memory access error. This is typically caused by a bug in the Nix program itself, an incompatibility between libraries, a system misconfiguration, or faulty hardware. 
+```bash
+Command 'nix-build '<nixpkgs/nixos>' --attr config.system.build.toplevel --no-out-link' died with <Signals.SIGSEGV: 11>.
+```
+Possible Fix; check for system corruntion.
+```bash
+nix-store --verify --check-contents --repair
+```
+Or if you undervolt your CPU. Disabled undervolt setting and monitor.
+
+### Automatic System Clean
+This will clean your system older than 4 days.
+```
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/user/my-nixos-config";  
+  };
+```
+
+Check this [repo](https://github.com/nix-community/nh) for more info.

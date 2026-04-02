@@ -1,5 +1,5 @@
 ---
-title: "Kubernetes Notes - Pod"
+title: "Kubernetes Pod"
 date: 2026-03-05T17:22:20+08:00
 author: "Mark Taguiad"
 tags: ["k8s", "kubernetes", "pod", "kubectl"]
