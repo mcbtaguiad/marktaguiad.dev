@@ -1,5 +1,5 @@
 ---
-title: "Kubernetes Istio: mTLS and RBAC"
+title: "Istio: mTLS and RBAC"
 date: 2026-03-24
 author: "Mark Taguiad"
 tags: ["k8s", "networking", "kubernetes", "istio", "security", "rbac", "mtls"]

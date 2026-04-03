@@ -1,5 +1,5 @@
 ---
-title: "Kubernetes Istio: Routing"
+title: "Istio: Routing"
 date: 2026-03-23
 author: "Mark Taguiad"
 tags: ["k8s", "networking", "kubernetes", "istio", "routing"]
