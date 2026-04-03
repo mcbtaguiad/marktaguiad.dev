@@ -1,11 +1,12 @@
 ---
-title: "Kubernetes Istio: Fault Injection, Retries and Circuit Breaker"
+title: "Istio: Fault Injection, Retries and Circuit Breaker"
 date: 2026-03-28
 author: "Mark Taguiad"
 tags: ["k8s", "networking", "kubernetes", "istio", "security", "circuitbreaker"]
 UseHugoToc: true
 weight: 2
 ---
+
 Continuation of Kubernetes Istio.
 
 # Table of Contents
