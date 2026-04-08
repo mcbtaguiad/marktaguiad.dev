@@ -413,11 +413,6 @@ Partition table entries are not in disk order.
 
 To add extra persistent disk. 
 ```
-resource "google_project_service" "compute_api" {
-  service            = "compute.googleapis.com"
-  disable_on_destroy = false
-}
-
 resource "google_compute_disk" "extra_disk" {
   name = "extra-disk"
   type = "pd-standard"
@@ -701,5 +696,299 @@ resource "google_compute_autoscaler" "default" {
       duration_sec          = 43200
     }
   }
+}
+```
+
+### Full Example
+- SSH and IAM based login
+- with external/public IP
+- firewall rule
+- extra disk attached
+- boot disk - async replication 
+- boot disk - automatic snapshot
+
+*variables.tf*
+```
+variable "project_id" {
+  type    = string
+}
+
+variable "region" {
+  type        = string
+  description = "Region"
+}
+
+variable "zone" {
+  type        = string
+  description = "Zone"
+}
+
+variable "compute_instance_name" {
+  type        = string
+  description = "Compute Instance Name"
+}
+
+variable "machine_type" {
+  type        = string
+  description = "Machine Type"
+} 
+
+variable "hostname" {
+  type        = string
+  description = "VM Hostname"
+} 
+
+variable "image_type" {
+  type        = string
+  description = "Image Type"
+} 
+
+variable "network_name" {
+  type        = string
+  description = "Network Name"
+} 
+
+variable "subnetwork_name" {
+  type        = string
+  description = "Sub Network Name"
+} 
+
+variable "address_name" {
+  type        = string
+  description = "Address Name"
+} 
+
+variable "service_account" {
+  type        = string
+  description = "Service Account"
+} 
+
+variable "user_email" {
+  type        = string
+  description = "User Email"
+}
+
+variable "ssh_keys" {
+  description = "SSH Keys"
+  type        = string
+}
+
+variable "boot_disk_name" {
+  type        = string
+  description = "Boot Disk Name"
+}
+
+variable "boot_disk_size" {
+  type        = string
+  description = "Boot Disk Size"
+}
+
+variable "boot_disk_type" {
+  type        = string
+  description = "Boot Disk Type"
+}
+
+variable "extra_disk_name" {
+  type        = string
+  description = "Extra Disk Name"
+}
+
+variable "extra_disk_size" {
+  type        = string
+  description = "Disk Size"
+}
+
+variable "extra_disk_type" {
+  type        = string
+  description = "Disk Type"
+}
+
+variable "replication_disk_name" {
+  type        = string
+  description = "Replication Disk Name"
+}
+
+variable "replication_disk_size" {
+  type        = string
+  description = "Replication Disk Size"
+}
+
+variable "replication_disk_type" {
+  type        = string
+  description = "Replication Disk Type"
+}
+
+variable "replication_disk_zone" {
+  type        = string
+  description = "Replication Disk Zone"
+}
+```
+
+*terraform.tfvars*
+```
+project_id = "project-123456"
+
+region = "us-west1"
+zone = "us-west1-c"
+
+compute_instance_name = "vm-name"
+machine_type = "e2-micro"
+image_type = "debian-cloud/debian-13"
+network_name = "vm-network"
+subnetwork_name = "vm-subnet"
+address_name = "external-test-ip"
+
+hostname = "vm.example.com"
+
+boot_disk_name = "boot-disk"
+boot_disk_size = 10
+boot_disk_type = "pd-standard"
+
+
+extra_disk_name = "extra-disk"
+extra_disk_size = 10
+extra_disk_type = "pd-standard"
+
+replication_disk_name = "replication-disk"
+replication_disk_size = 10
+replication_disk_type = "pd-ssd"
+replication_disk_zone = "us-west1-c"
+
+service_account = "tofu-sa@project-123456.iam.gserviceaccount.com"
+user_email = "youremail@gmail.com"
+
+ssh_keys = <<EOF
+admin:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDtf3e9lQR1uAypz4nrq2nDj0DvZZGONku5wO+M87wUVTistrY8REsWO admin
+dev:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDtf3e9lQR1uAypz4nrq2nDj0DvZZGONku5wO+M87wUVTistrY8REsWO dev
+EOF
+```
+
+*main.tf*
+```
+resource "google_compute_network" "vm_network" {
+  name                    = var.network_name
+  auto_create_subnetworks = false
+}
+
+resource "google_compute_subnetwork" "vm_sub_network" {
+  name          = var.subnetwork_name
+  ip_cidr_range = "10.0.1.0/24"
+  region        = var.region
+  network       = google_compute_network.vm_network.id
+}
+
+resource "google_compute_address" "vm_address" {
+  name   = var.address_name
+  region = var.region
+}
+
+resource "google_compute_firewall" "allow_ssh" {
+  name    = "allow-ssh-iap"
+  network = google_compute_network.vm_network.id
+
+  source_ranges = ["35.235.240.0/20", "0.0.0.0/0"]
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  target_tags = ["vm-test"]
+}
+
+resource "google_compute_project_metadata" "default" {
+  metadata = {
+    enable-oslogin = "TRUE"
+  }
+}
+
+resource "google_compute_disk" "boot_disk" {
+  name = var.boot_disk_name
+  type = var.boot_disk_type
+  zone = var.zone
+  size = var.boot_disk_size
+  image = var.image_type
+}
+
+resource "google_compute_disk" "replication_disk" {
+  name = var.replication_disk_name
+  type = var.replication_disk_type
+  zone = var.replication_disk_zone
+
+  async_primary_disk {
+    disk = google_compute_disk.boot_disk.id
+  }
+
+  physical_block_size_bytes = 4096
+}
+
+resource "google_compute_disk" "extra_disk" {
+  name = var.extra_disk_name
+  type = var.extra_disk_type
+  zone = var.zone
+  size = var.extra_disk_size
+}
+
+resource "google_compute_disk_async_replication" "async_replication_disk" {
+  primary_disk = google_compute_disk.boot_disk.id
+  secondary_disk {
+    disk = google_compute_disk.replication_disk.id
+  }
+}
+
+resource "google_compute_snapshot" "boot_disk_snapshot" {
+  name        = "vm-snapshot-extra-disk"
+  source_disk = google_compute_disk.boot_disk.name
+  zone        = var.zone
+
+  depends_on = [google_compute_disk.boot_disk]
+}
+
+resource "google_compute_resource_policy" "snapshot_policy" {
+  name   = "daily-snapshot-policy"
+  region = var.region
+
+  snapshot_schedule_policy {
+    schedule {
+      daily_schedule {
+        days_in_cycle = 1
+        start_time    = "04:00"
+      }
+    }
+
+    retention_policy {
+      max_retention_days    = 3
+      on_source_disk_delete = "KEEP_AUTO_SNAPSHOTS"
+    }
+  }
+}
+
+resource "google_compute_instance" "vm_instance" {
+  name         = var.compute_instance_name
+  tags         = ["vm-test"]
+  zone         = var.zone
+  machine_type = var.machine_type
+  network_interface {
+    network    = google_compute_network.vm_network.id
+    subnetwork = google_compute_subnetwork.vm_sub_network.id
+
+    # acquire public/external ip
+    access_config {
+      nat_ip = google_compute_address.vm_address.address
+    }
+  }
+  boot_disk {
+    source = google_compute_disk.boot_disk.id
+    device_name = google_compute_disk.boot_disk.name
+  }
+  attached_disk {
+    source      = google_compute_disk.extra_disk.id
+    device_name = google_compute_disk.extra_disk.name
+  }
+  metadata = {
+    "ssh-keys" = var.ssh_keys
+    enable-oslogin : "TRUE"
+  }
+  hostname = var.hostname # if not set, default to vm google_compute_instance.name
 }
 ```
