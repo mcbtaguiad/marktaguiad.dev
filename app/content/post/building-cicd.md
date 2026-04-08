@@ -1,5 +1,5 @@
 ---
-title: "Building CI/CD Pipeline - A Not So Comprehensive Guide"
+title: "Building CI/CD Pipeline - A Not-So-Comprehensive Guide"
 date: 2026-04-01
 author: "Mark Taguiad"
 tags: ["ci/cd", "pipeline", "devops"]
