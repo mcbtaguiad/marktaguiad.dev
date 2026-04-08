@@ -48,12 +48,19 @@
 <script type="text/javascript">
   (function() {
     var d = document, s = d.createElement('script');
-    s.src = "{{ .Site.Params.isso.host }}/js/embed.min.js";
+    s.src = "{{ .Site.Params.isso.host }}/js/embed.js";
     s.defer = true;
     s.setAttribute('data-isso', "{{ .Site.Params.isso.host }}");
     s.setAttribute('data-isso-site', "{{ .Site.Params.isso.dataSiteId }}");
     s.setAttribute('data-isso-reverse', "0");
     s.setAttribute('data-isso-lang', "en");
+    s.setAttribute('data-isso-css', "true");
+    s.setAttribute('data-isso-css-url', "null");
+    s.setAttribute('data-isso-max-comments-top', "10");
+    s.setAttribute('data-isso-max-comments-nested', "5");
+    s.setAttribute('data-isso-reveal-on-click', "5");
+    s.setAttribute('data-isso-vote', "true");
+    s.setAttribute('data-isso-sorting', "newest");
     s.setAttribute('data-isso-theme', localStorage.getItem('theme') === 'dark' ? 'dark' : 'light');
     (d.head || d.body).appendChild(s);
   })();
