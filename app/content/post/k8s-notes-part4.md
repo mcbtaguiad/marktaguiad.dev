@@ -183,7 +183,7 @@ PersistentVolume
  ↓
 Storage Backend (Disk / Cloud Storage / NFS)
 ```
-### Container Storag Interface
+### Container Storage Interface
 Kubernetes Container Storage Interface (CSI) is a standardized interface enabling external storage systems to connect with Kubernetes, allowing for dynamic provisioning, volume snapshots, and mounting of persistent storage. 
 
 Let's just deploy a simple CSI for this example - NFS-CSI. Unlike other CSI, this does not have backup and replication, Kubernetes access and manage NFS server for persistend storage. Don't use this in production.

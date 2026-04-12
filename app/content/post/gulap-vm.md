@@ -2,7 +2,7 @@
 title: "Terraform/Opentofu VM Provisioning in Google Cloud Platform"
 date: 2026-04-04
 author: "Mark Taguiad"
-tags: ["cloud", "ulap", "vm", "terraform", "opentofu"]
+tags: ["cloud", "ulap", "vm", "terraform", "opentofu", "gcp", "google"]
 UseHugoToc: true
 weight: 2
 ---
@@ -501,7 +501,7 @@ resource "google_compute_instance" "default" {
     access_config {}
   }
 }
-
+```
 ### Snapshots
 #### Manual
 List the disk created.
@@ -896,10 +896,23 @@ resource "google_compute_firewall" "allow_ssh" {
   target_tags = ["vm-test"]
 }
 
+resource "google_project_service" "project" {
+  service            = "oslogin.googleapis.com"
+  disable_on_destroy = false
+}
+
 resource "google_compute_project_metadata" "default" {
   metadata = {
     enable-oslogin = "TRUE"
   }
+}
+
+data "google_project" "project" {
+}
+resource "google_project_iam_member" "os_login_admin_users" {
+  project = data.google_project.project.project_id
+  role    = "roles/compute.osAdminLogin"
+  member  = "serviceAccount:service-${data.google_project.project.number}@compute-system.iam.gserviceaccount.com"
 }
 
 resource "google_compute_disk" "boot_disk" {

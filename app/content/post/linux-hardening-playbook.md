@@ -13,7 +13,7 @@ UseHugoToc: true
 # Table of Contents
 {{< toc >}}
 
-Lets autotmate what was discussed in previous posts. 
+Lets automate what was discussed in previous posts. 
 
 ### Feature
 Any on list can be enabled or disabled and is group as roles.

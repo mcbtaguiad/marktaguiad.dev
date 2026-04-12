@@ -29,8 +29,8 @@ CI/CD integrates development and operations through automation, reducing manual 
 - Automated builds and test execution  
 - Early detection of integration issues  
 
-#### Continuous Deliver y
--Ensures code is always in a deployable state  
+#### Continuous Delivery
+- Ensures code is always in a deployable state  
 - Deployment requires manual approval  
 
 #### Continuous Deployment

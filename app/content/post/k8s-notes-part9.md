@@ -56,6 +56,21 @@ In traditional systems, this is handled using cron. Kubernetes provides the same
 
 Create Cron.
 ```yaml
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: sleeper
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          restartPolicy: Never
+          containers:
+          - name: sleeper
+            image: debian
+            command: ["sleep", "15"]
 ```
 - `schedule `→ cron expression defining when the job runs
 - `jobTemplate` → specification of the Job to run

@@ -151,6 +151,7 @@ fault filter abort%
 ```
 ### Retries
 This rule give the request multiple change to succeed but making sure to not connect to broken instances. 
+
 *retries.yaml*
 ```yaml
 apiVersion: networking.istio.io/v1beta1
@@ -206,6 +207,8 @@ retry:
 
 ### Circuit Breaker
 Now lets add rule to not overload the pod and and temporary avoid bad pods. 
+
+*circuit-breaker.yaml*
 ```yaml
 apiVersion: networking.istio.io/v1beta1
 kind: DestinationRule
