@@ -107,7 +107,7 @@ Example.
 ```
 _dmarc IN	TXT	( "v=DMARC1; p=quarantine; ruf=mailto:dmarc-report@marktaguiad.dev; rua=mailto:dmarc-report@marktaguiad.dev" )
 ```
-### User Create/ModifyDelete
+### User Create/Modify/Delete
 Exec to the the container and run `mailmoto` to create, modify or delete email user.
 ```bash
 docker exec -it mailmoto bash
