@@ -22,9 +22,9 @@ This module is where everything comes together—network, IAM, and node pools—
 | Flexibility  | High                | Limited        |
 #### Standard
 Gives you full control over nodes and scaling.
-- removes default node pool → you manage it separately
+- removes default node pool - you manage it separately
 - uses VPC-native networking (pods/services ranges)
-- private cluster → nodes have no public IP
+- private cluster - nodes have no public IP
 - uses Workload Identity for secure access
 
 *modules/gke/standard/main.tf*
@@ -163,8 +163,8 @@ In GKE, a default storage class is already created for you. This means you can p
 This module only matters if you want to customize storage behavior—such as disk type, reclaim policy, or default class.
 
 We define two storage classes:
-- *balanced* (default) - general-purpose workloads
-- *SSD* - high-performance workloads
+- **balance (default)** - general-purpose workloads
+- **SSD** - high-performance workloads
 
 *module/storage/main.tf*
 ```
@@ -222,8 +222,8 @@ resource "kubernetes_annotations" "default_storageclass" {
 These are not required for GKE to function, but they are critical for real-world applications.
 
 In this module, we install two key components using Helm:
-- Ingress NGINX → exposes services to the internet
-- cert-manager → manages TLS certificates automatically
+- Ingress NGINX - exposes services to the internet
+- cert-manager - manages TLS certificates automatically
 
 #### Ingress-Nginx
 Ingress is how external traffic reaches services inside your cluster.
