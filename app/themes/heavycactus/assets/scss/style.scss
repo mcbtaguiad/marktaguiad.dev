@@ -297,3 +297,68 @@ code {
   text-decoration: none;
   font-weight: bold;
 }
+
+/* post-meta */
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  margin-bottom: 12px;
+}
+
+/* Avatar */
+.post-meta img {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  border: 1px solid transparent;
+}
+
+/* Text container */
+.post-meta-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+/* Author name */
+.post-meta-author {
+  font-weight: 500;
+}
+
+/* Sub text (date + read time) */
+.post-meta-sub {
+  font-size: 0.8rem;
+}
+
+/* --------------------------
+   LIGHT THEME
+-------------------------- */
+.theme-light .post-meta {
+  color: #444;
+}
+
+.theme-light .post-meta-sub {
+  color: #777;
+}
+
+.theme-light .post-meta img {
+  border-color: #e5e5e5;
+}
+
+/* --------------------------
+   DARK THEME
+-------------------------- */
+.theme-dark .post-meta {
+  color: #ddd;
+}
+
+.theme-dark .post-meta-sub {
+  color: #aaa;
+}
+
+.theme-dark .post-meta img {
+  border-color: #333;
+}

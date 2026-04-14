@@ -1,0 +1,22 @@
+{{ $author := site.Params.author.name }}
+{{ $email := site.Params.author.email | default "" | lower | trim " " }}
+{{ $hash := md5 $email }}
+
+<div class="post-meta">
+
+  <img 
+    src="https://www.gravatar.com/avatar/{{ $hash }}?s=40&d=identicon" 
+    alt="{{ $author }}"
+  >
+
+  <div class="post-meta-text">
+    <span class="post-meta-author">
+      {{ $author }}
+    </span>
+
+    <span class="post-meta-sub">
+      {{ .Date.Format "Jan 2, 2006" }} · {{ .ReadingTime }} min read
+    </span>
+  </div>
+
+</div>
