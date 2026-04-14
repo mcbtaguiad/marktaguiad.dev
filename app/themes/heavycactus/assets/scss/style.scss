@@ -46,7 +46,7 @@ body {
   min-height: 100%;
   overflow-wrap: break-word;
 
-  /* ✅ FIX: paragraph spacing */
+  /*  FIX: paragraph spacing */
   p {
     @include hyphens(auto);
     margin: 0.4em 0;
@@ -75,18 +75,38 @@ h4 + pre {
     @include hyphens(manual);
   }
 
+
+  // a {
+  //   color: $color-text;
+  //   text-decoration: none;
+  //   @include underline(5px, $color-text);
+  //   background: none;
+  //
+  //   &:hover {
+  //     background-image: linear-gradient(
+  //       transparent,
+  //       transparent 4px,
+  //       $color-link 4px,
+  //       $color-link
+  //     );
+  //   }
+  // }
+
   a {
     color: $color-text;
     text-decoration: none;
-    @include underline(5px, $color-text);
+    background: none;
+    position: relative;
+    transition: color 0.2s ease;
+
+
 
     &:hover {
-      background-image: linear-gradient(
-        transparent,
-        transparent 4px,
-        $color-link 4px,
-        $color-link
-      );
+      color: $color-link;
+
+      &::after {
+        transform: scaleX(1);
+      }
     }
   }
 
