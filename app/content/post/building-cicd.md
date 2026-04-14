@@ -6,22 +6,21 @@ tags: ["ci/cd", "pipeline", "devops"]
 UseHugoToc: true
 weight: 2
 ---
+{{< info >}}
+This is just a personal notes, so some information here might need clarification and researching.
+{{< /info >}}
 {{< theme-image
 light="/images/devops/cicd/building-cicd-001.png"
 dark="/images/devops/cicd/building-cicd-dark-001.png"
 alt="Architecture Diagram"
 >}}
-{{< info >}}
-This is just a personal notes, so some information here might need clarification and researching.
-{{< /info >}}
 
-# Table of Contents
-{{< toc >}}
-### Introductions
 A CI/CD pipeline is an automated workflow that moves code from commit to production. It standardizes build, test, and deployment stages to improve release speed, reliability, and consistency.
 
 CI/CD integrates development and operations through automation, reducing manual errors and enabling frequent, incremental delivery. 
 
+# Table of Contents
+{{< toc >}}
 ### CI/CD Overview
 
 #### Continuous Integration (CI)

@@ -22,6 +22,8 @@ This approach keeps out infrastructure:
 
 ### Providers
 This is present in both environment.
+
+*provider.tf*
 ```
 terraform {
   required_providers {
