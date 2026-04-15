@@ -48,7 +48,7 @@
 <script type="text/javascript">
   (function() {
     var d = document, s = d.createElement('script');
-    s.src = "{{ .Site.Params.isso.host }}/js/embed.js";
+    s.src = "{{ .Site.Params.isso.host }}/js/embed.min.js";
     s.defer = true;
     s.setAttribute('data-isso', "{{ .Site.Params.isso.host }}");
     s.setAttribute('data-isso-site', "{{ .Site.Params.isso.dataSiteId }}");
