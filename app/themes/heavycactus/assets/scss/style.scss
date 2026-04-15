@@ -382,3 +382,13 @@ code {
 .theme-dark .post-meta img {
   border-color: #333;
 }
+
+// isso
+/* Hide the Isso website label and input field */
+label[for="isso-postbox-website"] {
+    display: none !important;
+}
+
+input#isso-postbox-website {
+    display: none !important;
+}

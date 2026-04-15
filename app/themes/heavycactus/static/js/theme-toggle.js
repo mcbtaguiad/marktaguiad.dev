@@ -47,7 +47,23 @@
 	const widgets = {
 		giscus: (theme) => {
 			const iframe = document.querySelector('iframe.giscus-frame');
-			if (iframe) iframe.contentWindow.postMessage({ giscus: { setConfig: { theme } } }, 'https://giscus.app');
+
+			if (!iframe) return;
+
+			const sendTheme = () => {
+				iframe.contentWindow.postMessage(
+					{ giscus: { setConfig: { theme } } },
+					'https://giscus.app'
+				);
+			};
+
+			// If already loaded
+			if (iframe.contentWindow) {
+				sendTheme();
+			}
+
+			// Ensure it fires when ready
+			iframe.addEventListener('load', sendTheme);
 		},
 
 		utterances: (theme) => {
@@ -71,11 +87,6 @@
 			if (!thread) return;
 			thread.innerHTML = '';
 			const s = document.createElement('script');
-			s.src = "https://isso.marktaguiad.dev/js/embed.min.js";
-			s.defer = true;
-			s.dataset.isso = "https://isso.marktaguiad.dev";
-			s.dataset.issoSite = "marktaguiad";
-			s.dataset.issoTheme = theme;
 			(document.head || document.body).appendChild(s);
 		},
 	};
