@@ -12,25 +12,17 @@ dark="/images/devops/k8s-notes/istio/ab-testing/k8s-ab-testing-dark-001.png"
 alt="Architecture Diagram"
 >}}
 
-# Table of Contents
-{{< toc >}}
-
-A/B testing allows you to route traffic between different versions of your application to compare performance, behavior, or user experience.
+A/B testing and Canary Deployment allows you to route traffic between different versions of your application to compare performance, behavior, or user experience.
 
 With Istio, you can control traffic without changing application code—just by configuring the service mesh.
-
-A/B testing = splitting traffic between two versions:
-- Version A → stable (baseline)
-- Version B → new feature or update
-
-Example:
-- 50% users → v1
-- 50% users → v2
 
 Replicate this using this [repo](https://github.com/mcbtaguiad/istio-demo).
 ```bash
 kubectl apply -k kube/ab-testing/demo
 ```
+# Table of Contents
+{{< toc >}}
+
 ### A/B Testing vs Canary Deployment
 | Aspect         | Canary Deployment    | A/B Testing            |
 | -------------- | -------------------- | ---------------------- |

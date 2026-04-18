@@ -14,7 +14,7 @@ To make this really modular let's create environemnt for Dev and Prod.
 
 Let's assign `standard gke` to dev and `autopilot gke` to prod.
 
-This approach keeps out infrastructure:
+This approach keeps our infrastructure:
 - consistent
 - reusable
 - environment-aware

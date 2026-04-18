@@ -12,14 +12,13 @@ The cover image is AI generated.
 
 {{< imglink src="/images/linux/matrix/llama-matrix.png" alt="imagen" >}}
 
-# Table of Contents
-{{< toc >}}
-
-### Setup
-I'm broke and have a slow workstation laptop and don't have claude code subscription - if you have those then you're in the wrong place my friend. 
+I'm broke and have a slow workstation laptop and don't have claude code subscription-if you have those then you're in the wrong place my friend. 
 
 There are other neovim plugins like [ollama.nvim](https://github.com/nomnivore/ollama.nvim) that can handle prompt and generation for you - just make sure your server/pc can handle it. In this setup we will use llama-cpp and [llama.vim](https://github.com/ggml-org/llama.vim) for code completions - applicable for low end hardware.
 
+
+# Table of Contents
+{{< toc >}}
 #### llama.cpp
 I have and old Nvidia GPU but llama.cpp no longer supports it. So we need to use llama-cpp-vulkan. 
 ```bash

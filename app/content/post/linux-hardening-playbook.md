@@ -7,13 +7,12 @@ tags: ["linux", "playbook", "ansible"]
 weight: 2
 TocOpen: false
 UseHugoToc: true
-
 ---
 
+Lets automate what was discussed in previous posts. 
 # Table of Contents
 {{< toc >}}
 
-Lets automate what was discussed in previous posts. 
 
 ### Feature
 Any on list can be enabled or disabled and is group as roles.

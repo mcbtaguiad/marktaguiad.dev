@@ -10,10 +10,10 @@ weight: 2
 This is part 2 of this [post](/post/libvirt-cloud-init/).
 {{< /info >}}
 
+Let's automate the process what is discussed in [part 1](/post/libvirt-cloud-init/) using ansible. This ansible playbook can also loop multiple VM to create. 
+
 # Table of Contents
 {{< toc >}}
-
-Let's just automate the process what is discussed in [part 1](/post/libvirt-cloud-init/) using ansible. This ansible playbook can also loop multiple VM to create. 
 
 ### Environment
 #### Docker/Podman

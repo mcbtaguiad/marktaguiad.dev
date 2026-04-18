@@ -1,5 +1,5 @@
 ---
-title: "Goodbye You Gorgeous Bastard - My RPI CLuster"
+title: "Goodbye You Gorgeous Bastard-My RPI CLuster"
 date: 2026-03-11
 author: "Mark Taguiad"
 tags: ["k3s", "rpi", "raspberrypi"]

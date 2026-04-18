@@ -13,6 +13,36 @@ Continuation of Kubernetes Istio.
 {{< toc >}}
 
 I've mentioned in this [post](/post/k8s-istio-uno.md) that will sticking with `HTTPRoute`, but feature discussed here only support (for now) Istio API. 
+### Ingress Gateway
+Istio deploys a default resource for this, and for this example we are using the default ingress gateway `ingressgateway`.
+
+If you want to create a custom ingress gateway.
+
+*istio-gateway.yaml*
+```yaml
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  name: istio-control-plane
+  namespace: istio-system
+spec:
+  components:
+    ingressGateways:
+      - name: istio-ingressgateway-prod
+        namespace: istio-system
+        enabled: true
+        label:
+          istio: ingressgateway-prod
+
+      - name: istio-ingressgateway-dev
+        namespace: istio-system
+        enabled: true
+        label:
+          istio: ingressgateway-dev
+```
+This will create two  ingress gateway. 
+- istio-ingressgateway-prod
+- istio-ingressgateway-dev
 ### Gateway
 This will attach to the `LoadBalancer` on namespace `istio-system`.
 *demo-app-gateway.yaml*
