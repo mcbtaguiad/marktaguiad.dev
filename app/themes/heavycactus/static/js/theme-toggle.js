@@ -45,25 +45,47 @@
 	// Widget theme helpers
 	// --------------------------
 	const widgets = {
+		// giscus: (theme) => {
+		// 	const iframe = document.querySelector('iframe.giscus-frame');
+		//
+		// 	if (!iframe) return;
+		//
+		// 	const sendTheme = () => {
+		// 		iframe.contentWindow.postMessage(
+		// 			{ giscus: { setConfig: { theme } } },
+		// 			'https://giscus.app'
+		// 		);
+		// 	};
+		//
+		// 	// If already loaded
+		// 	if (iframe.contentWindow) {
+		// 		sendTheme();
+		// 	}
+		//
+		// 	// Ensure it fires when ready
+		// 	iframe.addEventListener('load', sendTheme);
+		// },
 		giscus: (theme) => {
-			const iframe = document.querySelector('iframe.giscus-frame');
+			let retries = 0;
+			const maxRetries = 20;
 
-			if (!iframe) return;
+			const apply = () => {
+				const iframe = document.querySelector('iframe.giscus-frame');
 
-			const sendTheme = () => {
+				if (!iframe) {
+					if (retries++ < maxRetries) {
+						setTimeout(apply, 200);
+					}
+					return;
+				}
+
 				iframe.contentWindow.postMessage(
 					{ giscus: { setConfig: { theme } } },
 					'https://giscus.app'
 				);
 			};
 
-			// If already loaded
-			if (iframe.contentWindow) {
-				sendTheme();
-			}
-
-			// Ensure it fires when ready
-			iframe.addEventListener('load', sendTheme);
+			apply();
 		},
 
 		utterances: (theme) => {
