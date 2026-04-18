@@ -13,6 +13,8 @@ Istio acts as a powerful service mesh that sits between your services and handle
 With Istio, you gain fine-grained control over how traffic flows between services—enabling advanced deployment strategies like A/B testing and canary releases with ease. At the same time, it strengthens service-to-service security and provides deep visibility into your system through metrics, logs, and tracing.
 
 For this post lets do a practical example in using istio.
+
+Repo: [mcbtaguiad/istio-demo](https://github.com/mcbtaguiad/istio-demo.git)
 # Table of Contents
 {{< toc >}}
 ### Install
