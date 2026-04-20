@@ -2,7 +2,7 @@
 title: "Breaking Away from Traditional CI/CD: Introducing GitOps with ArgoCD"
 date: 2026-04-17
 author: "Mark Taguiad"
-tags: ["cicd", "argocd", "pipeline"]
+tags: ["ci/cd", "argocd", "pipeline", "github actions", "kustomize"]
 UseHugoToc: true
 weight: 2
 ---
