@@ -2,7 +2,7 @@
 title: "Istio: A/B Testing and Canary Deployment"
 date: 2026-04-03
 author: "Mark Taguiad"
-tags: ["kubernetes", "istio", "a/b testing", "deployment", "cicd", "testing"]
+tags: ["kubernetes", "istio", "a/b testing", "deployment", "ci/cd", "testinag"]
 UseHugoToc: true
 weight: 2
 ---
