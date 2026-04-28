@@ -30,6 +30,9 @@ Cilium’s main architectural advantage is that it shifts networking and securit
     - Cluster B; **pod_cidr**: 10.43.0.0/16, **service_cidr**: 10.97.0.0/12
 - Merge K3S config/context
 ```bash
+KUBECONFIG=cluster-a.yaml:cluster-b.yaml kubectl config view --flatten > ~/.kube/config
+export KUBECONFIG=~/.kube/config
+ 
 kubectl config get-contexts
 CURRENT   NAME        CLUSTER     AUTHINFO    NAMESPACE
 *         cluster-a   cluster-a   cluster-a   
