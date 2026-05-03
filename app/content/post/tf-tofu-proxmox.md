@@ -7,10 +7,7 @@ ShowToc: true
 TocOpen: false
 UseHugoToc: true
 weight: 2
-
 ---
-
-### Background
 Been using Terraform/Opentofu when I moved my homelab to dedicated server (old laptop and PC), previously from a bunch of Raspberry Pi. 
 Using this technology has made my learning in DevOps more optimal or faster. 
 
@@ -53,7 +50,8 @@ For unsecure method you can also use user/password.
 {{< /warning >}}
 
 Navigate to Datacenter > API Tokens > Add. Input Token ID of your choice, make sure to untick 'Privilege Separation'
-{{< imglink src="/images/devops/prox-tofu/tofu1.png" alt="imagen" >}}
+
+{{< imglink src="/images/devops/prox-tofu/tofu-1.png" alt="imagen" >}}
 
 <!-- ![tofu](http://chevereto.marktaguiad.dev/images/2024/08/31/tofu-1.png) -->
 

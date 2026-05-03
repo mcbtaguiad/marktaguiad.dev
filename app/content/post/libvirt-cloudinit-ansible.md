@@ -1,5 +1,5 @@
 ---
-title: "Automate libvirt Vitual Machine Provisioning with Ansible"
+title: "Automate libvirt Virtual Machine Provisioning with Ansible"
 date: 2026-03-03
 author: "Mark Taguiad"
 tags: ["libvirt", "vm", "virsh", "kvm", "qemu", "ansible", "cloud-init", "ansible"]
@@ -10,13 +10,14 @@ weight: 2
 This is part 2 of this [post](/post/libvirt-cloud-init/).
 {{< /info >}}
 
-{{< toc >}}
+Let's automate the process what is discussed in [part 1](/post/libvirt-cloud-init/) using ansible. This ansible playbook can also loop multiple VM to create. 
 
-Let's just automate the process what is discussed in [part 1](/post/libvirt-cloud-init/) using ansible. This ansible playbook can also loop multiple VM to create. 
+# Table of Contents
+{{< toc >}}
 
 ### Environment
 #### Docker/Podman
-I've dockerized ansible - taylored to the specific task. Check Dockerfile if you want to run it locally.
+I've dockerized ansible - tailored to the specific task. Check Dockerfile if you want to run it locally.
 
 First clone the [repo](https://github.com/mcbtaguiad/libvirt-cloudinit-ansible.git).
 ```bash

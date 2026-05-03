@@ -6,6 +6,10 @@ copyright = "marktaguiad.dev"
 disqusShortname = "marktaguiad.dev"
 googleAnalytics = "G-XH6C2L4BEL"
 
+[params.author]
+name = "Mark Taguiad"
+email = "marktaguiad@marktaguiad.dev"
+
 [pagination]
   pagerSize = 16
 

@@ -7,10 +7,14 @@
     </h1>
   </header>
 
+  {{ partial "post-meta.html" . }}
+
   <div class="content" itemprop="articleBody">
     {{ .Content }}
   </div>
 </article>
+
+{{ partial "post-navigation.html" . }}
 
 {{ if or .Site.Params.enableGiscus .Site.Params.enableUtterances .Site.Params.enableRemark42 .Site.Params.enableIsso }}
   {{ partial "comment.html" . }}

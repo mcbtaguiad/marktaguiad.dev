@@ -19,8 +19,16 @@
   {{ end }}
 {{ end }}
 
-<div class="image-viewer" data-media="{{ delimit $media "," }}">
-  <div class="viewer-stage"></div>
-  <button class="nav prev" aria-label="Previous">‹</button>
-  <button class="nav next" aria-label="Next">›</button>
+<div class="image-viewer">
+  <!-- <div class="viewer-main"></div> -->
+
+  <div class="viewer-thumbs">
+    {{ range $media }}
+      <a href="{{ . }}" class="glightbox-thumb">
+        <img src="{{ . }}" />
+      </a>
+    {{ end }}
+  </div>
 </div>
+
+

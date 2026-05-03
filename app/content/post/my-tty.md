@@ -12,6 +12,7 @@ no pun intended hahahaha
 
 {{< imglink src="/images/linux/my-tty.png" alt="imagen" >}}
 
+# Table of Contents
 {{< toc >}}
 
 ### terminal emulator

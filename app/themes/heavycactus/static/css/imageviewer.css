@@ -1,92 +1,149 @@
 .image-viewer {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   max-width: 100%;
   margin: 2rem auto;
 }
 
-.image-viewer img {
+/* =========================
+   MAIN VIEWER
+   ========================= */
+.viewer-main {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* media */
+.viewer-main img,
+.viewer-main video {
   width: 100%;
   max-height: 75vh;
   object-fit: contain;
   border-radius: 12px;
+  cursor: zoom-in;
+  display: block;
 }
 
-/* Navigation buttons */
-.image-viewer .nav {
+/* =========================
+   CLOSE BUTTON (top-right overlay)
+   ========================= */
+.viewer-close {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
+  top: 12px;
+  right: 12px;
+
+  width: 38px;
+  height: 38px;
+
   border: none;
-  background: rgba(0, 0, 0, 0.6);
-  color: white;
-  font-size: 26px;
+  border-radius: 50%;
+
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+
+  font-size: 22px;
+  line-height: 38px;
+
   cursor: pointer;
+
+  display: none; /* JS + zoom state controls visibility */
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 50; /* higher than image/video */
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.viewer-close:hover {
+  background: rgba(0, 0, 0, 0.85);
+  transform: scale(1.05);
+}
+
+/* show only when zoomed */
+.viewer-main.zoomed .viewer-close {
+  display: flex;
+}
+
+/* =========================
+   THUMBNAILS
+   ========================= */
+.viewer-thumbs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+  scrollbar-width: thin;
+}
+
+.viewer-thumbs a {
+  flex: 0 0 auto;
+  width: 200px;
+  height: 150px;
+
+  border-radius: 10px;
+  overflow: hidden;
+
+  opacity: 0.7;
+  transition: 0.2s ease;
+}
+
+.viewer-thumbs a:hover {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.viewer-thumbs img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================
+   LIGHTBOX OVERRIDES
+   ========================= */
+.glightbox-container img,
+.glightbox-container video {
+  max-width: 95%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* =========================
+   THEME TOGGLE
+   ========================= */
+#theme-toggle {
+  border: none;
+  background: transparent;
+  padding: 0.2rem;
+}
+
+#theme-toggle i {
+  border: none;
+  background: none;
+  box-shadow: none;
+  padding: 0;
+  font-size: 1.2rem;
+  color: var(--accent);
+  cursor: pointer;
+  transition: transform 0.25s ease, color 0.25s ease, opacity 0.2s ease;
+}
+
+.viewer-thumbs a.video-thumb {
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  z-index: 10;
+  background: #111;
+  color: white;
+  font-size: 12px;
+  position: relative;
 }
 
-.image-viewer:hover .nav {
-  opacity: 1;
-}
-
-.image-viewer .nav.prev {
-  left: 12px;
-}
-
-.image-viewer .nav.next {
-  right: 12px;
-}
-
-/* Mobile: always visible */
-@media (max-width: 768px) {
-  .image-viewer .nav {
-    opacity: 1;
-  }
-}
-
-
-.image-viewer .viewer-stage img,
-.image-viewer .viewer-stage video {
-  width: 100%;
-  max-height: 75vh;
-  object-fit: contain;
-  border-radius: 12px;
-}
-
-
-#theme-toggle i {
-  transition: transform 0.25s ease, opacity 0.2s ease;
-}
-/* 
-html.theme-dark #theme-toggle i {
-  transform: rotate(-20deg) scale(1.1);
-} */
-
-#theme-toggle i {
-  border: none;       /* remove any border */
-  background: none;   /* remove background if any */
-  box-shadow: none;   /* remove any shadow */
-  padding: 0;         /* remove extra space */
-  font-size: 1.2rem;  /* optional size */
-  color: var(--accent); /* keep your theme color */
-  cursor: pointer;
-  transition: transform 0.25s ease, color 0.25s ease;
-}
-
-#theme-toggle {
-  border: none;
-  background: transparent;
-  padding: 0.2rem;
-}
-
-#theme-toggle {
-  border: none;
-  background: transparent;
-  padding: 0.2rem;
+.viewer-thumbs a.video-thumb::after {
+  content: "▶";
+  font-size: 20px;
 }

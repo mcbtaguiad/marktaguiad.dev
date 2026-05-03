@@ -8,6 +8,8 @@ weight: 2
 ---
 
 {{< imglink src="/images/linux/ranger-vim-sed-awk-find/power-rangers.png" alt="imagen" >}}
+
+# Table of Contents
 {{< toc >}}
 
 ### What is Find?
