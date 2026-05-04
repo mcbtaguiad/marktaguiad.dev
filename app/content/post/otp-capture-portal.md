@@ -34,7 +34,7 @@ The OTP is generated via Google Authenticator and validated against the server u
 After successful OTP verification, the portal signals nodogsplash to authorize the client, and network access is granted.
 
 ### Installation
-#### OpenWrt/Nodogsplas
+#### OpenWrt/Nodogsplash
 I assume that you have already installed OpenWrt on your router.
 
 Refresh package list on OpenWrt. 
@@ -60,7 +60,7 @@ Enable and start nodogsplash service.
 /etc/init.d/nodogsplash start
 ```
 #### Google Authenticator
-Installed package if not yet installed. 
+Install package if not yet installed. 
 ```bash
 apt install libpam-google-authenticator
 ```
@@ -102,6 +102,6 @@ Deploy
 docker compose up -d
 ```
 ### Demo
-Visit this [link](https://swampcoffee.marktaguiad.dev/). Add */admin* to view admin page, use **admin** and **password123** to login. If successfully logged in it will automatically redirect to OTP generator page. This is already in the public domain, you can use this as your capture portal. I'll live it to you to find my public IP and if you are fine with **Shrek** looking at you everytime you login hahahaha. 
+Visit this [link](https://swampcoffee.marktaguiad.dev/). Add */admin* to view admin page, use **admin** and **password123** to login. If successfully logged in it will automatically redirect to OTP generator page. This is already in the public domain, you can use this as your capture portal. I'll leave it to you to find my public IP and if you are fine with **Shrek** looking at you everytime you login hahahaha. 
 
 {{< imglink src="/images/web/otp-capture-portal/otp-capture-portal-003.png" alt="imagen" >}}
