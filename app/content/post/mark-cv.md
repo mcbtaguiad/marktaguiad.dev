@@ -1,7 +1,7 @@
 ---
 layout: post
 author: "Mark Taguiad"
-title: "Mark's CV"
+title: "Hire Me!"
 date: "2023-03-03"
 #description: "Mark Taguiad | Resume"
 tags: ["job", "cv"]
@@ -12,13 +12,6 @@ TocOpen: false
 UseHugoToc: true
 weight: 1
 draft: false
-
-
-
-margin-left: 2cm
-margin-right: 2cm
-margin-top: 1cm
-margin-bottom: 2cm
 
 keywords:
   - 'k8s'
@@ -32,133 +25,107 @@ subject: 'CV'
 - <marktaguiad@marktaguiad.dev>
 - [marktaguiad.dev](https://marktaguiad.dev/)
 - Manila, Philippines
-
-Ambitious IT professional skilled in both Linux/Unix Administration and DevOps. Experienced with different
-technologies that involves various systems and development. Maintains a professional attitude while
-concentrating on developing technical capabilities.
-
-### Skills
-
+<!-- # Mark Christian Taguiad -->
+### Technical Skills
 ```linux systems administration```
-```network administration```
-```programming```
-```databases```
-```devops```
-```kubernetes```
-```containers```
-```webservers```
-```git```
-```cicd```
-```iac```
-```proactive monitoring```
+`network administration`
+`programming`
+`databases`
+`devops`
+`kubernetes`
+`containers`
+`cloud`
+`webservers`
+`git`
+`cicd`
+`iac`
+`proactive monitoring`
 
-**Programming**: Python, Perl, Bash
-**Databases**: MySQL, Postgres, sqlite
-**Linux**: Alpine, Oracle, Ubuntu, Debian, Arch, OpenSuse
-**DevOps**: Ansible, Kubernetes, Podman/Docker, CI/CD, Terraform, IaC
-
+- Programming / Scripting: Python, Bash, Perl
+- Containers & Orchestration: Kubernetes, Docker, Containerd
+- Infrastructure as Code / Automation: Ansible, Terraform, Jenkins, GitLab CI, Github Actions, ArgoCD
+- Virtualization Platform: Proxmox, OpenStack, KVM
+- Monitoring / Observability: Prometheus, Grafana, Alertmanager, Zabbix
+- Cloud Platform: AWS, GCP (GCE, GKE), Cloudflare (DNS, Tunnels, Workers, R2, CDN)
+- Operating System: Linux (RHEL-based, Debian-based)
 ### Experience
 
-### <span>DevOps Engineer, Samsung R&D Institute Philippines (SRPH)</span>
+### DevOps Engineer, Samsung R&D Institute Philippines (SRPH)
+October 2023 - October 2024
 
-<span><span>October 2023 - October 2024 </span>
-
-  - Active monitoring using Prometheus-Grafana Stack.
-  - Develop, coordinate and administrate Kubernetes infrastructure.
-  - Created CI pipeline for package build, vulnerability scan and code quality scan. 
-  - Manage and create Virtual Machine in Openstack. 
-  - Building/creating RPM and QCOW2 images. 
-  - VM provision in Proxmox using Terraform/Opentofu.
-  - Automating server configuration/setup using Ansible. 
-  - Jira ticket resolution for customer production issues.
-  - Migration of in-house application to Docker/Container and Kubernetes. 
-  - Troubleshooting production environment issues/bugs. 
-  - Creating PoC on new technology related to container orchestration.
-  - Creating alarm and jobs; monitoring in Prometheus and Alertmanager.
-  - Linux system administration. 
-  - Bash/Python scripting.
+- Monitored infrastructure and application health using Prometheus, Grafana, and Alertmanager.
+- Developed, coordinated, and administered Kubernetes infrastructure.
+- Built CI pipelines for package builds, vulnerability scanning, and code quality checks.
+- Implemented GitOps-based CD workflows using ArgoCD for automated application deployments to Kubernetes.
+- Managed and provisioned virtual machines in OpenStack and Proxmox using Terraform/OpenTofu.
+- Built and maintained RPM packages and QCOW2 images.
+- Automated server provisioning and configuration using Ansible.
+- Resolved Jira tickets and troubleshot customer production issues.
+- Migrated in-house applications to Docker containers and Kubernetes.
+- Investigated and resolved production environment issues and application bugs.
+- Created proof-of-concepts (PoCs) for new container orchestration technologies.
+- Managed Linux systems administration and automation through Bash and Python scripting.
 
 
-### <span>DevOps Engineer, Quick Suite Trading / Computer Voice Systems</span>
+### DevOps Engineer, Quick Suite Trading / Computer Voice Systems
+March 2023 - October 2023
 
-<span>March 2023 - October 2023 </span>
+- Monitored infrastructure and application health using the Prometheus-Grafana stack.
+- Developed custom Prometheus exporters to monitor MariaDB database instances.
+- Administered and coordinated Kubernetes infrastructure operations.
+- Automated deployments using Ansible and GitLab CI, and managed infrastructure as code with Helm.
+- Assisted developers in building and deploying applications on Kubernetes using Docker and Podman.
+- Deployed updates and fixes while providing Level 2 technical support.
+- Built internal tools to reduce operational errors and improve customer experience.
+- Installed, configured, secured, troubleshot, and maintained UNIX-like operating systems.
+- Administered user accounts, permissions, and access controls.
 
-  - Active monitoring using Prometheus-Grafana Stack.
-  - Develop custom prometheus exporter to monitor database (MariaDB) instances.
-  - Develop, coordinate and administrate Kubernetes infrastructure.
-  - Administrate and maintian Longhorn block storage for Kubernetes.
-  - Automate deployments (ansible, Gitlab CI), infrastructure as code (helm).
-  - Assist developers in building and deploying their software to infrastructure (K8S, Docker, Podman).
-  - Deploy updates and fixes, and provide Level 2 technical support.
-  - Build tools to reduce occurrence of errors and improve customer experience.
-  - Administer and maintain private docker registry.
-  - Installing, configuring, securing, troubleshooting and maintaining UNIX-like operating systems.
-  - Administer and maintain end user accounts, permissions, and access rights.
+### System Engineer, Amkor Technology
+Nov 2021 -- Mar 2023
 
-### <span>System Engineer, Amkor Technology</span>
+- Administered and coordinated Kubernetes infrastructure operations.
+- Led the development of CI/CD pipelines for in-house and open-source projects.
+- Built and deployed Docker images for a workflow automation platform (ProcessMaker) in production environments.
+- Deployed, configured, and maintained containerized Zabbix across multiple sites.
+- Automated Zabbix operations, including agent deployment and housekeeping, using Ansible.
+- Developed Perl-based scripts for monitoring an enterprise integration platform (Software AG webMethods).
+- Migrated a managed file transfer platform (GoAnywhere MFT) from Windows Server to Oracle Linux 8.
+- Deployed, configured, and maintained a managed file transfer platform (GoAnywhere MFT) and secure gateway infrastructure across multiple sites.
+- Deployed, configured, and maintained an analytics platform (TIBCO Spotfire) alongside Apache NiFi across multiple sites.
+- Set up, configured, and maintained Red Hat JBoss in development and production environments.
+- Performed Linux systems administration, including OS installation, troubleshooting, patching, software upgrades, and system hardening.
+- Automated routine operational tasks such as system hardening, backups, and housekeeping.
+- Managed incident report, troubleshooting, and day-to-day issue resolution for users and customers.
 
-<span>Nov 2021 -- Mar 2023</span>
+### Network Operations Center Engineer, Amkor Technology
+Jul 2021 -- Nov 2021
 
-  - Develop, coordinate and administrate Kubernetes infrastructure.
-  - Spearheaded the development of CI/CD pipeline of all in-house/opensource projects.
-  - Developed, build docker image of ProcessMaker, and deployed in production environment.
-  - Setup development and production environment (Docker) for the developer team.
-  - Setup, configured, and maintained Zabbix infrastructure monitoring tool (containerized) on multiple sites.
-  - Automate Zabbix (agent deployment, housekeeping) task using ansible automation.
-  - Created scripts (Perl – Zabbix Compatible) for monitoring Software AG webMethods.
-  - Migrated GoAnywhere MFT running on Windows Server to run on a Linux Server (Oracle Linux 8).
-  - Deployed, configured, and maintained GoAnywhere MFT (SFTP/FTP) and GoAnywhere Gateway (DMZ)
-  on multiple sites.
-  - Deployed, configured, and maintained Tibco Spotfire running alongside Apache NIFI on multiple sites.
-  - Setup, configured, and maintained Redhat JBOSS in development and production environment.
-  - Performed standard administration task such as OS installation, troubleshooting, problem resolution,
-  package installation, software upgrade and system hardening.
-  - Automate basic task such as system hardening, backup, housekeeping.
-  - Storage management: cleanup, mount, backup and extend.
-  - Worked with Developer, DBA, Network Team to resolve their daily issues.
-  - Wrote shell/python/perl scripts for various system task such as agent deployment, backup systems,
-  installation, and monitoring.
-  - Performed troubleshooting, incident management and resolve day to day problem raised by users and
-  customer.
-
-### <span>Network Operations Center Engineer, Amkor Technology</span>
-
-<span>Jul 2021 -- Nov 2021</span>
-
-  - Responsible for proactively monitoring server using such tools as Zabbix, Hobbit Xymon, PRTG and
-  Jennifer APM.
-  - Responsible for proactively monitoring network devices using SolarWinds.
-  - IBM Application System/400; resources, error message and data integrity monitoring.
-  - Initiating and resolving incident tickets.
-  - Manage daily and weekly database backup.
-  - Generate weekly availability reports of servers and network devices.
-
+- Proactively monitored servers using Zabbix, Hobbit/Xymon, PRTG, and Jennifer APM.
+- Monitored network devices and infrastructure using SolarWinds.
+- Monitored IBM AS/400 systems, including resource utilization, error events, and data integrity.
+- Initiated, managed, and resolved incident tickets.
+- Performed daily and weekly database backup operations.
+- Generated weekly availability reports for servers and network infrastructure.
 
 ### Education
 
-### <span>Mapua University</span>
-
-<span>2012 -- 2019</span>
-
+### Mapua University
+2012 -- 2019
   - Bachelor of Science, Electronics Engineering
 
-### <span>Cisco Networking Academy</span>
-<span>2018</span>
+### Cisco Networking Academy
+2018
 
-  - Routing and Switching
-  - Security
+- Routing and Switching
+- Security
 
 ### Licenses & Certifications
 
-### <span>Cisco Certified Network Associate (CCNA) - Cisco</span>
+###Cisco Certified Network Associate (CCNA) - Cisco
+Issued June 2021 - Expires June 2024
+- CSCO14020527
 
-<span>Issued June 2021 - Expires June 2024</span>
-
-  - CSCO14020527
-
-### <span>Electronics Communication Engineer</span>
-
-<span>April 2025</span>
-
+### Electronics Communication Engineer
+April 2025
 
 [Click here to download](/documents/mark-christian-taguiad-resume.pdf)
