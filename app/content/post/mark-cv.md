@@ -121,11 +121,10 @@ Jul 2021 -- Nov 2021
 
 ### Licenses & Certifications
 
-###Cisco Certified Network Associate (CCNA) - Cisco
+### Cisco Certified Network Associate (CCNA) - Cisco
 Issued June 2021 - Expires June 2024
 - CSCO14020527
 
 ### Electronics Communication Engineer
 April 2025
 
-[Click here to download](/documents/mark-christian-taguiad-resume.pdf)

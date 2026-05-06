@@ -10,7 +10,6 @@ weight: 2
 
 ---
 
-### Background
 Finally have some time to document and publish this blog due to recent Philippines long weekend. This is the first part of the blog, as it is necessary to learn how to create template that will be used in provisioning VM and will be automatically created and deploy with Opentofu/Terraform [(part 2)](/post/tf-tofu-proxmox). 
 
 What set apart a cloud-init image vs. a fully pledge image, basically it is a clone of a miminal image. A clean installed system, that can be installed on the fly, unlike the traditional image where you have to install it using GUI or manually. With cloud-init, hostname, user/password, network and ssh-keys can be set with the config file.  

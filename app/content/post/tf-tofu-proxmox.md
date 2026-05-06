@@ -1,5 +1,5 @@
 ---
-title: "Automate VM Provisition with Terraform or Opentofu"
+title: "Automate VM Provisition in Proxmox with Terraform or Opentofu"
 date: 2024-08-22
 author: "Mark Taguiad"
 tags: ["proxmox", "qemu", "vm", "opentofu", "terraform"]
