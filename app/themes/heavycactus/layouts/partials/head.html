@@ -58,7 +58,6 @@
   {{ end }}
 
   {{ partial "google_analytics.html" . }}
-
 <script>
 (() => {
   const DARK = 'dark';
@@ -66,14 +65,50 @@
   const STORAGE_KEY = 'theme';
   const html = document.documentElement;
 
-  // Get saved theme from localStorage, fallback to OS preference
   const saved = localStorage.getItem(STORAGE_KEY);
-  const theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? DARK : LIGHT);
+  const theme = saved || (
+    window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? DARK
+      : LIGHT
+  );
 
-  // Apply class immediately to prevent flash
-  html.classList.add(theme === DARK ? 'theme-dark' : 'theme-light');
-})(); 
+  html.classList.add(
+    theme === DARK ? 'theme-dark' : 'theme-light'
+  );
+})();
+</script>
 
+<script>
+(() => {
+  const fullText = "> " + {{ .Site.Title }};
+  const blinkChar = "_";
+
+  let index = 0;
+  let blinkVisible = true;
+
+  function typeTitle() {
+    if (index <= fullText.length) {
+      document.title = fullText.slice(0, index);
+      index++;
+
+      setTimeout(typeTitle, 120);
+    } else {
+      startBlink();
+    }
+  }
+
+  function startBlink() {
+    setInterval(() => {
+      blinkVisible = !blinkVisible;
+
+      document.title =
+        fullText + (blinkVisible ? blinkChar : "");
+    }, 500);
+  }
+
+  window.addEventListener("load", typeTitle);
+})();
 </script>
 </head>
-  
+
+
