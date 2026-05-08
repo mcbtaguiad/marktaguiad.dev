@@ -128,3 +128,4 @@ Issued June 2021 - Expires June 2024
 ### Electronics Communication Engineer
 April 2025
 
+[Click here to download](/documents/mark-christian-taguiad-resume.pdf)
