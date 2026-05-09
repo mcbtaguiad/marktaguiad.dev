@@ -78,9 +78,10 @@
 })();
 </script>
 
+{{ if .IsHome }}
 <script>
 (() => {
-  const fullText = "> " + {{ .Site.Title }};
+  const fullText = "{{ .Site.Title }}";
   const blinkChar = "_";
 
   let index = 0;
@@ -109,6 +110,7 @@
   window.addEventListener("load", typeTitle);
 })();
 </script>
+{{ end }}
 </head>
 
 
