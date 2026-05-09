@@ -78,7 +78,7 @@ googleAnalyticsAsync = false # use asynchronous tracking. Synchronous tracking b
 showAllPostsArchive = false # default
 
 # Home page settings
-description = 'Powered by caffeine, YAML, and poor decisions.'
+description = 'Notes from the terminal: linux, automation, homelab and things I’ll forget tomorrow.'
 
 mainSections = "posts" # your main section
 mainSectionsGallery = "gallery" # your main section
