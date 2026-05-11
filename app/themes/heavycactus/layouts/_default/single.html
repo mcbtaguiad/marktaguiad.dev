@@ -14,6 +14,12 @@
   </div>
 </article>
 
+<div id="progress-bar"></div>
+
+<button id="back-to-top" aria-label="Back to top">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
 {{ partial "post-navigation.html" . }}
 
 {{ if or .Site.Params.enableGiscus .Site.Params.enableUtterances .Site.Params.enableRemark42 .Site.Params.enableIsso }}

@@ -217,6 +217,80 @@ Other useful command.
 pidstat -C <application_name>
 pidstat -p <PID>
 ```
+#### perf
+`perf` is a powerful analysis tool in profiling user-space applications and kernel code by sampling hardware and software performance counter. 
+
+```bash
+perf stat -p 704 sleep 5
+
+ Performance counter stats for process id '704':
+
+                23      context-switches                 #      4.6 cs/sec  cs_per_second     
+                 0      cpu-migrations                   #      0.0 migrations/sec  migrations_per_second
+                 0      page-faults                      #      0.0 faults/sec  page_faults_per_second
+          5,010.95 msec task-clock                       #      1.0 CPUs  CPUs_utilized       
+        94,030,265      branch-misses                    #      2.9 %  branch_miss_rate         (66.55%)
+     3,218,655,134      branches                         #    642.3 M/sec  branch_frequency     (66.69%)
+    16,847,526,866      cpu-cycles                       #      3.4 GHz  cycles_frequency       (66.66%)
+    16,123,382,223      instructions                     #      1.0 instructions  insn_per_cycle  (66.57%)
+
+       5.011242868 seconds time elapsed
+```
+- task-clock: total duration during which the CPU was actively executing instructions
+- context-switches: number of times the operating system switched execution from one task to another
+- cpu-migrations: number of times a process was transferred from one CPU core to another
+- page-faults: number of times a program attempted to access a memory page that was not currently loaded in RAM and had to be retrieved from disk
+
+To record `perf` performance data. 
+```bash
+perf record -g -p 704 sleep 5
+[ perf record: Woken up 12 times to write data ]
+[ perf record: Captured and wrote 2.962 MB perf.data (19944 samples) ]
+```
+To view the saved data.
+```bash
+perf report
+
+Samples: 19K of event 'cpu/cycles/P', Event count (approx.): 16434851149
+  Children      Self  Command  Shared Object      Symbol
++  100.00%     0.00%  yes      yes                [.] 0x000055f8fe8958f5                                         ◆
++  100.00%     0.00%  yes      libc.so.6          [.] __libc_start_main_impl (inlined)                           ▒
++  100.00%     0.00%  yes      libc.so.6          [.] call_init (inlined)                                        ▒
++  100.00%     0.00%  yes      libc.so.6          [.] 0x00007faa3c427741                                         ▒
++   99.24%     0.00%  yes      libc.so.6          [.] 0x00007faa3c494b04                                         ▒
++   99.18%     0.00%  yes      libc.so.6          [.] 0x00007faa3c494ade                                         ▒
++   70.93%     6.43%  yes      [kernel.kallsyms]  [.] entry_SYSCALL_64_after_hwframe                             ▒
++   64.50%     1.49%  yes      [kernel.kallsyms]  [.] do_syscall_64                                              ▒
++   53.81%     0.08%  yes      libc.so.6          [.] vmsplice                                                   ▒
++   53.78%     0.00%  yes      yes                [.] 0x000055f8fe89579c                                         ▒
++   45.81%     0.04%  yes      libc.so.6          [.] splice                                                     ▒
++   45.79%     0.00%  yes      yes                [.] 0x000055f8fe8957db
+```
+
+#### Signals
+Siagns are used to communicate with running processes. This is to send instruction to the process if to stop, pause, resume or to clean up.
+
+The kernel can send signals, for instance, when a process attempts to divide by zero it receives the SIGFPE signal.
+
+##### SIGSTOP
+To stop a process. 
+```bash
+[arch@mrlgarchforge tmp]$ yes > /dev/null &
+[1] 1445
+[arch@mrlgarchforge tmp]$ kill -SIGSTOP 1445
+```
+##### SIGCONT
+To resume.
+```bash
+[arch@mrlgarchforge tmp]$ kill -SIGCONT 1445
+```
+##### SIGINT
+This is the signal sent when `CTrl+C` is pressed.
+
+##### SIGTERM and SIGQUIT
+`SIGTERM` is the more polite way to shutdown a process (grecefull kill), while `SIGQUIT` is forceful request to terminate the process (usually when it is misbehaving).
+##### SIGKILL
+This is true force kill, when this signal is received, it can't be ignored and it will forcefully terminate the process. 
 
 #### CPU & I/O
 Other common killing the performance is I/O (input), this could stretch from disk to network. A common tool to check is using `vmstat.
@@ -312,6 +386,151 @@ ps -o ppid= -p ZOMBIE_PID
 ```
 You fix the parent process and not the zombie process.
 
+#### ulimit
+`ulimit` is used to view and set limit the the system resources the users consume. 
+
+##### Soft Limits
+This are values enforced by the kernel and can still be adjusted by the user. The hard limit acts as the celing for the soft limit. 
+```bash
+[arch@mrlgarchforge ~]$ ulimit -Sa
+real-time non-blocking time  (microseconds, -R) unlimited
+core file size              (blocks, -c) unlimited
+data seg size               (kbytes, -d) unlimited
+scheduling priority                 (-e) 0
+file size                   (blocks, -f) unlimited
+pending signals                     (-i) 15544
+max locked memory           (kbytes, -l) 8192
+max memory size             (kbytes, -m) unlimited
+open files                          (-n) 1024
+pipe size                (512 bytes, -p) 8
+POSIX message queues         (bytes, -q) 819200
+real-time priority                  (-r) 0
+stack size                  (kbytes, -s) 8192
+cpu time                   (seconds, -t) unlimited
+max user processes                  (-u) 15544
+virtual memory              (kbytes, -v) unlimited
+file locks                          (-x) unlimited
+```
+##### Hard Limits
+The maximum value for the soft limit and maximum amount of a resources a user can consume. Only root users can change the hard limit. 
+```bash
+[arch@mrlgarchforge ~]$ ulimit -Ha
+real-time non-blocking time  (microseconds, -R) unlimited
+core file size              (blocks, -c) unlimited
+data seg size               (kbytes, -d) unlimited
+scheduling priority                 (-e) 0
+file size                   (blocks, -f) unlimited
+pending signals                     (-i) 15544
+max locked memory           (kbytes, -l) 8192
+max memory size             (kbytes, -m) unlimited
+open files                          (-n) 524288
+pipe size                (512 bytes, -p) 8
+POSIX message queues         (bytes, -q) 819200
+real-time priority                  (-r) 0
+stack size                  (kbytes, -s) unlimited
+cpu time                   (seconds, -t) unlimited
+max user processes                  (-u) 15544
+virtual memory              (kbytes, -v) unlimited
+file locks                          (-x) unlimited
+```
+##### Process Number
+Limit maximum process the user can execute.
+```bash
+ulimit -u 100
+```
+
+##### File Size
+Limit maximum file size the user can make. 
+```bash
+# limit to 100KB
+ulimit -f 100
+```
+
+##### Virtual Memory
+Limit the maximum virtual memory avaialbe to a process. 
+```bash
+# virt mem 1000KB
+ulimit -v 1000
+```
+
+##### Opened Files
+Limit the number of simultaneously opened files (file descriptors).
+```bash
+ulimit -n 10
+```
+##### Other limit
+
+| Flag | Meaning             | Short Description                   |
+| ---- | ------------------- | ----------------------------------- |
+| `-a` | all                 | Show all current limits             |
+| `-H` | hard                | Show/set hard limits                |
+| `-S` | soft                | Show/set soft limits                |
+| `-c` | core file size      | Max size of core dump files         |
+| `-d` | data seg size       | Max process data segment size       |
+| `-e` | scheduling priority | Max scheduling priority (`nice`)    |
+| `-f` | file size           | Max size of files created           |
+| `-i` | pending signals     | Max pending signals                 |
+| `-l` | locked memory       | Max locked-in-memory size           |
+| `-m` | resident set size   | Max resident memory size            |
+| `-n` | open files          | Max number of open file descriptors |
+| `-p` | pipe size           | Pipe buffer size                    |
+| `-q` | message queues      | Max bytes in POSIX message queues   |
+| `-r` | realtime priority   | Max real-time scheduling priority   |
+| `-s` | stack size          | Max stack size                      |
+| `-t` | CPU time            | Max CPU time per process            |
+| `-u` | user processes      | Max number of user processes        |
+| `-v` | virtual memory      | Max virtual memory available        |
+| `-x` | file locks          | Max number of file locks            |
+| `-T` | threads             | Max number of threads               |
+| `-P` | pseudoterminals     | Max PTYs                            |
+| `-b` | socket buffers      | Max socket buffer size              |
+| `-k` | kqueues             | Max kqueues allocated               |
+| `-w` | swaps               | Max swap space                      |
+#### Finding PID using Port
+##### netstat
+```bash
+etstat -ltnup | grep 22
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      578/sshd: /usr/bin/ 
+tcp6       0      0 :::22                   :::*                    LISTEN      578/sshd: /usr/bin/ 
+```
+##### ss
+```bash
+s -ltnup 'sport = :22'
+Netid   State    Recv-Q   Send-Q     Local Address:Port      Peer Address:Port   Process                          
+tcp     LISTEN   0        128              0.0.0.0:22             0.0.0.0:*       users:(("sshd",pid=578,fd=6))   
+tcp     LISTEN   0        128                 [::]:22                [::]:*       users:(("sshd",pid=578,fd=7))
+```
+##### lsof
+```bash
+lsof -i :22
+COMMAND   PID USER FD   TYPE DEVICE SIZE/OFF NODE NAME
+sshd      578 root 6u  IPv4   8277      0t0  TCP *:ssh (LISTEN)
+sshd      578 root 7u  IPv6   8279      0t0  TCP *:ssh (LISTEN)
+sshd-sess 592 root 7u  IPv4   9233      0t0  TCP mrlgarchforge:ssh->192.168.254.14:38796 (ESTABLISHED)
+sshd-sess 607 arch 7u  IPv4   9233      0t0  TCP mrlgarchforge:ssh->192.168.254.14:38796 (ESTABLISHED)
+```
+
+#### Get Process ID
+##### Show Background Process
+```bash
+jobs
+[1]+  Running                    yes > /dev/null &
+```
+
+##### By Application Name
+```bash
+ps -aux | grep firefox
+```
+##### By File 
+```bash
+fuser -v text.txt
+fuser -k text.txt
+fuser -cv text.txt
+```
+```bash
+lsof | { head -1 ; grep text.txt ; }
+```
+
 #### Killing a running application
 
 ##### Kill by application name
@@ -341,8 +560,6 @@ killall -9 22671
 kill -9 firefox
 killall -9 firefox
 ```
-
-
 ##### Kill all application run by user
 ```bash
 ps -o pid,pgid,sess,cmd -U your_username
@@ -359,6 +576,30 @@ pgrep -g [pgid_number]
 # kill tree
 kill -SIGTERM -- -<PGID>
 ```
+
+##### Kill by Port
+```bash
+lsof -i udp:80 | awk '/80/{print $2}' | xargs kil
+ss -Slp | grep -Po ':88\s.*pid=\K\d+(?=,)' | xargs kill
+netstat -Slp | grep -Po ':80\s.*LISTEN.*?\K\d+(?=/)' | xargs kill
+```
+
+#### Finding who killed the process
+##### Kernel
+Review `dmesg`
+```bash
+dmesg | tail -10
+```
+##### OOMKILL
+```bash
+journalctl --list-boots | \
+    awk '{ print $1 }' | \
+    xargs -I{} journalctl --utc --no-pager -b {} -kqg 'killed process' -o verbose --output-fields=MESSAGE
+
+find /var/log -name kern* -exec grep -PnHe 'Killed process' {} + 2>
+```
+
+
 
 ### Memory
 #### Usage
