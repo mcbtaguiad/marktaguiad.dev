@@ -24,10 +24,8 @@ sudo apt install wireguard resolvconf -y
 Create private key, public key and remove unnecessary permissions from the keys.
 ```bash
 sudo wg genkey | tee /etc/wireguard/server_private_key | sudo wg pubkey > /etc/wireguard/server_public_key
-sudo wg genkey | tee /etc/wireguard/client_private_key | sudo wg pubkey > /etc/wireguard/client_public_key
 
 sudo chmod go= /etc/wireguard/server_private_key
-sudo chmod go= /etc/wireguard/client_private_key
 ```
 Create Wireguard server configuration.
 ```bash
@@ -81,9 +79,11 @@ Create peer config, later copy this to your local node.
 ```bash
 mkdir /opt/wireguard/peer001
 
+sudo wg genkey | tee /opt/wireguard/peer001/client_private_key | sudo wg pubkey > /opt/wireguard/peer001/client_public_key
+
 sudo cat > /opt/wireguard/peer001/peer_wg0.conf <<EOF
 [Interface]
-PrivateKey = $(cat /etc/wireguard/client_private_key)
+PrivateKey = $(cat /opt/wireguard/peer001/client_private_key)
 Address = 10.0.0.2/32
 
 [Peer]
@@ -93,6 +93,29 @@ AllowedIPs = 10.0.0.0/8
 PersistentKeepalive = 25
 EOF
 ```
+Repeat this process if you want to create and add more peer. Make sure to create dir per config and change the peer IP address.
+
+Also add the private key and IP address of new peer. 
+
+*/etc/wireguard/wg0.conf*
+```txt
+PostDown = iptables -D INPUT -i ${EXT_IF} -p udp --dport 51820 -j ACCEPT
+PostDown = iptables -D INPUT -i ${EXT_IF} -p tcp --dport 80 -j ACCEPT
+PostDown = iptables -D INPUT -i ${EXT_IF} -p tcp --dport 443 -j ACCEPT
+
+ListenPort = 51820
+
+[Peer]
+PublicKey = $(cat /etc/wireguard/client_public_key)
+AllowedIPs = 10.0.0.2/32
+EOF
+
+# ADD HERE
+[Peer]
+PublicKey = NEW_CLIENT_PUBLIC_KEY
+AllowedIPs = 10.0.0.3/32
+```
+
 ###  Wireguard Peer (Local Server)
 Install wireguard.
 ```bash
@@ -149,6 +172,8 @@ Enable and start WireGuard service.
 sudo systemctl enable wg-quick@wg0.service
 sudo systemctl start wg-quick@wg0.service
 ```
+
+
 
 ### Caddy (VPS)
 My domain is hosted in Cloudflare so we'll be using `ghcr.io/caddybuilds/caddy-cloudflare:latest` image. 
@@ -258,3 +283,72 @@ Commercial support is available at
 </html>
 ```
 {{< imglink src="/images/self-hosted/caddy-wireguard/001.png" alt="imagen" >}}
+
+
+### Docker Network
+This just add complexity in your setup, but if you are cautious about security-since ports will be expose in you Host IP then I recommend this setup.
+
+Create docker network, let's call this `wg`.
+```bash
+docker network create \
+  --driver bridge \
+  --subnet 172.30.0.0/24 \
+  wg
+```
+Run docker application, let's use `nginx` as example.
+
+*compose.yaml*
+```yaml
+services:
+  app:
+    image: nginx
+    container_name: app
+
+    networks:
+      wg:
+        ipv4_address: 172.30.0.69
+
+networks:
+  wg:
+    external: true
+```
+In you `wg0.conf` add this. Note that you can use any `dport (8069)`, just make sure it doesn't conflict with other application you are reverse proxying. 
+```txt
+[Interface]
+PrivateKey = 8DW1ba8GHfA9hKAXrm17ssWX0aXQ4Za2ozSsHN6c1Z0c=
+Address = 10.0.0.2/32
+
+PostUp = iptables -t nat -A PREROUTING -i wg0 -p tcp --dport 8069 -j DNAT --to-destination 172.30.0.69:80
+PostUp = iptables -A FORWARD -p tcp -d 172.30.0.69 --dport 80 -j ACCEPT
+
+PostDown = iptables -t nat -D PREROUTING -i wg0 -p tcp --dport 8069 -j DNAT --to-destination 172.30.0.69:8080
+PostDown = iptables -D FORWARD -p tcp -d 172.30.0.69 --dport 8069 -j ACCEPT
+
+[Peer]
+PublicKey = 6F8h1/L2xwYLXe32ffBA+97pjVDsPJ7/uFkAT/OMChM=
+Endpoint = <YOUR_PUBLIC_IP>:51820
+AllowedIPs = 10.0.0.0/8
+PersistentKeepalive = 25
+```
+In your `Caddyfile` you add.
+
+*Caddyfile*
+```txt
+{
+  admin :2019
+}
+
+*.<YOUR_DOMAIN> {
+
+  tls {
+    dns cloudflare <CLOUDFLARE_API_TOKEN>
+  }
+
+  # Add this config to tunnel your application.
+
+  @web host web.<YOUR_DOMAIN>
+  handle @web {
+    reverse_proxy 10.0.0.2:8069
+  }
+}
+```
