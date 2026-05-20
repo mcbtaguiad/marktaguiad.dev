@@ -121,7 +121,6 @@ ListenPort = 51820
 [Peer]
 PublicKey = $(cat /etc/wireguard/client_public_key)
 AllowedIPs = 10.0.0.2/32
-EOF
 
 # ADD HERE
 [Peer]
