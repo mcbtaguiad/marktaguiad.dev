@@ -37,26 +37,35 @@ sudo cat > /etc/wireguard/wg0.conf <<EOF
 PrivateKey = $(cat /etc/wireguard/server_private_key)
 Address = 10.0.0.1/24
 
+# PostUP - Commands to run after starting WireGuard
+PostUp = iptables -A FORWARD -i wg0 -o wg0 -j ACCEPT
 PostUp = iptables -t nat -I POSTROUTING 1 -s 10.0.0.0/24 -o ${EXT_IF} -j MASQUERADE
 PostUp = iptables -I INPUT 1 -i wg0 -j ACCEPT
 PostUp = iptables -I FORWARD 1 -i ${EXT_IF} -o wg0 -j ACCEPT
 PostUp = iptables -I FORWARD 1 -i wg0 -o ${EXT_IF} -j ACCEPT
+PostUp = iptables -A FORWARD -i ${EXT_IF} -o wg0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 
+# Accept connections to WireGuard and HTTP/HTTPS ports
 PostUp = iptables -I INPUT 1 -i ${EXT_IF} -p udp --dport 51820 -j ACCEPT
 PostUp = iptables -I INPUT 1 -i ${EXT_IF} -p tcp --dport 80 -j ACCEPT
 PostUp = iptables -I INPUT 1 -i ${EXT_IF} -p tcp --dport 443 -j ACCEPT
 
+# PostDown - Commands to run after stopping WireGuard
+PostDown = iptables -D FORWARD -i wg0 -o wg0 -j ACCEPT
 PostDown = iptables -t nat -D POSTROUTING -s 10.0.0.0/24 -o ${EXT_IF} -j MASQUERADE
 PostDown = iptables -D INPUT -i wg0 -j ACCEPT
 PostDown = iptables -D FORWARD -i ${EXT_IF} -o wg0 -j ACCEPT
 PostDown = iptables -D FORWARD -i wg0 -o ${EXT_IF} -j ACCEPT
+PostDown = iptables -D FORWARD -i e${EXT_IF} -o wg0 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 
 PostDown = iptables -D INPUT -i ${EXT_IF} -p udp --dport 51820 -j ACCEPT
 PostDown = iptables -D INPUT -i ${EXT_IF} -p tcp --dport 80 -j ACCEPT
 PostDown = iptables -D INPUT -i ${EXT_IF} -p tcp --dport 443 -j ACCEPT
 
+# WireGuard port
 ListenPort = 51820
 
+# Client Configuration
 [Peer]
 PublicKey = $(cat /etc/wireguard/client_public_key)
 AllowedIPs = 10.0.0.2/32
@@ -92,6 +101,10 @@ Endpoint = $(curl ifconfig.me):51820
 AllowedIPs = 10.0.0.0/8
 PersistentKeepalive = 25
 EOF
+```
+Optional, create QR for the configurations.
+```bash
+qrencode -o /opt/wireguard/peer001/wireguard_qr.png < /opt/wireguard/peer001/peer_wg0.conf
 ```
 Repeat this process if you want to create and add more peer. Make sure to create dir per config and change the peer IP address.
 
@@ -137,7 +150,7 @@ Address = 10.0.0.2/32
 [Peer]
 PublicKey = 6F8h1/L2xwYLXe32ffBA+97pjVDsPJ7/uFkAT/OMChM=
 Endpoint = <YOUR_PUBLIC_IP>:51820
-AllowedIPs = 10.0.0.0/8
+AllowedIPs = 10.0.0.0/24
 PersistentKeepalive = 25
 ```
 
@@ -163,7 +176,7 @@ PostDown = iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
 [Peer]
 PublicKey = 6F8h1/L2xwYLXe32ffBA+97pjVDsPJ7/uFkAT/OMChM=
 Endpoint = <YOUR_PUBLIC_IP>:51820
-AllowedIPs = 10.0.0.0/8
+AllowedIPs = 10.0.0.0/24
 PersistentKeepalive = 25
 ```
 

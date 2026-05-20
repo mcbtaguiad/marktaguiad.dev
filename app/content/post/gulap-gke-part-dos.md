@@ -1,5 +1,5 @@
 ---
-title: "Create GKE Cluster with Terraform/Opentofu Part Dos"
+title: "Create GKE Cluster with Terraform/Opentofu 0x02"
 date: 2026-04-08T20:10:15+08:00
 author: "Mark Taguiad"
 tags: ["cloud", "ulap", "gke", "terraform", "opentofu", "gcp", "google", "kubernetes", "standard gke", "autopilot gke"]
