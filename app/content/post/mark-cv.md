@@ -26,7 +26,7 @@ subject: 'CV'
 - [marktaguiad.dev](https://marktaguiad.dev/)
 - Manila, Philippines
 <!-- # Mark Christian Taguiad -->
-### Technical Skills
+# Technical Skills
 ```linux systems administration```
 `network administration`
 `programming`
@@ -48,7 +48,7 @@ subject: 'CV'
 - Monitoring / Observability: Prometheus, Grafana, Alertmanager, Zabbix
 - Cloud Platform: AWS, GCP (GCE, GKE), Cloudflare (DNS, Tunnels, Workers, R2, CDN)
 - Operating System: Linux (RHEL-based, Debian-based)
-### Experience
+# Experience
 
 ### DevOps Engineer, Samsung R&D Institute Philippines (SRPH)
 October 2023 - October 2024
@@ -107,7 +107,7 @@ Jul 2021 -- Nov 2021
 - Performed daily and weekly database backup operations.
 - Generated weekly availability reports for servers and network infrastructure.
 
-### Education
+# Education
 
 ### Mapua University
 2012 -- 2019
@@ -119,13 +119,15 @@ Jul 2021 -- Nov 2021
 - Routing and Switching
 - Security
 
-### Licenses & Certifications
+
+# Licenses & Certifications
+
+### [Registered Electronics Engineer (PRC)](/post/passed-the-boardexam/)
+License No. 00856**
 
 ### Cisco Certified Network Associate (CCNA) - Cisco
 Issued June 2021 - Expires June 2024
 - CSCO14020527
 
-### Electronics Communication Engineer
-April 2025
 
 [Click here to download](/documents/mark-christian-taguiad-resume.pdf)
