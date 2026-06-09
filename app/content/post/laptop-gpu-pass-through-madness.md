@@ -42,7 +42,7 @@ I built a Proxmox Node using an old Laptop-`Thinkpad P51`.
 The plan is to passthrough `NVIDIA Quadro M1200` GPU to an Arch Linux VM and run LLM and Jellyfin.
 
 ### Config
-These are the config. I may have used different setup why testing configuration I find in forums. This is the final version where i conclude that it is madness to continue.
+These are the config. I may have used different setup while testing configuration I find in forums. This is the final version where i conclude that it is madness to continue.
 
 */etc/pve/qemu-server/204.conf*
 ```
@@ -140,4 +140,4 @@ No devices were found
 ### Conclusion
 Just buy a desktop GPU, don't buy NVIDIA if you are using Linux as your main setup. Even in desktop environment NVIDIA Optimus is just a pain in the butt to setup. 
 
-Check this [blog](https://dipankar-das.com/blog/proxmox-laptop-gpu-passthrough-failure/) for more detail explanation. 
+Check this [blog](https://dipankar-das.com/blog/proxmox-laptop-gpu-passthrough-failure/) for more detailed explanation. 
