@@ -331,7 +331,7 @@ PrivateKey = 8DW1ba8GHfA9hKAXrm17ssWX0aXQ4Za2ozSsHN6c1Z0c=
 Address = 10.0.0.2/32
 
 PostUp = iptables -t nat -A PREROUTING -i wg0 -p tcp --dport 8069 -j DNAT --to-destination 172.30.0.69:80
-PostUp = iptables -A FORWARD -p tcp -d 172.30.0.69 --dport 80 -j ACCEPT
+PostUp = iptables -A FORWARD -p tcp -d 172.30.0.69 --dport 8069 -j ACCEPT
 
 PostDown = iptables -t nat -D PREROUTING -i wg0 -p tcp --dport 8069 -j DNAT --to-destination 172.30.0.69:8080
 PostDown = iptables -D FORWARD -p tcp -d 172.30.0.69 --dport 8069 -j ACCEPT
