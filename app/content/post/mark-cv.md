@@ -109,6 +109,10 @@ Jul 2021 -- Nov 2021
 
 # Education
 
+### Arellano University School of Law
+2026 -- Present
+  - Juris Doctor (J.D.), Currently Enrolled
+
 ### Mapua University
 2012 -- 2019
   - Bachelor of Science, Electronics Engineering
@@ -125,8 +129,8 @@ Jul 2021 -- Nov 2021
 ### [Registered Electronics Engineer (PRC)](/post/passed-the-boardexam/)
 License No. 00856**
 
-### Cisco Certified Network Associate (CCNA) - Cisco
-Issued June 2021 - Expires June 2024
+### Cisco Certified Network Associate (CCNA)
+June 2021 -- June 2024
 - CSCO14020527
 
 
