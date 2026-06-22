@@ -58,10 +58,10 @@ spec:
       targetPort: 80
   type: LoadBalancer
 ```
-Important note is that you should always point the `targetPort` to the image exposed port. `port` can be set to anyport, this is also inherited by `LoadBalancer` and `Ingress` when exposing outside the Cluster.  
+Important note is that you should always point the `targetPort` to the image exposed port. `port` can be set to any port, this is also inherited by `LoadBalancer` and `Ingress` when exposing outside the Cluster.  
 
 ```bash
-kubectl create -f srv-nginx.yaml
+kubectl create -f svc-nginx.yaml
 ```
 #### Create using kubectl
 ```bash
@@ -120,7 +120,7 @@ Format:
 ```bash
 service-name.namespace.svc.cluster.local
 ```
-For the nginx service we created, it is formatted like this:
+For the `nginx` service we created, it is formatted like this:
 ```bash
 nginx.demo.svc.cluster.local
 ```
@@ -268,7 +268,7 @@ curl 192.168.254.220
 ### hostPort and hostNetwork
  By using `hostPort` and `hostNetwork`, you are attaching the pod directly to your Node ports. 
 
-Their difference is that `hostPort` still need to communicate with Kubernetes CNI plugin to map the container/pod port to the Host network. For `hostNetwork`, the container attached it self to the host network, becareful when handling this specially if your container is using **Privilege Port** (e.g. ssh-22), this would make you unable to ssh to your node.
+Their difference is that `hostPort` still need to communicate with Kubernetes CNI plugin to map the container/pod port to the Host network. For `hostNetwork`, the container attached it self to the host network, be careful when handling this specially if your container is using **Privilege Port** (e.g. ssh-22), this would make you unable to ssh to your node.
 
 Look at this example to further understand. Deploy both YAML file.
 
@@ -383,12 +383,12 @@ Instead of exposing many services individually, a reverse proxy such as NGINX ca
 
 Some popular service:
 - caddy
-- nginx reverce proxy
+- nginx reverse proxy
 - pangolin
 - cloudflare
 
 ### Ingress Controllers
-An Ingress Controller manages external access to services in a Kubernetes cluster. It acts as a reverse proxy inside the cluster, routing traffic to the correct services. One popular controller is [Ingress-Nginx](https://github.com/kubernetes/ingress-nginx). 
+An Ingress Controller manages external access to services in a Kubernetes cluster. It acts as a reverse proxy inside the cluster, routing traffic to the correct services. One popular controller is [ingress-nginx](https://github.com/kubernetes/ingress-nginx). 
 
 This goes hand in hand with [cert-manager](https://cert-manager.io/), which handles automatic creation of certificate and certificate renewal. 
 
