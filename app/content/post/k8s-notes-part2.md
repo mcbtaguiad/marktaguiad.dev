@@ -53,6 +53,7 @@ Advantages of YAML:
 - version control (Git)
 - reproducibility
 - easy sharing with teams
+
 Using the same image earlier `nginx`.
 ```bash
 kind: Pod
@@ -173,7 +174,7 @@ At least one container terminated with an error.
 #### Completed / Terminated
 All containers have stopped execution.
 ### Pod Readiness and Liveliness Probe
-Pod lifecycle is quite a big topic, you can check [here](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/) if you are interested. For now I'll discuss about **Readiness Probe** and **Liveliness Probe** of a Pod. If you are here then you are familiar with Docker/Podman health check, it is quite similar to that but this two probe serve different purposes. 
+Pod lifecycle is quite a big topic, you can check [here](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/) if you are interested. For now I'll discuss about **Readiness Probe** and **Liveliness Probe** of a Pod. If you are here then you are familiar with Docker/Podman health check, it is quite similar to that but these two probe serve different purposes. 
 #### Liveness Probe
 Checks if the container is still running correctly. If the liveness probe fails, Kubernetes will restart the container.
 
@@ -313,7 +314,7 @@ They can disappear if:
 - the Pod is deleted
 - the cluster reschedules workloads
 
-Because of this, in real systems Pods are usually managed by higher-level controllers such as:
+Because of this, in real systems; Pods are usually managed by higher-level controllers such as:
 - Deployments
 - Statefulsets
 - Daemonsets
