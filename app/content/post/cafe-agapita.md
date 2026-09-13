@@ -2,7 +2,7 @@
 title: "Coffe Ride - Cafe Agapita"
 date: 2026-02-12
 author: "Mark Taguiad"
-tags: ["ride", "cycling", "cafe"]
+tags: ["ride", "cycling", "cafe", "agapita"]
 UseHugoToc: true
 weight: 2
 ---
