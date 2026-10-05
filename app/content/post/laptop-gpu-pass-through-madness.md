@@ -8,7 +8,7 @@ weight: 2
 ---
 {{< imglink src="/images/linux/gpu-madness/bart-hit-homer.webp" alt="imagen" >}}
 
-The first I was optimistic and blame my ignorance (still is today) why it failed. The second time, I did my research but still did anyway it to satisfy my curiosity.
+First, I was optimistic and blame my ignorance (still is today) why it failed. The second time, I did my research and know that it will fail--but still did it anyway to satisfy my curiosity.
 
 This is the last time, please just buy a desktop GPU and save yourself from headache. 
 # Table of Contents

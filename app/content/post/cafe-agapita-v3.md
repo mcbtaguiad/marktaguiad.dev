@@ -1,5 +1,5 @@
 ---
-title: "Coffe Ride - Cafe Agapita Ulit???"
+title: "Cafe Ride - Cafe Agapita Ulit???"
 date: 2026-09-13
 author: "Mark Taguiad"
 tags: ["ride", "cycling", "cafe", "agapita"]
