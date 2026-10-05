@@ -26,6 +26,24 @@ subject: 'CV'
 - [marktaguiad.dev](https://marktaguiad.dev/)
 - Manila, Philippines
 <!-- # Mark Christian Taguiad -->
+
+
+# Education
+
+### Arellano University School of Law
+2026 -- Present
+  - Juris Doctor (J.D.), Currently Enrolled
+
+### Mapua University
+2012 -- 2019
+  - Bachelor of Science, Electronics Engineering
+
+### Cisco Networking Academy
+2018
+
+- Routing and Switching
+- Security
+
 # Technical Skills
 ```linux systems administration```
 `network administration`
@@ -47,7 +65,8 @@ subject: 'CV'
 - Virtualization Platform: Proxmox, OpenStack, KVM
 - Monitoring / Observability: Prometheus, Grafana, Alertmanager, Zabbix
 - Cloud Platform: AWS, GCP (GCE, GKE), Cloudflare (DNS, Tunnels, Workers, R2, CDN)
-- Operating System: Linux (RHEL-based, Debian-based)
+- Operating System: Linux (RHEL-based, Debian-based, Arch, NixOS)
+
 # Experience
 
 ### DevOps Engineer, Samsung R&D Institute Philippines (SRPH)
@@ -106,22 +125,6 @@ Jul 2021 -- Nov 2021
 - Initiated, managed, and resolved incident tickets.
 - Performed daily and weekly database backup operations.
 - Generated weekly availability reports for servers and network infrastructure.
-
-# Education
-
-### Arellano University School of Law
-2026 -- Present
-  - Juris Doctor (J.D.), Currently Enrolled
-
-### Mapua University
-2012 -- 2019
-  - Bachelor of Science, Electronics Engineering
-
-### Cisco Networking Academy
-2018
-
-- Routing and Switching
-- Security
 
 
 # Licenses & Certifications
